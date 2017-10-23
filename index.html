@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>mac桌面</title>
+    <link rel='Shortcut Icon' type='image/x-icon' href='./img/apple.ico'>
+    <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
+    <link href="./css/animate.css" rel="stylesheet">
+    <script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
+    <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="./css/macdefault.css" rel="stylesheet">
+    <script type="text/javascript" src="./js/mac.js"></script>
+    <style>
+        * {
+            font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+        }
+    </style>
+    <script>
+        Win10.onReady(function () {
+
+            //设置壁纸
+            Win10.setBgUrl({
+                main: './img/wallpapers/main.jpg',
+                mobile: './img/wallpapers/mobile.jpg',
+            });
+
+            Win10.setAnimated([
+                'animated flip',
+                'animated bounceIn',
+            ], 0.01);
+        });
+	//dock特效 感谢安震110
+	$(function () {
+		dock();
+	});
+	$(window).resize(function() {
+		dock();
+	});
+	dock=function(){
+		var width=document.body.clientWidth;
+		console.log(width);
+		if(width>768){
+			$("#footer .dock li a img").hover(
+				function(){
+					$(this).parent('a').prev().css('display','flex');
+				},
+				function(){
+					$(this).parent('a').prev().css('display','none');
+				}
+			);
+		}else{
+			$("#footer .dock li a img").hover(function(){
+				$(this).parent('a').prev().css('display','none');
+			});
+		}
+	}
+    </script>
+</head>
+<body>
+<div id="win10">
+    <div class="desktop">
+        <div id="win10-shortcuts" class="shortcuts-hidden">
+            <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>UI官网')">
+                <img class="icon" src="./img/icon/computer.png"/>
+                <div class="title">UI官网</div>
+            </div>
+            <div class="shortcut" onclick="window.open('./demo.html')">
+                <img class="icon" src="./img/icon/demo.png"/>
+                <div class="title">查看DEMO</div>
+            </div>
+        </div>
+    </div>
+    <div id="win10-menu" class="hidden">
+		<div class="list win10-menu-hidden animated animated-slideOutLeft">
+			<div class="item" onclick="Win10.aboutUs()"><i class="icon fa fa-star fa-fw"></i>关于</div>
+            <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-window-close fa-fw"></i>关闭</div>
+        </div>
+        <div class="blocks">
+            <div class="menu_group">
+                <div class="title">Welcome</div>
+                <div class="block" loc="1,1" size="6,4">
+                    <div class="content">
+                        <div style="font-size:100px;line-height: 132px;margin: 0 auto ;display: block"
+                             class="fa fa-fw fa-windows win10-block-content-text"></div>
+                        <div class="win10-block-content-text" style="font-size: 22px">欢迎使用 Win10-UI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="win10-menu-switcher"></div>
+    </div>
+    <div id="win10_command_center" class="hidden_right">
+        <div class="title">
+            <h4 style="float: left">消息中心 </h4>
+            <span id="win10_btn_command_center_clean_all">全部清除</span>
+        </div>
+        <div class="msgs"></div>
+    </div>
+    <div id="win10_task_bar">
+        <div id="win10_btn_group_left" class="btn_group">
+            <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
+            <div class="btn" id="win10-btn-browser"><span class="fa fa-safari"></span></div>
+        </div>
+        <div id="win10_btn_group_middle" class="btn_group"></div>
+        <div id="win10_btn_group_right" class="btn_group">
+            <div class="btn" id="win10_btn_time">
+                <!--0:00<br/>-->
+                <!--1993/8/13-->
+            </div>
+            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
+            <div class="btn" id="win10_btn_show_desktop"></div>
+        </div>
+    </div>
+	<div id="footer">
+        <div class="dock">
+            <ul>
+                <li><span class="dock-tips">finder<span class="arrow"></span></span><a href="#"> <img src="./img/icon/finder.png"></a></li>
+                <li><span class="dock-tips">computer<span class="arrow"></span></span><a onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>我的电脑')"> <img src="./img/icon/computer.png"></a></li>
+                <li><span class="dock-tips">gamecenter<span class="arrow"></span></span><a href="#"> <img src="./img/icon/gamecenter.png"></a></li>
+				<li><span class="dock-tips">icloud<span class="arrow"></span></span><a href="#"> <img src="./img/icon/icloud.png"></a></li>
+				<li><span class="dock-tips">prefapp<span class="arrow"></span></span><a href="#"> <img src="./img/icon/prefapp.png"></a></li>
+				<li><span class="dock-tips">trashicon<span class="arrow"></span></span><a href="#"> <img src="./img/icon/trashicon.png"></a></li>
+				<li><span class="dock-tips">appstore<span class="arrow"></span></span><a href="#"> <img src="./img/icon/appstore.png"></a></li>
+				<li><span class="dock-tips">iTunes<span class="arrow"></span></span><a href="#"> <img src="./img/icon/iTunes.png"></a></li>
+				<li><span class="dock-tips">imusic<span class="arrow"></span></span><a href="#"> <img src="./img/icon/imusic.png"></a></li>
+				<li><span class="dock-tips">preview<span class="arrow"></span></span><a href="#"> <img src="./img/icon/preview.png"></a></li>
+				<li><span class="dock-tips">mail<span class="arrow"></span></span><a href="#"> <img src="./img/icon/mail.png"></a></li>
+				<li><span class="dock-tips">notes.png<span class="arrow"></span></span><a href="#"> <img src="./img/icon/notes.png"></a></li>
+				<li><span class="dock-tips">messages<span class="arrow"></span></span><a href="#"> <img src="./img/icon/messages.png"></a></li>
+				<li><span class="dock-tips">maps<span class="arrow"></span></span><a href="#"> <img src="./img/icon/maps.png"></a></li>
+				<li><span class="dock-tips">ibooks<span class="arrow"></span></span><a href="#"> <img src="./img/icon/ibooks.png"></a></li>
+				<li><span class="dock-tips">facetime<span class="arrow"></span></span><a href="#"> <img src="./img/icon/facetime.png"></a></li>
+				<li><span class="dock-tips">launchpad<span class="arrow"></span></span><a href="#"> <img src="./img/icon/launchpad.png"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
