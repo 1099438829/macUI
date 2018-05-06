@@ -2,7 +2,7 @@
  * Created by Yuri2 on 2017/7/10.
  */
 window.Win10 = {
-    _version:'v1.1.2.3',
+    _version:'v1.1.2.4',
     _debug:true,
     _bgs:{
         main:'',
@@ -177,6 +177,7 @@ window.Win10 = {
             btn.addClass('active');
         }
     },
+    //渲染右键
     _renderContextMenu:function (x,y,menu,trigger) {
         this._removeContextMenu();
         if(menu===true){return;}
@@ -360,7 +361,9 @@ window.Win10 = {
                 zIndex:99999999999
             }, function (value, i) {
                 layer.close(i);
-                iframe.attr('src', value);
+                layer.msg(Win10.lang('请稍候...','Hold on please...'),{time:1500},function () {
+                    iframe.attr('src', value);
+                });
             });
         });
         $(document).on('mousedown','.win10-open-iframe',function () {
@@ -378,7 +381,9 @@ window.Win10 = {
                 $('#win10-menu .list .item.has-sub-up').toggleClass('has-sub-down').toggleClass('has-sub-up');
                 $("#win10-menu .list .sub-item").slideUp();
             }
-            e.toggleClass('has-sub-down').toggleClass('has-sub-up');
+            if(e.next().hasClass('sub-item')){
+                e.toggleClass('has-sub-down').toggleClass('has-sub-up');
+            }
             while (e.next().hasClass('sub-item')){
                 e.next().slideToggle();
                 e=e.next();
@@ -404,13 +409,6 @@ window.Win10 = {
         setInterval(function () {
 			//重新写mac时间
             var myDate = new Date();
-           /* var year=myDate.getFullYear();
-			var week=myDate.getDay();
-            var month=myDate.getMonth()+1;
-            var date=myDate.getDate();
-            var hours=myDate.getHours();
-            var mins=myDate.getMinutes();if (mins<10){mins='0'+mins} */
-            //$("#win10_btn_time").html(year+'/'+month+'/'+date+hours+':'+mins);
 			var week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")[myDate.getDay()];
 			var hour=myDate.getHours();
             var mins=myDate.getMinutes();if (mins<10){mins='0'+mins}
@@ -430,8 +428,13 @@ window.Win10 = {
 			$("#win10_btn_time").html(week+hours+':'+mins);
         },1000);
         //离开前警告
-        document.body.onbeforeunload = function(){
-            window.event.returnValue = Win10.lang( '系统可能不会保存您所做的更改','The system may not save the changes you have made.');
+        document.body.onbeforeunload = function(event){
+            var rel = Win10.lang( '系统可能不会保存您所做的更改','The system may not save the changes you have made.');
+            if(!window.event){
+                event.returnValue=rel;
+            }else{
+                window.event.returnValue=rel;
+            }
         };
         Win10.buildList();//预处理左侧菜单
         Win10._startAnimate();//动画处理
@@ -443,7 +446,7 @@ window.Win10 = {
         $(window).resize(function() {
             Win10.renderShortcuts();
             Win10._checkBgUrls();
-	    Win10._fixWindowsHeightAndWidth();
+            if(!Win10.isSmallScreen()) Win10._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
 	    Win10.renderDocks();
         });
         //细节
@@ -460,8 +463,9 @@ window.Win10 = {
             console.log(Win10.lang('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ','The page is strongly driven by Win10-UI.\nFor more info: http://win10ui.yuri2.cn.\n Win10-UI, easy to create a unique background interface.'))
         },2000);
         //点击清空右键菜单
-        $(document).click(function () {
-            Win10._removeContextMenu();
+        $(document).click(function (event) {
+            if(!event.button)
+                Win10._removeContextMenu();
         });
         //禁用右键的右键
         $(document).on('contextmenu','.win10-context-menu',function (e) {
@@ -602,18 +606,33 @@ window.Win10 = {
             }
         });
     },
+    	//渲染DOCK
     renderDocks:function () {
-        var cell_width=74;
+		$('#dock').Fisheye(
+			{
+				maxWidth: 70,
+				items: 'a',
+				itemsText: 'span',
+				container: '.dock-container',
+				itemWidth: 50,
+				proximity: 80,
+				alignment : 'left',
+				valign: 'bottom',
+				halign : 'center'
+			}
+		)
+
+        var cell_width=50;
         var width=document.body.clientWidth ;
-        var docks=$("#footer .dock li");
+        var docks=$(".dock .dock-container a");
         var max_num=parseInt(width/cell_width)-1;
         for (var i = 0; i < docks.length; i++) {
         	if (i>max_num) {
-        		docks.eq(i).css('display','none');
+        		docks.eq(i).hide();
         	}else{
-        		docks.eq(i).css('display','list-item');
+        		docks.eq(i).show();
         	}		
-		}
+		}	
     },
     commandCenterToggle: function () {
         if($("#win10_command_center").hasClass('hidden_right')){
@@ -763,7 +782,6 @@ window.Win10 = {
         layero_opened.css('z-index',Win10._countTask+813);
         Win10._settop(layero_opened);
         //重新定义菜单布局
-        //layero_opened.find('.layui-layer-setwin').prepend('<a class="win10-btn-change-url" index="' + index + '" href="#"><span class="fa fa-chain"></span></a><a class="win10-btn-refresh" index="' + index + '" href="#"><span class="fa fa-refresh"></span></a>');
         layero_opened.find('.layui-layer-setwin').prepend('<a class="win10-btn-refresh" index="' + index + '" href="#"></a>');
         layero_opened.find('.layui-layer-setwin .layui-layer-max').click(function () {
             setTimeout(function () {

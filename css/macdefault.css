@@ -2,6 +2,9 @@
 body,a,h1,h2,h3,h4,h5,h6,p,div,em,ul,li {
   font-family: PingFangSC-Ultralight, 'microsoft yahei';
 }
+* {
+	font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+}
 html {
     height: 100%;
 }
@@ -47,7 +50,7 @@ body {
 }
 
 #win10 *{
-    scrollbar-arrow-color: #5e6a5c;);  /*图6,三角箭头的颜色*/
+    scrollbar-arrow-color: #5e6a5c;  /*图6,三角箭头的颜色*/
     scrollbar-face-color: #5e6a5c;  /*图5,立体滚动条的颜色*/
     scrollbar-3dlight-color: #5e6a5c;  /*图1,立体滚动条亮边的颜色*/
     scrollbar-highlight-color: #5e6a5c;  /*图2,滚动条空白部分的颜色*/
@@ -71,7 +74,10 @@ body {
     top: 0;
     height: 30px;
     line-height:30px;
-    background-color: rgba(255, 255, 255, 0.75);
+    /* IE9+ */
+	background-color: rgba(255,255,255,0.4);
+	/* IE6-IE8 */
+	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#68FFFFFF,endColorStr=#68FFFFFF);
     z-index: 19930813;
 }
 
@@ -181,7 +187,7 @@ body {
 #win10-menu {
     position: fixed;
     top: 30px;
-    background-color: rgba(255,255,255,0.75);
+    background-color: rgba(255,255,255,0.55);
     height:auto;
     width: 12.5%;
     max-width: 880px;
@@ -321,9 +327,6 @@ body {
     color: grey;
 }
 
-
-
-
 #win10 #win10-shortcuts {
     height: calc(100% - 40px);
     position: relative;
@@ -375,7 +378,7 @@ body {
     right: 0;
     top: 30px;
     width: 350px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,255,255,0.55);
     height: calc(100% - 30px);
     transition: all 0.5s;
     overflow-x: hidden;
@@ -761,92 +764,64 @@ body {
     z-index: 0;
     background-color: transparent;
 }
-
 /*--------------尾部--------------------*/
-#footer{
-    height: 60px;
-    width: 100%;
-    position: absolute;
-    bottom: 10px;
-    text-align: center;
-}
 
-#footer .dock{
-    /*width: 72%; */
-    height: 100%;
-    line-height: 60px;
-    display: inline-block;
-    border-radius: 5px;
-    background-color: rgba(255,255,255,0.45) ;/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
-    -webkit-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
-    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
-    -webkit-border-top-left-radius: 6px;
-    -webkit-border-top-right-radius: 6px;
+.dock {
+	width: 100%;
+	bottom: 0px;
+	position: absolute;
+	left: 0px;
+	height: 65px; 
+	text-align: center;
+	z-index:1000;
 }
-@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
-#footer .dock{
-    /*width: 72%; */
-    height: 100%;
-    line-height: 60px;
-    background-color: #fff;
-    display: inline-block;
-    border-radius: 5px;
-    filter:Alpha(opacity=0.45);
-    position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
-    *zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
-}
-  .demo ul{
-    position: relative;/* 设置子元素为相对定位，可让子元素不继承Alpha值 */
-  }  
-}
-#footer .dock ul{
-    display: inline-block;
-}
-
-#footer .dock img{
-	z-index:222;
-    width: 50px;
-    height: 50px;
-}
-
-#footer .dock ul li{
-    float: left;
-    margin: 5px 10px;
-    /*过渡的时间 效果*/
-    -webkit-transition: 0.15s linear;
-}
-
-#footer .dock ul li:hover{
-    /*参照*/
-    -webkit-transform-origin:bottom center;
-    /*形变*/
-    -webkit-transform:scale(1.5);
-}
-
-#footer .dock .dock-tips{
-	color:white;
-	font-size:0.4em;
+.dock-container {
+	position: absolute;
+	height: 60px;
 	border-radius: 5px;
-	background: rgba(0,0,0,0.5);
-	height: 20px;
-	line-height: 20px;
+    background-color: rgba(255,255,255,0.45) ;/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+	padding:0 20px;
+}
+
+.dock a.dock-item {
+	display: block; 
+	font: bold 12px Arial, Helvetica, sans-serif;
+	width: 60px; 
+	color: #fff; 
+	bottom: 0px; 
+	position: absolute;
+	text-align: center;
+	text-decoration: none;
+}
+.dock-item span {
 	display: none;
-	padding:0px 10px;
-	margin-top: -30px;
-	margin-bottom: 10px;
-	flex-direction: column;
-	align-items: center;
+	padding:3px 0px;
+	border-radius: 5px;
+	background-color: rgba(0,0,0,0.45);
 }
-#footer .dock .dock-tips .arrow{
-	opacity: 0.5;
-	border-left:5px solid transparent; 
-	border-right:5px solid transparent;
-	border-top:5px solid #000; 
-	border-bottom:5px solid transparent; 
-	width:0;
-	height:0;
+.dock-item img {
+	border: none; 
+	margin: 5px; 
+	width: 100%; 
 }
+
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+	.dock{
+		/*width: 72%; */
+		height: 100%;
+		line-height: 60px;
+		background-color: #fff;
+		display: inline-block;
+		border-radius: 5px;
+		filter:Alpha(opacity=0.45);
+		position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+		*zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+	}
+	.dock ul{
+		position: relative;/* 设置子元素为相对定位，可让子元素不继承Alpha值 */
+	}  
+}
+
 
 /*各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010*/
 .win10-open-iframe .black-green, #win10 .black-green{background:#009688!important;}
@@ -940,11 +915,8 @@ body {
     .win10-open-iframe .layui-layer-setwin a {
         width: 32px;
     }
-	#footer{
-		bottom:0;
-	}
 	
-	#footer .dock{
+	.dock{
 		width: 100%;
 		border-radius: 0px;
 	}

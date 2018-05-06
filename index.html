@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <title>mac桌面</title>
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/apple.ico'>
-    <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
     <link href="./css/animate.css" rel="stylesheet">
-    <script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
     <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="./css/macdefault.css" rel="stylesheet">
+	<script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="./js/interface.js"></script>
+	<script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
     <script type="text/javascript" src="./js/mac.js"></script>
     <style>
         * {
@@ -22,40 +23,32 @@
 
             //设置壁纸
             Win10.setBgUrl({
-                main: './img/wallpapers/main.jpg',
-                mobile: './img/wallpapers/mobile.jpg',
+                main:'./img/wallpapers/main.jpg',
+                mobile:'./img/wallpapers/mobile.jpg',
             });
 
             Win10.setAnimated([
                 'animated flip',
                 'animated bounceIn',
             ], 0.01);
+
+            setTimeout(function () {
+                Win10.newMsg('官方交流一群', '欢迎各位大侠加入讨论：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=4Er0u8i">[点击加入]205546163</a>')
+            }, 2500);
+
+            setTimeout(function () {
+				layer.open({
+					type: 2,
+					title: '最新资讯',
+					area: ['300px', '380px'],
+					shade:0,
+					skin:'win10-open-iframe',
+					offset: 'rb',
+					content: 'broadcast.html'
+				})
+			},2000);
         });
-	//dock特效 感谢安震110
-	$(function () {
-		dock();
-	});
-	$(window).resize(function() {
-		dock();
-	});
-	dock=function(){
-		var width=document.body.clientWidth;
-		console.log(width);
-		if(width>768){
-			$("#footer .dock li a img").hover(
-				function(){
-					$(this).parent('a').prev().css('display','flex');
-				},
-				function(){
-					$(this).parent('a').prev().css('display','none');
-				}
-			);
-		}else{
-			$("#footer .dock li a img").hover(function(){
-				$(this).parent('a').prev().css('display','none');
-			});
-		}
-	}
+		
     </script>
 </head>
 <body>
@@ -113,29 +106,20 @@
             <div class="btn" id="win10_btn_show_desktop"></div>
         </div>
     </div>
-	<div id="footer">
-        <div class="dock">
-            <ul>
-                <li><span class="dock-tips">finder<span class="arrow"></span></span><a href="#"> <img src="./img/icon/finder.png"></a></li>
-                <li><span class="dock-tips">computer<span class="arrow"></span></span><a onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>我的电脑')"> <img src="./img/icon/computer.png"></a></li>
-                <li><span class="dock-tips">gamecenter<span class="arrow"></span></span><a href="#"> <img src="./img/icon/gamecenter.png"></a></li>
-				<li><span class="dock-tips">icloud<span class="arrow"></span></span><a href="#"> <img src="./img/icon/icloud.png"></a></li>
-				<li><span class="dock-tips">prefapp<span class="arrow"></span></span><a href="#"> <img src="./img/icon/prefapp.png"></a></li>
-				<li><span class="dock-tips">trashicon<span class="arrow"></span></span><a href="#"> <img src="./img/icon/trashicon.png"></a></li>
-				<li><span class="dock-tips">appstore<span class="arrow"></span></span><a href="#"> <img src="./img/icon/appstore.png"></a></li>
-				<li><span class="dock-tips">iTunes<span class="arrow"></span></span><a href="#"> <img src="./img/icon/iTunes.png"></a></li>
-				<li><span class="dock-tips">imusic<span class="arrow"></span></span><a href="#"> <img src="./img/icon/imusic.png"></a></li>
-				<li><span class="dock-tips">preview<span class="arrow"></span></span><a href="#"> <img src="./img/icon/preview.png"></a></li>
-				<li><span class="dock-tips">mail<span class="arrow"></span></span><a href="#"> <img src="./img/icon/mail.png"></a></li>
-				<li><span class="dock-tips">notes.png<span class="arrow"></span></span><a href="#"> <img src="./img/icon/notes.png"></a></li>
-				<li><span class="dock-tips">messages<span class="arrow"></span></span><a href="#"> <img src="./img/icon/messages.png"></a></li>
-				<li><span class="dock-tips">maps<span class="arrow"></span></span><a href="#"> <img src="./img/icon/maps.png"></a></li>
-				<li><span class="dock-tips">ibooks<span class="arrow"></span></span><a href="#"> <img src="./img/icon/ibooks.png"></a></li>
-				<li><span class="dock-tips">facetime<span class="arrow"></span></span><a href="#"> <img src="./img/icon/facetime.png"></a></li>
-				<li><span class="dock-tips">launchpad<span class="arrow"></span></span><a href="#"> <img src="./img/icon/launchpad.png"></a></li>
-            </ul>
-        </div>
-    </div>
+	<div class="dock" id="dock">
+	  <div class="dock-container">
+		  <a class="dock-item" href="#" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>UI官网')" ><span>finder</span><img src="./img/icon/finder.png" alt="finder" /></a> 
+		  <a class="dock-item" href="#"><span>appstore</span><img src="./img/icon/appstore.png" alt="appstore" /></a> 
+		  <a class="dock-item" href="#"><span>gamecenter</span><img src="./img/icon/gamecenter.png" alt="gamecenter" /></a> 
+		  <a class="dock-item" href="#"><span>imusic</span><img src="./img/icon/imusic.png" alt="imusic" /></a> 
+		  <a class="dock-item" href="#"><span>notes</span><img src="./img/icon/notes.png" alt="notes" /></a> 
+		  <a class="dock-item" href="#"><span>setting</span><img src="./img/icon/icloud.png" alt="setting" /></a> 
+		  <a class="dock-item" href="#"><span>iTunes</span><img src="./img/icon/iTunes.png" alt="iTunes" /></a> 
+		  <a class="dock-item" href="#"><span>mail</span><img src="./img/icon/mail.png" alt="mail" /></a> 
+		  <a class="dock-item" href="#"><span>maps</span><img src="./img/icon/maps.png" alt="maps" /></a> 
+		  <a class="dock-item" href="#"><span>trashicon</span><img src="./img/icon/trashicon.png" alt="trashicon" /></a> 
+	  </div>
+	</div>
 </div>
 </body>
 </html>
