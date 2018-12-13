@@ -551,7 +551,7 @@ window.Win10 = {
                 top: 30,
                 'z-index': 100,
             });
-            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: calc(100% - 40px);position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>")
+            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: calc(100% - 30px);position: absolute;left: 0;top: 30px; z-index: 0;background-color: transparent;'></div>")
         }
 
         //属性绑定
@@ -608,8 +608,19 @@ window.Win10 = {
     },
     	//渲染DOCK
     renderDocks:function () {
-		$('#dock').Fisheye(
-			{
+		var cell_width=50;
+        var width=document.body.clientWidth ;
+		var docks=$(".dock .dock-container a");
+        var max_num=parseInt((width-40)/(cell_width+25))-1;
+        for (var i = 0; i <= docks.length; i++) {
+        	if (i>=max_num) {
+        		docks.eq(i).hide();
+        	}else{
+        		docks.eq(i).show();
+        	}		
+		}	
+		if(width>768){
+			$('#dock').Fisheye({
 				maxWidth: 70,
 				items: 'a',
 				itemsText: 'span',
@@ -619,20 +630,26 @@ window.Win10 = {
 				alignment : 'left',
 				valign: 'bottom',
 				halign : 'center'
-			}
-		)
-
-        var cell_width=50;
-        var width=document.body.clientWidth ;
-        var docks=$(".dock .dock-container a");
-        var max_num=parseInt(width/cell_width)-1;
-        for (var i = 0; i < docks.length; i++) {
-        	if (i>max_num) {
-        		docks.eq(i).hide();
-        	}else{
-        		docks.eq(i).show();
-        	}		
-		}	
+			})
+		}else{
+			$('.dock-container').css({'width':width});
+			for (var i = 0; i < max_num; i++) {
+				
+				 docks.on('mouseover', function(e) {
+					  e.preventDefault();  
+				});
+				 docks.on('mouseout', function(e) {
+					  e.preventDefault();  
+				});
+				 docks.on('click', function(e) {
+					  e.preventDefault();  
+				});
+				docks.unbind("mouseover").unbind('mouseout').unbind('click').css({"width":cell_width}); 
+				if(i==0){
+					docks.eq(i).css("margin-left",0);
+				}
+			}		
+		}
     },
     commandCenterToggle: function () {
         if($("#win10_command_center").hasClass('hidden_right')){
