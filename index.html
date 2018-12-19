@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <title>mac桌面</title>
-    <link rel='Shortcut Icon' type='image/x-icon' href='./img/favicon.ico'>
+    <link rel='Shortcut Icon' type='image/x-icon' href='./macimg/apple.ico'>
+    <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
     <link href="./css/animate.css" rel="stylesheet">
+    <script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
     <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="./css/macdefault.css" rel="stylesheet">
-	<script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
-	<script type="text/javascript" src="./js/interface.js"></script>
-	<script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
     <script type="text/javascript" src="./js/mac.js"></script>
     <style>
         * {
@@ -33,20 +32,22 @@
             ], 0.01);
 
             setTimeout(function () {
-                Win10.newMsg('官方交流一群', '欢迎各位大侠加入讨论：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=4Er0u8i">[点击加入]205546163</a>')
-            }, 2500);
+                Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)',function () {
+                    Win10.enableFullScreen();
+                })
+            }, 1500);
 
             setTimeout(function () {
-				layer.open({
-					type: 2,
-					title: '最新资讯',
-					area: ['300px', '380px'],
-					shade:0,
+                layer.open({
+                    type: 2,
+                    title: '最新资讯',
+                    area: ['300px', '380px'],
+                    shade:0,
 					skin:'win10-open-iframe',
-					offset: 'rb',
-					content: 'broadcast.html'
-				})
-			},2000);
+                    offset: 'rb',
+                    content: '//win10ui.yuri2.cn/src/broadcast.html'
+                })
+            },2000)
         });
 		
     </script>
@@ -68,9 +69,8 @@
     <div id="win10-menu" class="hidden">
 		<div class="list win10-menu-hidden animated animated-slideOutLeft">
 			<div class="item" onclick="Win10.aboutUs()"><i class="icon fa fa-star fa-fw"></i>关于</div>
-            <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-window-close fa-fw"></i>关闭</div>
+            <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-power-off fa-fw"></i>关闭</div>
         </div>
-        <div id="win10-menu-switcher"></div>
     </div>
     <div id="win10_command_center" class="hidden_right">
         <div class="title">
@@ -86,27 +86,23 @@
         </div>
         <div id="win10_btn_group_middle" class="btn_group"></div>
         <div id="win10_btn_group_right" class="btn_group">
-            <div class="btn" id="win10_btn_time">
-                <!--0:00<br/>-->
-                <!--1993/8/13-->
-            </div>
+            <div class="btn" id="win10_btn_time"></div>
             <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
             <div class="btn" id="win10_btn_show_desktop"></div>
         </div>
     </div>
-	<div class="dock" id="dock">
-	  <div class="dock-container">
-		  <a class="dock-item" href="#" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>UI官网')" ><span>finder</span><img src="./img/icon/finder.png" alt="finder" /></a> 
-		  <a class="dock-item" href="#"><span>appstore</span><img src="./img/icon/appstore.png" alt="appstore" /></a> 
-		  <a class="dock-item" href="#"><span>gamecenter</span><img src="./img/icon/gamecenter.png" alt="gamecenter" /></a> 
-		  <a class="dock-item" href="#"><span>imusic</span><img src="./img/icon/imusic.png" alt="imusic" /></a> 
-		  <a class="dock-item" href="#"><span>notes</span><img src="./img/icon/notes.png" alt="notes" /></a> 
-		  <a class="dock-item" href="#"><span>setting</span><img src="./img/icon/icloud.png" alt="setting" /></a> 
-		  <a class="dock-item" href="#"><span>iTunes</span><img src="./img/icon/iTunes.png" alt="iTunes" /></a> 
-		  <a class="dock-item" href="#"><span>mail</span><img src="./img/icon/mail.png" alt="mail" /></a> 
-		  <a class="dock-item" href="#"><span>maps</span><img src="./img/icon/maps.png" alt="maps" /></a> 
-		  <a class="dock-item" href="#"><span>trashicon</span><img src="./img/icon/trashicon.png" alt="trashicon" /></a> 
-	  </div>
+	<div id="footer">
+        <div class="dock">
+            <ul>
+                <li><span class="dock-tips">finder<span class="arrow"></span></span><a href="#"> <img src="./img/icon/finder.png"></a></li>
+                <li><span class="dock-tips">computer<span class="arrow"></span></span><a onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>我的电脑')"> <img src="./img/icon/computer.png"></a></li>
+                <li><span class="dock-tips">gamecenter<span class="arrow"></span></span><a href="#"> <img src="./img/icon/gamecenter.png"></a></li>
+				<li><span class="dock-tips">icloud<span class="arrow"></span></span><a href="#"> <img src="./img/icon/icloud.png"></a></li>
+				<li><span class="dock-tips">prefapp<span class="arrow"></span></span><a href="#"> <img src="./img/icon/prefapp.png"></a></li>
+				<li><span class="dock-tips">trashicon<span class="arrow"></span></span><a href="#"> <img src="./img/icon/trashicon.png"></a></li>
+				<li><span class="dock-tips">appstore<span class="arrow"></span></span><a href="#"> <img src="./img/icon/appstore.png"></a></li>
+            </ul>
+        </div>
 	</div>
 </div>
 </body>

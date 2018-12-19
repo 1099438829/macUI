@@ -75,9 +75,7 @@ body {
     height: 30px;
     line-height:30px;
     /* IE9+ */
-	background-color: rgba(255,255,255,0.4);
-	/* IE6-IE8 */
-	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#68FFFFFF,endColorStr=#68FFFFFF);
+	background:rgba(255,255,255,0.5);
     z-index: 19930813;
 }
 
@@ -133,8 +131,8 @@ body {
     float: left;
     width: 100%;
     display: inline-block;
-    padding-left: 15px;
-    padding-right: 15px; 
+    padding-left: 5px;
+    padding-right: 5px; 
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: left;
@@ -202,24 +200,24 @@ body {
     top:-70%;
 }
 
-#win10-menu .blocks::-webkit-scrollbar,.list::-webkit-scrollbar,#win10_command_center::-webkit-scrollbar {
+#win10-menu .list::-webkit-scrollbar,#win10_command_center::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
-#win10-menu .blocks::-webkit-scrollbar-track,.list::-webkit-scrollbar-track,#win10_command_center::-webkit-scrollbar-track {
+#win10-menu .list::-webkit-scrollbar-track,#win10_command_center::-webkit-scrollbar-track {
     background-color: rgba(74, 84, 78, 0.41);
 }
 
-#win10-menu .blocks::-webkit-scrollbar-thumb,.list::-webkit-scrollbar-thumb,#win10_command_center::-webkit-scrollbar-thumb {
+#win10-menu .list::-webkit-scrollbar-thumb,#win10_command_center::-webkit-scrollbar-thumb {
     background-color: #6a6a6a;
 }
 
-#win10-menu .blocks::-webkit-scrollbar-button ,.list::-webkit-scrollbar-button ,#win10_command_center::-webkit-scrollbar-button  {
+#win10-menu .list::-webkit-scrollbar-button ,#win10_command_center::-webkit-scrollbar-button  {
     /*background-color: #6a6a6a;*/
 }
 
-#win10-menu .list,.blocks{
+#win10-menu .list{
     float: left;
     width: 180px;
     height:100%;
@@ -283,10 +281,6 @@ body {
     cursor: pointer;
 }
 
-#win10-menu .blocks{
-    max-width: 650px;
-    width:calc(100% - 260px);
-}
 
 #win10-menu-switcher{
     position: absolute;
@@ -326,6 +320,9 @@ body {
     margin-right: 17px;
     color: grey;
 }
+
+
+
 
 #win10 #win10-shortcuts {
     height: calc(100% - 40px);
@@ -517,9 +514,9 @@ body {
 
 #win10_btn_group_middle .btn.active{
    /* background: #F6F6F6; */
-   -webkit-box-shadow: 0  0 30px 2px rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 0  0 30px 2px rgba(0, 0, 0, 0.8);
-    box-shadow: 0  0 30px 2px rgba(0, 0, 0, 0.8);
+   -webkit-box-shadow: 1px  0 1px 1px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 1px  0 1px 1px rgba(0, 0, 0, 0.8);
+    box-shadow: 1px  0 1px 1px rgba(0, 0, 0, 0.8);
 }
 
 #win10_btn_group_middle .btn:hover{
@@ -546,7 +543,7 @@ body {
 
 .win10-open-iframe .layui-layer-title{
     box-sizing: border-box;
-    background-color: #F6F6F6;
+    background: rgba(250, 250, 250, 0.9);
     padding-right: 160px;
 	border-radius:4px 4px 0px 0px;
     color: #333;
@@ -760,53 +757,34 @@ body {
     height: calc(100% - 40px);
     position: absolute;
     left: 0;
-    top: 0;
+    top: 40px;
     z-index: 0;
     background-color: transparent;
 }
 /*--------------尾部--------------------*/
-
-.dock {
-	width: 100%;
-	bottom: 0px;
-	position: absolute;
-	left: 0px;
-	height: 65px; 
-	text-align: center;
-	z-index:1000;
+#footer{
+    height: 60px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
 }
-.dock-container {
-	position: absolute;
-	height: 60px;
-	border-radius: 5px;
+
+#footer .dock{
+    /*width: 72%; */
+    height: 100%;
+    line-height: 60px;
+    display: inline-block;
+    border-radius: 5px 5px 0  0;
     background-color: rgba(255,255,255,0.45) ;/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
-	padding:0 20px;
+    -webkit-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
+    -webkit-border-top-left-radius: 5px 5px 0  0;
+    -webkit-border-top-right-radius: 5px 5px 0  0;
 }
-
-.dock a.dock-item {
-	display: block; 
-	font: bold 12px Arial, Helvetica, sans-serif;
-	width: 60px; 
-	color: #fff; 
-	bottom: 0px; 
-	position: absolute;
-	text-align: center;
-	text-decoration: none;
-}
-.dock-item span {
-	display: none;
-	padding:3px 0px;
-	border-radius: 5px;
-	background-color: rgba(0,0,0,0.45);
-}
-.dock-item img {
-	border: none; 
-	margin: 5px; 
-	width: 100%; 
-}
-
 @media \0screen\,screen\9 {/* 只支持IE6、7、8 */
-	.dock{
+	#footer .dock{
 		/*width: 72%; */
 		height: 100%;
 		line-height: 60px;
@@ -817,11 +795,51 @@ body {
 		position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
 		*zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
 	}
-	.dock ul{
+	.demo ul{
 		position: relative;/* 设置子元素为相对定位，可让子元素不继承Alpha值 */
 	}  
 }
+#footer .dock ul{
+    display: inline-block;
+}
 
+#footer .dock img{
+	z-index:222;
+    width: 50px;
+    height: 50px;
+}
+
+#footer .dock ul li{
+    float: left;
+	width: 60px;
+    margin: 5px auto;
+    /*过渡的时间 效果*/
+    -webkit-transition: 0.15s linear;
+}
+
+#footer .dock .dock-tips{
+	color:#333;
+	font-size:0.4em;
+	border-radius: 5px;
+	background: rgba(255,255,255,0.5);
+	height: 20px;
+	line-height: 20px;
+	display: none;
+	padding:0px 5px;
+	margin-top: -30px;
+	margin-bottom: 10px;
+	flex-direction: column;
+	align-items: center;
+}
+#footer .dock .dock-tips .arrow{
+	opacity: 0.5;
+	border-left:5px solid transparent; 
+	border-right:5px solid transparent;
+	border-top:5px solid rgba(255,255,255,0.5); 
+	border-bottom:5px solid transparent; 
+	width:0;
+	height:0;
+}
 
 /*各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010*/
 .win10-open-iframe .black-green, #win10 .black-green{background:#009688!important;}
@@ -887,13 +905,6 @@ body {
         top: 0;
 
     }
-    #win10-menu .blocks{
-        overflow-x: hidden;
-        position: absolute;
-        width:calc(100% - 31px);
-        left: 0;
-        top: 0;
-    }
 
     #win10-menu .menu_group {
         width: 90%;
@@ -915,22 +926,12 @@ body {
     .win10-open-iframe .layui-layer-setwin a {
         width: 32px;
     }
-	
-	.dock{
-		width: 100%;
-		height:60px;
-		border-radius: 0px;
+	#footer{
+		bottom:0;
 	}
-	.dock .dock-container{
+	
+	#footer .dock{
 		width: 100%;
 		border-radius: 0px;
 	}
-	
-	.dock a.dock-item{
-		width: 100%;
-		margin-left: 25px;
-		float:left;
-		position: static;
-	}
-	
 }

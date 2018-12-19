@@ -608,47 +608,30 @@ window.Win10 = {
     },
     	//渲染DOCK
     renderDocks:function () {
-		var cell_width=50;
+        var cell_width=74;
         var width=document.body.clientWidth ;
-		var docks=$(".dock .dock-container a");
-        var max_num=parseInt((width-40)/(cell_width+25))-1;
-        for (var i = 0; i <= docks.length; i++) {
-        	if (i>=max_num) {
-        		docks.eq(i).hide();
-        	}else{
-        		docks.eq(i).show();
-        	}		
-		}	
 		if(width>768){
-			$('#dock').Fisheye({
-				maxWidth: 70,
-				items: 'a',
-				itemsText: 'span',
-				container: '.dock-container',
-				itemWidth: 50,
-				proximity: 80,
-				alignment : 'left',
-				valign: 'bottom',
-				halign : 'center'
-			})
-		}else{
-			$('.dock-container').css({'width':width});
-			for (var i = 0; i < max_num; i++) {
-				
-				 docks.on('mouseover', function(e) {
-					  e.preventDefault();  
-				});
-				 docks.on('mouseout', function(e) {
-					  e.preventDefault();  
-				});
-				 docks.on('click', function(e) {
-					  e.preventDefault();  
-				});
-				docks.unbind("mouseover").unbind('mouseout').unbind('click').css({"width":cell_width}); 
-				if(i==0){
-					docks.eq(i).css("margin-left",0);
+			$("#footer .dock li a img").hover(
+				function(){
+					$(this).parent('a').prev().css('display','flex');
+				},
+				function(){
+					$(this).parent('a').prev().css('display','none');
 				}
-			}		
+			);
+			var docks=$("#footer .dock li");
+			var max_num=parseInt(width/cell_width)-1;
+			for (var i = 0; i < docks.length; i++) {
+				if (i>max_num) {
+					docks.eq(i).css('display','none');
+				}else{
+					docks.eq(i).css('display','list-item');
+				}		
+			}
+		}else{
+			$("#footer .dock li a img").hover(function(){
+				$(this).parent('a').prev().css('display','none');
+			});
 		}
     },
     commandCenterToggle: function () {
