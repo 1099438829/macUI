@@ -513,10 +513,7 @@ body {
 }
 
 #win10_btn_group_middle .btn.active{
-   /* background: #F6F6F6; */
-   -webkit-box-shadow: 1px  0 1px 1px rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 1px  0 1px 1px rgba(0, 0, 0, 0.8);
-    box-shadow: 1px  0 1px 1px rgba(0, 0, 0, 0.8);
+    background: rgba(255,255,255,0.6); 
 }
 
 #win10_btn_group_middle .btn:hover{
@@ -900,7 +897,7 @@ body {
     #win10-menu .list{
         padding-left: 2px;
         position: absolute;
-        width: calc(100% - 31px);
+        width:100%;
         left: 0;
         top: 0;
 
@@ -911,6 +908,10 @@ body {
         float: none;
         margin: 0 auto;
         clear: both;
+    }
+
+    #win10-menu .list .item, .sub-item{
+        width: 100%;
     }
 
     #win10_btn_time{display: none}
@@ -927,11 +928,101 @@ body {
         width: 32px;
     }
 	#footer{
-		bottom:0;
+		bottom:10px;
 	}
 	
-	#footer .dock{
+	/*#footer .dock{
 		width: 100%;
 		border-radius: 0px;
-	}
+	}*/
+}
+
+@media (min-width: 1281px) {
+  
+  //CSS
+  
+}
+
+/* 
+  ##笔记本或PC
+  ##1025px - 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+
+  
+}
+
+/* 
+  ##平板电脑/Ipad竖屏
+  ##768px - 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    #footer{
+        bottom:10px;
+    }
+    
+
+    #footer .dock{
+         border-radius: 8px;
+    }
+}
+
+/* 
+  ##平板电脑或Ipad横屏
+  ##768px - 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+  #footer{
+        bottom:6px;
+    }
+    
+    #footer .dock{
+         border-radius: 6px;
+    }
+}
+
+/* 
+  ##低分辨率的平板电脑或横屏的手机
+  ##481px - 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  #footer{
+        bottom:6px;
+    }
+    
+    #footer .dock{
+        border-radius: 6px;
+        -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.8);
+        -moz-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.8);
+        box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* 
+  ##多数竖屏的智能手机
+  ##320px - 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+     #footer{
+        bottom:0px;
+    }
+    
+    #footer .dock{
+        width: 100%;
+        border-radius: 0px;
+        -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.8);
+        -moz-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.8);
+        box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.8);
+    }
+
+    #win10-menu .list .item, .sub-item{
+        width: 100%;
+    }
 }
