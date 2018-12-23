@@ -709,17 +709,22 @@ body {
     right: 0px;
     top: 0px;
     font-size: 0;
-    line-height: 40px;
-    height: 40px;
+    height: 30px;
+    line-height: 30px;
 }
 .win10-open-iframe .layui-layer-setwin a {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     font-size: 13px;
     text-align: center;
     overflow: hidden;
 	margin:0px;
+}
+
+.win10-open-iframe .layui-layer-title{
+    line-height:30px;
+    height: 30px;
 }
 
 .win10-open-iframe .layui-layer-title .icon ,#win10_btn_group_middle .btn_title .icon{
@@ -924,6 +929,7 @@ body {
     #win10_btn_group_middle .btn_close{
         display: none;
     }
+
     .win10-open-iframe .layui-layer-setwin a {
         width: 32px;
     }
