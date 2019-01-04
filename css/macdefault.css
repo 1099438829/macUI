@@ -541,7 +541,7 @@ body {
 .win10-open-iframe .layui-layer-title{
     box-sizing: border-box;
     background: rgba(250, 250, 250, 0.9);
-    padding-right: 160px;
+    padding-left: 120px;
 	border-radius:4px 4px 0px 0px;
     color: #333;
 	text-align:center;
@@ -706,7 +706,7 @@ body {
 .win10-open-iframe .layui-layer-ico{background-image:none;}
 .win10-open-iframe .layui-layer-setwin {
     position: absolute;
-    right: 0px;
+    left: 0px;
     top: 0px;
     font-size: 0;
     height: 30px;
@@ -852,7 +852,7 @@ body {
 .win10-open-iframe .red,#win10 .red{background:#FF5722!important;}
 .win10-open-iframe .dark,#win10 .dark{background:#2F4056!important;}
 .win10-open-iframe .purple,#win10 .purple{background:#b074e6!important;}
-@media screen and (max-width:768px){
+@media screen and (max-width:767px){
     #win10-menu{
         width:100%;
         height: calc(100% - 31px);
@@ -1015,7 +1015,7 @@ body {
   ##320px - 479px
 */
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
      #footer{
         bottom:0px;
     }
