@@ -608,7 +608,7 @@ window.Win10 = {
     },
     	//渲染DOCK
     renderDocks:function () {
-        var cell_width=74;
+        var cell_width=60;
         var width=document.body.clientWidth ;
         var docks=$("#footer .dock li");
         var max_num=parseInt(width/cell_width)-1;
