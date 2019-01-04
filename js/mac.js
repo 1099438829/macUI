@@ -610,24 +610,24 @@ window.Win10 = {
     renderDocks:function () {
         var cell_width=74;
         var width=document.body.clientWidth ;
+        var docks=$("#footer .dock li");
+        var max_num=parseInt(width/cell_width)-1;
+        for (var i = 0; i < docks.length; i++) {
+            if (i>max_num) {
+                docks.eq(i).css('display','none');
+            }else{
+                docks.eq(i).css('display','list-item');
+            }       
+        }
 		if(width>768){
 			$("#footer .dock li a img").hover(
-				function(){
+                function(){
 					$(this).parent('a').prev().css('display','flex');
 				},
 				function(){
 					$(this).parent('a').prev().css('display','none');
 				}
 			);
-			var docks=$("#footer .dock li");
-			var max_num=parseInt(width/cell_width)-1;
-			for (var i = 0; i < docks.length; i++) {
-				if (i>max_num) {
-					docks.eq(i).css('display','none');
-				}else{
-					docks.eq(i).css('display','list-item');
-				}		
-			}
 		}else{
 			$("#footer .dock li a img").hover(function(){
 				$(this).parent('a').prev().css('display','none');
