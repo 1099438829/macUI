@@ -75,7 +75,7 @@ body {
     height: 30px;
     line-height:30px;
     /* IE9+ */
-	background-color: rgba(255,255,255,0.4);
+	background-color:rgba(255,255,255,0.5);
 	/* IE6-IE8 */
 	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#68FFFFFF,endColorStr=#68FFFFFF);
     z-index: 19930813;
@@ -133,8 +133,8 @@ body {
     float: left;
     width: 100%;
     display: inline-block;
-    padding-left: 15px;
-    padding-right: 15px; 
+    padding-left: 5px;
+    padding-right: 5px; 
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: left;
@@ -202,24 +202,24 @@ body {
     top:-70%;
 }
 
-#win10-menu .blocks::-webkit-scrollbar,.list::-webkit-scrollbar,#win10_command_center::-webkit-scrollbar {
+#win10-menu .list::-webkit-scrollbar,#win10_command_center::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
-#win10-menu .blocks::-webkit-scrollbar-track,.list::-webkit-scrollbar-track,#win10_command_center::-webkit-scrollbar-track {
+#win10-menu .list::-webkit-scrollbar-track,#win10_command_center::-webkit-scrollbar-track {
     background-color: rgba(74, 84, 78, 0.41);
 }
 
-#win10-menu .blocks::-webkit-scrollbar-thumb,.list::-webkit-scrollbar-thumb,#win10_command_center::-webkit-scrollbar-thumb {
+#win10-menu .list::-webkit-scrollbar-thumb,#win10_command_center::-webkit-scrollbar-thumb {
     background-color: #6a6a6a;
 }
 
-#win10-menu .blocks::-webkit-scrollbar-button ,.list::-webkit-scrollbar-button ,#win10_command_center::-webkit-scrollbar-button  {
+#win10-menu .list::-webkit-scrollbar-button ,#win10_command_center::-webkit-scrollbar-button  {
     /*background-color: #6a6a6a;*/
 }
 
-#win10-menu .list,.blocks{
+#win10-menu .list{
     float: left;
     width: 180px;
     height:100%;
@@ -283,10 +283,6 @@ body {
     cursor: pointer;
 }
 
-#win10-menu .blocks{
-    max-width: 650px;
-    width:calc(100% - 260px);
-}
 
 #win10-menu-switcher{
     position: absolute;
@@ -516,10 +512,7 @@ body {
 }
 
 #win10_btn_group_middle .btn.active{
-   /* background: #F6F6F6; */
-   -webkit-box-shadow: 0  0 30px 2px rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 0  0 30px 2px rgba(0, 0, 0, 0.8);
-    box-shadow: 0  0 30px 2px rgba(0, 0, 0, 0.8);
+    background: rgba(255,255,255,0.6); 
 }
 
 #win10_btn_group_middle .btn:hover{
@@ -546,8 +539,8 @@ body {
 
 .win10-open-iframe .layui-layer-title{
     box-sizing: border-box;
-    background-color: #F6F6F6;
-    padding-right: 160px;
+    background: rgba(250, 250, 250, 0.9);
+    padding-left: 120px;
 	border-radius:4px 4px 0px 0px;
     color: #333;
 	text-align:center;
@@ -764,7 +757,7 @@ body {
     height: calc(100% - 40px);
     position: absolute;
     left: 0;
-    top: 0;
+    top: 40px;
     z-index: 0;
     background-color: transparent;
 }
@@ -886,17 +879,10 @@ body {
     #win10-menu .list{
         padding-left: 2px;
         position: absolute;
-        width: calc(100% - 31px);
+        width:100%;
         left: 0;
         top: 0;
 
-    }
-    #win10-menu .blocks{
-        overflow-x: hidden;
-        position: absolute;
-        width:calc(100% - 31px);
-        left: 0;
-        top: 0;
     }
 
     #win10-menu .menu_group {
@@ -904,6 +890,10 @@ body {
         float: none;
         margin: 0 auto;
         clear: both;
+    }
+
+    #win10-menu .list .item, .sub-item{
+        width: 100%;
     }
 
     #win10_btn_time{display: none}
