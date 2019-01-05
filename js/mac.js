@@ -800,6 +800,10 @@ window.Win10 = {
         Win10._settop(layero_opened);
         //重新定义菜单布局
         layero_opened.find('.layui-layer-setwin').prepend('<a class="win10-btn-refresh" index="' + index + '" href="#"></a>');
+        //菜单排列倒序
+        $(".layui-layer-setwin>a").each(function(){
+                $(this).prependTo(".layui-layer-setwin");
+        })
         layero_opened.find('.layui-layer-setwin .layui-layer-max').click(function () {
             setTimeout(function () {
                 var height=layero_opened.css('height');
