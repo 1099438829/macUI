@@ -374,7 +374,7 @@ body {
     right: 0;
     top: 30px;
     width: 350px;
-    background-color: rgba(255,255,255,0.55);
+    background-color: rgba(255, 255, 255, 0.7);
     height: calc(100% - 30px);
     transition: all 0.5s;
     overflow-x: hidden;
@@ -399,6 +399,166 @@ body {
 
 #win10_command_center > .title:hover{
     background-color: rgba(255, 255, 255, 0.19);
+}
+
+
+#win10_command_center .command-header{
+    height: 50px;
+    text-align: center;
+    border-bottom: 1px outset;
+}
+
+#win10_command_center .command-header .item{
+    width: 130px;
+    height: 20px;
+    margin: 15px 0;
+    display: inline-block;
+    font-size: 14px;
+    color: #eaeaea;
+    background-color: rgba(121, 121, 121, 0.5);
+}
+
+#win10_command_center .command-header div{
+    width: 130px;
+    height: 20px;
+    margin: 15px 0;
+    display: inline-block;
+    font-size: 14px;
+    color: #eaeaea;
+    background-color: rgba(121, 121, 121, 0.5);
+}
+
+#win10_command_center .command-header div{
+    width: 130px;
+    height: 20px;
+    margin: 15px 0;
+    display: inline-block;
+    font-size: 14px;
+    color: #eaeaea;
+    background-color: rgba(121, 121, 121, 0.5);
+}
+
+#win10_command_center .command-header div:hover {
+    cursor: pointer;
+}
+
+#win10_command_center .command-header div.active {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+}
+
+#win10_command_center .command-body {
+    position: relative;
+    height: calc(100% - 70px);
+    overflow-y: auto;
+}
+
+#win10_command_center .command-body .command-body-calendar {
+    margin: 15px 0;
+}
+
+#win10_command_center .command-body .command-body-calendar .command-body-calendar-date {
+    padding: 0 33px;
+    color: #585858;
+}
+
+#win10_command_center .command-body .command-body-calendar .normal-date {
+    font-size: 30px;
+}
+
+#win10_command_center .command-body .command-body-calendar .lunar-date {
+
+}
+
+
+#win10_command_center .command-body .notice {
+    width: 100%;
+    margin: 5px 0;
+}
+
+#win10_command_center .command-body  .notice .notice-header {
+    background-color: #dee7e7;
+    height: 25px;
+    border-radius: 5px 5px 0 0;
+    line-height: 25px;
+}
+
+#win10_command_center .command-body  .notice-header-icon {
+    margin: 2px 5px;
+    vertical-align: middle;
+}
+
+#win10_command_center .command-body  .notice-header-icon >>> img {
+    width: 15px;
+    height: 15px;
+}
+
+#win10_command_center .command-body  .notice-header-title {
+    font-size: 10px;
+    margin: 0 5px;
+}
+
+#win10_command_center .command-body  .notice .notice-body {
+    background-color: #eff0f2;
+    border-radius: 0 0 5px 5px;
+}
+
+
+#win10_command_center .command-body  .notice .weather-item {
+    height: 50px;
+}
+
+#win10_command_center .command-body  .notice .weather-item div {
+    display: inline-block;
+    text-align: center;
+}
+
+#win10_command_center .command-body  .notice .weather-city {
+    float: left;
+}
+
+#win10_command_center .command-body  .notice .weather-city .weather-city-time {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    text-align: left;
+    margin: 5px 0 2px 10px;
+    color: #868585;
+}
+
+#win10_command_center .command-body  .notice .weather-city .weather-city-text {
+    font-size: 15px;
+    font-weight: 400;
+    display: block;
+    text-align: left;
+    margin: 0 0 5px 10px;
+}
+
+#win10_command_center .command-body  .notice .weather-type {
+    position: absolute;
+    right: 70px;
+}
+
+#win10_command_center .command-body  .notice .weather-type img {
+    width: 30px;
+    margin: 5px;
+}
+
+#win10_command_center .command-body  .notice .weather-temperature {
+    float: right;
+    font-size: 35px;
+    font-weight: 200;
+    margin-right: 10px;
+}
+
+#win10_command_center .command-body  .notice .notice-header, .notice .notice-body {
+    width: 95%;
+    margin: 0 auto;
+}
+
+#win10_command_center .command-body  .notice .notice-header .notice-header-icon img{
+    width: 15px;
+    height: 15px;
 }
 
 #win10_btn_group_right #win10_btn_command{
@@ -434,6 +594,7 @@ body {
     left: 0;
     width: 100%;
     overflow: hidden;
+    display: none;
     /*padding: 10px;*/
 }
 

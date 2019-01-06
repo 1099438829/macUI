@@ -302,6 +302,24 @@ window.Win10 = {
                 msg.remove()
             }, 500)
         });
+
+        $('#win10_command_center').on('click',".command-header .tab-today", function () {
+            if (!$(this).hasClass('active')) {
+                $('#win10_command_center .command-body.msgs').hide();
+                $('#win10_command_center .command-body.today').show();
+                $(this).addClass('active').siblings('div').removeClass('active');
+            }
+        });
+
+        $('#win10_command_center').on('click',".command-header .tab-msg", function () {
+            if (!$(this).hasClass('active')) {
+                $('#win10_command_center .command-body.today').hide();
+                $('#win10_command_center .command-body.msgs').show();
+                $(this).addClass('active').siblings('div').removeClass('active');
+            }
+        });
+
+
         $('#win10_btn_command_center_clean_all').click(function () {
             var msgs=$('#win10_command_center .msg');
             msgs.addClass('animated slideOutRight');
@@ -412,19 +430,14 @@ window.Win10 = {
 			var week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")[myDate.getDay()];
 			var hour=myDate.getHours();
             var mins=myDate.getMinutes();if (mins<10){mins='0'+mins}
-			if (hour >= 0 && hour < 6) {
-				hours='凌晨'+hour;
-			}else if (hour >= 6 && hour < 8) {
-				hours='早上'+hour;
-			 } else if (hour >= 8 && hour < 11) {
-			    hours='上午'+hour;
-			 } else if (hour >= 11 && hour < 13) {
-				hours='中午'+hour;
-			 } else if (hour >= 13 && hour < 18) {
-			   hours='下午'+hour;
-			 } else {
-			   hours='晚上'+hour;
-			 }
+            if(hour < 6){hours='凌晨'+hour;} 
+            else if (hour < 9){hours='早上'+hour;} 
+            else if (hour < 12){hours='上午'+hour;} 
+            else if (hour < 14){hours='中午'+(hour-12);} 
+            else if (hour < 17){hours='下午'+(hour-12);} 
+            else if (hour < 19){hours='傍晚'+(hour-12);} 
+            else if (hour < 22){hours='晚上'+(hour-12);} 
+            else {hours='深夜'+(hour-12)} 
 			$("#win10_btn_time").html(week+hours+':'+mins);
         },1000);
         //离开前警告
