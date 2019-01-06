@@ -297,7 +297,6 @@ window.Win10 = {
         });
         $('#win10').on('click',".notice .btn_close_msg", function () {
             var msg = $(this).parents('.notice');
-            console.log(msg);
             $(msg).addClass('animated slideOutRight');
             setTimeout(function () {
                 msg.remove()
