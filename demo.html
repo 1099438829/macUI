@@ -33,7 +33,18 @@
             setTimeout(function () {
                 Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)',function () {
                     Win10.enableFullScreen();
-                })
+                });
+                Win10.newMsg('最新资讯', '最新资讯信息',function () {
+                    layer.open({
+                        type: 2,
+                        title: '最新资讯',
+                        area: ['300px', '380px'],
+                        shade:0,
+                        skin:'win10-open-iframe',
+                        offset: 'rb',
+                        content: './broadcast.html'
+                    });
+                });    
             }, 1500);
 
             setTimeout(function () {
@@ -106,12 +117,37 @@
         </div>
     </div>
     <div id="win10_command_center" class="hidden_right">
-        <div class="title">
-            <h4 style="float: left">消息中心 </h4>
-            <span id="win10_btn_command_center_clean_all">全部清除</span>
+        <div class="command-header">
+            <div class="tab-today active">今天</div>
+            <div class="tab-msg">通知</div>
         </div>
-        <div class="msgs"></div>
-    </div>
+        <div class="command-body today">
+            <div class="command-body-calendar">
+                <div class="command-body-calendar-date normal-date">1月6日 星期日</div>
+                <div class="command-body-calendar-date lunar-date">戊戌年十二月初一</div>
+            </div>
+            <div class="notice">
+                <div class="notice-header">
+                    <span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>
+                    <span class="notice-header-title">天气 </span>
+                </div>
+                <div class="notice-body">
+                    <div class="weather-item">
+                        <div class="weather-city">
+                            <span class="weather-city-time">下午3:54</span>
+                            <span class="weather-city-text">广州市</span>
+                        </div>
+                        <div class="weather-type">
+                            <img src="http://yun.rili.cn/wnl/img/cloud.png" alt="多云" />
+                        </div>
+                        <div class="weather-temperature">17</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <span id="win10_btn_command_center_clean_all">全部清除</span> -->
+        <div class="command-body msgs"></div>
+    </div>    
     <div id="win10_task_bar">
         <div id="win10_btn_group_left" class="btn_group">
             <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>

@@ -295,14 +295,16 @@ window.Win10 = {
             Win10.menuClose();
             Win10.commandCenterClose();
         });
-        $('#win10').on('click',".msg .btn_close_msg", function () {
-            var msg = $(this).parent();
+        $('#win10').on('click',".notice .btn_close_msg", function () {
+            var msg = $(this).parents('.notice');
+            console.log(msg);
             $(msg).addClass('animated slideOutRight');
             setTimeout(function () {
                 msg.remove()
             }, 500)
         });
 
+        //消息界面切换
         $('#win10_command_center').on('click',".command-header .tab-today", function () {
             if (!$(this).hasClass('active')) {
                 $('#win10_command_center .command-body.msgs').hide();
@@ -310,7 +312,8 @@ window.Win10 = {
                 $(this).addClass('active').siblings('div').removeClass('active');
             }
         });
-
+        
+        //消息界面切换
         $('#win10_command_center').on('click',".command-header .tab-msg", function () {
             if (!$(this).hasClass('active')) {
                 $('#win10_command_center .command-body.today').hide();
@@ -654,12 +657,21 @@ window.Win10 = {
             this.commandCenterClose();
         }
     },
-    newMsg: function (title, content,handle_click) {
-        var e = $('<div class="msg">' +
-            '<div class="title">' + title +'</div>'+
-            '<div class="content">' + content + '</div>' +
-            '<span class="btn_close_msg fa fa-close"></span>' +
-            '</div>');
+    newMsg: function (title,content,handle_click,app_name='提示消息',app_icon='<img src="./img/icon/weather.png" class="notice-header-icon-img" />',is_del=true) {
+        var msg = '<div class="notice">' +
+                '<div class="notice-header">' +
+                '<span class="notice-header-icon">'+app_icon+'</span>' +
+                '<span class="notice-header-title">'+app_name+'</span>';
+                if (is_del) {
+                  msg += '<span class="btn_close_msg fa fa-times-circle"></span>';              
+                }
+                msg +='</div>' +
+                '<div class="notice-body">' +
+                '<div class="msg">' +
+                '<div class="title">' + title +'</div>'+
+                '<div class="content">' + content + '</div>' +
+                '</div></div></div>';
+        var e = $(msg);
         $("#win10_command_center .msgs").prepend(e);
         e.find('.content:first,.title:first').click(function () {
             if(handle_click){

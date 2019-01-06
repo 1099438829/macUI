@@ -607,7 +607,6 @@ body {
     width: calc(100% - 20px);
     min-height: 40px;
     padding:10px;
-    margin-top: 4px;
     transition: background-color 0.5s;
     position: relative;
 }
@@ -617,19 +616,12 @@ body {
     animation-duration: 0.5s;
 }
 
-#win10_command_center .msgs .msg:hover{
-    cursor: default;
-    background-color: rgba(255, 255, 255, 0.19);
-}
-#win10_command_center .msgs .msg:hover .title{
+#win10_command_center .command-body .notice:hover .notice-body{
     color: #333;
-}
-#win10_command_center .msgs .msg:hover>.btn_close_msg{
-    color: grey;
 }
 
-#win10_command_center .msgs .msg:hover>.content{
-    color: #333;
+#win10_command_center .command-body .notice:hover>.notice-header .btn_close_msg{
+    color: grey;
 }
 
 #win10_command_center .msgs .msg>.title{
@@ -638,13 +630,14 @@ body {
     line-height: 28px;
 }
 
-#win10_command_center .msgs .msg>.btn_close_msg{
+#win10_command_center .command-body  .notice .notice-header>.btn_close_msg{
     cursor: pointer;
     color: transparent;
-    padding: 3px;
-    position: absolute;
-    top: 11px;
-    right: 11px;
+    margin-right: 8px;
+    font-size: 15px;
+    display: inline-block;
+    text-align: right;
+    float: right;
 }
 
 #win10_command_center .msgs .msg>.btn_close_msg:hover{
