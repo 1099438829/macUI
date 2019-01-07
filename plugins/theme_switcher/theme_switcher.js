@@ -83,8 +83,11 @@ $(function () {
     var theme_area=$("#theme_area");
     theme_area.on('click','.theme_setting',function () {
         var pic=$(this).data('pic');
-        Win10_parent.setBgUrl({main:pic});
-
+		if(!Win10_parent.isSmallScreen()){
+			Win10_parent.setBgUrl({main:pic});
+		}else{
+			Win10_parent.setBgUrl({mobile:pic});
+		}
         //此处你也许想用ajax把修改信息保存到服务器。。。
 
     });
