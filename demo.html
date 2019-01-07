@@ -112,7 +112,6 @@
             <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-tile.html','磁贴代码生成器')">磁贴代码生成器</div>
             <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-menu.html','菜单代码生成器')">菜单代码生成器</div>
             <div class="item" onclick="Win10.aboutUs()"><i class="icon fa fa-star fa-fw"></i>关于</div>
-
             <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-power-off fa-fw"></i>关闭</div>
         </div>
     </div>
@@ -121,30 +120,7 @@
             <div class="tab-today active">今天</div>
             <div class="tab-msg">通知</div>
         </div>
-        <div class="command-body today">
-            <div class="command-body-calendar">
-                <div class="command-body-calendar-date normal-date">1月6日 星期日</div>
-                <div class="command-body-calendar-date lunar-date">戊戌年十二月初一</div>
-            </div>
-            <div class="notice">
-                <div class="notice-header">
-                    <span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>
-                    <span class="notice-header-title">天气 </span>
-                </div>
-                <div class="notice-body">
-                    <div class="weather-item">
-                        <div class="weather-city">
-                            <span class="weather-city-time">下午3:54</span>
-                            <span class="weather-city-text">广州市</span>
-                        </div>
-                        <div class="weather-type">
-                            <img src="http://yun.rili.cn/wnl/img/cloud.png" alt="多云" />
-                        </div>
-                        <div class="weather-temperature">17</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="command-body today" win-render="none"></div>
         <!-- <span id="win10_btn_command_center_clean_all">全部清除</span> -->
         <div class="command-body msgs"></div>
     </div>    

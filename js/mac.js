@@ -288,6 +288,7 @@ window.Win10 = {
             Win10.menuToggle();
         });
         $("#win10_btn_command").click(function () {
+        	Win10.renderCommand();
             Win10.menuClose();
             Win10.commandCenterToggle();
         });
@@ -302,26 +303,20 @@ window.Win10 = {
                 msg.remove()
             }, 500)
         });
-
         //消息界面切换
-        $('#win10_command_center').on('click',".command-header .tab-today", function () {
+        $('#win10_command_center').on('click',".command-header div", function () {
             if (!$(this).hasClass('active')) {
-                $('#win10_command_center .command-body.msgs').hide();
-                $('#win10_command_center .command-body.today').show();
-                $(this).addClass('active').siblings('div').removeClass('active');
+            	if ($(this).hasClass('tab-today')) {
+            		console.log(1);
+            		$(this).parent().siblings('.msgs').hide().siblings('.today').show();
+            		$(this).addClass('active').siblings('div').removeClass('active');
+            	}else{
+            		console.log(2);
+            		$(this).parent().siblings('.today').hide().siblings('.msgs').show();
+                	$(this).addClass('active').siblings('div').removeClass('active');
+            	}
             }
         });
-        
-        //消息界面切换
-        $('#win10_command_center').on('click',".command-header .tab-msg", function () {
-            if (!$(this).hasClass('active')) {
-                $('#win10_command_center .command-body.today').hide();
-                $('#win10_command_center .command-body.msgs').show();
-                $(this).addClass('active').siblings('div').removeClass('active');
-            }
-        });
-
-
         $('#win10_btn_command_center_clean_all').click(function () {
             var msgs=$('#win10_command_center .msg');
             msgs.addClass('animated slideOutRight');
@@ -442,6 +437,8 @@ window.Win10 = {
             else {hours='深夜'+(hour-12)} 
 			$("#win10_btn_time").html(week+hours+':'+mins);
         },1000);
+
+
         //离开前警告
         document.body.onbeforeunload = function(event){
             var rel = Win10.lang( '系统可能不会保存您所做的更改','The system may not save the changes you have made.');
@@ -576,11 +573,55 @@ window.Win10 = {
         this._bgs=bgs;
         this._checkBgUrls();
     },
+    setBgUrl:function (bgs) {
+        this._bgs=bgs;
+        this._checkBgUrls();
+    },
     menuClose: function () {
         $("#win10-menu").removeClass('opened');
         $("#win10-menu").addClass('hidden');
         this._showShortcut();
         $(".win10-open-iframe").removeClass('hide');
+    },
+    //消息中心渲染
+    renderCommand:function (today=null) {
+    	var active = $("#win10_command_center .command-body.today").hasClass('active');
+    	if (!active) {
+			if (!today) {
+				var myDate = new Date();
+				var week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")[myDate.getDay()];
+				var hour=myDate.getHours();
+	            var mins=myDate.getMinutes();if (mins<10){mins='0'+mins}
+	            if(hour < 6){hours='凌晨'+hour;} 
+	            else if (hour < 9){hours='早上'+hour;} 
+	            else if (hour < 12){hours='上午'+hour;} 
+	            else if (hour < 14){hours='中午'+(hour-12);} 
+	            else if (hour < 17){hours='下午'+(hour-12);} 
+	            else if (hour < 19){hours='傍晚'+(hour-12);} 
+	            else if (hour < 22){hours='晚上'+(hour-12);} 
+	            else {hours='深夜'+(hour-12)} 
+
+	    		today = '<div class="command-body-calendar">' +
+			    	'<div class="command-body-calendar-date normal-date">'+(myDate.getMonth()+1)+'月'+myDate.getDay()+'日 '+week+'</div>' +
+			    	'<div class="command-body-calendar-date lunar-date">'+''+'</div>' +
+			    	'</div>' +
+	    			'<div class="notice">' +
+	                '<div class="notice-header">' +
+	                '<span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>' +
+	                '<span class="notice-header-title">天气</span>'+
+	                '</div>' +
+	                '<div class="notice-body">' +
+	                '<div class="weather-item">' +
+	                '<div class="weather-city">' +
+	                '<span class="weather-city-time">'+hours+':'+mins+'</span>'+
+	                '<span class="weather-city-text">广州市</span>' +
+					'</div>' +
+	                '<div class="weather-type"><img src="http://yun.rili.cn/wnl/img/cloud.png" alt="多云" /></div>' +
+	                '<div class="weather-temperature">17</div>' +
+	                '</div></div></div>';
+	    	}
+	    	$("#win10_command_center .command-body.today").html(today).addClass('active');
+    	}
     },
     menuOpen: function () {
         $("#win10-menu").addClass('opened');
