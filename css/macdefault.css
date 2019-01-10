@@ -46,7 +46,6 @@ body {
     background: black no-repeat fixed;
     background-size: 100% 100%;
     position: relative;
-    /*padding-top: 20px;*/
 }
 
 #win10 *{
@@ -63,7 +62,6 @@ body {
 #win10 hr { height:0px; border-top:1px solid #999; border-right:0px; border-bottom:0px; border-left:0px; }
 
 #win10 .desktop {
-	padding-top:30px;
     width: 100%;
     height: 100%;
 }
@@ -186,7 +184,7 @@ body {
 }
 #win10-menu {
     position: fixed;
-    top: 30px;
+    top: 31px;
     background-color: rgba(255,255,255,0.55);
     height:auto;
     width: 12.5%;
@@ -324,8 +322,11 @@ body {
 }
 
 #win10 #win10-shortcuts {
-    height: calc(100% - 40px);
-    position: relative;
+    height: calc(100% - 30px);
+    position: absolute;
+    left: 0;
+    top: 30px;
+    z-index: 100;
 }
 
 #win10 #win10-shortcuts.shortcuts-hidden .shortcut{display: none}
@@ -372,10 +373,10 @@ body {
 #win10_command_center {
     position: fixed;
     right: 0;
-    top: 30px;
+    top: 31px;
     width: 350px;
     background-color: rgba(255, 255, 255, 0.7);
-    height: calc(100% - 30px);
+    height: calc(100% - 32px);
     transition: all 0.5s;
     overflow-x: hidden;
     overflow-y: auto;
@@ -909,10 +910,10 @@ body {
 /*桌面舞台样式*/
 #win10-desktop-scene{
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 30px);
     position: absolute;
     left: 0;
-    top: 40px;
+    top: 30px;
     z-index: 0;
     background-color: transparent;
 }
