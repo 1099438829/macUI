@@ -560,10 +560,10 @@ window.Win10 = {
             $("#win10-shortcuts").css({
                 position: 'absolute',
                 left: 0,
-                top: 30,
+                top: 0,
                 'z-index': 100,
             });
-            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: calc(100% - 30px);position: absolute;left: 0;top: 30px; z-index: 0;background-color: transparent;'></div>")
+            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height:100%;position: absolute;left: 0;top:0; z-index: 0;background-color: transparent;'></div>")
         }
 
         //属性绑定
@@ -795,6 +795,7 @@ window.Win10 = {
         }
         var area,offset;
         if (this.isSmallScreen() || areaAndOffset==='max') {
+            console.log(111);
             area = ['100%', (document.body.clientHeight - 30) + 'px'];
             offset = ['30px', '0'];
         }else if(typeof areaAndOffset ==='object'){
@@ -834,7 +835,7 @@ window.Win10 = {
             },
             full:function (layero) {
                 layero.find('.layui-layer-min').css('display','inline-block');
-				layero_opened.css('margin-top',30);
+				layero_opened.css('top',30);
             },
         });
         $('#win10_btn_group_middle .btn.active').removeClass('active');
@@ -853,9 +854,9 @@ window.Win10 = {
                 var height=layero_opened.css('height');
                 height=parseInt(height.replace('px',''));
                 if (height>=document.body.clientHeight){
-                   layero_opened.css('height',height-30);
-                   layero_opened.find('.layui-layer-content').css('height',height-72);
-                   layero_opened.find('.layui-layer-content iframe').css('height',height-72);
+                   layero_opened.css('height',height-32);
+                   layero_opened.find('.layui-layer-content').css('height',height-62);
+                   layero_opened.find('.layui-layer-content iframe').css('height',height-62);
                 }
             },300);
 
