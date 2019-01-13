@@ -227,10 +227,10 @@ window.Win10 = {
             var layero_opened=$(this);
             var height=layero_opened.css('height');
             height=parseInt(height.replace('px',''));
-            if (height+40>=clientHeight){
-                layero_opened.css('height',clientHeight-40);
-                layero_opened.find('.layui-layer-content').css('height',clientHeight-83);
-                layero_opened.find('.layui-layer-content iframe').css('height',clientHeight-83);
+            if (height+30>=clientHeight){
+                layero_opened.css('height',clientHeight-30);
+                layero_opened.find('.layui-layer-content').css('height',clientHeight-62);
+                layero_opened.find('.layui-layer-content iframe').css('height',clientHeight-62);
             }
         })
     },
@@ -560,7 +560,7 @@ window.Win10 = {
             $("#win10-shortcuts").css({
                 position: 'absolute',
                 left: 0,
-                top: 0,
+                top: 30,
                 'z-index': 100,
             });
             $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height:100%;position: absolute;left: 0;top:0; z-index: 0;background-color: transparent;'></div>")

@@ -63,11 +63,7 @@ body {
 
 #win10 .desktop {
     width: 100%;
-    height: calc(100% - 90px);
-    position: absolute; 
-    left: 0px; 
-    top: 30px;
-    bottom: 60px;
+    height: 100%;
 }
 
 #win10_task_bar {
@@ -326,7 +322,7 @@ body {
 }
 
 #win10 #win10-shortcuts {
-    height:100%;
+    height: calc(100% - 30px);
     position: absolute;
     left: 0;
     top: 0;
@@ -377,10 +373,10 @@ body {
 #win10_command_center {
     position: fixed;
     right: 0;
-    top: 30px;
+    top: 31px;
     width: 350px;
     background-color: rgba(255, 255, 255, 0.7);
-    height: calc(100% - 30px);
+    height: calc(100% - 32px);
     transition: all 0.5s;
     overflow-x: hidden;
     overflow-y: auto;
@@ -693,7 +689,7 @@ body {
 
 .win10-open-iframe .layui-layer-content{
     background-color: white;
-    max-height:100%;
+    max-height: calc(100% - 32px);
 }
 
 .win10-open-iframe .layui-layer-title{
