@@ -203,8 +203,8 @@ body {
 }
 
 #win10-menu .list::-webkit-scrollbar,#win10_command_center::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 0;
+    height: 0;
 }
 
 #win10-menu .list::-webkit-scrollbar-track,#win10_command_center::-webkit-scrollbar-track {
@@ -691,7 +691,7 @@ body {
 
 .win10-open-iframe .layui-layer-content{
     background-color: white;
-    max-height: calc(100% - 32px);
+    max-height: calc(100% - 30px);
 }
 
 .win10-open-iframe .layui-layer-title{
@@ -1058,7 +1058,6 @@ body {
         max-width:150px;
     }
     #win10-menu .list{
-        padding-left: 2px;
         position: absolute;
         width:100%;
         left: 0;
@@ -1074,7 +1073,7 @@ body {
     }
 
     #win10-menu .list .item, .sub-item{
-        width: 100%;
+        width: calc(100% - 20px);
     }
 
     #win10_btn_time{display: none}
@@ -1187,6 +1186,6 @@ body {
     }
 
     #win10-menu .list .item, .sub-item{
-        width: 100%;
+        width: calc(100% - 20px);
     }
 }
