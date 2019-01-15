@@ -563,9 +563,8 @@ window.Win10 = {
                 top: 30,
                 'z-index': 100,
             });
-            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height:100%;position: absolute;left: 0;top:0; z-index: 0;background-color: transparent;'></div>")
+            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: 100%;position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>")
         }
-
         //属性绑定
         Win10._bind_open_windows();
     },

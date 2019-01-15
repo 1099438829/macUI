@@ -64,6 +64,8 @@ body {
 #win10 .desktop {
     width: 100%;
     height: 100%;
+    position: fixed;
+    top: 0;
 }
 
 #win10_task_bar {
@@ -322,7 +324,7 @@ body {
 }
 
 #win10 #win10-shortcuts {
-    height: calc(100% - 30px);
+    height: 100%;
     position: absolute;
     left: 0;
     top: 0;
@@ -910,10 +912,10 @@ body {
 /*桌面舞台样式*/
 #win10-desktop-scene{
     width: 100%;
-    height: calc(100% - 30px);
+    height: 100%;
     position: absolute;
     left: 0;
-    top: 30px;
+    top: 0;
     z-index: 0;
     background-color: transparent;
 }
@@ -921,9 +923,10 @@ body {
 #footer{
     height: 60px;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     text-align: center;
+    z-index: 100;
 }
 
 #footer .dock{
@@ -938,6 +941,7 @@ body {
     box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
     -webkit-border-top-left-radius: 5px 5px 0  0;
     -webkit-border-top-right-radius: 5px 5px 0  0;
+    z-index: 100;
 }
 @media \0screen\,screen\9 {/* 只支持IE6、7、8 */
 	#footer .dock{
@@ -1012,7 +1016,7 @@ body {
         height: calc(100% - 31px);
     }
     #win10-menu.hidden{
-        top: -100% ;
+        top: calc(-100% + 31px);
     }
     #win10_command_center{
         width: 100%;
