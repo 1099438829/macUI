@@ -719,49 +719,49 @@ body {
 .win10-open-iframe .layui-layer-setwin a.layui-layer-close1:hover::before{
     content:"\f057";
     color: #FF6057;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-min::before{
     content:"\f111";
     color: #28CA40;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-min:hover::before{
     content:"\f056";
     color: #28CA40;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-max::before{
     content:"\f111";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-max:hover::before{
     content:"\f055";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-maxmin.layui-layer-max::before{
     content:"\f111";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-maxmin.layui-layer-max:hover::before{
     content:"\f055";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-close::before{
     content:"\f111";
     color: #FF6057;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-min,.layui-layer-close,.layui-layer-max{
@@ -774,13 +774,13 @@ body {
 .win10-open-iframe .win10-btn-refresh::before,.win10-btn-change-url::before{
     content:"\f111";
     color: #029FFF;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .win10-btn-refresh:hover::before,.win10-btn-change-url:hover::before{
     content:"\f192";
     color: #029FFF;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-min,.layui-layer-close,.layui-layer-max{
@@ -801,49 +801,49 @@ body {
 .win10-layer-open-browser .layui-layer-setwin a.layui-layer-close:hover::before{
     content:"\f057";
     color: #FF6057;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-min::before{
     content:"\f111";
     color: #28CA40;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-min:hover::before{
     content:"\f056";
     color: #28CA40;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-max::before{
     content:"\f111";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-max:hover::before{
     content:"\f055";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-maxmin.layui-layer-max::before{
     content:"\f111";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-maxmin.layui-layer-max:hover::before{
     content:"\f055";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-close::before{
     content:"\f111";
     color: #FF6057;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-min,.layui-layer-close,.layui-layer-max{
@@ -980,6 +980,7 @@ body {
 #footer .dock .dock-tips{
 	color:#333;
 	font-size:0.4em;
+    font-weight:700; 
 	border-radius: 5px;
 	background: rgba(255,255,255,0.5);
 	height: 20px;
