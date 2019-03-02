@@ -643,7 +643,7 @@ window.Win10 = {
         $("#win10-msg-nof").removeClass('on-new-msg fa-commenting-o');
     },
     renderShortcuts:function () {
-        var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-60)/100);
+        var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-90)/100);
         var x=0,y=0;
         $("#win10 #win10-shortcuts .shortcut").each(function () {
             $(this).css({

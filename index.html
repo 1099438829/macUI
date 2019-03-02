@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="./css/macdefault.css" rel="stylesheet">
     <script type="text/javascript" src="./js/mac.js"></script>
+    <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
+    <script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
     <style>
         * {
             font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
@@ -73,6 +75,30 @@
             <div class="shortcut" onclick="window.open('./demo.html')">
                 <img class="icon" src="./img/icon/demo.png"/>
                 <div class="title">查看DEMO</div>
+            </div>
+            <div class="shortcut win10-drawer">
+                <img class="icon" src="./img/icon/folder.png"/>
+                <div class="title">新建文件夹</div>
+                <div class="win10-drawer-box">
+                    <div class="shortcut-drawer win10-drawer">
+                        <img class="icon" src="./img/icon/folder.png"/>
+                        <div class="title">三级菜单</div>
+                        <div class="win10-drawer-box">
+                            <div class="shortcut-drawer win10-open-window" data-url="www.baidu.com">
+                                <i class="icon fa fa-fw fa-th-list orange"></i>
+                                <div class="title">子项1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shortcut-drawer win10-open-window" data-url="www.baidu.com">
+                        <i class="icon fa fa-fw fa-th-list orange"></i>
+                        <div class="title">子项1</div>
+                    </div>
+                    <div class="shortcut-drawer">
+                        <i class="icon fa fa-fw fa-th-list orange"></i>
+                        <div class="title">子项2</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
