@@ -253,7 +253,7 @@ body {
 #win10-menu .list .item,.sub-item{
     color:#333;
     margin: 1px 0;
-    line-height: 40px;
+    line-height: 2em;
     padding: 0 10px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -263,13 +263,13 @@ body {
 }
 
 #win10-menu .list .item>.icon,#win10-menu .list .sub-item>.icon,.sub-item>.icon{
-    line-height: 36px;
-    font-size: 22px;
+    line-height:2em;
+    font-size: 1.2em;
     float: left;
     margin-right: 0.5em;
-    width: 36px;
+    /*width: 36px;*/
     position: relative;
-    top:2px;
+    /*top:2px;*/
 
 }
 
