@@ -364,23 +364,6 @@ window.Win10 = {
             var iframe = Win10.getLayeroByIndex(index).find('iframe');
             iframe.attr('src', iframe.attr('src'));
         });
-        $(document).on('click', '.win10-btn-change-url', function () {
-            var index = $(this).attr('index');
-            var iframe = Win10.getLayeroByIndex(index).find('iframe');
-            layer.prompt({
-                title: Win10.lang('编辑网址','Edit URL'),
-                formType: 2,
-                skin:'win10-layer-open-browser',
-                value: iframe.attr('src'),
-                area: ['500px', '200px'],
-                zIndex:99999999999
-            }, function (value, i) {
-                layer.close(i);
-                layer.msg(Win10.lang('请稍候...','Hold on please...'),{time:1500},function () {
-                    iframe.attr('src', value);
-                });
-            });
-        });
         $(document).on('mousedown','.win10-open-iframe',function () {
             var layero=$(this);
             Win10._settop(layero);
