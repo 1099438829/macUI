@@ -119,6 +119,26 @@ window.Win10 = {
                     }
                 }
         }
+		//开始渲染壁纸模糊
+		if(Win10._wallpaperBlur){
+			this.loadScript('js/background-blur.min.js',function(){
+				var $avatarHolderEl = $('#win10');
+				$avatarHolderEl.backgroundBlur({
+					imageURL : Win10._bgs.main,
+					blurAmount : 20, 
+					imageClass : 'avatar-blur' 
+				});
+			});
+			$.getScript("js/background-blur.min.js",function(){  //加载test.js,成功后，并执行回调函数
+			  var $avatarHolderEl = $('#win10');
+				$avatarHolderEl.backgroundBlur({
+					imageURL : Win10._bgs.main,
+					blurAmount : 20, 
+					imageClass : 'avatar-blur' 
+				});
+			});
+		}
+    },
 
     },
     _startAnimate:function () {
@@ -428,8 +448,6 @@ window.Win10 = {
             else {hours='深夜'+(hour-12)} 
 			$("#win10_btn_time").html(week+hours+':'+mins);
         },1000);
-
-
         //离开前警告
         document.body.onbeforeunload = function(event){
             var rel = Win10.lang( '系统可能不会保存您所做的更改','The system may not save the changes you have made.');
@@ -789,7 +807,6 @@ window.Win10 = {
         }
         var area,offset;
         if (this.isSmallScreen() || areaAndOffset==='max') {
-            console.log(111);
             area = ['100%', (document.body.clientHeight - 30) + 'px'];
             offset = ['30px', '0'];
         }else if(typeof areaAndOffset ==='object'){
