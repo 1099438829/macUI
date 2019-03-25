@@ -13,6 +13,13 @@
 	<script type="text/javascript" src="./js/interface.js"></script>
 	<script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
     <script type="text/javascript" src="./js/mac.js"></script>
+	<link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
+	<script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
+    <style>
+        * {
+            font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+        }
+    </style>
     <script>
         Win10.onReady(function () {
 
@@ -26,10 +33,22 @@
                 'animated flip',
                 'animated bounceIn',
             ], 0.01);
-
             setTimeout(function () {
-                Win10.newMsg('官方交流一群', '欢迎各位大侠加入讨论：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=4Er0u8i">[点击加入]205546163</a>')
-            }, 2500);
+                Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)',function () {
+                    Win10.enableFullScreen();
+                });
+                Win10.newMsg('最新资讯', '最新资讯信息',function () {
+                    layer.open({
+                        type: 2,
+                        title: '最新资讯',
+                        area: ['300px', '380px'],
+                        shade:0,
+                        skin:'win10-open-iframe',
+                        offset: 'rb',
+                        content: './broadcast.html'
+                    });
+                });    
+            }, 1500);
 
             setTimeout(function () {
 				layer.open({
@@ -82,6 +101,31 @@
                 <i class="icon fa fa-fw fa-picture-o blue"></i>
                 <div class="title">切换壁纸</div>
             </div>
+			<div class="shortcut win10-drawer">
+                <img class="icon" src="./img/icon/folder.png"/><!-- 
+                <i class="icon fa fa-fw fa-folder" style="color: blue;font-size: 50px;"></i> -->
+                <div class="title">新建文件夹</div>
+                <div class="win10-drawer-box">
+                    <div class="shortcut-drawer win10-drawer">
+                         <img class="icon" src="./img/icon/folder.png"/>
+                        <div class="title">新建文件夹</div>
+                        <div class="win10-drawer-box">
+                            <div class="shortcut-drawer win10-open-window" data-url="www.baidu.com">
+                                <i class="icon fa fa-fw fa-th-list orange"></i>
+                                <div class="title">子项1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shortcut-drawer win10-open-window" data-url="www.baidu.com">
+                        <i class="icon fa fa-fw fa-th-list orange"></i>
+                        <div class="title">子项1</div>
+                    </div>
+                    <div class="shortcut-drawer">
+                        <i class="icon fa fa-fw fa-th-list orange"></i>
+                        <div class="title">子项2</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -97,7 +141,7 @@
             <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-tile.html','磁贴代码生成器')">磁贴代码生成器</div>
             <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-menu.html','菜单代码生成器')">菜单代码生成器</div>
             <div class="item" onclick="Win10.aboutUs()"><i class="icon fa fa-star fa-fw"></i>关于</div>
-            <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-window-close fa-fw"></i>关闭</div>
+            <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-power-off fa-fw"></i>关闭</div>
         </div>
     </div>
     <div id="win10_command_center" class="hidden_right">

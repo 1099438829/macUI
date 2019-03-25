@@ -8,6 +8,7 @@ window.Win10 = {
         main:'',
         mobile:'',
     },
+	_wallpaperBlur: true, //壁纸模糊（影响性能）
     _countTask: 0,
     _newMsgCount:0,
     _animated_classes:[],
@@ -73,46 +74,88 @@ window.Win10 = {
         var loaders=$('#win10>.img-loader');
         var flag=false;
         if(Win10.isSmallScreen()){
-                if(Win10._bgs.mobile){
-                    loaders.each(function () {
-                        var loader=$(this);
-                        if(loader.attr('src')===Win10._bgs.mobile && loader.hasClass('loaded')){
-                            Win10._setBackgroundImg(Win10._bgs.mobile);
-                            flag=true;
-                        }
-                    });
-                    if(!flag){
-                        //没找到加载完毕的图片
-                        var img=$('<img class="img-loader" src="'+Win10._bgs.mobile+'" />');
-                        $('#win10').append(img);
-                        Win10._onImgComplete(img[0],function () {
-                            img.addClass('loaded');
-                            Win10._setBackgroundImg(Win10._bgs.mobile);
-                        })
-                    }
-                }
-            }else{
-                if(Win10._bgs.main){
-                    loaders.each(function () {
-                        var loader=$(this);
-                        if(loader.attr('src')===Win10._bgs.main && loader.hasClass('loaded')){
-                            Win10._setBackgroundImg(Win10._bgs.main);
-                            flag=true;
-                        }
-                    });
-                    if(!flag){
-                        //没找到加载完毕的图片
-                        var img=$('<img class="img-loader" src="'+Win10._bgs.main+'" />');
-                        $('#win10').append(img);
-                        Win10._onImgComplete(img[0],function () {
-                            img.addClass('loaded');
-                            Win10._setBackgroundImg(Win10._bgs.main);
-                        })
-                    }
-                }
+			if(Win10._bgs.mobile){
+				loaders.each(function () {
+					var loader=$(this);
+					if(loader.attr('src')===Win10._bgs.mobile && loader.hasClass('loaded')){
+						Win10._setBackgroundImg(Win10._bgs.mobile);
+						flag=true;
+					}
+				});
+				if(!flag){
+					//没找到加载完毕的图片
+					var img=$('<img class="img-loader" src="'+Win10._bgs.mobile+'" />');
+					$('#win10').append(img);
+					Win10._onImgComplete(img[0],function () {
+						img.addClass('loaded');
+						Win10._setBackgroundImg(Win10._bgs.mobile);
+					})
+				}
+			}
+		}else{
+			if(Win10._bgs.main){
+				loaders.each(function () {
+					var loader=$(this);
+					if(loader.attr('src')===Win10._bgs.main && loader.hasClass('loaded')){
+						Win10._setBackgroundImg(Win10._bgs.main);
+						flag=true;
+					}
+				});
+				if(!flag){
+					//没找到加载完毕的图片
+					var img=$('<img class="img-loader" src="'+Win10._bgs.main+'" />');
+					$('#win10').append(img);
+					Win10._onImgComplete(img[0],function () {
+						img.addClass('loaded');
+						Win10._setBackgroundImg(Win10._bgs.main);
+					})
+				}
+			}
         }
-
+		
+		//开始渲染壁纸模糊
+		if(Win10._wallpaperBlur){
+			this.loadScript('js/background-blur.min.js',function(){
+				var $avatarHolderEl = $('#win10');
+				$avatarHolderEl.backgroundBlur({
+					imageURL : Win10._bgs.main,
+					blurAmount : 20, 
+					imageClass : 'avatar-blur' 
+				});
+			});
+			$.getScript("js/background-blur.min.js",function(){  //加载test.js,成功后，并执行回调函数
+			  var $avatarHolderEl = $('#win10');
+				$avatarHolderEl.backgroundBlur({
+					imageURL : Win10._bgs.main,
+					blurAmount : 20, 
+					imageClass : 'avatar-blur' 
+				});
+			});
+		}
     },
+		//动态加载JS文件
+	loadScript : function(url,callback){
+		var el = document.createElement("script");
+		el.type = "text/javascript";
+
+		if(typeof(callback) != "undefined"){
+			if (el.readyState) {
+				el.onreadystatechange = function () {
+					if (el.readyState == "loaded" || el.readyState == "complete") {
+						el.onreadystatechange = null;
+						callback();
+					}
+				};
+			} else {
+				el.onload = function () {
+					callback();
+				};
+			}
+		}
+
+		el.src = url;
+		document.head.appendChild(el);
+	},
     _startAnimate:function () {
         setInterval(function () {
             var classes_lenth=Win10._animated_classes.length;
@@ -349,23 +392,6 @@ window.Win10 = {
             var iframe = Win10.getLayeroByIndex(index).find('iframe');
             iframe.attr('src', iframe.attr('src'));
         });
-        $(document).on('click', '.win10-btn-change-url', function () {
-            var index = $(this).attr('index');
-            var iframe = Win10.getLayeroByIndex(index).find('iframe');
-            layer.prompt({
-                title: Win10.lang('编辑网址','Edit URL'),
-                formType: 2,
-                skin:'win10-layer-open-browser',
-                value: iframe.attr('src'),
-                area: ['500px', '200px'],
-                zIndex:99999999999
-            }, function (value, i) {
-                layer.close(i);
-                layer.msg(Win10.lang('请稍候...','Hold on please...'),{time:1500},function () {
-                    iframe.attr('src', value);
-                });
-            });
-        });
         $(document).on('mousedown','.win10-open-iframe',function () {
             var layero=$(this);
             Win10._settop(layero);
@@ -412,19 +438,14 @@ window.Win10 = {
 			var week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")[myDate.getDay()];
 			var hour=myDate.getHours();
             var mins=myDate.getMinutes();if (mins<10){mins='0'+mins}
-			if (hour >= 0 && hour < 6) {
-				hours='凌晨'+hour;
-			}else if (hour >= 6 && hour < 8) {
-				hours='早上'+hour;
-			 } else if (hour >= 8 && hour < 11) {
-			    hours='上午'+hour;
-			 } else if (hour >= 11 && hour < 13) {
-				hours='中午'+hour;
-			 } else if (hour >= 13 && hour < 18) {
-			   hours='下午'+hour;
-			 } else {
-			   hours='晚上'+hour;
-			 }
+            if(hour < 6){hours='凌晨'+hour;} 
+            else if (hour < 9){hours='早上'+hour;} 
+            else if (hour < 12){hours='上午'+hour;} 
+            else if (hour < 14){hours='中午'+(hour-12);} 
+            else if (hour < 17){hours='下午'+(hour-12);} 
+            else if (hour < 19){hours='傍晚'+(hour-12);} 
+            else if (hour < 22){hours='晚上'+(hour-12);} 
+            else {hours='深夜'+(hour-12)} 
 			$("#win10_btn_time").html(week+hours+':'+mins);
         },1000);
         //离开前警告
@@ -447,7 +468,7 @@ window.Win10 = {
             Win10.renderShortcuts();
             Win10._checkBgUrls();
             if(!Win10.isSmallScreen()) Win10._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
-	    Win10.renderDocks();
+			Win10.renderDocks();
         });
         //细节
         $(document).on('focus',".win10-layer-open-browser textarea",function () {
@@ -551,7 +572,11 @@ window.Win10 = {
                 top: 30,
                 'z-index': 100,
             });
+<<<<<<< HEAD
+            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: 100%;position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>")
+=======
             $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: calc(100% - 30px);position: absolute;left: 0;top: 30px; z-index: 0;background-color: transparent;'></div>")
+>>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
         }
 
         //属性绑定
@@ -608,6 +633,36 @@ window.Win10 = {
     },
     	//渲染DOCK
     renderDocks:function () {
+<<<<<<< HEAD
+		if(!Win10.isSmallScreen()){
+			$('#dock').Fisheye( 
+				{
+					maxWidth: 60,
+					items: 'a',
+					itemsText: 'span',
+					container: '.dock-container',
+					itemWidth: 47,
+					proximity: 80,
+					alignment : 'left',
+					valign: 'bottom',
+					halign : 'center'
+				}
+			)
+		}else{
+			var cell_width=50;
+			var width=document.body.clientWidth ;
+			var docks=$(".dock .dock-container a");
+			var max_num=parseInt(width/cell_width)-1;
+			for (var i = 0; i < docks.length; i++) {
+				if (i>max_num) {
+					docks.eq(i).hide();
+				}else{
+					docks.eq(i).css('display','list-item');
+				}		
+			}
+		}
+
+=======
 		var cell_width=50;
         var width=document.body.clientWidth ;
 		var docks=$(".dock .dock-container a");
@@ -650,6 +705,7 @@ window.Win10 = {
 				}
 			}		
 		}
+>>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
     },
     commandCenterToggle: function () {
         if($("#win10_command_center").hasClass('hidden_right')){
@@ -790,7 +846,7 @@ window.Win10 = {
             },
             full:function (layero) {
                 layero.find('.layui-layer-min').css('display','inline-block');
-				layero_opened.css('margin-top',30);
+				layero_opened.css('top',30);
             },
         });
         $('#win10_btn_group_middle .btn.active').removeClass('active');
@@ -809,7 +865,7 @@ window.Win10 = {
                 var height=layero_opened.css('height');
                 height=parseInt(height.replace('px',''));
                 if (height>=document.body.clientHeight){
-                   layero_opened.css('height',height-30);
+                   layero_opened.css('height',height-32);
                    layero_opened.find('.layui-layer-content').css('height',height-72);
                    layero_opened.find('.layui-layer-content iframe').css('height',height-72);
                 }
@@ -904,7 +960,7 @@ window.Win10 = {
             content: '<div style="padding: 10px;font-size: 12px">' +
             '<p>支持组件:layer、jquery、animated.css、font-awesome</p>' +
             '<p>木子的忧伤、尤里2号©版权所有</p>' +
-            '<p>作者邮箱:yuri2peter@qq.com</p>' +
+            '<p>作者邮箱:1099438829@qq.com</p>' +
             '</div>'
         });
     },

@@ -46,7 +46,6 @@ body {
     background: black no-repeat fixed;
     background-size: 100% 100%;
     position: relative;
-    /*padding-top: 20px;*/
 }
 
 #win10 *{
@@ -75,9 +74,13 @@ body {
     height: 30px;
     line-height:30px;
     /* IE9+ */
+<<<<<<< HEAD
+	background:rgba(255,255,255,0.5);
+=======
 	background-color:rgba(255,255,255,0.5);
 	/* IE6-IE8 */
 	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#68FFFFFF,endColorStr=#68FFFFFF);
+>>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
     z-index: 19930813;
 }
 
@@ -186,7 +189,7 @@ body {
 }
 #win10-menu {
     position: fixed;
-    top: 30px;
+    top: 31px;
     background-color: rgba(255,255,255,0.55);
     height:auto;
     width: 12.5%;
@@ -203,8 +206,13 @@ body {
 }
 
 #win10-menu .list::-webkit-scrollbar,#win10_command_center::-webkit-scrollbar {
+<<<<<<< HEAD
+    width: 0;
+    height: 0;
+=======
     width: 8px;
     height: 8px;
+>>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
 }
 
 #win10-menu .list::-webkit-scrollbar-track,#win10_command_center::-webkit-scrollbar-track {
@@ -253,7 +261,7 @@ body {
 #win10-menu .list .item,.sub-item{
     color:#333;
     margin: 1px 0;
-    line-height: 40px;
+    line-height: 2em;
     padding: 0 10px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -263,13 +271,13 @@ body {
 }
 
 #win10-menu .list .item>.icon,#win10-menu .list .sub-item>.icon,.sub-item>.icon{
-    line-height: 36px;
-    font-size: 22px;
+    line-height:2em;
+    font-size: 1.2em;
     float: left;
     margin-right: 0.5em;
-    width: 36px;
+    /*width: 36px;*/
     position: relative;
-    top:2px;
+    /*top:2px;*/
 
 }
 
@@ -324,8 +332,11 @@ body {
 }
 
 #win10 #win10-shortcuts {
-    height: calc(100% - 40px);
-    position: relative;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
 }
 
 #win10 #win10-shortcuts.shortcuts-hidden .shortcut{display: none}
@@ -372,10 +383,10 @@ body {
 #win10_command_center {
     position: fixed;
     right: 0;
-    top: 30px;
+    top: 31px;
     width: 350px;
-    background-color: rgba(255,255,255,0.55);
-    height: calc(100% - 30px);
+    background-color: rgba(255, 255, 255, 0.7);
+    height: calc(100% - 32px);
     transition: all 0.5s;
     overflow-x: hidden;
     overflow-y: auto;
@@ -446,7 +457,6 @@ body {
     width: calc(100% - 20px);
     min-height: 40px;
     padding:10px;
-    margin-top: 4px;
     transition: background-color 0.5s;
     position: relative;
 }
@@ -562,49 +572,49 @@ body {
 .win10-open-iframe .layui-layer-setwin a.layui-layer-close1:hover::before{
     content:"\f057";
     color: #FF6057;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-min::before{
     content:"\f111";
     color: #28CA40;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-min:hover::before{
     content:"\f056";
     color: #28CA40;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-max::before{
     content:"\f111";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-max:hover::before{
     content:"\f055";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-maxmin.layui-layer-max::before{
     content:"\f111";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-maxmin.layui-layer-max:hover::before{
     content:"\f055";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-close::before{
     content:"\f111";
     color: #FF6057;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .layui-layer-min,.layui-layer-close,.layui-layer-max{
@@ -617,13 +627,13 @@ body {
 .win10-open-iframe .win10-btn-refresh::before,.win10-btn-change-url::before{
     content:"\f111";
     color: #029FFF;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-open-iframe .win10-btn-refresh:hover::before,.win10-btn-change-url:hover::before{
     content:"\f192";
     color: #029FFF;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-min,.layui-layer-close,.layui-layer-max{
@@ -644,49 +654,49 @@ body {
 .win10-layer-open-browser .layui-layer-setwin a.layui-layer-close:hover::before{
     content:"\f057";
     color: #FF6057;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-min::before{
     content:"\f111";
     color: #28CA40;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-min:hover::before{
     content:"\f056";
     color: #28CA40;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-max::before{
     content:"\f111";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-max:hover::before{
     content:"\f055";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-maxmin.layui-layer-max::before{
     content:"\f111";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-maxmin.layui-layer-max:hover::before{
     content:"\f055";
     color: #FFBD2E;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-close::before{
     content:"\f111";
     color: #FF6057;
-    font: normal normal normal 18px/1 FontAwesome;
+    font: normal normal normal 16px/1 FontAwesome;
 }
 
 .win10-layer-open-browser .layui-layer-min,.layui-layer-close,.layui-layer-max{
@@ -694,10 +704,10 @@ body {
 }
 
 /*右键菜单*/
-#win10 .win10-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgb(255, 255, 255); border: #CCC 1px solid; display: block; border-radius: 5px; z-index: 99999999; }
+#win10 .win10-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgb(255, 255, 255,0.75); border: #CCC 1px solid; display: block; border-radius: 5px; z-index: 99999999; }
 #win10 .win10-context-menu ul { margin: 0px; padding: 0px; }
 #win10 .win10-context-menu ul li {transition: background-color 0.5s;cursor: default;padding: 0px 1em; list-style: none; line-height: 30px; height: 30px; margin: 3px 0;  font-size: 13px; }
-#win10 .win10-context-menu ul li:hover { background-color: #DDD; }
+#win10 .win10-context-menu ul li:hover {  background-color:  rgba(49,156,241,0.71);cursor: pointer; }
 #win10 .win10-context-menu ul li a {text-decoration: none; display: block; height: 100%; color: #333; outline: none; }
 #win10 .win10-context-menu ul hr { margin: 0; height: 0px; border: 0px; border-bottom: rgb(233,233,233) 1px solid;border-top: none }
 
@@ -720,6 +730,11 @@ body {
     overflow: hidden;
 	margin:0px;
 }
+.win10-open-iframe .layui-layer-title{
+    line-height:30px;
+    height: 30px;
+}
+
 .win10-open-iframe .layui-layer-title{
     line-height:30px;
     height: 30px;
@@ -754,7 +769,7 @@ body {
 /*桌面舞台样式*/
 #win10-desktop-scene{
     width: 100%;
-    height: calc(100% - 40px);
+    height: 100%;
     position: absolute;
     left: 0;
     top: 40px;
@@ -802,24 +817,6 @@ body {
 	width: 100%; 
 }
 
-@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
-	.dock{
-		/*width: 72%; */
-		height: 100%;
-		line-height: 60px;
-		background-color: #fff;
-		display: inline-block;
-		border-radius: 5px;
-		filter:Alpha(opacity=0.45);
-		position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
-		*zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
-	}
-	.dock ul{
-		position: relative;/* 设置子元素为相对定位，可让子元素不继承Alpha值 */
-	}  
-}
-
-
 /*各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010*/
 .win10-open-iframe .black-green, #win10 .black-green{background:#009688!important;}
 .win10-open-iframe .green,#win10 .green{background:#5FB878!important;}
@@ -835,7 +832,7 @@ body {
         height: calc(100% - 31px);
     }
     #win10-menu.hidden{
-        top: -100% ;
+        top: calc(-100% + 31px);
     }
     #win10_command_center{
         width: 100%;
@@ -877,7 +874,6 @@ body {
         max-width:150px;
     }
     #win10-menu .list{
-        padding-left: 2px;
         position: absolute;
         width:100%;
         left: 0;
@@ -893,7 +889,11 @@ body {
     }
 
     #win10-menu .list .item, .sub-item{
+<<<<<<< HEAD
+        width: calc(100% - 20px);
+=======
         width: 100%;
+>>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
     }
 
     #win10_btn_time{display: none}
