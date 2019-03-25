@@ -270,10 +270,10 @@ window.Win10 = {
             var layero_opened=$(this);
             var height=layero_opened.css('height');
             height=parseInt(height.replace('px',''));
-            if (height+40>=clientHeight){
-                layero_opened.css('height',clientHeight-40);
-                layero_opened.find('.layui-layer-content').css('height',clientHeight-83);
-                layero_opened.find('.layui-layer-content iframe').css('height',clientHeight-83);
+            if (height+30>=clientHeight){
+                layero_opened.css('height',clientHeight-30);
+                layero_opened.find('.layui-layer-content').css('height',clientHeight-62);
+                layero_opened.find('.layui-layer-content iframe').css('height',clientHeight-62);
             }
         })
     },
@@ -572,7 +572,7 @@ window.Win10 = {
                 top: 30,
                 'z-index': 100,
             });
-            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: calc(100% - 30px);position: absolute;left: 0;top: 30px; z-index: 0;background-color: transparent;'></div>")
+            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: 100%;position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>")
         }
 
         //属性绑定
@@ -613,7 +613,7 @@ window.Win10 = {
         $("#win10-msg-nof").removeClass('on-new-msg fa-commenting-o');
     },
     renderShortcuts:function () {
-        var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-60)/100);
+        var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-90)/100);
         var x=0,y=0;
         $("#win10 #win10-shortcuts .shortcut").each(function () {
             $(this).css({
