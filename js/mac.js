@@ -139,8 +139,6 @@ window.Win10 = {
 			});
 		}
     },
-
-    },
     _startAnimate:function () {
         setInterval(function () {
             var classes_lenth=Win10._animated_classes.length;
