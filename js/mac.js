@@ -9,13 +9,13 @@ window.Win10 = {
         mobile:'',
     },
     _blur:{
-        win10:false;
-        task_bar:false,
-        desktop:false,
-        menu:false,
-        command:false,
-        footer:false,
-    }
+        win10:0,
+        task_bar:0,
+        desktop:0,
+        menu:0,
+        command:0,
+        footer:0,
+    },
     _countTask: 0,
     _newMsgCount:0,
     _animated_classes:[],
@@ -560,6 +560,10 @@ window.Win10 = {
         Win10._bind_open_windows();
     },
     setBgUrl:function (bgs) {
+        this._bgs=bgs;
+        this._checkBgUrls();
+    },
+    setBg:function (bgs) {
         this._bgs=bgs;
         this._checkBgUrls();
     },
