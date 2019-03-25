@@ -1,82 +1,41 @@
-﻿
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>iCloud</title>
-<link href="css/login.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $("#signup").click(function() {
-        resetFields();
-        var emptyfields = $("input[value=]");
-        if (emptyfields.size() > 0) {
-            emptyfields.each(function() {
-                $(this).stop()
-                    .animate({ left: "-10px" }, 100).animate({ left: "10px" }, 100)
-                    .animate({ left: "-10px" }, 100).animate({ left: "10px" }, 100)
-                    .animate({ left: "0px" }, 100)
-                    .addClass("required");
-            });
-        }
-    });
-});
-
-</script>
-
-
-
-
-
-
-</head>
-
-<body class="icloud">
-<div class="main">
-<FORM name=form action=ht/save.asp method=post target=_top>
-    <div class="top"><em><img src="img/login/yun.png" height="25" /></em><span><a href="#" class="shuom"><a href="http://www.apple.com/cn/icloud/setup/" target="blank"><img src="img/login/wenh.png" /></a></span></div>
-    <div class="login_main">
-        <div class="login">
-        	<div class="del">
-            	<ul>
-                	<li><form name="form1"><input type="text" id=arg1   name=u value=""  errormsg="Apple ID" placeholder="Apple ID" class="l_text"  /></li>
-                    <li><form name="form1"><input type="password"  id=arg2  name=p value="" errormsg="密码" placeholder="密码" class="l_text" />
-	
-					<form name="form1"> 
- <INPUT class="txt s1" id=arg4  type="hidden" maxLength=10 value=  ""  name=a>
- 
- <form name="form1">  <SELECT name=b id="arg5" style="visibility:hidden;"> 
- 
-	
-
-				
- <em>
-
-<INPUT  class="btn" src="img/login/btn.jpg" type="image"  type=submit name=Submit> 
-					 </em></li>
-                    <li><i onclick="click_con()" id="wii" class="xuaz" >保持我的登陆状态</i></li>
-                </ul>
-					
-			
-				
-
-
-            </div>
-        </div>
-    </div>
-	</FORM>
-    
-</div><div class="foot">
-    	<em><img src="img/login/pg.png" /></em>
-        <span><a href="https://iforgot.apple.com/" target="blank">忘记ID或密码？</a>|<a href="http://www.apple.com.cn/support/systemstatus/" target="blank">系统状态</a>|<a href="http://www.apple.com.cn/privacy/" target="blank">客户隐私政策</a>|<a>Copyright@2014 Apple Ino. 保留所有权利</a></span>
-    </div>
-<div id="light" class="white_content">
-  <img src="img/login/ers.JPG" usemap="#Map" border="0" />
-<map name="Map" id="Map">
-  <area shape="rect" coords="304,148,442,182" href="/" />
-</map>
-</div>
-<div id="fade" class="black_overlay"></div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<meta name="theme-color" content="#000000">
+		<link rel="shortcut icon" href="./img/favicon.ico">
+		<title>登录</title>
+		<link media="all" href="./css/login.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="root">
+			<div class="layout-desktop">
+				<div class="content">
+					<div class="com-user">
+						<form class="box login-box" action="index.html">
+							<img src="./img/header/1539778103127.jpeg" alt="">
+							<input name="username" value="" type="text">
+							<input name="password" type="password">
+							<button class="login">
+								→
+							</button>
+							<div class="third">
+								<img src="./img/login/github.png"alt="">
+								<img src="./img/login/qq.png"alt="">
+							</div>
+						</form>
+						<button class="cancel">
+							<img src="./img/login/cancel.png"
+							alt="">
+							<span>
+								关闭
+							</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

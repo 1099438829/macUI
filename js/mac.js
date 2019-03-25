@@ -8,6 +8,14 @@ window.Win10 = {
         main:'',
         mobile:'',
     },
+    _blur:{
+        win10:false;
+        task_bar:false,
+        desktop:false,
+        menu:false,
+        command:false,
+        footer:false,
+    }
     _countTask: 0,
     _newMsgCount:0,
     _animated_classes:[],
