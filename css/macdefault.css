@@ -74,13 +74,9 @@ body {
     height: 30px;
     line-height:30px;
     /* IE9+ */
-<<<<<<< HEAD
-	background:rgba(255,255,255,0.5);
-=======
 	background-color:rgba(255,255,255,0.5);
 	/* IE6-IE8 */
 	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#68FFFFFF,endColorStr=#68FFFFFF);
->>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
     z-index: 19930813;
 }
 
@@ -206,13 +202,8 @@ body {
 }
 
 #win10-menu .list::-webkit-scrollbar,#win10_command_center::-webkit-scrollbar {
-<<<<<<< HEAD
-    width: 0;
-    height: 0;
-=======
     width: 8px;
     height: 8px;
->>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
 }
 
 #win10-menu .list::-webkit-scrollbar-track,#win10_command_center::-webkit-scrollbar-track {
@@ -889,11 +880,7 @@ body {
     }
 
     #win10-menu .list .item, .sub-item{
-<<<<<<< HEAD
-        width: calc(100% - 20px);
-=======
         width: 100%;
->>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
     }
 
     #win10_btn_time{display: none}

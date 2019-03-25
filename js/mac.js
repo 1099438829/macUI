@@ -572,11 +572,7 @@ window.Win10 = {
                 top: 30,
                 'z-index': 100,
             });
-<<<<<<< HEAD
-            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: 100%;position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>")
-=======
             $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: calc(100% - 30px);position: absolute;left: 0;top: 30px; z-index: 0;background-color: transparent;'></div>")
->>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
         }
 
         //属性绑定
@@ -633,36 +629,6 @@ window.Win10 = {
     },
     	//渲染DOCK
     renderDocks:function () {
-<<<<<<< HEAD
-		if(!Win10.isSmallScreen()){
-			$('#dock').Fisheye( 
-				{
-					maxWidth: 60,
-					items: 'a',
-					itemsText: 'span',
-					container: '.dock-container',
-					itemWidth: 47,
-					proximity: 80,
-					alignment : 'left',
-					valign: 'bottom',
-					halign : 'center'
-				}
-			)
-		}else{
-			var cell_width=50;
-			var width=document.body.clientWidth ;
-			var docks=$(".dock .dock-container a");
-			var max_num=parseInt(width/cell_width)-1;
-			for (var i = 0; i < docks.length; i++) {
-				if (i>max_num) {
-					docks.eq(i).hide();
-				}else{
-					docks.eq(i).css('display','list-item');
-				}		
-			}
-		}
-
-=======
 		var cell_width=50;
         var width=document.body.clientWidth ;
 		var docks=$(".dock .dock-container a");
@@ -705,7 +671,6 @@ window.Win10 = {
 				}
 			}		
 		}
->>>>>>> 6c820125c208f963bce20f07283261761fc8e1c8
     },
     commandCenterToggle: function () {
         if($("#win10_command_center").hasClass('hidden_right')){
