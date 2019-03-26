@@ -16,7 +16,7 @@
 div.wallpaper_settingButton, a.theme_setting, div.theme_upload {
     display: inline;
     float: left;
-    margin: 5px 8px 5px 8px;
+    /*margin: 5px 8px 5px 8px;*/
     width: 180px;
     height: 140px;
     cursor: pointer;
@@ -27,7 +27,7 @@ div.wallpaper_settingButton, a.theme_setting, div.theme_upload {
 }
 
 a.theme_setting {
-    background: #cbe7fc;
+    /*background: #cbe7fc; */
     transition: all 0.5s;
 }
 
