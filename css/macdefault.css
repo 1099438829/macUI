@@ -851,7 +851,7 @@ body {
 }
 
 /*右键菜单*/
-#win10 .win10-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgb(255, 255, 255,0.75); border: #CCC 1px solid; display: block; border-radius: 5px; z-index: 99999999; }
+#win10 .win10-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgba(255,255,255,0.75); border: #CCC 1px solid; display: block; border-radius: 5px; z-index: 99999999; }
 #win10 .win10-context-menu ul { margin: 0px; padding: 0px; }
 #win10 .win10-context-menu ul li {transition: background-color 0.5s;cursor: default;padding: 0px 1em; list-style: none; line-height: 30px; height: 30px; margin: 3px 0;  font-size: 13px; }
 #win10 .win10-context-menu ul li:hover {  background-color:  rgba(49,156,241,0.71);cursor: pointer; }
