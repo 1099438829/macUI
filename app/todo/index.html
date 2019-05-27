@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html ng-app="todo">
+<head>
+    <meta charset="UTF-8">
+    <title>todo</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/index.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<section ng-controller="ctrl">
+    <div class="mask" ng-click="showFlag=false" ng-show="showFlag"></div>
+    <div class="left">
+        <div class="left-title">
+            <div class="logo"></div>
+            <div class="add" ng-click="addList()">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="left-content">
+            <ul ng-repeat="v in todo">
+                <li ng-click="todoList($index)" ng-class="{'active':$index==index?true:false}" >
+                    <div class="color">
+                        <div ng-style="{backgroundColor:v.color}"
+                        ></div>
+                    </div>
+                    <p>
+                        {{v.title}}
+                    </p>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <div class="right-title">
+            <div class="right-title-search">
+                <input type="text" placeholder="搜索所有的提醒">
+            </div>
+        </div>
+        <div class="right-content">
+            <div class="right-content-t" ng-style="{color:todo[index].color}">
+                <p>{{todo[index].title}}</p>
+
+                <span ng-click="areShow()">选项</span>
+                <!--设置框-->
+                <div class="tips" ng-show="showFlag">
+                    <div class="tips-inner">
+                        <div class="tips-top">
+                            <input type="text" ng-model=" showTitle" ng-style="{color:Scolor}">
+                            <h4>列表颜色</h4>
+                            <ul class="color-list">
+                                <li ng-repeat="c in colors" ng-style="{backgroundColor:c,borderColor:Scolor==c?c:''}"
+ng-click="selColor(c)"
+                                ></li>
+                            </ul>
+                        </div>
+                        <div class="tips-bottom">
+                            <a href="" class="del" ng-click="del()">删除</a>
+                            <div class="btn-group">
+                                <a href="" class="cancel" ng-click="can()">
+                                    取消
+                                </a>
+                                <span></span>
+                                <a href="" class="finish" ng-click="fin()">
+                                    完成
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="right-content-c">
+                <div class="done">
+                    <div class="done-t">
+                        <p  ng-click="isShow()" ng-class="{'active1':flag,'dle':!flag}">已完成 : {{listNum}}项</p>
+
+                        <span ng-style="{color:todo[index].color}" ng-click="delAll()" ng-show="flag">清除所有完成事项</span>
+                    </div>
+                    <div class="done-c" ng-show=flag>
+                        <div class="time">
+                        2017年5月16日  星期二
+                        </div>
+                        <ul ng-repeat="v in todo[index].todo|filter:true">
+                            <li >
+                                <div class="icon" ng-style="{backgroundColor:todo[index].color,borderColor:todo[index].color}" ng-click="qieClick(v,true)"></div>
+                                <p>{{v.title}}</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="todo" >
+                    <ul ng-repeat="v in todo[index].todo|filter:false">
+                        <li>
+                            <div class="icon" ng-style="{borderColor:todo[index].color}" ng-click="qieClick(v,false)">
+                            </div>
+                            <p>
+                                <input type="text" value="{{v.title}}" ng-model="v.title">
+                            </p>
+
+                        </li>
+
+                    </ul>
+                    <div ng-click="addCon()">
+                        新项目...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</section>
+</body>
+</html>
