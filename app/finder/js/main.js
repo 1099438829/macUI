@@ -114,7 +114,7 @@ function finderOpenApp(name,path,appObject) {
 
 	// ajax请求后台数据
 	$.ajax({
-		url:'json/filelist.json',
+		url:'json/openPath.json',
 		type:'GET', // GET
 		async:false, // 是否异步
 		data:{
