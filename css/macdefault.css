@@ -491,7 +491,7 @@ body {
     vertical-align: middle;
 }
 
-#win10_command_center .command-body  .notice-header-icon >>> img {
+#win10_command_center .command-body  .notice-header-icon> img {
     width: 15px;
     height: 15px;
 }
@@ -499,6 +499,7 @@ body {
 #win10_command_center .command-body  .notice-header-title {
     font-size: 10px;
     margin: 0 5px;
+    vertical-align: middle;
 }
 
 #win10_command_center .command-body  .notice .notice-body {
