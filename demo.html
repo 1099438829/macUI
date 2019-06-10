@@ -12,13 +12,8 @@
     <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="./css/macdefault.css" rel="stylesheet">
     <script type="text/javascript" src="./js/mac.js"></script>
-	<link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
-	<script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
-    <style>
-        * {
-            font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
-        }
-    </style>
+    <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
+    <script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
     <script>
         Win10.onReady(function () {
 
@@ -69,7 +64,7 @@
         <div id="win10-shortcuts" class="shortcuts-hidden">
             <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>UI官网')">
                 <img class="icon" src="./img/icon/computer.png"/>
-                <div class="title">UI官网</div>
+                <div class="title">OS官网</div>
             </div>
 			<div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/trashicon.png\'/>回收站')">
                 <img class="icon" src="./img/icon/trashicon.png"/>
@@ -166,7 +161,7 @@
 	<div id="footer">
         <div class="dock">
             <ul>
-                <li><span class="dock-tips">finder<span class="arrow"></span></span><a href="#"> <img src="./img/icon/finder.png"></a></li>
+                <li><span class="dock-tips">finder<span class="arrow"></span></span><a onclick="Win10.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>finder')"> <img src="./img/icon/finder.png"></a></li>
                 <li><span class="dock-tips">computer<span class="arrow"></span></span><a onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>我的电脑')"> <img src="./img/icon/computer.png"></a></li>
                 <li><span class="dock-tips">gamecenter<span class="arrow"></span></span><a href="#"> <img src="./img/icon/gamecenter.png"></a></li>
 				<li><span class="dock-tips">icloud<span class="arrow"></span></span><a href="#"> <img src="./img/icon/icloud.png"></a></li>
