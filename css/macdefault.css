@@ -187,15 +187,16 @@ body {
 #win10-menu {
     position: fixed;
     top: 31px;
+    left: 0.5%;
     background-color: rgba(255,255,255,0.55);
-    height:auto;
-    width: 12.5%;
+    height: auto;
+    width: 10%;
     max-width: 880px;
     overflow: auto;
     z-index: 1000;
     overflow-y: hidden;
-    transition: bottom 0.5s ;
-	border-radius: 0 0 5px 5px;
+    transition: bottom 0.5s;
+    border-radius: 3px;
 }
 
 #win10-menu.hidden {
@@ -1015,12 +1016,16 @@ body {
 @media screen and (max-width:767px){
     #win10-menu{
         width:100%;
+        top: 30px;
+        left:0;
         height: calc(100% - 31px);
+        border-radius:0 0 2px 2px;
     }
     #win10-menu.hidden{
         top: calc(-100% + 31px);
     }
     #win10_command_center{
+         top: 30px;
         width: 100%;
     }
     #win10_command_center.hidden_right {
@@ -1043,7 +1048,7 @@ body {
     }
     #win10_btn_show_desktop {
         border-left: grey 1px solid;
-        width: 30px;
+        width: 15px;
         margin-left: 3px;
         padding: 0 !important
     }
