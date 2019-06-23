@@ -8,14 +8,7 @@ window.Win10 = {
         main:'',
         mobile:'',
     },
-    _blur:{
-        win10:0,
-        task_bar:0,
-        desktop:0,
-        menu:0,
-        command:0,
-        footer:0,
-    },
+	_wallpaperBlur: true, //壁纸模糊（影响性能）
     _countTask: 0,
     _newMsgCount:0,
     _animated_classes:[],
@@ -121,22 +114,7 @@ window.Win10 = {
         }
 		//开始渲染壁纸模糊
 		if(Win10._wallpaperBlur){
-			this.loadScript('js/background-blur.min.js',function(){
-				var $avatarHolderEl = $('#win10');
-				$avatarHolderEl.backgroundBlur({
-					imageURL : Win10._bgs.main,
-					blurAmount : 20, 
-					imageClass : 'avatar-blur' 
-				});
-			});
-			$.getScript("js/background-blur.min.js",function(){  //加载test.js,成功后，并执行回调函数
-			  var $avatarHolderEl = $('#win10');
-				$avatarHolderEl.backgroundBlur({
-					imageURL : Win10._bgs.main,
-					blurAmount : 20, 
-					imageClass : 'avatar-blur' 
-				});
-			});
+			$('.background').addClass('blur');
 		}
     },
     _startAnimate:function () {

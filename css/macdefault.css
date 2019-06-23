@@ -48,6 +48,30 @@ body {
     position: relative;
 }
 
+#win10 .blur {
+    -webkit-filter: blur(8px); /* Chrome, Opera */
+    -moz-filter: blur(8px);
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=8, MakeShadow=false);
+    transition: filter 0.3s;
+    transition: -webkit-filter 0.3s;
+    transition: -moz-filter 0.3s;
+    transition: -ms-filter 0.3s;
+}
+
+#win10 .desktop .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -999;
+    transform: scale3d(1.1, 1.1, 1);
+    background-size: 100% 100%;
+    background-position: center center;
+}
+
 #win10 *{
     scrollbar-arrow-color: #5e6a5c;  /*图6,三角箭头的颜色*/
     scrollbar-face-color: #5e6a5c;  /*图5,立体滚动条的颜色*/
@@ -75,7 +99,7 @@ body {
     height: 30px;
     line-height:30px;
     /* IE9+ */
-	background-color:rgba(255,255,255,0.5);
+	background-color:rgba(255,255,255,0.4);
 	/* IE6-IE8 */
 	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#68FFFFFF,endColorStr=#68FFFFFF);
     z-index: 19930813;
@@ -853,12 +877,12 @@ body {
 }
 
 /*右键菜单*/
-#win10 .win10-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgba(255,255,255,0.75); border: #CCC 1px solid; display: block; border-radius: 5px; z-index: 99999999; }
+#win10 .win10-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgba(255, 255, 255,0.75); border: #CCC 1px solid; display: block; border-radius: 5px; z-index: 99999999; }
 #win10 .win10-context-menu ul { margin: 0px; padding: 0px; }
 #win10 .win10-context-menu ul li {transition: background-color 0.5s;cursor: default;padding: 0px 1em; list-style: none; line-height: 30px; height: 30px; margin: 3px 0;  font-size: 13px; }
 #win10 .win10-context-menu ul li:hover {  background-color:  rgba(49,156,241,0.71);cursor: pointer; }
 #win10 .win10-context-menu ul li a {text-decoration: none; display: block; height: 100%; color: #333; outline: none; }
-#win10 .win10-context-menu ul hr { margin: 0; height: 0px; border: 0px; border-bottom: rgb(233,233,233) 1px solid;border-top: none }
+#win10 .win10-context-menu ul hr { margin: 0; height: 0px; border: 0px; border-bottom: rgba(233,233,233) 1px solid;border-top: none }
 
 /*块级按钮*/
 .win10-open-iframe .layui-layer-ico{background-image:none;}
@@ -878,6 +902,10 @@ body {
     text-align: center;
     overflow: hidden;
 	margin:0px;
+}
+.win10-open-iframe .layui-layer-title{
+    line-height:30px;
+    height: 30px;
 }
 
 .win10-open-iframe .layui-layer-title{

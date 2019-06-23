@@ -8,12 +8,12 @@
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/favicon.ico'>
     <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
     <link href="./css/animate.css" rel="stylesheet">
-    <script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
     <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="./css/macdefault.css" rel="stylesheet">
+	<script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
     <script type="text/javascript" src="./js/mac.js"></script>
-    <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
-    <script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
+	<link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
+	<script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
     <script>
         Win10.onReady(function () {
 
@@ -45,15 +45,15 @@
             }, 1500);
 
             setTimeout(function () {
-                layer.open({
-                    type: 2,
-                    title: '最新资讯',
-                    area: ['300px', '380px'],
-                    shade:0,
+				layer.open({
+					type: 2,
+					title: '最新资讯',
+					area: ['300px', '380px'],
+					shade:0,
 					skin:'win10-open-iframe',
-                    offset: 'rb',
-                    content: './broadcast.html'
-                })
+					offset: 'rb',
+					content: 'broadcast.html'
+				})
 			},2000);
         });
     </script>
@@ -95,8 +95,7 @@
                 <div class="title">切换壁纸</div>
             </div>
 			<div class="shortcut win10-drawer">
-                <img class="icon" src="./img/icon/folder.png"/><!-- 
-                <i class="icon fa fa-fw fa-folder" style="color: blue;font-size: 50px;"></i> -->
+                <img class="icon" src="./img/icon/folder.png"/>
                 <div class="title">新建文件夹</div>
                 <div class="win10-drawer-box">
                     <div class="shortcut-drawer win10-drawer">
@@ -120,6 +119,7 @@
                 </div>
             </div>
         </div>
+        <div class="background blur"></div>
     </div>
 
     <div id="win10-menu" class="hidden">
