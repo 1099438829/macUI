@@ -115,22 +115,7 @@ window.Win10 = {
 		
 		//开始渲染壁纸模糊
 		if(Win10._wallpaperBlur){
-			this.loadScript('js/background-blur.min.js',function(){
-				var $avatarHolderEl = $('#win10');
-				$avatarHolderEl.backgroundBlur({
-					imageURL : Win10._bgs.main,
-					blurAmount : 20, 
-					imageClass : 'avatar-blur' 
-				});
-			});
-			$.getScript("js/background-blur.min.js",function(){  //加载test.js,成功后，并执行回调函数
-			  var $avatarHolderEl = $('#win10');
-				$avatarHolderEl.backgroundBlur({
-					imageURL : Win10._bgs.main,
-					blurAmount : 20, 
-					imageClass : 'avatar-blur' 
-				});
-			});
+			$('.background').addClass('blur');
 		}
     },
 		//动态加载JS文件
@@ -187,7 +172,7 @@ window.Win10 = {
         }, 50)
     },
     _setBackgroundImg:function (img) {
-        $('#win10').css('background-image','url('+img+')')
+        $('#win10 .background').css('background-image','url('+img+')')
     },
     _settop:function (layero) {
         if(!isNaN(layero)){
