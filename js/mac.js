@@ -567,6 +567,10 @@ window.Win10 = {
         this._bgs=bgs;
         this._checkBgUrls();
     },
+    setBg:function (bgs) {
+        this._bgs=bgs;
+        this._checkBgUrls();
+    },
     menuClose: function () {
         $("#win10-menu").removeClass('opened');
         $("#win10-menu").addClass('hidden');
