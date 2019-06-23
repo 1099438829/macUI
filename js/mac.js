@@ -148,7 +148,7 @@ window.Win10 = {
         }, 50)
     },
     _setBackgroundImg:function (img) {
-        $('#win10').css('background-image','url('+img+')')
+        $('#win10 .background').css('background-image','url('+img+')')
     },
     _settop:function (layero) {
         if(!isNaN(layero)){
