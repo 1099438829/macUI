@@ -929,7 +929,7 @@ window.Win10 = {
             }
         })
     },
-    openUrl: function (url, title,areaAndOffset) {
+    openUrl: function (url,icon,title,areaAndOffset) {
         if(this._countTask>12){
             layer.msg("您打开的太多了，歇会儿吧~");
             return false;
@@ -969,7 +969,7 @@ window.Win10 = {
             shadeClose: true,
             shade: false,
             maxmin: true, //开启最大化最小化按钮
-            title: title,
+            title: icon + title,
             content: url,
             area: area,
             offset: offset,
@@ -993,7 +993,7 @@ window.Win10 = {
             },
         });
         $('#win10_btn_group_middle .btn.active').removeClass('active');
-        var btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">' + title + '</div><div class="btn_close fa fa-close"></div></div>');
+        var btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">'+icon+'</div><div class="btn_close fa fa-close"></div></div>');
         var layero_opened=Win10.getLayeroByIndex(index);
         layero_opened.css('z-index',Win10._countTask+813);
         Win10._settop(layero_opened);
