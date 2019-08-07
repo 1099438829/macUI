@@ -255,16 +255,16 @@ window.Win10 = {
             if($this.data('url') !== "") {
                 //>> 获取弹窗标题
                 var title = $this.data('title')||'',
-                    areaAndOffset;
+                    areaAndOffset,icon;
                 //>> 判断是否有标题图片
                 var bg=$this.data('icon-bg')?$this.data('icon-bg'):'';
                 if($this.data('icon-image')) {
                     //>> 加入到标题中
-                    title = '<img class="icon '+bg+'" src="' + $this.data('icon-image') + '"/>' + title;
+                    icon = '<img class="icon '+bg+'" src="' + $this.data('icon-image') + '"/>';
                 }
                 if($this.data('icon-font')) {
                     //>> 加入到标题中
-                    title = '<i class="fa fa-fw fa-'+$this.data('icon-font')+' icon '+bg+'"></i>' + title;
+                    icon = '<i class="fa fa-fw fa-'+$this.data('icon-font')+' icon '+bg+'"></i>';
                 }
                 if(!title && $this.children('.icon').length===1 && $this.children('.title').length===1){
                     title = $this.children('.icon').prop("outerHTML")+$this.children('.title').html();
@@ -278,7 +278,7 @@ window.Win10 = {
                     }
                 }
                 //>> 调用win10打开url方法
-                Win10.openUrl($this.data('url'), title, areaAndOffset);
+                Win10.openUrl($this.data('url'),icon, title, areaAndOffset);
             }
         })
     },
@@ -402,7 +402,7 @@ window.Win10 = {
             }, function (value, i) {
                 layer.close(i);
                 layer.msg(Win10.lang('请稍候...','Hold on please...'),{time:1500},function () {
-                    Win10.openUrl(value,value);
+                    Win10.openUrl(value,'',value);
                 });
             });
         });
