@@ -721,7 +721,7 @@ window.Win10 = {
         //小时
         viewdate.hour = get_hour(date);
         //日期
-        viewdate.day = date.getDay();
+        viewdate.day = date.getDate();
         //星期
         viewdate.week = get_week(date);
         //月
@@ -752,24 +752,18 @@ window.Win10 = {
     	if (!active) {
 			if (!today) {
                 var lunarDate = Win10.getLunarObj();
-	    		today = '<div class="command-body-calendar">' +
-			    	'<div class="command-body-calendar-date normal-date">'+lunarDate.month+'月'+lunarDate.day+'日 '+lunarDate.week+'</div>' +
-			    	'<div class="command-body-calendar-date lunar-date">'+lunarDate.ganzhi+'年'+lunarDate.lunarmonth+lunarDate.lunarday+'</div>' +
-			    	'</div>' +
-	    			'<div class="notice">' +
-	                '<div class="notice-header">' +
-	                '<span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>' +
-	                '<span class="notice-header-title">天气</span>'+
-	                '</div>' +
-	                '<div class="notice-body">' +
-	                '<div class="weather-item">' +
-	                '<div class="weather-city">' +
-	                '<span class="weather-city-time">'+lunarDate.hour+':'+lunarDate.minute+'</span>'+
-	                '<span class="weather-city-text">广州市</span>' +
-					'</div>' +
-	                '<div class="weather-type"><img src="http://yun.rili.cn/wnl/img/cloud.png" alt="多云" /></div>' +
-	                '<div class="weather-temperature">17</div>' +
-	                '</div></div></div>';
+	    		var today = '<div class="command-body-calendar">' +
+			                '<div class="command-body-calendar-date normal-date">'+lunarDate.month+'月'+lunarDate.day+'日 '+lunarDate.week+'</div>' +
+			    	        '<div class="command-body-calendar-date lunar-date">'+lunarDate.ganzhi+'年'+lunarDate.lunarmonth+lunarDate.lunarday+'</div>' +
+			    	    '</div>';
+                    today += '<div class="notice">' +
+                           '<div class="notice-header">' +
+                           '<span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>' +
+                           '<span class="notice-header-title">天气</span>'+
+                        '</div>' +
+                        '<div class="notice-body">' +
+                            '<iframe src="http://www.seniverse.com/weather/weather.aspx?uid=U43DF172E7&cid=CHBJ000000&l=&p=SMART&a=1&u=C&s=13&m=2&x=1&d=1&fc=&bgc=2E93D9&bc=&ti=0&in=0&li=" frameborder="0" scrolling="no" width="97%" height="150"  style="padding:5px;" allowTransparency="true"></iframe>'+
+                        '</div></div>';
 	    	}
 	    	$("#win10_command_center .command-body.today").html(today).addClass('active');
     	}
