@@ -53,12 +53,6 @@ window.Win10 = {
         }
     },
     _iframe_click_lock_children:{},
-    _renderBar:function () {
-      //调整任务栏项目的宽度
-        if(this._countTask<=0){return;} //防止除以0
-        var btns=$("#win10_btn_group_middle>.btn");
-        btns.css('width',('calc('+(1/this._countTask*100)+'% - 1px )'))
-    },
     _handleReady:[],
     _hideShortcut:function () {
         var that=$("#win10 #win10-shortcuts .shortcut");
@@ -221,7 +215,6 @@ window.Win10 = {
         layer.close(index);
         Win10._checkTop();
         Win10._countTask--;//回退countTask数
-        Win10._renderBar();
     },
     _fixWindowsHeightAndWidth:function(){
         //此处代码修正全屏切换引起的子窗体尺寸超出屏幕
@@ -390,8 +383,8 @@ window.Win10 = {
             }
         });
         $("#win10-btn-browser").click(function () {
-            // var area = ['100%', (document.body.clientHeight - 40) + 'px'];
-            // var offset = ['0', '0'];
+            var area = ['100%', (document.body.clientHeight - 30) + 'px'];
+            var offset = ['0', '0'];
             layer.prompt({
                 title: Win10.lang('访问网址','Visit URL'),
                 formType: 2,
@@ -807,7 +800,7 @@ window.Win10 = {
             }
         });
     },
-    	//渲染DOCK
+    //渲染DOCK
     renderDocks:function () {
         var cell_width=60;
         var width=document.body.clientWidth ;
@@ -973,7 +966,6 @@ window.Win10 = {
                 $("#win10_" + index).remove();
                 Win10._checkTop();
                 Win10._countTask--;//回退countTask数
-                Win10._renderBar();
             },
             min: function (layero) {
                 layero.hide();
@@ -987,7 +979,7 @@ window.Win10 = {
             },
         });
         $('#win10_btn_group_middle .btn.active').removeClass('active');
-        var btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">'+icon+'</div><div class="btn_close fa fa-close"></div></div>');
+        var btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">'+icon+'</div></div>');
         var layero_opened=Win10.getLayeroByIndex(index);
         layero_opened.css('z-index',Win10._countTask+813);
         Win10._settop(layero_opened);
@@ -1010,7 +1002,6 @@ window.Win10 = {
 
         });
         $("#win10_btn_group_middle").append(btn);
-        Win10._renderBar();
         btn.click(function () {
             var index = $(this).attr('index');
             var layero = Win10.getLayeroByIndex(index);
@@ -1062,7 +1053,6 @@ window.Win10 = {
         $(".win10-open-iframe").remove();
         $("#win10_btn_group_middle").html("");
         Win10._countTask = 0;
-        Win10._renderBar();
     },
     setAnimated:function (animated_classes,animated_liveness) {
         this._animated_classes=animated_classes;

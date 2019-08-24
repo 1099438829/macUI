@@ -116,7 +116,7 @@ function finderOpenApp(name,path,appObject) {
 	$.ajax({
 		url:'json/openPath.json',
 		type:'GET', // GET
-		async:false, // 是否异步
+		async:true, // 是否异步
 		data:{
 			path:path
 		},
