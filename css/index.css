@@ -698,7 +698,6 @@ body {
     display: none;
 }
 
-
 .win10-open-iframe  .layui-layer-min cite{display: none;}
 .win10-open-iframe .layui-layer-max:hover{background-image:none}
 .win10-open-iframe .layui-layer-max,.layui-layer-maxmin{background:none}
@@ -767,73 +766,6 @@ body {
     content:"\f192";
     color: #029FFF;
     font: normal normal normal 16px/1 FontAwesome;
-}
-
-.win10-layer-open-browser .layui-layer-min,.layui-layer-close,.layui-layer-max{
-    text-decoration: none;
-}
-
-.win10-layer-open-browser .layui-layer-ico{background-image:none;}
-
-.win10-layer-open-browser textarea{
-    margin: 20px;
-    outline: none;
-    resize: none;
-}
-
-.win10-layer-open-browser  .layui-layer-min cite{display: none;}
-.win10-layer-open-browser .layui-layer-max:hover{background-image:none}
-.win10-layer-open-browser .layui-layer-max,.layui-layer-maxmin{background:none}
-.win10-layer-open-browser .layui-layer-setwin a.layui-layer-close:hover::before{
-    content:"\f057";
-    color: #FF6057;
-    font: normal normal normal 16px/1 FontAwesome;
-}
-
-.win10-layer-open-browser .layui-layer-min::before{
-    content:"\f111";
-    color: #28CA40;
-    font: normal normal normal 16px/1 FontAwesome;
-}
-
-.win10-layer-open-browser .layui-layer-min:hover::before{
-    content:"\f056";
-    color: #28CA40;
-    font: normal normal normal 16px/1 FontAwesome;
-}
-
-.win10-layer-open-browser .layui-layer-max::before{
-    content:"\f111";
-    color: #FFBD2E;
-    font: normal normal normal 16px/1 FontAwesome;
-}
-
-.win10-layer-open-browser .layui-layer-max:hover::before{
-    content:"\f055";
-    color: #FFBD2E;
-    font: normal normal normal 16px/1 FontAwesome;
-}
-
-.win10-layer-open-browser .layui-layer-maxmin.layui-layer-max::before{
-    content:"\f111";
-    color: #FFBD2E;
-    font: normal normal normal 16px/1 FontAwesome;
-}
-
-.win10-layer-open-browser .layui-layer-maxmin.layui-layer-max:hover::before{
-    content:"\f055";
-    color: #FFBD2E;
-    font: normal normal normal 16px/1 FontAwesome;
-}
-
-.win10-layer-open-browser .layui-layer-close::before{
-    content:"\f111";
-    color: #FF6057;
-    font: normal normal normal 16px/1 FontAwesome;
-}
-
-.win10-layer-open-browser .layui-layer-min,.layui-layer-close,.layui-layer-max{
-    text-decoration: none;
 }
 
 /*右键菜单*/

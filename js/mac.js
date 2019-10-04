@@ -382,23 +382,6 @@ window.Win10 = {
                 e=e.next();
             }
         });
-        $("#win10-btn-browser").click(function () {
-            var area = ['100%', (document.body.clientHeight - 30) + 'px'];
-            var offset = ['0', '0'];
-            layer.prompt({
-                title: Win10.lang('访问网址','Visit URL'),
-                formType: 2,
-                value: '',
-                skin:'win10-layer-open-browser',
-                area: ['300px', '150px'],
-                zIndex:99999999999
-            }, function (value, i) {
-                layer.close(i);
-                layer.msg(Win10.lang('请稍候...','Hold on please...'),{time:1500},function () {
-                    Win10.openUrl(value,'',value);
-                });
-            });
-        });
         setInterval(function () {
 			//重新写mac时间
             var myDate = Win10.getLunarObj();
