@@ -6,12 +6,12 @@ $(function () {
         {
             "pic": "./plugins/theme_switcher/bg/bg1.jpg",
             "thumb": "./bg/bg1_small.jpg",
-            "title": "win10"
+            "title": " Mojave Night"
         },
         {
             "pic": "./plugins/theme_switcher/bg/bg2.jpg",
             "thumb": "./bg/bg2_small.jpg",
-            "title": "梦幻光影"
+            "title": "莫哈韦沙漠风景白天"
         },
         {
             "pic": "./plugins/theme_switcher/bg/bg3.jpg",
@@ -21,63 +21,43 @@ $(function () {
         {
             "pic": "./plugins/theme_switcher/bg/bg4.jpg",
             "thumb": "./bg/bg4_small.jpg",
-            "title": "乡土气息"
+            "title": "Abstract壁纸"
         },
         {
             "pic": "./plugins/theme_switcher/bg/bg5.jpg",
             "thumb": "./bg/bg5_small.jpg",
-            "title": "绿色清新"
+            "title": "暗色沙漠壁纸"
         },
         {
             "pic": "./plugins/theme_switcher/bg/bg6.jpg",
             "thumb": "./bg/bg6_small.jpg",
-            "title": "Win8"
+            "title": "莫哈韦沙漠"
         },
         {
             "pic": "./plugins/theme_switcher/bg/bg7.jpg",
             "thumb": "./bg/bg7_small.jpg",
-            "title": "蓝色海岸"
+            "title": "沙漠风景"
         },
         {
             "pic": "./plugins/theme_switcher/bg/bg8.jpg",
             "thumb": "./bg/bg8_small.jpg",
-            "title": "冰天雪地"
+            "title": "沙漠风光"
         },
         {
             "pic": "./plugins/theme_switcher/bg/bg9.jpg",
             "thumb": "./bg/bg9_small.jpg",
-            "title": "繁花满树"
+            "title": "白天沙漠风景"
         },
         {
             "pic": "./plugins/theme_switcher/bg/bg10.jpg",
             "thumb": "./bg/bg10_small.jpg",
-            "title": "精灵小鸟"
+            "title": "Sierra风景壁纸"
         },
         {
             "pic": "./plugins/theme_switcher/bg/bg11.jpg",
             "thumb": "./bg/bg11_small.jpg",
-            "title": "炫酷跑车"
-        },
-        {
-            "pic": "./plugins/theme_switcher/bg/bg12.jpg",
-            "thumb": "./bg/bg12_small.jpg",
-            "title": "中国风"
-        },
-        {
-            "pic": "./plugins/theme_switcher/bg/bg13.jpg",
-            "thumb": "./bg/bg13_small.jpg",
-            "title": "Winxp"
-        },
-        {
-            "pic": "./plugins/theme_switcher/bg/bg14.jpg",
-            "thumb": "./bg/bg14_small.jpg",
-            "title": "淡雅唯美"
-        },
-        {
-            "pic": "./plugins/theme_switcher/bg/bg15.jpg",
-            "thumb": "./bg/bg15_small.jpg",
-            "title": "Win7"
-        },
+            "title": "秋天风景"
+        }
     ];
 
     var theme_area=$("#theme_area");
