@@ -94,8 +94,8 @@ body {
     width: 100%;
     position: fixed;
     top: 0;
-    height: 30px;
-    line-height:30px;
+    height: 24px;
+    line-height:24px;
     /* IE9+ */
 	background-color:rgba(255,255,255,0.4);
 	/* IE6-IE8 */
@@ -113,7 +113,7 @@ body {
     font-weight:bold;
     text-align: center;
     height: 100%;
-    line-height: 30px;
+    line-height: 24px;
     text-overflow:ellipsis;
     overflow: hidden;
     transition: background-color 0.3s;
@@ -190,12 +190,12 @@ body {
 }
 
 #win10_btn_time {
-    font-size: 12px;
+    font-size: 14px;
     /*line-height: 30px !important  */
 }
 #win10-menu {
     position: fixed;
-    top: 31px;
+    top: 24px;
     left: 0.5%;
     background-color: rgba(255,255,255,0.55);
     height: auto;
@@ -381,10 +381,10 @@ body {
 #win10_command_center {
     position: fixed;
     right: 0;
-    top: 31px;
-    width: 350px;
+    top: 25px;
+    width: 300px;
     background-color: rgba(255, 255, 255, 0.7);
-    height: calc(100% - 32px);
+    height: calc(100% - 25px);
     transition: all 0.5s;
     overflow-x: hidden;
     overflow-y: auto;
@@ -394,7 +394,7 @@ body {
 }
 
 #win10_command_center.hidden_right {
-    right: -350px;
+    right: -300px;
 }
 
 #win10_command_center > .title{
@@ -481,7 +481,7 @@ body {
 }
 
 #win10_command_center .command-body  .notice .notice-header {
-    background-color: #ffffffbf;
+    background-color:#dee7e7;
     height: 25px;
     border-radius: 5px 5px 0 0;
     line-height: 25px;
@@ -567,7 +567,7 @@ body {
 }
 
 #win10_btn_group_right #win10_btn_command{
-    font-size: 20px;
+    font-size: 14px;
 }
 #win10_btn_command .msgNof{
     position: fixed;
@@ -677,7 +677,7 @@ body {
 
 .win10-open-iframe .layui-layer-content{
     background-color: white;
-    max-height: calc(100% - 30px);
+    max-height: calc(100% - 24px);
 }
 
 .win10-open-iframe .layui-layer-title{
@@ -818,7 +818,7 @@ body {
 .win10-open-iframe .layui-layer-title img.icon,#win10_btn_group_middle .btn_title img.icon{
     width: 20px;
     position: relative;
-    top:4px ;
+    top:0px ;
 }
 
 #win10-menu>.list>.sub-item img.icon,#win10-menu>.list>.item img.icon{
@@ -936,16 +936,16 @@ body {
 @media screen and (max-width:767px){
     #win10-menu{
         width:100%;
-        top: 30px;
+        top: 24px;
         left:0;
-        height: calc(100% - 31px);
+        height: calc(100% - 25px);
         border-radius:0 0 2px 2px;
     }
     #win10-menu.hidden{
-        top: calc(-100% + 31px);
+        top: calc(-100% + 25px);
     }
     #win10_command_center{
-         top: 30px;
+        top: 24px;
         width: 100%;
     }
     #win10_command_center.hidden_right {

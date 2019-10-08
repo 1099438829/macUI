@@ -389,7 +389,7 @@ window.Win10 = {
         setInterval(function () {
 			//重新写mac时间
             var myDate = Win10.getLunarObj();
-			$("#win10_btn_time").html(myDate.week+myDate.hour+':'+myDate.minute);
+			$("#win10_btn_time").html(myDate.weekDay+myDate.hour+':'+myDate.minute);
         },1000);
         //离开前警告
         document.body.onbeforeunload = function(event){
@@ -664,7 +664,13 @@ window.Win10 = {
             return Animals[(year-4)%12];
         }
         //获取周
-        function get_week(date){
+        function get_weekday(date){
+            var values = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+            return values[date.getDay()];
+        }
+
+         //获取星期
+         function get_week(date){
             var values = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
             return values[date.getDay()];
         }
@@ -704,6 +710,8 @@ window.Win10 = {
         viewdate.day = date.getDate();
         //星期
         viewdate.week = get_week(date);
+         //星期
+         viewdate.weekDay = get_weekday(date);
         //月
         viewdate.month = date.getMonth()+1;
         //完整的年份(4位,1970-????)
@@ -773,7 +781,7 @@ window.Win10 = {
         $("#win10-msg-nof").removeClass('on-new-msg fa-commenting-o');
     },
     renderShortcuts:function () {
-        var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-90)/100);
+        var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-85)/100);
         var x=0,y=0;
         $("#win10 #win10-shortcuts .shortcut").each(function () {
             $(this).css({
@@ -924,8 +932,8 @@ window.Win10 = {
         }
         var area,offset;
         if (this.isSmallScreen() || areaAndOffset==='max') {
-            area = ['100%', (document.body.clientHeight - 30) + 'px'];
-            offset = ['30px', '0'];
+            area = ['100%', (document.body.clientHeight - 24) + 'px'];
+            offset = ['24px', '0'];
         }else if(typeof areaAndOffset ==='object'){
             area=areaAndOffset[0];
             offset=areaAndOffset[1];
@@ -962,7 +970,7 @@ window.Win10 = {
             },
             full:function (layero) {
                 layero.find('.layui-layer-min').css('display','inline-block');
-				layero_opened.css('top',30);
+				layero_opened.css('top',24);
             },
         });
         $('#win10_btn_group_middle .btn.active').removeClass('active');
@@ -981,9 +989,9 @@ window.Win10 = {
                 var height=layero_opened.css('height');
                 height=parseInt(height.replace('px',''));
                 if (height>=document.body.clientHeight){
-                   layero_opened.css('height',height-32);
-                   layero_opened.find('.layui-layer-content').css('height',height-62);
-                   layero_opened.find('.layui-layer-content iframe').css('height',height-62);
+                   layero_opened.css('height',height-25);
+                   layero_opened.find('.layui-layer-content').css('height',height-55);
+                   layero_opened.find('.layui-layer-content iframe').css('height',height-55);
                 }
             },300);
 
