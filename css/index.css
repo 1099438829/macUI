@@ -481,7 +481,7 @@ body {
 }
 
 #win10_command_center .command-body  .notice .notice-header {
-    background-color:#dee7e7;
+    background-color:#eff0f2;
     height: 25px;
     border-radius: 5px 5px 0 0;
     line-height: 25px;
@@ -504,7 +504,7 @@ body {
 }
 
 #win10_command_center .command-body  .notice .notice-body {
-    background-color: #eff0f2;
+    background-color: #dee7e7;
     border-radius: 0 0 5px 5px;
 }
 
