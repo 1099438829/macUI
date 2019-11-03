@@ -435,16 +435,7 @@ body {
     font-size: 14px;
     color: #eaeaea;
     background-color: rgba(121, 121, 121, 0.5);
-}
-
-#win10_command_center .command-header div{
-    width: 130px;
-    height: 20px;
-    margin: 15px 0;
-    display: inline-block;
-    font-size: 14px;
-    color: #eaeaea;
-    background-color: rgba(121, 121, 121, 0.5);
+	border-radius:2px;
 }
 
 #win10_command_center .command-header div:hover {
