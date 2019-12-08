@@ -418,7 +418,7 @@ body {
 }
 
 #win10_command_center .command-header .item{
-    width: 130px;
+    width: 45%;
     height: 20px;
     margin: 15px 0;
     display: inline-block;
@@ -428,7 +428,7 @@ body {
 }
 
 #win10_command_center .command-header div{
-    width: 130px;
+    width: 45%;
     height: 20px;
     margin: 15px 0;
     display: inline-block;
