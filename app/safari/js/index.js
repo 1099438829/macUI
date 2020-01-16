@@ -3,8 +3,14 @@ var helangSearch = {
 	searchIndex: 0,
 	hot: {
 		color: ['#ff2c00', '#ff5a00', '#ff8105', '#fd9a15', '#dfad1c', '#6bc211', '#3cc71e', '#3cbe85', '#51b2ef', '#53b0ff'],
-		list: ['1099438829@qq.com', 'qq:1099438829', '木子的忧伤', 'macUI', '猿码云', 'apecloud.cn', 'win10ui', 'https://github.com/1099438829/macUI']
+		list: ['木子的忧伤', 'macUI', '猿码云', 'apecloud.cn', 'win10ui', 'https://github.com/1099438829/macUI']
 	},
+	searchArr : [
+        'https://www.baidu.com/s?ie=UTF-8&wd=',//百度
+ 		'https://www.sogou.com/web?query=', //搜狗
+		'https://cn.bing.com/search?q=', //必应
+		'https://www.google.com/search?q=',//谷歌
+	],
 	init: function() {
 		var _this = this;
 		this.els = {
@@ -18,7 +24,7 @@ var helangSearch = {
 		this.els.hotList.html(function() {
 			var str = '';
 			$.each(_this.hot.list, function(index, item) {
-				str += '<a href="https://www.baidu.com/s?ie=utf8&oe=utf8&tn=98010089_dg&ch=11&wd=' + item + '" target="_blank">' + '<div class="number" style="color: ' + _this.hot.color[index] + '">' + (index + 1) + '</div>' + '<div>' + item + '</div>' + '</a>';
+				str += '<a href="'+_this.searchArr[_this.searchIndex] + item + '" target="_blank">' + '<div class="number" style="color: ' + _this.hot.color[index] + '">' + (index + 1) + '</div>' + '<div>' + item + '</div>' + '</a>';
 			});
 			return str;
 		});
@@ -47,8 +53,7 @@ var helangSearch = {
 			}
 		});
 		this.els.button.click(function() {
-			var searchArr = ['百度', '搜狗', '必应', '谷歌'];
-			alert(searchArr[_this.searchIndex] + "搜索：" + _this.els.input.val());
+			location.href = _this.searchArr[_this.searchIndex] + _this.els.input.val();
 		});
 		$(document).click(function() {
 			_this.els.pickerList.hide();
