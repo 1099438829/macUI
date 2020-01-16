@@ -279,19 +279,23 @@ window.Win10 = {
             if($this.data('url') !== "") {
                 //>> 获取弹窗标题
                 var title = $this.data('title')||'',
-                    areaAndOffset;
+                    areaAndOffset,icon;
+
                 //>> 判断是否有标题图片
                 var bg=$this.data('icon-bg')?$this.data('icon-bg'):'';
                 if($this.data('icon-image')) {
                     //>> 加入到标题中
-                    title = '<img class="icon '+bg+'" src="' + $this.data('icon-image') + '"/>' + title;
+                    icon = '<img class="icon '+bg+'" src="' + $this.data('icon-image') + '"/>';
                 }
                 if($this.data('icon-font')) {
                     //>> 加入到标题中
-                    title = '<i class="fa fa-fw fa-'+$this.data('icon-font')+' icon '+bg+'"></i>' + title;
+                    icon = '<i class="fa fa-fw fa-'+$this.data('icon-font')+' icon '+bg+'"></i>';
                 }
                 if(!title && $this.children('.icon').length===1 && $this.children('.title').length===1){
-                    title = $this.children('.icon').prop("outerHTML")+$this.children('.title').html();
+                    title = $this.children('.title').html();
+                    if(!icon){
+                        icon = $this.children('.icon').prop("outerHTML");
+                    }
                 }
                 //>> 判断是否需要 设置 区域宽度高度
                 if($this.data('area-offset')) {
@@ -302,7 +306,7 @@ window.Win10 = {
                     }
                 }
                 //>> 调用win10打开url方法
-                Win10.openUrl($this.data('url'), title, areaAndOffset);
+                Win10.openUrl($this.data('url'),icon, title, areaAndOffset);
             }
         })
     },
@@ -316,6 +320,7 @@ window.Win10 = {
             Win10.menuToggle();
         });
         $("#win10_btn_command").click(function () {
+        	Win10.renderCommand();
             Win10.menuClose();
             Win10.commandCenterToggle();
         });
@@ -323,12 +328,24 @@ window.Win10 = {
             Win10.menuClose();
             Win10.commandCenterClose();
         });
-        $('#win10').on('click',".msg .btn_close_msg", function () {
-            var msg = $(this).parent();
+        $('#win10').on('click',".notice .btn_close_msg", function () {
+            var msg = $(this).parents('.notice');
             $(msg).addClass('animated slideOutRight');
             setTimeout(function () {
                 msg.remove()
             }, 500)
+        });
+        //消息界面切换
+        $('#win10_command_center').on('click',".command-header div", function () {
+            if (!$(this).hasClass('active')) {
+            	if ($(this).hasClass('tab-today')) {
+            		$(this).parent().siblings('.msgs').hide().siblings('.today').show();
+            		$(this).addClass('active').siblings('div').removeClass('active');
+            	}else{
+            		$(this).parent().siblings('.today').hide().siblings('.msgs').show();
+                	$(this).addClass('active').siblings('div').removeClass('active');
+            	}
+            }
         });
         $('#win10_btn_command_center_clean_all').click(function () {
             var msgs=$('#win10_command_center .msg');
@@ -400,38 +417,10 @@ window.Win10 = {
                 e=e.next();
             }
         });
-        $("#win10-btn-browser").click(function () {
-            // var area = ['100%', (document.body.clientHeight - 40) + 'px'];
-            // var offset = ['0', '0'];
-            layer.prompt({
-                title: Win10.lang('访问网址','Visit URL'),
-                formType: 2,
-                value: '',
-                skin:'win10-layer-open-browser',
-                area: ['300px', '150px'],
-                zIndex:99999999999
-            }, function (value, i) {
-                layer.close(i);
-                layer.msg(Win10.lang('请稍候...','Hold on please...'),{time:1500},function () {
-                    Win10.openUrl(value,value);
-                });
-            });
-        });
         setInterval(function () {
 			//重新写mac时间
-            var myDate = new Date();
-			var week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")[myDate.getDay()];
-			var hour=myDate.getHours();
-            var mins=myDate.getMinutes();if (mins<10){mins='0'+mins}
-            if(hour < 6){hours='凌晨'+hour;} 
-            else if (hour < 9){hours='早上'+hour;} 
-            else if (hour < 12){hours='上午'+hour;} 
-            else if (hour < 14){hours='中午'+(hour-12);} 
-            else if (hour < 17){hours='下午'+(hour-12);} 
-            else if (hour < 19){hours='傍晚'+(hour-12);} 
-            else if (hour < 22){hours='晚上'+(hour-12);} 
-            else {hours='深夜'+(hour-12)} 
-			$("#win10_btn_time").html(week+hours+':'+mins);
+            var myDate = Win10.getLunarObj();
+			$("#win10_btn_time").html(myDate.weekDay+myDate.hour+':'+myDate.minute);
         },1000);
         //离开前警告
         document.body.onbeforeunload = function(event){
@@ -577,10 +566,232 @@ window.Win10 = {
         this._showShortcut();
         $(".win10-open-iframe").removeClass('hide');
     },
+    getLunarObj: function () {
+        //农历年信息
+        var lunarInfo = new Array(
+            0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,
+            0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977,
+            0x04970,0x0a4b0,0x0b4b5,0x06a50,0x06d40,0x1ab54,0x02b60,0x09570,0x052f2,0x04970,
+            0x06566,0x0d4a0,0x0ea50,0x06e95,0x05ad0,0x02b60,0x186e3,0x092e0,0x1c8d7,0x0c950,
+            0x0d4a0,0x1d8a6,0x0b550,0x056a0,0x1a5b4,0x025d0,0x092d0,0x0d2b2,0x0a950,0x0b557,
+            0x06ca0,0x0b550,0x15355,0x04da0,0x0a5d0,0x14573,0x052d0,0x0a9a8,0x0e950,0x06aa0,
+            0x0aea6,0x0ab50,0x04b60,0x0aae4,0x0a570,0x05260,0x0f263,0x0d950,0x05b57,0x056a0,
+            0x096d0,0x04dd5,0x04ad0,0x0a4d0,0x0d4d4,0x0d250,0x0d558,0x0b540,0x0b5a0,0x195a6,
+            0x095b0,0x049b0,0x0a974,0x0a4b0,0x0b27a,0x06a50,0x06d40,0x0af46,0x0ab60,0x09570,
+            0x04af5,0x04970,0x064b0,0x074a3,0x0ea50,0x06b58,0x055c0,0x0ab60,0x096d5,0x092e0,
+            0x0c960,0x0d954,0x0d4a0,0x0da50,0x07552,0x056a0,0x0abb7,0x025d0,0x092d0,0x0cab5,
+            0x0a950,0x0b4a0,0x0baa4,0x0ad50,0x055d9,0x04ba0,0x0a5b0,0x15176,0x052b0,0x0a930,
+            0x07954,0x06aa0,0x0ad50,0x05b52,0x04b60,0x0a6e6,0x0a4e0,0x0d260,0x0ea65,0x0d530,
+            0x05aa0,0x076a3,0x096d0,0x04bd7,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45,
+            0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0);
+        var Animals=new Array("鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪");
+        var Gan=new Array("甲","乙","丙","丁","戊","己","庚","辛","壬","癸");
+        var Zhi=new Array("子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥");
+        
+        //==== 传回农历 y年的总天数
+        function lYearDays(y) {
+            var i, sum = 348
+            for(i=0x8000; i>0x8; i>>=1) sum += (lunarInfo[y-1900] & i)? 1: 0
+            return(sum+leapDays(y))
+        }
+        //==== 传回农历 y年闰月的天数
+        function leapDays(y) {
+            if(leapMonth(y))   
+                return((lunarInfo[y-1900] & 0x10000)? 30: 29)
+            else 
+                return(0)
+        }
+        //==== 传回农历 y年闰哪个月 1-12 , 没闰传回 0
+        function leapMonth(y) { 
+            return(lunarInfo[y-1900] & 0xf);
+        }
+        //==== 传回农历 y年m月的总天数
+        function monthDays(y,m) { 
+            return((lunarInfo[y-1900] & (0x10000>>m))? 30: 29 );
+        }
+        //==== 算出农历, 传入日期物件, 传回农历日期物件
+        //      该物件属性有 .year .month .day .isLeap .yearCyl .dayCyl .monCyl
+        function lunar(objDate) {
+            var i, leap=0, temp=0
+            var baseDate = new Date(1900,0,31)
+            var offset    = (objDate - baseDate)/86400000
+ 
+            this.dayCyl = offset + 40
+            this.monCyl = 14
+ 
+            for(i=1900; i<2050 && offset>0; i++) {
+                temp = lYearDays(i)
+                offset -= temp
+                this.monCyl += 12
+            }
+            if(offset<0) {
+                offset += temp;
+                i--;
+                this.monCyl -= 12
+            }
+ 
+            this.year = i
+            this.yearCyl = i-1864
+ 
+            leap = leapMonth(i) //闰哪个月
+            this.isLeap = false
+ 
+            for(i=1; i<13 && offset>0; i++) {
+                //闰月
+                if(leap>0 && i==(leap+1) && this.isLeap==false)
+                { --i; this.isLeap = true; temp = leapDays(this.year); }
+                else
+                { temp = monthDays(this.year, i); }
+ 
+                //解除闰月
+                if(this.isLeap==true && i==(leap+1)) this.isLeap = false
+ 
+                offset -= temp
+                if(this.isLeap == false) this.monCyl ++
+            }
+ 
+            if(offset==0 && leap>0 && i==leap+1)
+                if(this.isLeap)
+            { this.isLeap = false; }
+            else
+            { this.isLeap = true; --i; --this.monCyl;}
+ 
+            if(offset<0){ offset += temp; --i; --this.monCyl; }
+ 
+            this.month = i
+            this.day = offset + 1
+        }
+        //获取农历（月）中文格式
+        function get_lunarmonth(month){
+            var fm = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","腊月"];
+            return fm[month-1];
+        }
+        //获取农历（日）中文格式
+        function get_lunarday(day){
+            var fd = ["十","一","二","三","四","五","六","七","八","九","十"];
+            if(day <= 10){
+                return "初"+fd[day];
+            }
+            else if(day < 20){
+                return "十"+fd[day-10];
+            }
+            else if(day==20){
+                return "二十";
+            }
+            else if(day < 30){
+                return "廿"+fd[day-20];
+            }
+            else{
+                return "三"+fd[day-30];
+            }
+        }
+        
+        //获取干支
+        function get_ganzhi(year) { 
+            var num = year-1900+36;
+            return(Gan[num%10]+Zhi[num%12]); 
+        }
+        //获取生肖
+        function get_animal(year){
+            return Animals[(year-4)%12];
+        }
+        //获取周
+        function get_weekday(date){
+            var values = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+            return values[date.getDay()];
+        }
+
+         //获取星期
+         function get_week(date){
+            var values = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            return values[date.getDay()];
+        }
+
+        //获取分钟
+        function get_min(date){
+            var mins=date.getMinutes();
+            if (mins<10){
+                mins='0'+mins
+            }
+            return mins;
+        }
+
+        //获取小时
+        function get_hour(date){
+            var hour=date.getHours();
+            if(hour < 6){hours='凌晨'+hour;} 
+            else if (hour < 9){hours='早上'+hour;} 
+            else if (hour < 12){hours='上午'+hour;} 
+            else if (hour < 14){hours='中午'+(hour-12);} 
+            else if (hour < 17){hours='下午'+(hour-12);} 
+            else if (hour < 19){hours='傍晚'+(hour-12);} 
+            else if (hour < 22){hours='晚上'+(hour-12);} 
+            else {hours='深夜'+(hour-12)} 
+            return hours;
+        }
+        
+        var viewdate = {};
+        var date = new Date();
+                 //秒
+        viewdate.second = date.getSeconds();;
+         //分钟
+        viewdate.minute = get_min(date);
+        //小时
+        viewdate.hour = get_hour(date);
+        //日期
+        viewdate.day = date.getDate();
+        //星期
+        viewdate.week = get_week(date);
+         //星期
+         viewdate.weekDay = get_weekday(date);
+        //月
+        viewdate.month = date.getMonth()+1;
+        //完整的年份(4位,1970-????)
+        viewdate.fullYear = date.getFullYear();
+        //年份(2位)
+        viewdate.year = date.getYear();
+        //农历信息
+        var lunar_obj = new lunar(date);
+        //农历中文月
+        viewdate.lunarmonth =  get_lunarmonth(lunar_obj.month);
+        //农历中文日
+        var lunar_day =  Math.floor(lunar_obj.day);
+        viewdate.lunarday = get_lunarday(lunar_day);
+        //农历年月日
+        viewdate.lunar = lunar_obj.year + "-" + lunar_obj.month + "-" + lunar_day;
+        //干支
+        viewdate.ganzhi = get_ganzhi(lunar_obj.year);
+        //生肖
+        viewdate.animal = get_animal(lunar_obj.year);
+            
+        return viewdate;
+    },
+    //消息中心渲染
+    renderCommand:function (today=null) {
+    	var active = $("#win10_command_center .command-body.today").hasClass('active');
+    	if (!active) {
+			if (!today) {
+                var lunarDate = Win10.getLunarObj();
+	    		var today = '<div class="command-body-calendar">' +
+			                '<div class="command-body-calendar-date normal-date">'+lunarDate.month+'月'+lunarDate.day+'日 '+lunarDate.week+'</div>' +
+			    	        '<div class="command-body-calendar-date lunar-date">'+lunarDate.ganzhi+'年'+lunarDate.lunarmonth+lunarDate.lunarday+'</div>' +
+			    	    '</div>';
+                    today += '<div class="notice">' +
+                           '<div class="notice-header">' +
+                           '<span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>' +
+                           '<span class="notice-header-title">天气</span>'+
+                        '</div>' +
+                        '<div class="notice-body">' +
+                            '<iframe src="http://www.seniverse.com/weather/weather.aspx?uid=U43DF172E7&cid=CHBJ000000&l=&p=SMART&a=1&u=C&s=13&m=2&x=1&d=1&fc=&bgc=2E93D9&bc=&ti=0&in=0&li=" frameborder="0" scrolling="no" width="97%" height="150"  style="padding:5px;" allowTransparency="true"></iframe>'+
+                        '</div></div>';
+	    	}
+	    	$("#win10_command_center .command-body.today").html(today).addClass('active');
+    	}
+    },
     menuOpen: function () {
         $("#win10-menu").addClass('opened');
         $("#win10-menu").removeClass('hidden');
-        this._hideShortcut();
+        //this._hideShortcut(); //不关闭
         $(".win10-open-iframe").addClass('hide');
     },
     menuToggle: function () {
@@ -597,12 +808,12 @@ window.Win10 = {
     },
     commandCenterOpen: function () {
         $("#win10_command_center").removeClass('hidden_right');
-        this._hideShortcut();
+        //this._hideShortcut();
         $(".win10-open-iframe").addClass('hide');
         $("#win10-msg-nof").removeClass('on-new-msg fa-commenting-o');
     },
     renderShortcuts:function () {
-        var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-90)/100);
+        var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-85)/100);
         var x=0,y=0;
         $("#win10 #win10-shortcuts .shortcut").each(function () {
             $(this).css({
@@ -668,12 +879,21 @@ window.Win10 = {
             this.commandCenterClose();
         }
     },
-    newMsg: function (title, content,handle_click) {
-        var e = $('<div class="msg">' +
-            '<div class="title">' + title +'</div>'+
-            '<div class="content">' + content + '</div>' +
-            '<span class="btn_close_msg fa fa-close"></span>' +
-            '</div>');
+    newMsg: function (title,content,handle_click,app_name='提示消息',app_icon='<img src="./img/icon/weather.png" class="notice-header-icon-img" />',is_del=true) {
+        var msg = '<div class="notice">' +
+                '<div class="notice-header">' +
+                '<span class="notice-header-icon">'+app_icon+'</span>' +
+                '<span class="notice-header-title">'+app_name+'</span>';
+                if (is_del) {
+                  msg += '<span class="btn_close_msg fa fa-times-circle"></span>';              
+                }
+                msg +='</div>' +
+                '<div class="notice-body">' +
+                '<div class="msg">' +
+                '<div class="title">' + title +'</div>'+
+                '<div class="content">' + content + '</div>' +
+                '</div></div></div>';
+        var e = $(msg);
         $("#win10_command_center .msgs").prepend(e);
         e.find('.content:first,.title:first').click(function () {
             if(handle_click){
@@ -740,7 +960,7 @@ window.Win10 = {
             }
         })
     },
-    openUrl: function (url, title,areaAndOffset) {
+    openUrl: function (url,icon,title,areaAndOffset) {
         if(this._countTask>12){
             layer.msg("您打开的太多了，歇会儿吧~");
             return false;
@@ -761,8 +981,8 @@ window.Win10 = {
         }
         var area,offset;
         if (this.isSmallScreen() || areaAndOffset==='max') {
-            area = ['100%', (document.body.clientHeight - 30) + 'px'];
-            offset = ['30px', '0'];
+            area = ['100%', (document.body.clientHeight - 24) + 'px'];
+            offset = ['24px', '0'];
         }else if(typeof areaAndOffset ==='object'){
             area=areaAndOffset[0];
             offset=areaAndOffset[1];
@@ -780,7 +1000,7 @@ window.Win10 = {
             shadeClose: true,
             shade: false,
             maxmin: true, //开启最大化最小化按钮
-            title: title,
+            title: icon + title,
             content: url,
             area: area,
             offset: offset,
@@ -800,11 +1020,11 @@ window.Win10 = {
             },
             full:function (layero) {
                 layero.find('.layui-layer-min').css('display','inline-block');
-				layero_opened.css('top',30);
+				layero_opened.css('top',24);
             },
         });
         $('#win10_btn_group_middle .btn.active').removeClass('active');
-        var btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">' + title + '</div><div class="btn_close fa fa-close"></div></div>');
+        var btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">'+icon+'</div></div>');
         var layero_opened=Win10.getLayeroByIndex(index);
         layero_opened.css('z-index',Win10._countTask+813);
         Win10._settop(layero_opened);
@@ -819,9 +1039,9 @@ window.Win10 = {
                 var height=layero_opened.css('height');
                 height=parseInt(height.replace('px',''));
                 if (height>=document.body.clientHeight){
-                   layero_opened.css('height',height-32);
-                   layero_opened.find('.layui-layer-content').css('height',height-72);
-                   layero_opened.find('.layui-layer-content iframe').css('height',height-72);
+                   layero_opened.css('height',height-25);
+                   layero_opened.find('.layui-layer-content').css('height',height-55);
+                   layero_opened.find('.layui-layer-content iframe').css('height',height-55);
                 }
             },300);
 

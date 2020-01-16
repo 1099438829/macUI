@@ -1,0 +1,392 @@
+blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul {
+	margin: 0;
+	padding: 0;
+	font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+}
+
+body,button,input,select,textarea {
+	font: 9pt/1.5tahoma,arial,\5b8b\4f53
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%
+}
+
+address,cite,dfn,em,var {
+	font-style: normal
+}
+
+code,kbd,pre,samp {
+	font-family: couriernew,courier,monospace
+}
+
+small {
+	font-size: 9pt
+}
+
+ol,ul {
+	list-style: none
+}
+
+a {
+	text-decoration: none
+}
+
+a:hover {
+	text-decoration: underline
+}
+
+sup {
+	vertical-align: text-top
+}
+
+sub {
+	vertical-align: text-bottom
+}
+
+legend {
+	color: #000
+}
+
+fieldset,img {
+	border: 0
+}
+
+button,input,select,textarea {
+	font-size: 100%
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+body,html {
+	height: 100%
+}
+
+body {
+	overflow: hidden;
+	margin: 0;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-moz-background-size: cover;
+	-webkit-background-size: cover
+}
+
+a:focus {
+	outline: 0
+}
+
+.app-list {
+	position: relative;
+	width: 100%;
+	height: 100%
+}
+
+.clear {
+	clear: both
+}
+
+.finder-wrapper {
+	width: 100%;
+	height: 100%
+}
+
+.finder-wrapper .topbar {
+	margin-top: 0;
+	width: 100%;
+	height: 30px;
+	border-bottom: 1px solid #9a9a9a;
+	background: #f6f6f6
+}
+
+.finder-wrapper .topbar .sortstyle-box {
+	float: left;
+	margin-left: 105px;
+	width: 58px;
+	height: 24px;
+	background: url(images/icons/sortstyle.png) no-repeat;
+	cursor: pointer
+}
+
+.finder-wrapper .topbar .config-button {
+	float: left;
+	margin-left: 10px;
+	width: 40px;
+	height: 24px;
+	background: url(images/icons/config.png) no-repeat;
+	cursor: pointer
+}
+
+.finder-wrapper .topbar .higher-button {
+	float: left;
+	margin-left: 10px;
+	width: 40px;
+	height: 24px;
+	background: url(images/icons/higher.png) no-repeat;
+	cursor: pointer
+}
+
+.finder-wrapper .topbar .collection-button {
+	float: left;
+	margin-left: 10px;
+	width: 40px;
+	height: 24px;
+	background: url(images/icons/collection.png) no-repeat;
+	cursor: pointer
+}
+
+.finder-wrapper .topbar .search-box {
+	float: right;
+	margin-top: 2px;
+	margin-right: 5px;
+	width: 234px;
+	height: 24px;
+	background: url(images/icons/search.png) no-repeat
+}
+
+.finder-wrapper .main .content .app-box {
+	z-index: 999;
+	border-radius: 3px;
+	text-align: center
+}
+
+.finder-wrapper .main .content .middle {
+	width: 5pc;
+	height: 75pt
+}
+
+.finder-wrapper .main .content .middle,.trash-wrapper .main .content .middle {
+	float: left;
+	margin-top: 10px;
+	margin-left: 30px
+}
+
+.finder-wrapper .main .content .middle img {
+	margin-top: 5px;
+	width: 60px
+}
+
+.finder-wrapper .main .content .middle {
+	float: left
+}
+
+.finder-wrapper .main .content .middle .app-name {
+	float: left;
+	display: block;
+	overflow: hidden;
+	margin-top: 6px;
+	padding-top: 1px;
+	width: 5pc;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 9pt;
+	line-height: 1.7em;
+	transition: none 0s ease 0s;
+	writing-mode: horizontal-tb;
+	word-break: keep-all
+}
+
+.finder-wrapper .main .content .active {
+	background-image: url(images/icons/finder_app_active_bg.png)
+}
+
+.finder-wrapper .main .content .hover {
+	background-image: url(images/icons/finder_app_hover_bg.png)
+}
+
+.finder-wrapper .topbar .next-prev-box {
+	float: left;
+	margin-top: 2px;
+	margin-left: 5px;
+	width: 53px;
+	height: 24px;
+	background: url(images/icons/next_prev.png) no-repeat;
+	cursor: pointer
+}
+
+.finder-wrapper .main {
+	width: 100%;
+	height: calc(100% - 30px);
+	background: #fff
+}
+
+.finder-wrapper .main .sidebar {
+	float: left;
+	width: 148px;
+	height: 100%;
+	border-right: 1px solid #dfdfdf;
+	background: #f6f6f6
+}
+
+.finder-wrapper .main .content {
+	float: left;
+	overflow-y: auto;
+	width: 80%;
+	width: calc(100% - 150px);
+	height: 100%
+}
+
+.finder-wrapper .main .sidebar ul {
+	margin: 0;
+	padding: 0;
+	padding-top: 5px;
+	width: 148px;
+	list-style: none
+}
+
+.finder-wrapper .main .sidebar ul .title {
+	padding-left: 5px;
+	width: 100%
+}
+
+.finder-wrapper .main .sidebar ul li,.trash-wrapper .main .sidebar ul li {
+	float: left;
+	width: 100%
+}
+
+.finder-wrapper .main .sidebar ul li a {
+	clear: both;
+	display: block;
+	width: 148px;
+	height: 30px;
+	color: #444;
+	text-decoration: none;
+	line-height: 30px
+}
+
+.finder-wrapper .main .sidebar ul li a .name {
+	float: left;
+	display: block;
+	margin-left: 5px;
+	font-size: 14px
+}
+
+.finder-wrapper .main .sidebar ul li a .home-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/SidebarHomeFolder_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li a .desktop-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/SidebarDesktopFolder_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li a .documents-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/SidebarDocumentsFolder_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li a .downloads-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/SidebarDownloadsFolder_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li a .movies-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/SidebarMoviesFolder_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li a .music-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/SidebarMusicFolder_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li a .pictures-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/SidebarPicturesFolder_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li a .cloud-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/SidebariCloud_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li a .network-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/SidebarNetwork_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li a .trash-icon {
+	float: left;
+	display: block;
+	margin-top: 7px;
+	margin-left: 15px;
+	width: 1pc;
+	height: 1pc;
+	background-image: url(images/icons/StatusBarTrashIcon_16x16.png)
+}
+
+.finder-wrapper .main .sidebar ul li .on {
+	background: #cecece
+}
+
+.finder-wrapper .topbar .next-prev-box .prev {
+	float: left;
+	display: block;
+	width: 25px;
+	height: 22px
+}
+
+.finder-wrapper .topbar .next-prev-box .next {
+	float: right;
+	display: block;
+	width: 25px;
+	height: 22px
+}
+
+.rename {
+	width: 60px;
+	height: 18px;
+	border: 0;
+	background: 0 0;
+	text-align: center
+}

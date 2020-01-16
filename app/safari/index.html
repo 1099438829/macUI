@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>仿浏览器主页搜索</title>
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="container">
+<div class="logo" style="background-image: url(img/baidu.png)"></div>
+<div class="input">
+<input type="text" placeholder="请输入要搜索的内容" autocomplete="off" id="search-input">
+<div class="picker">百度</div>
+<ul class="picker-list">
+<li style="background-image: url(img/ico_baidu.png)" data-logo="baidu.png">百度</li>
+<li style="background-image: url(img/ico_sogou.png)" data-logo="sogou.png">搜狗</li>
+<li style="background-image: url(img/ico_bing.png)" data-logo="bing.png">bing</li>
+<li style="background-image: url(img/ico_google.ico)" data-logo="google.png">Google</li>
+</ul>
+<div class="hot-list"></div>
+</div>
+<div class="search"></div>
+</div>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    $(function () {
+        helangSearch.init();
+    })
+</script>
+</body>
+</html>

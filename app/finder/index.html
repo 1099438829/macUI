@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="finder-wrapper" id="finder">
+    <div class="topbar">
+        <div class="next-prev-box">
+            <div onclick="prev()" class="prev"></div>
+            <div onclick="next()" class="next"></div>
+            <input type="hidden" class="pathHistory" value="root" />
+            <input type="hidden" class="currentPath" />
+        </div>
+        <!--<div class="sortstyle-box"></div>-->
+        <!--<div class="config-button"></div>
+        <div class="higher-button"></div>
+        <div class="collection-button"></div>-->
+        <div class="search-box"></div>
+    </div>
+    <div class="main">
+        <div class="sidebar" app-path="public/user/administrator/home/"></div>
+        <div class="content" current-path="">
+            <div class="app-list"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</html>

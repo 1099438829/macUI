@@ -8,7 +8,7 @@
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/favicon.ico'>
     <link href="./css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="./css/macdefault.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
 	<script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="./js/interface.js"></script>
 	<script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
@@ -50,9 +50,21 @@
 </head>
 <body>
 <div id="win10">
+    <div id="win10_task_bar">
+        <div id="win10_btn_group_left" class="btn_group">
+            <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
+            <div class="btn" onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span class="fa fa-safari"></span></div>
+        </div>
+        <div id="win10_btn_group_middle" class="btn_group"></div>
+        <div id="win10_btn_group_right" class="btn_group">
+            <div class="btn" id="win10_btn_time"></div>
+            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
+            <div class="btn" id="win10_btn_show_desktop"></div>
+        </div>
+    </div>
     <div class="desktop">
         <div id="win10-shortcuts" class="shortcuts-hidden">
-            <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>UI官网')">
+            <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','UI官网')">
                 <img class="icon" src="./img/icon/computer.png"/>
                 <div class="title">UI官网</div>
             </div>
@@ -94,26 +106,13 @@
         </div>
     </div>
     <div id="win10_command_center" class="hidden_right">
-        <div class="title">
-            <h4 style="float: left">消息中心 </h4>
-            <span id="win10_btn_command_center_clean_all">全部清除</span>
+        <div class="command-header">
+            <div class="tab-today active">今天</div>
+            <div class="tab-msg">通知</div>
         </div>
-        <div class="msgs"></div>
-    </div>
-    <div id="win10_task_bar">
-        <div id="win10_btn_group_left" class="btn_group">
-            <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
-            <div class="btn" id="win10-btn-browser"><span class="fa fa-safari"></span></div>
-        </div>
-        <div id="win10_btn_group_middle" class="btn_group"></div>
-        <div id="win10_btn_group_right" class="btn_group">
-            <div class="btn" id="win10_btn_time">
-                <!--0:00<br/>-->
-                <!--1993/8/13-->
-            </div>
-            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
-            <div class="btn" id="win10_btn_show_desktop"></div>
-        </div>
+        <div class="command-body today"></div>
+        <!-- <span id="win10_btn_command_center_clean_all">全部清除</span> -->
+        <div class="command-body msgs"></div>
     </div>
 	<div class="dock" id="dock">
 	  <div class="dock-container">

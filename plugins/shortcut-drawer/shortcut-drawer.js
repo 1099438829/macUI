@@ -10,30 +10,33 @@ Win10.onReady(function () {
             if($this.data('url') !== "") {
                 //>> 获取弹窗标题
                 var title = $this.data('title')||'',
-                    areaAndOffset;
+                    areaAndOffset,icon;
                 //>> 判断是否有标题图片
                 var bg=$this.data('icon-bg')?$this.data('icon-bg'):'';
                 if($this.data('icon-image')) {
                     //>> 加入到标题中
-                    title = '<img class="icon '+bg+'" src="' + $this.data('icon-image') + '"/>' + title;
+                    icon = '<img class="icon '+bg+'" src="' + $this.data('icon-image') + '"/>';
                 }
                 if($this.data('icon-font')) {
                     //>> 加入到标题中
-                    title = '<i class="fa fa-fw fa-'+$this.data('icon-font')+' icon '+bg+'"></i>' + title;
+                    icon = '<i class="fa fa-fw fa-'+$this.data('icon-font')+' icon '+bg+'"></i>';
                 }
                 if(!title && $this.children('.icon').length===1 && $this.children('.title').length===1){
-                    title = $this.children('.icon').prop("outerHTML")+$this.children('.title').html();
+                    title = $this.children('.title').html();
+                    if(!icon){
+                        icon = $this.children('.icon').prop("outerHTML");
+                    }
                 }
                 //>> 判断是否需要 设置 区域宽度高度
                 if($this.data('area-offset')) {
                     areaAndOffset = $this.data('area-offset');
                     //>> 判断是否有分隔符
                     if(areaAndOffset.indexOf(',')!==-1){
-                        areaAndOffset = eval(areaAndOffset);
+                        areaAndOffset = eval(areaAndOsffset);
                     }
                 }
                 //>> 调用win10打开url方法
-                Win10.openUrl($this.data('url'), title, areaAndOffset);
+                Win10.openUrl($this.data('url'),icon, title, areaAndOffset);
             }
         })
     })(),
