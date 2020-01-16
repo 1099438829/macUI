@@ -810,7 +810,7 @@ body {
 .win10-open-iframe .layui-layer-title img.icon,#win10_btn_group_middle .btn_title img.icon{
     width: 20px;
     position: relative;
-    top:0px ;
+    top:5px ;
 }
 
 #win10-menu>.list>.sub-item img.icon,#win10-menu>.list>.item img.icon{

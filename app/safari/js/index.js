@@ -24,7 +24,7 @@ var helangSearch = {
 		this.els.hotList.html(function() {
 			var str = '';
 			$.each(_this.hot.list, function(index, item) {
-				str += '<a href="'+_this.searchArr[_this.searchIndex] + item + '" target="_blank">' + '<div class="number" style="color: ' + _this.hot.color[index] + '">' + (index + 1) + '</div>' + '<div>' + item + '</div>' + '</a>';
+				str += '<a href="'+_this.searchArr[_this.searchIndex] + item + '" target="_self">' + '<div class="number" style="color: ' + _this.hot.color[index] + '">' + (index + 1) + '</div>' + '<div>' + item + '</div>' + '</a>';
 			});
 			return str;
 		});
