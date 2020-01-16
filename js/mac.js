@@ -53,6 +53,12 @@ window.Win10 = {
         }
     },
     _iframe_click_lock_children:{},
+    _renderBar:function () {
+      //调整任务栏项目的宽度
+        if(this._countTask<=0){return;} //防止除以0
+        var btns=$("#win10_btn_group_middle>.btn");
+        btns.css('width',('calc('+(1/this._countTask*100)+'% - 1px )'))
+    },
     _handleReady:[],
     _hideShortcut:function () {
         var that=$("#win10 #win10-shortcuts .shortcut");

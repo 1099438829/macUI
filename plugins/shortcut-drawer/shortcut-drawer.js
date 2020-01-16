@@ -6,13 +6,11 @@ Win10.onReady(function () {
         $('body').on('click', '.shortcut-drawer.win10-open-window', function() {
             //>> 获取当前点击的对象
             $this = $(this);
-            console.log( $this);
             //>> 判断url地址是否为空 如果为空 不予处理
             if($this.data('url') !== "") {
                 //>> 获取弹窗标题
                 var title = $this.data('title')||'',
                     areaAndOffset,icon;
-
                 //>> 判断是否有标题图片
                 var bg=$this.data('icon-bg')?$this.data('icon-bg'):'';
                 if($this.data('icon-image')) {
