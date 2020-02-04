@@ -112,7 +112,7 @@ window.Win10 = {
 				}
 			}
         }
-		
+
 		//开始渲染壁纸模糊
 		if(Win10._wallpaperBlur){
 			$('.background').addClass('blur');
@@ -587,7 +587,7 @@ window.Win10 = {
         var Animals=new Array("鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪");
         var Gan=new Array("甲","乙","丙","丁","戊","己","庚","辛","壬","癸");
         var Zhi=new Array("子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥");
-        
+
         //==== 传回农历 y年的总天数
         function lYearDays(y) {
             var i, sum = 348
@@ -596,17 +596,17 @@ window.Win10 = {
         }
         //==== 传回农历 y年闰月的天数
         function leapDays(y) {
-            if(leapMonth(y))   
+            if(leapMonth(y))
                 return((lunarInfo[y-1900] & 0x10000)? 30: 29)
-            else 
+            else
                 return(0)
         }
         //==== 传回农历 y年闰哪个月 1-12 , 没闰传回 0
-        function leapMonth(y) { 
+        function leapMonth(y) {
             return(lunarInfo[y-1900] & 0xf);
         }
         //==== 传回农历 y年m月的总天数
-        function monthDays(y,m) { 
+        function monthDays(y,m) {
             return((lunarInfo[y-1900] & (0x10000>>m))? 30: 29 );
         }
         //==== 算出农历, 传入日期物件, 传回农历日期物件
@@ -615,10 +615,10 @@ window.Win10 = {
             var i, leap=0, temp=0
             var baseDate = new Date(1900,0,31)
             var offset    = (objDate - baseDate)/86400000
- 
+
             this.dayCyl = offset + 40
             this.monCyl = 14
- 
+
             for(i=1900; i<2050 && offset>0; i++) {
                 temp = lYearDays(i)
                 offset -= temp
@@ -629,35 +629,35 @@ window.Win10 = {
                 i--;
                 this.monCyl -= 12
             }
- 
+
             this.year = i
             this.yearCyl = i-1864
- 
+
             leap = leapMonth(i) //闰哪个月
             this.isLeap = false
- 
+
             for(i=1; i<13 && offset>0; i++) {
                 //闰月
                 if(leap>0 && i==(leap+1) && this.isLeap==false)
                 { --i; this.isLeap = true; temp = leapDays(this.year); }
                 else
                 { temp = monthDays(this.year, i); }
- 
+
                 //解除闰月
                 if(this.isLeap==true && i==(leap+1)) this.isLeap = false
- 
+
                 offset -= temp
                 if(this.isLeap == false) this.monCyl ++
             }
- 
+
             if(offset==0 && leap>0 && i==leap+1)
                 if(this.isLeap)
             { this.isLeap = false; }
             else
             { this.isLeap = true; --i; --this.monCyl;}
- 
+
             if(offset<0){ offset += temp; --i; --this.monCyl; }
- 
+
             this.month = i
             this.day = offset + 1
         }
@@ -685,11 +685,11 @@ window.Win10 = {
                 return "三"+fd[day-30];
             }
         }
-        
+
         //获取干支
-        function get_ganzhi(year) { 
+        function get_ganzhi(year) {
             var num = year-1900+36;
-            return(Gan[num%10]+Zhi[num%12]); 
+            return(Gan[num%10]+Zhi[num%12]);
         }
         //获取生肖
         function get_animal(year){
@@ -719,17 +719,17 @@ window.Win10 = {
         //获取小时
         function get_hour(date){
             var hour=date.getHours();
-            if(hour < 6){hours='凌晨'+hour;} 
-            else if (hour < 9){hours='早上'+hour;} 
-            else if (hour < 12){hours='上午'+hour;} 
-            else if (hour < 14){hours='中午'+(hour-12);} 
-            else if (hour < 17){hours='下午'+(hour-12);} 
-            else if (hour < 19){hours='傍晚'+(hour-12);} 
-            else if (hour < 22){hours='晚上'+(hour-12);} 
-            else {hours='深夜'+(hour-12)} 
+            if(hour < 6){hours='凌晨'+hour;}
+            else if (hour < 9){hours='早上'+hour;}
+            else if (hour < 12){hours='上午'+hour;}
+            else if (hour < 14){hours='中午'+(hour-12);}
+            else if (hour < 17){hours='下午'+(hour-12);}
+            else if (hour < 19){hours='傍晚'+(hour-12);}
+            else if (hour < 22){hours='晚上'+(hour-12);}
+            else {hours='深夜'+(hour-12)}
             return hours;
         }
-        
+
         var viewdate = {};
         var date = new Date();
                  //秒
@@ -763,7 +763,7 @@ window.Win10 = {
         viewdate.ganzhi = get_ganzhi(lunar_obj.year);
         //生肖
         viewdate.animal = get_animal(lunar_obj.year);
-            
+
         return viewdate;
     },
     //消息中心渲染
@@ -782,7 +782,7 @@ window.Win10 = {
                            '<span class="notice-header-title">天气</span>'+
                         '</div>' +
                         '<div class="notice-body">' +
-                            '<iframe src="http://www.seniverse.com/weather/weather.aspx?uid=U43DF172E7&cid=CHBJ000000&l=&p=SMART&a=1&u=C&s=13&m=2&x=1&d=1&fc=&bgc=2E93D9&bc=&ti=0&in=0&li=" frameborder="0" scrolling="no" width="97%" height="150"  style="padding:5px;" allowTransparency="true"></iframe>'+
+                            '<iframe src="http://www.weather.seniverse.com/?token=96d8f" frameborder="0" scrolling="no" width="97%" height="150"  style="padding:5px;" allowTransparency="true"></iframe>'+
                         '</div></div>';
 	    	}
 	    	$("#win10_command_center .command-body.today").html(today).addClass('active');
@@ -838,8 +838,8 @@ window.Win10 = {
         		docks.eq(i).hide();
         	}else{
         		docks.eq(i).show();
-        	}		
-		}	
+        	}
+		}
 		if(width>768){
 			$('#dock').Fisheye({
 				maxWidth: 70,
@@ -855,21 +855,21 @@ window.Win10 = {
 		}else{
 			$('.dock-container').css({'width':width});
 			for (var i = 0; i < max_num; i++) {
-				
+
 				 docks.on('mouseover', function(e) {
-					  e.preventDefault();  
+					  e.preventDefault();
 				});
 				 docks.on('mouseout', function(e) {
-					  e.preventDefault();  
+					  e.preventDefault();
 				});
 				 docks.on('click', function(e) {
-					  e.preventDefault();  
+					  e.preventDefault();
 				});
-				docks.unbind("mouseover").unbind('mouseout').unbind('click').css({"width":cell_width}); 
+				docks.unbind("mouseover").unbind('mouseout').unbind('click').css({"width":cell_width});
 				if(i==0){
 					docks.eq(i).css("margin-left",0);
 				}
-			}		
+			}
 		}
     },
     commandCenterToggle: function () {
@@ -885,7 +885,7 @@ window.Win10 = {
                 '<span class="notice-header-icon">'+app_icon+'</span>' +
                 '<span class="notice-header-title">'+app_name+'</span>';
                 if (is_del) {
-                  msg += '<span class="btn_close_msg fa fa-times-circle"></span>';              
+                  msg += '<span class="btn_close_msg fa fa-times-circle"></span>';
                 }
                 msg +='</div>' +
                 '<div class="notice-body">' +
@@ -901,7 +901,7 @@ window.Win10 = {
             }
         });
         layer.tips(Win10.lang('新消息:','New message:')+title, '#win10_btn_command', {
-            tips: [1, '#3c6a4a'],
+            tips: [1, 'rgba(200, 200, 200, 0.7)'],
             time: 3000
         });
         if($("#win10_command_center").hasClass('hidden_right')){

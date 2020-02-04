@@ -653,6 +653,19 @@ body {
     cursor: pointer;
 }
 
+.win10-new-msg{
+    /*繁华年间许你一世安宁提供*/
+    background-color: transparent;
+    /* border: 1px solid #323232; */
+    border: #f0f6f6 solid 1px !important;
+    -webkit-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
+
 .win10-open-iframe{
 	/*繁华年间许你一世安宁提供*/
     background-color: transparent;
@@ -792,11 +805,6 @@ body {
     height: 30px;
 }
 
-.win10-open-iframe .layui-layer-title{
-    line-height:30px;
-    height: 30px;
-}
-
 .win10-open-iframe .layui-layer-title .icon ,#win10_btn_group_middle .btn_title .icon{
     font-size: 15px;
     padding: 1px;
@@ -810,6 +818,9 @@ body {
 .win10-open-iframe .layui-layer-title img.icon,#win10_btn_group_middle .btn_title img.icon{
     width: 20px;
     position: relative;
+}
+
+.win10-open-iframe .layui-layer-title img.icon{
     top:5px ;
 }
 
@@ -837,16 +848,16 @@ body {
 	bottom: 0px;
 	position: absolute;
 	left: 0px;
-	height: 65px; 
+	height: 60px;
 	text-align: center;
 	z-index:1000;
 }
 .dock-container {
 	position: absolute;
 	height: 60px;
-	border-radius: 5px;
+	border-radius: 5px 5px 0 0 ;
     background-color: rgba(255,255,255,0.45) ;/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
-	padding:0 20px;
+	/*padding:0 20px;*/
 }
 
 .dock a.dock-item {
