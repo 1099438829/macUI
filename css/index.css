@@ -196,10 +196,10 @@ body {
 #win10-menu {
     position: fixed;
     top: 24px;
-    left: 0.5%;
+    left: 0.5rem;
     background-color: rgba(255,255,255,0.55);
     height: auto;
-    width: 10%;
+    width: 12rem;
     max-width: 880px;
     overflow: auto;
     z-index: 1000;
@@ -857,7 +857,7 @@ body {
 	height: 60px;
 	border-radius: 5px 5px 0 0 ;
     background-color: rgba(255,255,255,0.45) ;/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
-	/*padding:0 20px;*/
+	padding:0 5px;
 }
 
 .dock a.dock-item {
