@@ -756,7 +756,7 @@ window.Win10 = {
                            '<span class="notice-header-title">天气</span>'+
                         '</div>' +
                         '<div class="notice-body">' +
-                            '<iframe src="http://www.seniverse.com/weather/weather.aspx?uid=U43DF172E7&cid=CHBJ000000&l=&p=SMART&a=1&u=C&s=13&m=2&x=1&d=1&fc=&bgc=2E93D9&bc=&ti=0&in=0&li=" frameborder="0" scrolling="no" width="97%" height="150"  style="padding:5px;" allowTransparency="true"></iframe>'+
+                            '<iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tw&skin=pitaya" frameborder="0" width="280" height="500" allowtransparency="true"></iframe>'+
                         '</div></div>';
 	    	}
 	    	$("#win10_command_center .command-body.today").html(today).addClass('active');
@@ -858,7 +858,7 @@ window.Win10 = {
             }
         });
         layer.tips(Win10.lang('新消息:','New message:')+title, '#win10_btn_command', {
-            tips: [1, '#3c6a4a'],
+            tips: [1, 'rgba(0, 0, 0, 0.7)'],
             time: 3000
         });
         if($("#win10_command_center").hasClass('hidden_right')){

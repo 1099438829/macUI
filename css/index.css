@@ -196,10 +196,10 @@ body {
 #win10-menu {
     position: fixed;
     top: 24px;
-    left: 0.5%;
+    left: 0.5rem;
     background-color: rgba(255,255,255,0.55);
     height: auto;
-    width: 10%;
+    width: 12rem;
     max-width: 880px;
     overflow: auto;
     z-index: 1000;
@@ -791,11 +791,6 @@ body {
     height: 30px;
 }
 
-.win10-open-iframe .layui-layer-title{
-    line-height:30px;
-    height: 30px;
-}
-
 .win10-open-iframe .layui-layer-title .icon ,#win10_btn_group_middle .btn_title .icon{
     font-size: 15px;
     padding: 1px;
@@ -809,6 +804,9 @@ body {
 .win10-open-iframe .layui-layer-title img.icon,#win10_btn_group_middle .btn_title img.icon{
     width: 20px;
     position: relative;
+}
+
+.win10-open-iframe .layui-layer-title img.icon{
     top:5px ;
 }
 
