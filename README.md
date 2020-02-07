@@ -15,7 +15,7 @@ v1.1.2.3
 
 ## 预览
 
- ![1] http://www.apecloud.cn:8081/
+ ![1] http://mac.apecloud.cn
  
  
 
