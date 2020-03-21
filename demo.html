@@ -9,7 +9,7 @@
     <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
     <link href="./css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/index.min.css">
+    <link rel="stylesheet" href="./css/index.css">
 	<script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
     <script type="text/javascript" src="./js/mac.min.js"></script>
 	<link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
@@ -60,6 +60,18 @@
 </head>
 <body>
 <div id="win10">
+    <div id="win10_task_bar" class="backgroud_blur">
+        <div id="win10_btn_group_left" class="btn_group">
+            <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
+            <div class="btn" onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span class="fa fa-safari"></span></div>
+        </div>
+        <div id="win10_btn_group_middle" class="btn_group"></div>
+        <div id="win10_btn_group_right" class="btn_group">
+            <div class="btn" id="win10_btn_time"></div>
+            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
+            <div class="btn" id="win10_btn_show_desktop"></div>
+        </div>
+    </div>
     <div class="desktop">
         <div id="win10-shortcuts" class="shortcuts-hidden">
             <div class="shortcut" onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','OS官网')">
@@ -126,45 +138,32 @@
         </div>
         <div class="background blur"></div>
     </div>
-
-    <div id="win10-menu" class="hidden">
+    <div id="win10-menu" class="hidden backgroud_blur">
         <div class="list win10-menu-hidden animated animated-slideOutLeft">
             <div class="item"><i class="icon fa fa-wrench fa-fw"></i><span>API测试</span></div>
-            <div class="sub-item" onclick="Win10.openUrl('./child.html','子页')">父子页沟通</div>
+            <div class="sub-item" onclick="Win10.openUrl('./child.html','<span class=\'icon fa fa-cubes\'></span>','子页')">父子页沟通</div>
             <div class="sub-item" onclick="Win10.commandCenterOpen()">打开消息中心</div>
             <div class="sub-item" onclick="Win10.newMsg('API测试','通过API可以发送消息至消息中心，自定义标题与内容(点击我试试)',function() {alert('click')})">发送带回调的消息</div>
             <div class="sub-item" onclick="Win10.menuClose()">关闭菜单</div>
             <div class="item" ><i class="icon fa fa-gavel fa-fw"></i>辅助工具</div>
-            <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-shortcut.html','图标代码生成器')">桌面图标代码生成器</div>
-            <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-tile.html','磁贴代码生成器')">磁贴代码生成器</div>
-            <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-menu.html','菜单代码生成器')">菜单代码生成器</div>
+            <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-shortcut.html','<span class=\'icon fa fa-cubes\'></span>','图标代码生成器')">桌面图标代码生成器</div>
+            <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-tile.html','<span class=\'icon fa fa-cubes\'></span>','磁贴代码生成器')">磁贴代码生成器</div>
+            <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-menu.html','<span class=\'icon fa fa-cubes\'></span>','菜单代码生成器')">菜单代码生成器</div>
             <div class="item" onclick="Win10.aboutUs()"><i class="icon fa fa-star fa-fw"></i>关于</div>
             <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-power-off fa-fw"></i>关闭</div>
         </div>
     </div>
-    <div id="win10_command_center" class="hidden_right">
+    <div id="win10_command_center" class="hidden_right backgroud_blur">
         <div class="command-header">
             <div class="tab-today active">今天</div>
             <div class="tab-msg">通知</div>
         </div>
-        <div class="command-body today" win-render="none"></div>
+        <div class="command-body today"></div>
         <!-- <span id="win10_btn_command_center_clean_all">全部清除</span> -->
         <div class="command-body msgs"></div>
     </div>    
-    <div id="win10_task_bar">
-        <div id="win10_btn_group_left" class="btn_group">
-            <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
-            <div class="btn" onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span class="fa fa-safari"></span></div>
-        </div>
-        <div id="win10_btn_group_middle" class="btn_group"></div>
-        <div id="win10_btn_group_right" class="btn_group">
-            <div class="btn" id="win10_btn_time"></div>
-            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
-            <div class="btn" id="win10_btn_show_desktop"></div>
-        </div>
-    </div>
 	<div id="footer">
-        <div class="dock">
+        <div class="dock backgroud_blur">
             <ul>
                 <li><span class="dock-tips">finder<span class="arrow"></span></span><a onclick="Win10.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>','finder')"> <img src="./img/icon/finder.png"></a></li>
                 <li><span class="dock-tips">computer<span class="arrow"></span></span><a onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','我的电脑')"> <img src="./img/icon/computer.png"></a></li>

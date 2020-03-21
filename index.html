@@ -8,7 +8,7 @@
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/favicon.ico'>
     <link href="./css/animate.css" rel="stylesheet">
     <link href="./component/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="./css/index.min.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
     <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
@@ -49,7 +49,7 @@
 </head>
 <body>
 <div id="win10">
-    <div id="win10_task_bar">
+    <div id="win10_task_bar" class="backgroud_blur">
         <div id="win10_btn_group_left" class="btn_group">
             <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
             <div class="btn" onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span class="fa fa-safari"></span></div>
@@ -63,15 +63,15 @@
     </div>
     <div class="desktop">
         <div id="win10-shortcuts" class="shortcuts-hidden">
-            <div class="shortcut" onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','UI官网')">
+            <div class="shortcut" onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','OS官网')">
                 <img class="icon" src="./img/icon/computer.png"/>
-                <div class="title">UI官网</div>
+                <div class="title">OS官网</div>
             </div>
             <div class="shortcut" onclick="window.open('./demo.html')">
                 <img class="icon" src="./img/icon/demo.png"/>
                 <div class="title">查看DEMO</div>
             </div>
- 			<div class="shortcut win10-drawer">
+			<div class="shortcut win10-drawer">
                 <img class="icon" src="./img/icon/folder.png"/>
                 <div class="title">新建文件夹</div>
                 <div class="win10-drawer-box">
@@ -98,13 +98,13 @@
         </div>
         <div class="background blur"></div>
     </div>
-    <div id="win10-menu" class="hidden">
-		<div class="list win10-menu-hidden animated animated-slideOutLeft">
-			<div class="item" onclick="Win10.aboutUs()"><i class="icon fa fa-star fa-fw"></i>关于</div>
+    <div id="win10-menu" class="hidden backgroud_blur">
+        <div class="list win10-menu-hidden animated animated-slideOutLeft">
+            <div class="item" onclick="Win10.aboutUs()"><i class="icon fa fa-star fa-fw"></i>关于</div>
             <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-power-off fa-fw"></i>关闭</div>
         </div>
     </div>
-    <div id="win10_command_center" class="hidden_right">
+    <div id="win10_command_center" class="hidden_right backgroud_blur">
         <div class="command-header">
             <div class="tab-today active">今天</div>
             <div class="tab-msg">通知</div>
@@ -112,12 +112,12 @@
         <div class="command-body today"></div>
         <!-- <span id="win10_btn_command_center_clean_all">全部清除</span> -->
         <div class="command-body msgs"></div>
-    </div>
+    </div>    
 	<div id="footer">
-        <div class="dock">
+        <div class="dock backgroud_blur">
             <ul>
                 <li><span class="dock-tips">finder<span class="arrow"></span></span><a onclick="Win10.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>','finder')"> <img src="./img/icon/finder.png"></a></li>
-                <li><span class="dock-tips">computer<span class="arrow"></span></span><a onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','我的电脑')"> <img src="./img/icon/computer.png"></a></li>
+                <li><span class="dock-tips">computer<span class="arrow"></span></span><a onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','我的电脑')"> <img src="./img/icon/computer.png"></a></li>
                 <li><span class="dock-tips">gamecenter<span class="arrow"></span></span><a href="#"> <img src="./img/icon/gamecenter.png"></a></li>
 				<li><span class="dock-tips">icloud<span class="arrow"></span></span><a href="#"> <img src="./img/icon/icloud.png"></a></li>
 				<li><span class="dock-tips">prefapp<span class="arrow"></span></span><a href="#"> <img src="./img/icon/prefapp.png"></a></li>

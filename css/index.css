@@ -58,6 +58,17 @@ body {
     transition: -ms-filter 0.3s;
 }
 
+#win10 .backgroud_blur {
+    /* Safari for macOS & iOS */
+    -webkit-backdrop-filter: blur(20px); 
+    /* Google Chrome */
+    backdrop-filter: saturate(180%) blur(20px); 
+    transition: filter 0.3s;
+    transition: -webkit-filter 0.3s;
+    transition: -moz-filter 0.3s;
+    transition: -ms-filter 0.3s;
+}
+
 #win10 .desktop .background {
     position: absolute;
     width: 100%;
@@ -96,10 +107,10 @@ body {
     top: 0;
     height: 24px;
     line-height:24px;
-    /* IE9+ */
-	background-color:rgba(255,255,255,0.4);
-	/* IE6-IE8 */
-	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#68FFFFFF,endColorStr=#68FFFFFF);
+    background-color: rgba(255,255,255,0.65);
+    -webkit-box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
+    -moz-box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
+    box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
     z-index: 19930813;
 }
 
@@ -198,6 +209,9 @@ body {
     top: 24px;
     left: 0.5rem;
     background-color: rgba(255,255,255,0.55);
+    box-shadow: 1px 1px 5px #909090;
+    -moz-box-shadow: 1px 1px 5px #909090;/*firefox*/
+    -webkit-box-shadow: 1px 1px 5px #909090;/*safari或chrome*/
     height: auto;
     width: 12rem;
     max-width: 880px;
@@ -383,9 +397,11 @@ body {
     right: 0;
     top: 25px;
     width: 300px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.6);
+    /* -webkit-box-shadow: 0 0.3125rem 0.3125rem -0.3125rem rgba(0,0,0,0.117); */
+    -moz-box-shadow: 0 0.3125rem 0.3125rem -0.3125rem rgba(0,0,0,0.117);
+    box-shadow: 0 0.3125rem 0.3125rem -0.3125rem rgba(0,0,0,0.117);
     height: calc(100% - 25px);
-    transition: all 0.5s;
     overflow-x: hidden;
     overflow-y: auto;
     color: #333;
@@ -621,7 +637,6 @@ body {
 }
 
 #win10_command_center .msgs .msg>.title{
-    color: #777;
     font-size: 14px;
     line-height: 28px;
 }
@@ -641,7 +656,6 @@ body {
 
 #win10_command_center .msgs .msg>.content{
     font-size: 12px;
-    color: #777;
     padding-bottom: 5px;
 }
 
@@ -760,12 +774,12 @@ body {
 }
 
 /*右键菜单*/
-#win10 .win10-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgba(255, 255, 255,0.75); border: #CCC 1px solid; display: block; border-radius: 5px; z-index: 99999999; }
+#win10 .win10-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgba(255, 255, 255,0.45); display: block; border-radius: 5px; z-index: 99999999; }
 #win10 .win10-context-menu ul { margin: 0px; padding: 0px; }
-#win10 .win10-context-menu ul li {transition: background-color 0.5s;cursor: default;padding: 0px 1em; list-style: none; line-height: 30px; height: 30px; margin: 3px 0;  font-size: 13px; }
+#win10 .win10-context-menu ul li {transition: background-color 0.5s;cursor: default;padding: 0px 1em; list-style: none; line-height: 25px; height: 25px; margin: 3px 0;  font-size: 13px; }
 #win10 .win10-context-menu ul li:hover {  background-color:  rgba(49,156,241,0.71);cursor: pointer; }
 #win10 .win10-context-menu ul li a {text-decoration: none; display: block; height: 100%; color: #333; outline: none; }
-#win10 .win10-context-menu ul hr { margin: 0; height: 0px; border: 0px; border-bottom: rgba(233,233,233) 1px solid;border-top: none }
+#win10 .win10-context-menu ul hr { margin: 0; height: 0px; border: 0px; border-bottom: rgba(121, 121, 121, 0.24) 1px solid;border-top: none }
 
 /*块级按钮*/
 .win10-open-iframe .layui-layer-ico{background-image:none;}
@@ -842,11 +856,12 @@ body {
     height: 100%;
     line-height: 60px;
     display: inline-block;
+    overflow: hidden;
+    background-color: rgba(247, 244, 244, 0.117) ;/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+    -webkit-box-shadow:5px 5px 10px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.5);
     border-radius: 5px 5px 0  0;
-    background-color: rgba(255,255,255,0.45) ;/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
-    -webkit-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
-    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
     z-index: 100;
 }
 @media \0screen\,screen\9 {/* 只支持IE6、7、8 */
