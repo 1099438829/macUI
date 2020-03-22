@@ -255,7 +255,6 @@ window.Win10 = {
                 //>> 获取弹窗标题
                 var title = $this.data('title')||'',
                     areaAndOffset,icon;
-
                 //>> 判断是否有标题图片
                 var bg=$this.data('icon-bg')?$this.data('icon-bg'):'';
                 if($this.data('icon-image')) {
@@ -419,15 +418,7 @@ window.Win10 = {
             if(!Win10.isSmallScreen()) Win10._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
 	    Win10.renderDocks();
         });
-        //细节
-        $(document).on('focus',".win10-layer-open-browser textarea",function () {
-            $(this).attr('spellcheck','false');
-        });
-        $(document).on('keyup',".win10-layer-open-browser textarea",function (e) {
-            if(e.keyCode===13){
-                $(this).parent().parent().find('.layui-layer-btn0').click();
-            }
-        });
+
         //打广告
         setTimeout(function () {
             console.log(Win10.lang('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ','The page is strongly driven by Win10-UI.\nFor more info: http://win10ui.yuri2.cn.\n Win10-UI, easy to create a unique background interface.'))
