@@ -111,7 +111,7 @@ body {
     -webkit-box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
     -moz-box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
     box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
-    z-index: 19930813;
+    z-index: 1000;
 }
 
 #win10 .btn_group {
@@ -856,7 +856,6 @@ body {
     height: 100%;
     line-height: 60px;
     display: inline-block;
-    overflow: hidden;
     background-color: rgba(247, 244, 244, 0.117) ;/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
     -webkit-box-shadow:5px 5px 10px 1px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.5);
