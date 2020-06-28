@@ -49,7 +49,7 @@ Win10.onReady(function () {
            type: 1,
            shadeClose:true,
            skin:'drawer',
-           area:[Win10.isSmallScreen()?"80%":"60%","80%"],
+           area:[Win10.isSmallScreen()?"80%":"60%","50%"],
            closeBtn: 0,
            title:title,
            content: content,

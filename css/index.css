@@ -670,14 +670,13 @@ body {
 .win10-open-iframe{
 	/*繁华年间许你一世安宁提供*/
     background-color: transparent;
-    /* border: 1px solid #323232; */
-    border: #f0f6f6 solid 1px !important;
+    border: #f0f6f6 solid 1px;
     -webkit-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
     -moz-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
     box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
+    border-radius: 6px !important;
+    -webkit-border-radius: 6px !important;
+    -moz-border-radius: 6px !important;
 }
 
 .win10-open-iframe .layui-layer-content{
