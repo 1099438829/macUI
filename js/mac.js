@@ -909,6 +909,17 @@ window.Win10 = {
         })
     },
     openUrl: function (url,icon,title,areaAndOffset) {
+		//只打开一个应用
+		/*
+		var ifr=document.getElementsByTagName("iframe");
+		for(i=0;i<ifr.length;i++){
+			if(url==ifr[i].src){
+				Win10.show_win(url);
+				return false;
+			}
+		}
+		*/
+		//只打开一个应用代码结束，备注，本地方法有点问题，需要全部使用 url才能生效
         if(this._countTask>12){
             layer.msg("您打开的太多了，歇会儿吧~");
             return false;
