@@ -60,9 +60,9 @@ body {
 
 #win10 .backgroud_blur {
     /* Safari for macOS & iOS */
-    -webkit-backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
     /* Google Chrome */
-    backdrop-filter: saturate(180%) blur(20px); 
+    backdrop-filter: saturate(180%) blur(20px);
     transition: filter 0.3s;
     transition: -webkit-filter 0.3s;
     transition: -moz-filter 0.3s;
@@ -107,7 +107,7 @@ body {
     top: 0;
     height: 24px;
     line-height:24px;
-    background-color: rgba(255,255,255,0.65);
+    background-color: rgba(255,255,255,0.5);
     -webkit-box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
     -moz-box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
     box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
