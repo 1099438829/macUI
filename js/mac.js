@@ -778,19 +778,39 @@ window.Win10 = {
         $("#win10-msg-nof").removeClass('on-new-msg fa-commenting-o');
     },
     renderShortcuts:function () {
-        var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-85)/100);
-        var x=0,y=0;
-        $("#win10 #win10-shortcuts .shortcut").each(function () {
-            $(this).css({
-                left:x*82+10,
-                top:y*100+10,
+        if(!this.isSmallScreen()){
+            //大屏执行pc的布局也就是竖排，小屏幕执行移动端也就是横向排列
+            var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-90)/100);
+            console.log(h)
+            //计算一列最大几个图标，公式是（桌面图标界面的大小 - 顶部状态栏和底部dock栏的尺寸）/单个图标高度所占的尺寸
+            var x=0,y=0;
+            $("#win10 #win10-shortcuts .shortcut").each(function () {
+                $(this).css({
+                    left:x*82+10,
+                    top:y*100+10,
+                });
+                y++;
+                if(y>=h){
+                    y=0;
+                    x++;
+                }
             });
-            y++;
-            if(y>=h){
-                y=0;
+        }else{
+            //小屏幕执行横屏
+            var w=parseInt(($("#win10 #win10-shortcuts")[0].offsetWidth-10)/82);
+            var x=0,y=0;
+            $("#win10 #win10-shortcuts .shortcut").each(function () {
+                $(this).css({
+                    left:x*82+10,
+                    top:y*100+10,
+                });
                 x++;
-            }
-        });
+                if(x>=w){
+                    x=0;
+                    y++;
+                }
+            });
+        }
     },
     //渲染DOCK
     renderDocks:function () {
@@ -805,7 +825,7 @@ window.Win10 = {
                 docks.eq(i).css('display','list-item');
             }       
         }
-		if(width>768){
+		if(!this.isSmallScreen()){
 			$("#footer .dock li a img").hover(
                 function(){
 					$(this).parent('a').prev().css('display','flex');
