@@ -603,13 +603,13 @@ window.Win10 = {
  
             for(i=1; i<13 && offset>0; i++) {
                 //闰月
-                if(leap>0 && i==(leap+1) && this.isLeap==false)
+                if(leap>0 && i==(leap+1) && false === this.isLeap)
                 { --i; this.isLeap = true; temp = leapDays(this.year); }
                 else
                 { temp = monthDays(this.year, i); }
  
                 //解除闰月
-                if(this.isLeap==true && i==(leap+1)) this.isLeap = false
+                if(true === this.isLeap && i==(leap+1)) this.isLeap = false
  
                 offset -= temp
                 if(this.isLeap == false) this.monCyl ++
@@ -779,14 +779,15 @@ window.Win10 = {
     },
     renderShortcuts:function () {
         if(!this.isSmallScreen()){
-            //大屏执行pc的布局也就是竖排，小屏幕执行移动端也就是横向排列
+            //大屏执行pc的布局也就是竖排靠右对齐，小屏幕执行移动端也就是横向排列
             var h=parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight-90)/100);
-            console.log(h)
+            var w=0;
             //计算一列最大几个图标，公式是（桌面图标界面的大小 - 顶部状态栏和底部dock栏的尺寸）/单个图标高度所占的尺寸
             var x=0,y=0;
             $("#win10 #win10-shortcuts .shortcut").each(function () {
                 $(this).css({
-                    left:x*82+10,
+                    right:x*82+10,
+                    left:0,
                     top:y*100+10,
                 });
                 y++;
@@ -802,6 +803,7 @@ window.Win10 = {
             $("#win10 #win10-shortcuts .shortcut").each(function () {
                 $(this).css({
                     left:x*82+10,
+                    right:0,
                     top:y*100+10,
                 });
                 x++;
