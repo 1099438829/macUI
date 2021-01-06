@@ -654,7 +654,7 @@ window.Win10 = {
 				if (true === this.isLeap && i == (leap + 1)) this.isLeap = false
 
 				offset -= temp
-				if (this.isLeap == false) this.monCyl++
+				if (false === this.isLeap) this.monCyl++
 			}
 
 			if (offset == 0 && leap > 0 && i == leap + 1)

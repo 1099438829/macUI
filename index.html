@@ -1,133 +1,148 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title>macOS</title>
-  	<meta name="description" content="mac桌面">
-  	<meta name="keywords" content="mac桌面">
+    <meta name="description" content="mac桌面">
+    <meta name="keywords" content="mac桌面">
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/favicon.ico'>
     <link href="./css/animate.css" rel="stylesheet">
     <link href="./component/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/index.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.css">
 </head>
+
 <body>
-<div id="win10">
-    <div id="win10_task_bar" class="backgroud_blur">
-        <div id="win10_btn_group_left" class="btn_group">
-            <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
-            <div class="btn" onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span class="fa fa-safari"></span></div>
-        </div>
-        <div id="win10_btn_group_middle" class="btn_group"></div>
-        <div id="win10_btn_group_right" class="btn_group">
-            <div class="btn" id="win10_btn_time"></div>
-            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
-            <div class="btn" id="win10_btn_show_desktop"></div>
-        </div>
-    </div>
-    <div class="desktop">
-        <div id="win10-shortcuts" class="shortcuts-hidden">
-            <div class="shortcut" onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','OS官网')">
-                <img class="icon" src="./img/icon/computer.png"/>
-                <div class="title">OS官网</div>
+    <div id="win10">
+        <div id="win10_task_bar" class="backgroud_blur">
+            <div id="win10_btn_group_left" class="btn_group">
+                <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
+                <div class="btn"
+                    onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span
+                        class="fa fa-safari"></span></div>
             </div>
-            <div class="shortcut" onclick="window.open('./demo.html')">
-                <img class="icon" src="./img/icon/demo.png"/>
-                <div class="title">查看DEMO</div>
+            <div id="win10_btn_group_middle" class="btn_group"></div>
+            <div id="win10_btn_group_right" class="btn_group">
+                <div class="btn" id="win10_btn_time"></div>
+                <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
+                <div class="btn" id="win10_btn_show_desktop"></div>
             </div>
-			<div class="shortcut win10-drawer">
-                <img class="icon" src="./img/icon/folder.png"/>
-                <div class="title">新建文件夹</div>
-                <div class="win10-drawer-box">
-                    <div class="shortcut-drawer win10-drawer">
-                         <img class="icon" src="./img/icon/folder.png"/>
-                        <div class="title">新建文件夹</div>
-                        <div class="win10-drawer-box">
-                            <div class="shortcut-drawer win10-open-window" data-url="www.baidu.com">
-                                <i class="icon fa fa-fw fa-th-list orange"></i>
-                                <div class="title">子项1</div>
+        </div>
+        <div class="desktop">
+            <div id="win10-shortcuts" class="shortcuts-hidden">
+                <div class="shortcut"
+                    onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','OS官网')">
+                    <img class="icon" src="./img/icon/computer.png" />
+                    <div class="title">OS官网</div>
+                </div>
+                <div class="shortcut" onclick="window.open('./demo.html')">
+                    <img class="icon" src="./img/icon/demo.png" />
+                    <div class="title">查看DEMO</div>
+                </div>
+                <div class="shortcut win10-drawer">
+                    <img class="icon" src="./img/icon/folder.png" />
+                    <div class="title">新建文件夹</div>
+                    <div class="win10-drawer-box">
+                        <div class="shortcut-drawer win10-drawer">
+                            <img class="icon" src="./img/icon/folder.png" />
+                            <div class="title">新建文件夹</div>
+                            <div class="win10-drawer-box">
+                                <div class="shortcut-drawer win10-open-window" data-url="www.baidu.com">
+                                    <i class="icon fa fa-fw fa-th-list orange"></i>
+                                    <div class="title">子项1</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="shortcut-drawer win10-open-window" data-url="www.baidu.com">
-                        <i class="icon fa fa-fw fa-th-list orange"></i>
-                        <div class="title">子项1</div>
-                    </div>
-                    <div class="shortcut-drawer">
-                        <i class="icon fa fa-fw fa-th-list orange"></i>
-                        <div class="title">子项2</div>
+                        <div class="shortcut-drawer win10-open-window" data-url="www.baidu.com">
+                            <i class="icon fa fa-fw fa-th-list orange"></i>
+                            <div class="title">子项1</div>
+                        </div>
+                        <div class="shortcut-drawer">
+                            <i class="icon fa fa-fw fa-th-list orange"></i>
+                            <div class="title">子项2</div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="background blur"></div>
         </div>
-        <div class="background blur"></div>
+        <div id="win10-menu" class="hidden backgroud_blur">
+            <div class="list win10-menu-hidden animated animated-slideOutLeft">
+                <div class="item" onclick="Win10.aboutUs()"><i class="icon fa fa-star fa-fw"></i>关于</div>
+                <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-power-off fa-fw"></i>关闭</div>
+            </div>
+        </div>
+        <div id="win10_command_center" class="hidden_right backgroud_blur">
+            <div class="command-header">
+                <div class="tab-today active">今天</div>
+                <div class="tab-msg">通知</div>
+            </div>
+            <div class="command-body today"></div>
+            <!-- <span id="win10_btn_command_center_clean_all">全部清除</span> -->
+            <div class="command-body msgs"></div>
+        </div>
+        <div id="footer">
+            <div class="dock backgroud_blur">
+                <ul>
+                    <li><span class="dock-tips">finder<span class="arrow"></span></span><a
+                            onclick="Win10.openUrl('./app/finder','<img src=\'./img/icon/finder.png\'/>','finder')">
+                            <img src="./img/icon/finder.png"></a></li>
+                    <li><span class="dock-tips">computer<span class="arrow"></span></span><a
+                            onclick="Win10.openUrl('http://mac.apecloud.cn','<img src=\'./img/icon/computer.png\'/>','我的电脑')">
+                            <img src="./img/icon/computer.png"></a></li>
+                    <li><span class="dock-tips">gamecenter<span class="arrow"></span></span><a href="#"> <img
+                                src="./img/icon/gamecenter.png"></a></li>
+                    <li><span class="dock-tips">icloud<span class="arrow"></span></span><a href="#"> <img
+                                src="./img/icon/icloud.png"></a></li>
+                    <li><span class="dock-tips">prefapp<span class="arrow"></span></span><a href="#"> <img
+                                src="./img/icon/prefapp.png"></a></li>
+                    <li><span class="dock-tips">trashicon<span class="arrow"></span></span><a href="#"> <img
+                                src="./img/icon/trashicon.png"></a></li>
+                    <li><span class="dock-tips">appstore<span class="arrow"></span></span><a href="#"> <img
+                                src="./img/icon/appstore.png"></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div id="win10-menu" class="hidden backgroud_blur">
-        <div class="list win10-menu-hidden animated animated-slideOutLeft">
-            <div class="item" onclick="Win10.aboutUs()"><i class="icon fa fa-star fa-fw"></i>关于</div>
-            <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-power-off fa-fw"></i>关闭</div>
-        </div>
-    </div>
-    <div id="win10_command_center" class="hidden_right backgroud_blur">
-        <div class="command-header">
-            <div class="tab-today active">今天</div>
-            <div class="tab-msg">通知</div>
-        </div>
-        <div class="command-body today"></div>
-        <!-- <span id="win10_btn_command_center_clean_all">全部清除</span> -->
-        <div class="command-body msgs"></div>
-    </div>    
-	<div id="footer">
-        <div class="dock backgroud_blur">
-            <ul>
-                <li><span class="dock-tips">finder<span class="arrow"></span></span><a onclick="Win10.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>','finder')"> <img src="./img/icon/finder.png"></a></li>
-                <li><span class="dock-tips">computer<span class="arrow"></span></span><a onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','我的电脑')"> <img src="./img/icon/computer.png"></a></li>
-                <li><span class="dock-tips">gamecenter<span class="arrow"></span></span><a href="#"> <img src="./img/icon/gamecenter.png"></a></li>
-				<li><span class="dock-tips">icloud<span class="arrow"></span></span><a href="#"> <img src="./img/icon/icloud.png"></a></li>
-				<li><span class="dock-tips">prefapp<span class="arrow"></span></span><a href="#"> <img src="./img/icon/prefapp.png"></a></li>
-				<li><span class="dock-tips">trashicon<span class="arrow"></span></span><a href="#"> <img src="./img/icon/trashicon.png"></a></li>
-				<li><span class="dock-tips">appstore<span class="arrow"></span></span><a href="#"> <img src="./img/icon/appstore.png"></a></li>
-            </ul>
-        </div>
-	</div>
-</div>
-<script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
-<script type="text/javascript" src="./js/mac.min.js"></script>
-<script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
-<script>
-	Win10.onReady(function () {
+    <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
+    <script type="text/javascript" src="./js/mac.min.js"></script>
+    <script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
+    <script>
+        Win10.onReady(function () {
 
-		//设置壁纸
-		Win10.setBgUrl({
-			main:'./img/wallpapers/main.jpg',
-			mobile:'./img/wallpapers/mobile.jpg',
-		});
+            //设置壁纸
+            Win10.setBgUrl({
+                main: './img/wallpapers/main.jpg',
+                mobile: './img/wallpapers/mobile.jpg',
+            });
 
-		Win10.setAnimated([
-			'animated flip',
-			'animated bounceIn',
-		], 0.01);
-		setTimeout(function () {
-			Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)',function () {
-				Win10.enableFullScreen();
-			})
-		}, 1500);
+            Win10.setAnimated([
+                'animated flip',
+                'animated bounceIn',
+            ], 0.01);
+            setTimeout(function () {
+                Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)', function () {
+                    Win10.enableFullScreen();
+                })
+            }, 1500);
 
-		setTimeout(function () {
-			layer.open({
-				type: 2,
-				title: '最新资讯',
-				area: ['300px', '380px'],
-				shade:0,
-				skin:'win10-open-iframe',
-				offset: 'rb',
-				content: 'broadcast.html'
-			})
-		},2000);
-	});
-</script>
+            setTimeout(function () {
+                layer.open({
+                    type: 2,
+                    title: '最新资讯',
+                    area: ['300px', '380px'],
+                    shade: 0,
+                    skin: 'win10-open-iframe',
+                    offset: 'rb',
+                    content: 'broadcast.html'
+                })
+            }, 2000);
+        });
+    </script>
 </body>
+
 </html>
