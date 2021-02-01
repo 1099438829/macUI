@@ -9,58 +9,21 @@
     <link href="./css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="./css/index.css" rel="stylesheet">
-	<script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
-	<script type="text/javascript" src="./js/interface.js"></script>
-	<script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
-    <script type="text/javascript" src="./js/mac.js"></script>
-	<link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
-	<script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
-    <script>
-        Win10.onReady(function () {
-
-            //设置壁纸
-            Win10.setBgUrl({
-                main:'./img/wallpapers/main.jpg',
-                mobile:'./img/wallpapers/mobile.jpg',
-            });
-
-            Win10.setAnimated([
-                'animated flip',
-                'animated bounceIn',
-            ], 0.01);
-            setTimeout(function () {
-                Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)',function () {
-                    Win10.enableFullScreen();
-                });
-                Win10.newMsg('最新资讯', '最新资讯信息',function () {
-                    layer.open({
-                        type: 2,
-                        title: '最新资讯',
-                        area: ['300px', '380px'],
-                        shade:0,
-                        skin:'win10-open-iframe',
-                        offset: 'rb',
-                        content: './broadcast.html'
-                    });
-                });    
-            }, 1500);
-
-            setTimeout(function () {
-				layer.open({
-					type: 2,
-					title: '最新资讯',
-					area: ['300px', '380px'],
-					shade:0,
-					skin:'win10-open-iframe',
-					offset: 'rb',
-					content: 'broadcast.html'
-				})
-			},2000);
-        });
-    </script>
 </head>
 <body>
 <div id="win10">
+        <div id="win10_task_bar" class="backgroud_blur">
+        <div id="win10_btn_group_left" class="btn_group">
+            <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
+            <div class="btn" onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span class="fa fa-safari"></span></div>
+        </div>
+        <div id="win10_btn_group_middle" class="btn_group"></div>
+        <div id="win10_btn_group_right" class="btn_group">
+            <div class="btn" id="win10_btn_time"></div>
+            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
+            <div class="btn" id="win10_btn_show_desktop"></div>
+        </div>
+    </div>
     <div class="desktop">
         <div id="win10-shortcuts" class="shortcuts-hidden">
             <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','OS官网')">
@@ -128,7 +91,7 @@
         <div class="background blur"></div>
     </div>
 
-    <div id="win10-menu" class="hidden">
+        <div id="win10-menu" class="hidden backgroud_blur">
         <div class="list win10-menu-hidden animated animated-slideOutLeft">
             <div class="item"><i class="icon fa fa-wrench fa-fw"></i><span>API测试</span></div>
             <div class="sub-item" onclick="Win10.openUrl('./child.html','子页')">父子页沟通</div>
@@ -143,30 +106,18 @@
             <div class="item" onclick=" Win10.exit();"><i class="icon fa fa-power-off fa-fw"></i>关闭</div>
         </div>
     </div>
-    <div id="win10_command_center" class="hidden_right">
+        <div id="win10_command_center" class="hidden_right backgroud_blur">
         <div class="command-header">
             <div class="tab-today active">今天</div>
             <div class="tab-msg">通知</div>
         </div>
-        <div class="command-body today" win-render="none"></div>
+            <div class="command-body today"></div>
         <!-- <span id="win10_btn_command_center_clean_all">全部清除</span> -->
         <div class="command-body msgs"></div>
     </div>    
-    <div id="win10_task_bar">
-        <div id="win10_btn_group_left" class="btn_group">
-            <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
-            <div class="btn" onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span class="fa fa-safari"></span></div>
-        </div>
-        <div id="win10_btn_group_middle" class="btn_group"></div>
-        <div id="win10_btn_group_right" class="btn_group">
-            <div class="btn" id="win10_btn_time"></div>
-            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-list-ul"></span></div>
-            <div class="btn" id="win10_btn_show_desktop"></div>
-        </div>
-    </div>
 	<!--bottom dock -->
 	<div class="dock" id="dock">
-	  <div class="dock-container">
+	  <div class="dock-container backgroud_blur">
 	      <a class="dock-item" onclick="Win10.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>','finder')"> <img src="./img/icon/finder.png"></a> 
 		  <a class="dock-item" href="#"><span>appstore</span><img src="./img/icon/appstore.png" alt="appstore" /></a> 
 		  <a class="dock-item" href="#"><span>gamecenter</span><img src="./img/icon/gamecenter.png" alt="gamecenter" /></a> 
@@ -181,4 +132,54 @@
 	</div>
 </div>
 </body>
+<script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
+<script type="text/javascript" src="./js/interface.js"></script>
+<script type="text/javascript" src="./js/mac.min.js"></script>
+<link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
+<script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
+<script>
+    Win10.onReady(function () {
+
+        //设置壁纸
+        Win10.setBgUrl({
+            main: './img/wallpapers/main.jpg',
+            mobile: './img/wallpapers/mobile.jpg',
+        });
+
+        Win10.setAnimated([
+            'animated flip',
+            'animated bounceIn',
+        ], 0.01);
+        setTimeout(function () {
+            Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)', function () {
+                Win10.enableFullScreen();
+            });
+            Win10.newMsg('最新资讯', '最新资讯信息', function () {
+                layer.open({
+                    type: 2,
+                    title: '最新资讯',
+                    area: ['300px', '380px'],
+                    shade: 0,
+                    skin: 'win10-open-iframe',
+                    offset: 'rb',
+                    content: './broadcast.html'
+                });
+            });
+        }, 1500);
+
+        setTimeout(function () {
+            layer.open({
+                type: 2,
+                title: '最新资讯',
+                area: ['300px', '380px'],
+                shade: 0,
+                skin: 'win10-open-iframe',
+                offset: 'rb',
+                content: 'broadcast.html'
+            })
+        }, 2000);
+    });
+</script>
+
 </html>

@@ -6,7 +6,7 @@ MAC_UI基于WIN10UI打造的mac风格的后台UI,让你轻松搭建一个眼前�
 
 ## 版本
 
-v1.1.2.3
+v1.1.2.5
 
 > 该版本为小更新，针对插件开发作了一些准备，添加了一些语法糖（具体改动请参考更新日志）。
 > 更新方式：基本无须修改html文件，覆盖css和win10.js文件。
@@ -15,7 +15,7 @@ v1.1.2.3
 
 ## 预览
 
- [1] http://mac.apecloud.cn
+ ![1] http://mac.apecloud.cn
  
  
 
@@ -28,6 +28,7 @@ v1.1.2.3
 * 极少的API，大部分功能可用html元素定义完成
 * 响应式兼容，在手机浏览器也有不错的观感
 * 目前只保证对主流现代浏览器的兼容性支持
+* 支持 class 配置高斯模糊 blur background_blur
 
 ## 前置组件
 
@@ -183,6 +184,8 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 * orange{background:#F7B824}
 * red{background:#FF5722}
 * dark{background:#2F4056}
+* blur 高斯模糊 前置模糊
+* backgroud_blur 背景高斯模糊
 
 #### 右键菜单配置
 
