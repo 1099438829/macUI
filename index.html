@@ -10,8 +10,8 @@
     <meta name="keywords" content="mac桌面">
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/favicon.ico'>
     <link href="./css/animate.css" rel="stylesheet">
-    <link href="./component/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="./css/index.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
 </head>
 
@@ -34,7 +34,7 @@
         <div class="desktop">
             <div id="win10-shortcuts" class="shortcuts-hidden">
                 <div class="shortcut"
-                    onclick="Win10.openUrl('http://mac.apecloud.cn','<img src=\'./img/icon/computer.png\'/>','OS官网')">
+                    onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','OS官网')">
                     <img class="icon" src="./img/icon/computer.png" />
                     <div class="title">OS官网</div>
                 </div>
@@ -88,10 +88,10 @@
             <div class="dock backgroud_blur">
                 <ul>
                     <li><span class="dock-tips">finder<span class="arrow"></span></span><a
-                            onclick="Win10.openUrl('./app/finder','<img src=\'./img/icon/finder.png\'/>','finder')">
+                            onclick="Win10.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>','finder')">
                             <img src="./img/icon/finder.png"></a></li>
                     <li><span class="dock-tips">computer<span class="arrow"></span></span><a
-                            onclick="Win10.openUrl('http://mac.apecloud.cn','<img src=\'./img/icon/computer.png\'/>','我的电脑')">
+                            onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','我的电脑')">
                             <img src="./img/icon/computer.png"></a></li>
                     <li><span class="dock-tips">gamecenter<span class="arrow"></span></span><a href="#"> <img
                                 src="./img/icon/gamecenter.png"></a></li>
@@ -107,9 +107,11 @@
             </div>
         </div>
     </div>
+</body>
     <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
     <script type="text/javascript" src="./js/mac.min.js"></script>
+<link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
     <script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
     <script>
         Win10.onReady(function () {
@@ -143,6 +145,5 @@
             }, 2000);
         });
     </script>
-</body>
 
 </html>

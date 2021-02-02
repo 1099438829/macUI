@@ -2,7 +2,7 @@
  * Created by Yuri2 on 2017/7/10.
  */
 window.Win10 = {
-	_version: 'v1.1.2.4',
+	_version: 'v1.1.2.5',
 	_debug: true,
 	_bgs: {
 		main: '',
@@ -438,7 +438,6 @@ window.Win10 = {
 			if (!Win10.isSmallScreen()) Win10._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
 			Win10.renderDocks();
 		});
-
 		//打广告
 		setTimeout(function() {
 			console.log(Win10.lang('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ',
