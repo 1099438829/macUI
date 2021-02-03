@@ -9,8 +9,8 @@
     <meta name="description" content="mac桌面">
     <meta name="keywords" content="mac桌面">
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/favicon.ico'>
-    <link href="./css/animate.css" rel="stylesheet">
-    <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
 </head>
@@ -108,42 +108,41 @@
         </div>
     </div>
 </body>
-    <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
-    <script type="text/javascript" src="./js/mac.min.js"></script>
-<link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
-    <script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
-    <script>
-        Win10.onReady(function () {
+<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/layer/3.1.1/layer.min.js"></script>
+<script type="text/javascript" src="./js/mac.min.js"></script>
+<script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
+<script>
+    Win10.onReady(function () {
 
-            //设置壁纸
-            Win10.setBgUrl({
-                main: './img/wallpapers/main.jpg',
-                mobile: './img/wallpapers/mobile.jpg',
-            });
-
-            Win10.setAnimated([
-                'animated flip',
-                'animated bounceIn',
-            ], 0.01);
-            setTimeout(function () {
-                Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)', function () {
-                    Win10.enableFullScreen();
-                })
-            }, 1500);
-
-            setTimeout(function () {
-                layer.open({
-                    type: 2,
-                    title: '最新资讯',
-                    area: ['300px', '380px'],
-                    shade: 0,
-                    skin: 'win10-open-iframe',
-                    offset: 'rb',
-                    content: 'broadcast.html'
-                })
-            }, 2000);
+        //设置壁纸
+        Win10.setBgUrl({
+            main: './img/wallpapers/main.jpg',
+            mobile: './img/wallpapers/mobile.jpg',
         });
-    </script>
+
+        Win10.setAnimated([
+            'animated flip',
+            'animated bounceIn',
+        ], 0.01);
+        setTimeout(function () {
+            Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)', function () {
+                Win10.enableFullScreen();
+            })
+        }, 1500);
+
+        setTimeout(function () {
+            layer.open({
+                type: 2,
+                title: '最新资讯',
+                area: ['300px', '380px'],
+                shade: 0,
+                skin: 'win10-open-iframe',
+                offset: 'rb',
+                content: 'broadcast.html'
+            })
+        }, 2000);
+    });
+</script>
 
 </html>
