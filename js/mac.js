@@ -19,21 +19,21 @@ window.Win10 = {
 		resolution: 200,
 		iframes: [],
 		interval: null,
-		Iframe: function() {
+		Iframe: function () {
 			this.element = arguments[0];
 			this.cb = arguments[1];
 			this.hasTracked = false;
 		},
-		track: function(element, cb) {
+		track: function (element, cb) {
 			this.iframes.push(new this.Iframe(element, cb));
 			if (!this.interval) {
 				let _this = this;
-				this.interval = setInterval(function() {
+				this.interval = setInterval(function () {
 					_this.checkClick();
 				}, this.resolution);
 			}
 		},
-		checkClick: function() {
+		checkClick: function () {
 			if (document.activeElement) {
 				let activeElement = document.activeElement;
 				for (let i in this.iframes) {
@@ -55,7 +55,7 @@ window.Win10 = {
 		}
 	},
 	_iframe_click_lock_children: {},
-	_renderBar: function() {
+	_renderBar: function () {
 		//调整任务栏项目的宽度
 		if (this._countTask <= 0) {
 			return;
@@ -64,22 +64,22 @@ window.Win10 = {
 		btns.css('width', ('calc(' + (1 / this._countTask * 100) + '% - 1px )'))
 	},
 	_handleReady: [],
-	_hideShortcut: function() {
+	_hideShortcut: function () {
 		let that = $("#win10 #win10-shortcuts .shortcut");
 		that.removeClass('animated flipInX');
 		that.addClass('animated flipOutX');
 	},
-	_showShortcut: function() {
+	_showShortcut: function () {
 		let that = $("#win10 #win10-shortcuts .shortcut");
 		that.removeClass('animated flipOutX');
 		that.addClass('animated flipInX');
 	},
-	_checkBgUrls: function() {
+	_checkBgUrls: function () {
 		let loaders = $('#win10>.img-loader');
 		let flag = false;
 		if (Win10.isSmallScreen()) {
 			if (Win10._bgs.mobile) {
-				loaders.each(function() {
+				loaders.each(function () {
 					let loader = $(this);
 					if (loader.attr('src') === Win10._bgs.mobile && loader.hasClass('loaded')) {
 						Win10._setBackgroundImg(Win10._bgs.mobile);
@@ -90,7 +90,7 @@ window.Win10 = {
 					//没找到加载完毕的图片
 					let img = $('<img class="img-loader" src="' + Win10._bgs.mobile + '" />');
 					$('#win10').append(img);
-					Win10._onImgComplete(img[0], function() {
+					Win10._onImgComplete(img[0], function () {
 						img.addClass('loaded');
 						Win10._setBackgroundImg(Win10._bgs.mobile);
 					})
@@ -98,7 +98,7 @@ window.Win10 = {
 			}
 		} else {
 			if (Win10._bgs.main) {
-				loaders.each(function() {
+				loaders.each(function () {
 					let loader = $(this);
 					if (loader.attr('src') === Win10._bgs.main && loader.hasClass('loaded')) {
 						Win10._setBackgroundImg(Win10._bgs.main);
@@ -109,7 +109,7 @@ window.Win10 = {
 					//没找到加载完毕的图片
 					let img = $('<img class="img-loader" src="' + Win10._bgs.main + '" />');
 					$('#win10').append(img);
-					Win10._onImgComplete(img[0], function() {
+					Win10._onImgComplete(img[0], function () {
 						img.addClass('loaded');
 						Win10._setBackgroundImg(Win10._bgs.main);
 					})
@@ -121,21 +121,21 @@ window.Win10 = {
 			$('.background').addClass('blur');
 		}
 	},
-	_startAnimate: function() {
-		setInterval(function() {
+	_startAnimate: function () {
+		setInterval(function () {
 			let classes_lenth = Win10._animated_classes.length;
 			let animated_liveness = Win10._animated_liveness;
 			if (animated_liveness === 0 || classes_lenth === 0 || !$("#win10-menu").hasClass('opened')) {
 				return;
 			}
-			$('#win10-menu>.blocks>.menu_group>.block').each(function() {
+			$('#win10-menu>.blocks>.menu_group>.block').each(function () {
 				if (!$(this).hasClass('onAnimate') && Math.random() <= animated_liveness) {
 					let that = $(this);
 					let class_animate = Win10._animated_classes[Math.floor((Math.random() * classes_lenth))];
 					that.addClass('onAnimate');
-					setTimeout(function() {
+					setTimeout(function () {
 						that.addClass(class_animate);
-						setTimeout(function() {
+						setTimeout(function () {
 							that.removeClass('onAnimate');
 							that.removeClass(class_animate);
 						}, 3000);
@@ -144,27 +144,27 @@ window.Win10 = {
 			})
 		}, 1000);
 	},
-	_onImgComplete: function(img, callback) {
+	_onImgComplete: function (img, callback) {
 		if (!img) {
 			return;
 		}
-		let timer = setInterval(function() {
+		let timer = setInterval(function () {
 			if (img.complete) {
 				callback(img);
 				clearInterval(timer);
 			}
 		}, 50)
 	},
-	_setBackgroundImg: function(img) {
+	_setBackgroundImg: function (img) {
 		$('#win10 .background').css('background-image', 'url(' + img + ')')
 	},
-	_settop: function(layero) {
+	_settop: function (layero) {
 		if (!isNaN(layero)) {
 			layero = this.getLayeroByIndex(layero);
 		}
 		//置顶窗口
 		let max_zindex = 0;
-		$(".win10-open-iframe").each(function() {
+		$(".win10-open-iframe").each(function () {
 			z = parseInt($(this).css('z-index'));
 			$(this).css('z-index', z - 1);
 			if (z > max_zindex) {
@@ -173,11 +173,11 @@ window.Win10 = {
 		});
 		layero.css('z-index', max_zindex + 1);
 	},
-	_checkTop: function() {
+	_checkTop: function () {
 		let max_index = 0,
 			max_z = 0,
 			btn = null;
-		$("#win10_btn_group_middle .btn.show").each(function() {
+		$("#win10_btn_group_middle .btn.show").each(function () {
 			let index = $(this).attr('index');
 			let layero = Win10.getLayeroByIndex(index);
 			let z = layero.css('z-index');
@@ -194,7 +194,7 @@ window.Win10 = {
 		}
 	},
 	//渲染右键
-	_renderContextMenu: function(x, y, menu, trigger) {
+	_renderContextMenu: function (x, y, menu, trigger) {
 		this._removeContextMenu();
 		if (menu === true) {
 			return;
@@ -208,11 +208,11 @@ window.Win10 = {
 				ul.append($('<hr/>'));
 				continue;
 			}
-			if (typeof(item) === 'string') {
+			if (typeof (item) === 'string') {
 				ul.append($('<li>' + item + '</li>'));
 				continue;
 			}
-			if (typeof(item) === 'object') {
+			if (typeof (item) === 'object') {
 				let sub = $('<li>' + item[0] + '</li>');
 				ul.append(sub);
 				sub.click(trigger, item[1]);
@@ -231,20 +231,20 @@ window.Win10 = {
 			left: x,
 		});
 	},
-	_removeContextMenu: function() {
+	_removeContextMenu: function () {
 		$('.win10-context-menu').remove();
 	},
-	_closeWin: function(index) {
+	_closeWin: function (index) {
 		$("#win10_" + index).remove();
 		layer.close(index);
 		Win10._checkTop();
 		Win10._countTask--; //回退countTask数
 	},
-	_fixWindowsHeightAndWidth: function() {
+	_fixWindowsHeightAndWidth: function () {
 		//此处代码修正全屏切换引起的子窗体尺寸超出屏幕
 		let opens = $('.win10-open-iframe');
 		let clientHeight = document.body.clientHeight;
-		opens.each(function() {
+		opens.each(function () {
 			let layero_opened = $(this);
 			let height = layero_opened.css('height');
 			height = parseInt(height.replace('px', ''));
@@ -263,9 +263,9 @@ window.Win10 = {
 	 * @version:2.0.1
 	 * 说明: 所有#win10下的元素加入类win10-open-window即可自动绑定openUrl函数，无须用onclick手动绑定
 	 */
-	_bind_open_windows: function() {
+	_bind_open_windows: function () {
 		// 注册事件委派 打开url窗口
-		$('#win10').on('click', '.win10-open-window', function() {
+		$('#win10').on('click', '.win10-open-window', function () {
 			//>> 获取当前点击的对象
 			$this = $(this);
 			//>> 判断url地址是否为空 如果为空 不予处理
@@ -302,33 +302,33 @@ window.Win10 = {
 			}
 		})
 	},
-	_init: function() {
+	_init: function () {
 
 		//获取语言
 		this._lang = (navigator.language || navigator.browserLanguage).toLowerCase();
 
-		$("#win10_btn_win").click(function() {
+		$("#win10_btn_win").click(function () {
 			Win10.commandCenterClose();
 			Win10.menuToggle();
 		});
-		$("#win10_btn_command").click(function() {
+		$("#win10_btn_command").click(function () {
 			Win10.renderCommand();
 			Win10.menuClose();
 			Win10.commandCenterToggle();
 		});
-		$("#win10 .desktop").click(function() {
+		$("#win10 .desktop").click(function () {
 			Win10.menuClose();
 			Win10.commandCenterClose();
 		});
-		$('#win10').on('click', ".notice .btn_close_msg", function() {
+		$('#win10').on('click', ".notice .btn_close_msg", function () {
 			let msg = $(this).parents('.notice');
 			$(msg).addClass('animated slideOutRight');
-			setTimeout(function() {
+			setTimeout(function () {
 				msg.remove()
 			}, 500)
 		});
 		//消息界面切换
-		$('#win10_command_center').on('click', ".command-header div", function() {
+		$('#win10_command_center').on('click', ".command-header div", function () {
 			if (!$(this).hasClass('active')) {
 				if ($(this).hasClass('tab-today')) {
 					$(this).parent().siblings('.msgs').hide().siblings('.today').show();
@@ -339,21 +339,21 @@ window.Win10 = {
 				}
 			}
 		});
-		$('#win10_btn_command_center_clean_all').click(function() {
+		$('#win10_btn_command_center_clean_all').click(function () {
 			let msgs = $('#win10_command_center .msg');
 			msgs.addClass('animated slideOutRight');
-			setTimeout(function() {
+			setTimeout(function () {
 				msgs.remove()
 			}, 1500);
-			setTimeout(function() {
+			setTimeout(function () {
 				Win10.commandCenterClose();
 			}, 1000);
 		});
-		$("#win10_btn_show_desktop").click(function() {
+		$("#win10_btn_show_desktop").click(function () {
 			$("#win10 .desktop").click();
 			Win10.hideWins();
 		});
-		$("#win10-menu-switcher").click(function() {
+		$("#win10-menu-switcher").click(function () {
 			if (Win10._switchMenuTooHurry) {
 				return;
 			}
@@ -361,13 +361,13 @@ window.Win10 = {
 			let class_name = 'win10-menu-hidden';
 			let list = $("#win10-menu>.list");
 			let blocks = $("#win10-menu>.blocks");
-			let toggleSlide = function(obj) {
+			let toggleSlide = function (obj) {
 				if (obj.hasClass(class_name)) {
 					obj.addClass('animated slideInLeft');
 					obj.removeClass('animated slideOutLeft');
 					obj.removeClass(class_name);
 				} else {
-					setTimeout(function() {
+					setTimeout(function () {
 						obj.addClass(class_name);
 					}, 450);
 					obj.addClass('animated slideOutLeft');
@@ -376,28 +376,28 @@ window.Win10 = {
 			};
 			toggleSlide(list);
 			toggleSlide(blocks);
-			setTimeout(function() {
+			setTimeout(function () {
 				Win10._switchMenuTooHurry = false;
 			}, 520)
 		});
-		$("#win10_btn_group_middle").click(function() {
+		$("#win10_btn_group_middle").click(function () {
 			$("#win10 .desktop").click();
 		});
-		$(document).on('click', '.win10-btn-refresh', function() {
+		$(document).on('click', '.win10-btn-refresh', function () {
 			let index = $(this).attr('index');
 			let iframe = Win10.getLayeroByIndex(index).find('iframe');
 			iframe.attr('src', iframe.attr('src'));
 		});
-		$(document).on('mousedown', '.win10-open-iframe', function() {
+		$(document).on('mousedown', '.win10-open-iframe', function () {
 			let layero = $(this);
 			Win10._settop(layero);
 			Win10._checkTop();
 		});
-		$('#win10_btn_group_middle').on('click', '.btn_close', function() {
+		$('#win10_btn_group_middle').on('click', '.btn_close', function () {
 			let index = $(this).parent().attr('index');
 			Win10._closeWin(index);
 		});
-		$('#win10-menu .list').on('click', '.item', function() {
+		$('#win10-menu .list').on('click', '.item', function () {
 			let e = $(this);
 			if (e.hasClass('has-sub-down')) {
 				$('#win10-menu .list .item.has-sub-up').toggleClass('has-sub-down').toggleClass('has-sub-up');
@@ -411,13 +411,13 @@ window.Win10 = {
 				e = e.next();
 			}
 		});
-		setInterval(function() {
+		setInterval(function () {
 			//重新写mac时间
 			let myDate = Win10.getLunarObj();
 			$("#win10_btn_time").html(myDate.weekDay + myDate.hour + ':' + myDate.minute);
 		}, 1000);
 		//离开前警告
-		document.body.onbeforeunload = function(event) {
+		document.body.onbeforeunload = function (event) {
 			let rel = Win10.lang('系统可能不会保存您所做的更改', 'The system may not save the changes you have made.');
 			if (!window.event) {
 				event.returnValue = rel;
@@ -432,32 +432,32 @@ window.Win10 = {
 		Win10._showShortcut(); //显示图标
 		Win10.renderDocks(); //渲染DOCK
 		//窗口改大小，重新渲染
-		$(window).resize(function() {
+		$(window).resize(function () {
 			Win10.renderShortcuts();
 			Win10._checkBgUrls();
 			if (!Win10.isSmallScreen()) Win10._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
 			Win10.renderDocks();
 		});
 		//打广告
-		setTimeout(function() {
+		setTimeout(function () {
 			console.log(Win10.lang('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ',
 				'The page is strongly driven by Win10-UI.\nFor more info: http://win10ui.yuri2.cn.\n Win10-UI, easy to create a unique background interface.'
 			))
 		}, 2000);
 		//点击清空右键菜单
-		$(document).click(function(event) {
+		$(document).click(function (event) {
 			if (!event.button)
 				Win10._removeContextMenu();
 		});
 		//禁用右键的右键
-		$(document).on('contextmenu', '.win10-context-menu', function(e) {
+		$(document).on('contextmenu', '.win10-context-menu', function (e) {
 			e.preventDefault();
 			e.stopPropagation();
 		});
 		//设置默认右键菜单
 		Win10.setContextMenu('#win10', true);
 		Win10.setContextMenu('#win10>.desktop', [
-			['<i class="fa fa-fw fa-star"></i> 收藏本页', function() {
+			['<i class="fa fa-fw fa-star"></i> 收藏本页', function () {
 				let url = window.location;
 				let title = document.title;
 				let ua = navigator.userAgent.toLowerCase();
@@ -480,31 +480,31 @@ window.Win10 = {
 						'Your browser does not support, please press Ctrl+D to manual collection!'));
 				}
 			}],
-			['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('进入全屏', 'Enable Full Screen'), function() {
+			['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('进入全屏', 'Enable Full Screen'), function () {
 				Win10.enableFullScreen()
 			}],
-			['<i class="fa fa-fw fa-window-restore"></i> ' + Win10.lang('退出全屏', 'Disable Full Screen'), function() {
+			['<i class="fa fa-fw fa-window-restore"></i> ' + Win10.lang('退出全屏', 'Disable Full Screen'), function () {
 				Win10.disableFullScreen()
 			}],
 			'|',
-			['<i class="fa fa-fw fa-info-circle"></i> ' + Win10.lang('关于', 'About Us'), function() {
+			['<i class="fa fa-fw fa-info-circle"></i> ' + Win10.lang('关于', 'About Us'), function () {
 				Win10.aboutUs()
 			}],
 		]);
 		Win10.setContextMenu('#win10_btn_group_middle', [
-			['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('全部显示', 'Show All Windows'), function() {
+			['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('全部显示', 'Show All Windows'), function () {
 				Win10.showWins()
 			}],
-			['<i class="fa fa-fw fa-window-minimize"></i> ' + Win10.lang('全部隐藏', 'Hide All Windows'), function() {
+			['<i class="fa fa-fw fa-window-minimize"></i> ' + Win10.lang('全部隐藏', 'Hide All Windows'), function () {
 				Win10.hideWins()
 			}],
-			['<i class="fa fa-fw fa-window-close"></i> ' + Win10.lang('全部关闭', 'Close All Windows'), function() {
+			['<i class="fa fa-fw fa-window-close"></i> ' + Win10.lang('全部关闭', 'Close All Windows'), function () {
 				Win10.closeAll()
 			}],
 		]);
 
 		//处理消息图标闪烁
-		setInterval(function() {
+		setInterval(function () {
 			let btn = $("#win10-msg-nof.on-new-msg");
 			if (btn.length > 0) {
 				btn.toggleClass('fa-commenting-o');
@@ -512,7 +512,7 @@ window.Win10 = {
 		}, 600);
 
 		//绑定快捷键
-		$("body").keyup(function(e) {
+		$("body").keyup(function (e) {
 			if (e.ctrlKey) {
 				switch (e.keyCode) {
 					case 37: //left
@@ -550,21 +550,21 @@ window.Win10 = {
 		//属性绑定
 		Win10._bind_open_windows();
 	},
-	setBgUrl: function(bgs) {
+	setBgUrl: function (bgs) {
 		this._bgs = bgs;
 		this._checkBgUrls();
 	},
-	setBg: function(bgs) {
+	setBg: function (bgs) {
 		this._bgs = bgs;
 		this._checkBgUrls();
 	},
-	menuClose: function() {
+	menuClose: function () {
 		$("#win10-menu").removeClass('opened');
 		$("#win10-menu").addClass('hidden');
 		this._showShortcut();
 		$(".win10-open-iframe").removeClass('hide');
 	},
-	getLunarObj: function() {
+	getLunarObj: function () {
 		//农历年信息
 		let lunarInfo = [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,
 			0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,
@@ -790,16 +790,16 @@ window.Win10 = {
 		return viewdate;
 	},
 	//消息中心渲染
-	renderCommand: function(todayHtml = null) {
+	renderCommand: function (todayHtml = null) {
 		let active = $("#win10_command_center .command-body.today").hasClass('active');
 		if (!active) {
 			if (!todayHtml) {
 				let lunarDate = Win10.getLunarObj();
 				todayHtml = '<div class="command-body-calendar">\n' +
-					'	<div class="command-body-calendar-date normal-date">' + lunarDate.month + '月' + lunarDate.day + '日 \n' +lunarDate.week + '</div>\n' +
+					'	<div class="command-body-calendar-date normal-date">' + lunarDate.month + '月' + lunarDate.day + '日 \n' + lunarDate.week + '</div>\n' +
 					'	<div class="command-body-calendar-date lunar-date">' + lunarDate.ganzhi + '年' + lunarDate.lunarmonth + lunarDate.lunarday + '</div>\n' +
 					'</div>\n' +
-				    '<div class="notice">' +
+					'<div class="notice">' +
 					'	<div class="notice-header">' +
 					'		<span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>\n' +
 					'		<span class="notice-header-title">天气</span>\n' +
@@ -812,31 +812,31 @@ window.Win10 = {
 			$("#win10_command_center .command-body.today").html(todayHtml).addClass('active');
 		}
 	},
-	menuOpen: function() {
+	menuOpen: function () {
 		$("#win10-menu").addClass('opened');
 		$("#win10-menu").removeClass('hidden');
 		//this._hideShortcut(); //不关闭
 		$(".win10-open-iframe").addClass('hide');
 	},
-	menuToggle: function() {
+	menuToggle: function () {
 		if (!$("#win10-menu").hasClass('opened')) {
 			this.menuOpen();
 		} else {
 			this.menuClose();
 		}
 	},
-	commandCenterClose: function() {
+	commandCenterClose: function () {
 		$("#win10_command_center").addClass('hidden_right');
 		this._showShortcut();
 		$(".win10-open-iframe").removeClass('hide');
 	},
-	commandCenterOpen: function() {
+	commandCenterOpen: function () {
 		$("#win10_command_center").removeClass('hidden_right');
 		//this._hideShortcut();
 		$(".win10-open-iframe").addClass('hide');
 		$("#win10-msg-nof").removeClass('on-new-msg fa-commenting-o');
 	},
-	renderShortcuts: function() {
+	renderShortcuts: function () {
 		if (!this.isSmallScreen()) {
 			//大屏执行pc的布局也就是竖排靠右对齐，小屏幕执行移动端也就是横向排列
 			let h = parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight - 90) / 100);
@@ -844,7 +844,7 @@ window.Win10 = {
 			//计算一列最大几个图标，公式是（桌面图标界面的大小 - 顶部状态栏和底部dock栏的尺寸）/单个图标高度所占的尺寸
 			let x = 0,
 				y = 0;
-			$("#win10 #win10-shortcuts .shortcut").each(function() {
+			$("#win10 #win10-shortcuts .shortcut").each(function () {
 				$(this).css({
 					right: x * 82 + 10,
 					left: 'auto',
@@ -861,7 +861,7 @@ window.Win10 = {
 			let w = parseInt(($("#win10 #win10-shortcuts")[0].offsetWidth - 10) / 82);
 			let x = 0,
 				y = 0;
-			$("#win10 #win10-shortcuts .shortcut").each(function() {
+			$("#win10 #win10-shortcuts .shortcut").each(function () {
 				$(this).css({
 					left: x * 82 + 10,
 					right: 0,
@@ -876,7 +876,7 @@ window.Win10 = {
 		}
 	},
 	//渲染DOCK
-	renderDocks: function() {
+	renderDocks: function () {
 		let cell_width = 60;
 		let width = document.body.clientWidth;
 		let docks = $("#footer .dock li");
@@ -890,27 +890,27 @@ window.Win10 = {
 		}
 		if (!this.isSmallScreen()) {
 			$("#footer .dock li a img").hover(
-				function() {
+				function () {
 					$(this).parent('a').prev().css('display', 'flex');
 				},
-				function() {
+				function () {
 					$(this).parent('a').prev().css('display', 'none');
 				}
 			);
 		} else {
-			$("#footer .dock li a img").hover(function() {
+			$("#footer .dock li a img").hover(function () {
 				$(this).parent('a').prev().css('display', 'none');
 			});
 		}
 	},
-	commandCenterToggle: function() {
+	commandCenterToggle: function () {
 		if ($("#win10_command_center").hasClass('hidden_right')) {
 			this.commandCenterOpen();
 		} else {
 			this.commandCenterClose();
 		}
 	},
-	newMsg: function(title, content, handle_click, app_name = '提示消息', app_icon =
+	newMsg: function (title, content, handle_click, app_name = '提示消息', app_icon =
 		'<img src="./img/icon/weather.png" class="notice-header-icon-img" />', is_del = true) {
 		let msg = '<div class="notice">' +
 			'<div class="notice-header">' +
@@ -927,7 +927,7 @@ window.Win10 = {
 			'</div></div></div>';
 		let e = $(msg);
 		$("#win10_command_center .msgs").prepend(e);
-		e.find('.content:first,.title:first').click(function() {
+		e.find('.content:first,.title:first').click(function () {
 			if (handle_click) {
 				handle_click(e);
 			}
@@ -940,17 +940,17 @@ window.Win10 = {
 			$("#win10-msg-nof").addClass('on-new-msg');
 		}
 	},
-	getLayeroByIndex: function(index) {
+	getLayeroByIndex: function (index) {
 		return $('#' + 'layui-layer' + index)
 	},
-	isSmallScreen: function(size) {
+	isSmallScreen: function (size) {
 		if (!size) {
 			size = 768
 		}
 		let width = document.body.clientWidth;
 		return width < size;
 	},
-	enableFullScreen: function() {
+	enableFullScreen: function () {
 		let docElm = document.documentElement;
 		//W3C
 		if (docElm.requestFullscreen) {
@@ -969,7 +969,7 @@ window.Win10 = {
 			document.body.msRequestFullscreen();
 		}
 	},
-	disableFullScreen: function() {
+	disableFullScreen: function () {
 		if (document.exitFullscreen) {
 			document.exitFullscreen();
 		} else if (document.mozCancelFullScreen) {
@@ -980,24 +980,24 @@ window.Win10 = {
 			document.msExitFullscreen();
 		}
 	},
-	buildList: function() {
+	buildList: function () {
 		$("#win10-menu .list .sub-item").slideUp();
-		$("#win10-menu .list .item").each(function() {
+		$("#win10-menu .list .item").each(function () {
 			if ($(this).next().hasClass('sub-item')) {
 				$(this).addClass('has-sub-down');
 				$(this).removeClass('has-sub-up');
 			}
 		})
 	},
-	openUrl: function(url, icon, title, areaAndOffset) {
+	openUrl: function (url, icon, title, areaAndOffset) {
 		//只打开一个应用
 		/*
 		let ifr=document.getElementsByTagName("iframe");
 		for(i=0;i<ifr.length;i++){
-		    if(url==ifr[i].src){
-		        Win10.show_win(url);
-		        return false;
-		    }
+			if(url==ifr[i].src){
+				Win10.show_win(url);
+				return false;
+			}
 		}
 		*/
 		//只打开一个应用代码结束，备注，本地方法有点问题，需要全部使用 url才能生效
@@ -1049,18 +1049,18 @@ window.Win10 = {
 			offset: offset,
 			isOutAnim: false,
 			skin: 'win10-open-iframe',
-			cancel: function(index, layero) {
+			cancel: function (index, layero) {
 				$("#win10_" + index).remove();
 				Win10._checkTop();
 				Win10._countTask--; //回退countTask数
 			},
-			min: function(layero) {
+			min: function (layero) {
 				layero.hide();
 				$("#win10_" + index).removeClass('show');
 				Win10._checkTop();
 				return false;
 			},
-			full: function(layero) {
+			full: function (layero) {
 				layero.find('.layui-layer-min').css('display', 'inline-block');
 				layero_opened.css('top', 24);
 			},
@@ -1075,11 +1075,11 @@ window.Win10 = {
 		layero_opened.find('.layui-layer-setwin').prepend('<a class="win10-btn-refresh" index="' + index +
 			'" href="#"></a>');
 		//菜单排列倒序
-		layero_opened.find(".layui-layer-setwin>a").each(function() {
+		layero_opened.find(".layui-layer-setwin>a").each(function () {
 			$(this).prependTo(layero_opened.find(".layui-layer-setwin"));
 		})
-		layero_opened.find('.layui-layer-setwin .layui-layer-max').click(function() {
-			setTimeout(function() {
+		layero_opened.find('.layui-layer-setwin .layui-layer-max').click(function () {
+			setTimeout(function () {
 				let height = layero_opened.css('height');
 				height = parseInt(height.replace('px', ''));
 				if (height >= document.body.clientHeight) {
@@ -1091,13 +1091,13 @@ window.Win10 = {
 
 		});
 		$("#win10_btn_group_middle").append(btn);
-		btn.click(function() {
+		btn.click(function () {
 			let index = $(this).attr('index');
 			let layero = Win10.getLayeroByIndex(index);
-			let settop = function() {
+			let settop = function () {
 				//置顶窗口
 				let max_zindex = 0;
-				$(".win10-open-iframe").each(function() {
+				$(".win10-open-iframe").each(function () {
 					z = parseInt($(this).css('z-index'));
 					$(this).css('z-index', z - 1);
 					if (z > max_zindex) {
@@ -1127,7 +1127,7 @@ window.Win10 = {
 		});
 
 
-		Win10._iframeOnClick.track(layero_opened.find('iframe:first')[0], function() {
+		Win10._iframeOnClick.track(layero_opened.find('iframe:first')[0], function () {
 			if (Object.getOwnPropertyNames(Win10._iframe_click_lock_children).length === 0) {
 				Win10._settop(layero_opened);
 				Win10._checkTop();
@@ -1140,21 +1140,21 @@ window.Win10 = {
 		this.commandCenterClose();
 		return index;
 	},
-	closeAll: function() {
+	closeAll: function () {
 		$(".win10-open-iframe").remove();
 		$("#win10_btn_group_middle").html("");
 		Win10._countTask = 0;
 	},
-	setAnimated: function(animated_classes, animated_liveness) {
+	setAnimated: function (animated_classes, animated_liveness) {
 		this._animated_classes = animated_classes;
 		this._animated_liveness = animated_liveness;
 	},
-	exit: function() {
+	exit: function () {
 		layer.confirm(Win10.lang('确认要关闭本页吗?', 'Are you sure you want to close this page?'), {
 			icon: 3,
 			title: Win10.lang('提示', 'Prompt')
-		}, function(index) {
-			document.body.onbeforeunload = function() {};
+		}, function (index) {
+			document.body.onbeforeunload = function () { };
 			window.location.href = "about:blank";
 			window.close();
 			layer.close(index);
@@ -1165,10 +1165,10 @@ window.Win10 = {
 		});
 
 	},
-	lang: function(cn, en) {
+	lang: function (cn, en) {
 		return this._lang === 'zh-cn' || this._lang === 'zh-tw' ? cn : en;
 	},
-	aboutUs: function() {
+	aboutUs: function () {
 		//关于我们
 		layer.open({
 			type: 1,
@@ -1185,12 +1185,12 @@ window.Win10 = {
 				'</div>'
 		});
 	},
-	setContextMenu: function(jq_dom, menu) {
-		if (typeof(jq_dom) === 'string') {
+	setContextMenu: function (jq_dom, menu) {
+		if (typeof (jq_dom) === 'string') {
 			jq_dom = $(jq_dom);
 		}
 		jq_dom.unbind('contextmenu');
-		jq_dom.on('contextmenu', function(e) {
+		jq_dom.on('contextmenu', function (e) {
 			if (menu) {
 				Win10._renderContextMenu(e.clientX, e.clientY, menu, this);
 				if (e.cancelable) {
@@ -1203,8 +1203,8 @@ window.Win10 = {
 			}
 		});
 	},
-	hideWins: function() {
-		$('#win10_btn_group_middle>.btn.show').each(function() {
+	hideWins: function () {
+		$('#win10_btn_group_middle>.btn.show').each(function () {
 			let index = $(this).attr('index');
 			let layero = Win10.getLayeroByIndex(index);
 			$(this).removeClass('show');
@@ -1212,8 +1212,8 @@ window.Win10 = {
 			layero.hide();
 		})
 	},
-	showWins: function() {
-		$('#win10_btn_group_middle>.btn').each(function() {
+	showWins: function () {
+		$('#win10_btn_group_middle>.btn').each(function () {
 			let index = $(this).attr('index');
 			let layero = Win10.getLayeroByIndex(index);
 			$(this).addClass('show');
@@ -1221,16 +1221,16 @@ window.Win10 = {
 		});
 		Win10._checkTop();
 	},
-	getDesktopScene: function() {
+	getDesktopScene: function () {
 		return $("#win10-desktop-scene");
 	},
-	onReady: function(handle) {
+	onReady: function (handle) {
 		Win10._handleReady.push(handle);
 	}
 };
 
 
-$(function() {
+$(function () {
 	Win10._init();
 	for (let i in Win10._handleReady) {
 		let handle = Win10._handleReady[i];
