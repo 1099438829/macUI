@@ -793,24 +793,24 @@ window.Win10 = {
 	renderCommand: function(today = null) {
 		let active = $("#win10_command_center .command-body.today").hasClass('active');
 		if (!active) {
+			let todayHtml = '';
 			if (!today) {
 				let lunarDate = Win10.getLunarObj();
-				let today = '<div class="command-body-calendar">' +
-					'<div class="command-body-calendar-date normal-date">' + lunarDate.month + '月' + lunarDate.day + '日 ' +
-					lunarDate.week + '</div>' +
-					'<div class="command-body-calendar-date lunar-date">' + lunarDate.ganzhi + '年' + lunarDate.lunarmonth +
-					lunarDate.lunarday + '</div>' +
-					'</div>';
-				today += '<div class="notice">' +
-					'<div class="notice-header">' +
-					'<span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>' +
-					'<span class="notice-header-title">天气</span>' +
-					'</div>' +
-					'<div class="notice-body">' +
-					'<iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tw&skin=pitaya" frameborder="0" width="280" height="500" allowtransparency="true"></iframe>' +
-					'</div></div>';
+				todayHtml += '<div class="command-body-calendar">\n' +
+					'	<div class="command-body-calendar-date normal-date">' + lunarDate.month + '月' + lunarDate.day + '日 \n' +lunarDate.week + '</div>\n' +
+					'	<div class="command-body-calendar-date lunar-date">' + lunarDate.ganzhi + '年' + lunarDate.lunarmonth + lunarDate.lunarday + '</div>\n' +
+					'</div>\n' +
+				    '<div class="notice">' +
+					'	<div class="notice-header">' +
+					'		<span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>\n' +
+					'		<span class="notice-header-title">天气</span>\n' +
+					'	</div>\n' +
+					'	<div class="notice-body">\n' +
+					'	<iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tw&skin=pitaya" frameborder="0" width="280" height="500" allowtransparency="true"></iframe>\n' +
+					'	</div>\n' +
+					'</div>\n';
 			}
-			$("#win10_command_center .command-body.today").html(today).addClass('active');
+			$("#win10_command_center .command-body.today").html(todayHtml).addClass('active');
 		}
 	},
 	menuOpen: function() {
