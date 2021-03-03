@@ -790,13 +790,12 @@ window.Win10 = {
 		return viewdate;
 	},
 	//消息中心渲染
-	renderCommand: function(today = null) {
+	renderCommand: function(todayHtml = null) {
 		let active = $("#win10_command_center .command-body.today").hasClass('active');
 		if (!active) {
-			let todayHtml = '';
-			if (!today) {
+			if (!todayHtml) {
 				let lunarDate = Win10.getLunarObj();
-				todayHtml += '<div class="command-body-calendar">\n' +
+				todayHtml = '<div class="command-body-calendar">\n' +
 					'	<div class="command-body-calendar-date normal-date">' + lunarDate.month + '月' + lunarDate.day + '日 \n' +lunarDate.week + '</div>\n' +
 					'	<div class="command-body-calendar-date lunar-date">' + lunarDate.ganzhi + '年' + lunarDate.lunarmonth + lunarDate.lunarday + '</div>\n' +
 					'</div>\n' +
