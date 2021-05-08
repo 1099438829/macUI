@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>子页测试</title>
-    <script src="./js/jquery-2.2.4.min.js"></script>
-    <script src="./js/win10.child.min.js"></script>
     <style>
         .btn {
             margin: 20px;
@@ -25,6 +23,15 @@
             background-color: #256d95;
         }
     </style>
+</head>
+
+<body>
+    <div class="btn" onclick="f1()">子页给父页发消息</div>
+    <div class="btn" onclick="f2()">子页打开子窗口</div>
+    <div class="btn" onclick="f3()">关闭子页</div>
+</body>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="./js/win10.child.min.js"></script>
     <script>
         function f1() {
             Win10_child.newMsg('子页的问候', '这是从iframe页调用APi发送的消息哦');
@@ -36,12 +43,4 @@
             Win10_child.close();
         }
     </script>
-</head>
-
-<body>
-    <div class="btn" onclick="f1()">子页给父页发消息</div>
-    <div class="btn" onclick="f2()">子页打开子窗口</div>
-    <div class="btn" onclick="f3()">关闭子页</div>
-</body>
-
 </html>
