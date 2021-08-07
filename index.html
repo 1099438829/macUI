@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>macOS</title>
+    <title>mac桌面</title>
     <meta name="description" content="mac桌面">
     <meta name="keywords" content="mac桌面">
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/favicon.ico'>
-    <link href="./css/animate.css" rel="stylesheet">
-    <link href="./component/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="./css/index.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
 </head>
@@ -30,7 +30,7 @@
     </div>
     <div class="desktop">
         <div id="win10-shortcuts" class="shortcuts-hidden">
-            <div class="shortcut" onclick="Win10.openUrl('http://mac.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','UI官网')">
+            <div class="shortcut" onclick="Win10.openUrl('./index.html','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','UI官网')">
                 <img class="icon" src="./img/icon/computer.png"/>
                 <div class="title">UI官网</div>
             </div>
@@ -96,42 +96,43 @@
 	  </div>
 	</div>
 </div>
-    <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="./component/layer-v3.1.1/layer/layer.js"></script>
-	<script type="text/javascript" src="./js/interface.js"></script>
-    <script type="text/javascript" src="./js/mac.min.js"></script>
-    <script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
-    <script>
-        Win10.onReady(function () {
-
-            //设置壁纸
-            Win10.setBgUrl({
-                main: './img/wallpapers/main.jpg',
-                mobile: './img/wallpapers/mobile.jpg',
-            });
-
-            Win10.setAnimated([
-                'animated flip',
-                'animated bounceIn',
-            ], 0.01);
-            setTimeout(function () {
-                Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)', function () {
-                    Win10.enableFullScreen();
-                })
-            }, 1500);
-
-            setTimeout(function () {
-                layer.open({
-                    type: 2,
-                    title: '最新资讯',
-                    area: ['300px', '380px'],
-                    shade: 0,
-                    skin: 'win10-open-iframe',
-                    offset: 'rb',
-                    content: 'broadcast.html'
-                })
-            }, 2000);
-        });
-    </script>
 </body>
+<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/layer/3.5.1/layer.min.js"></script>
+<script type="text/javascript" src="./js/interface.js"></script>
+<script type="text/javascript" src="./js/mac.min.js"></script>
+<script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
+<script>
+    Win10.onReady(function () {
+
+		//设置壁纸
+		Win10.setBgUrl({
+			main: './img/wallpapers/main.jpg',
+			mobile: './img/wallpapers/mobile.jpg',
+		});
+
+        Win10.setAnimated([
+            'animated flip',
+            'animated bounceIn',
+        ], 0.01);
+        setTimeout(function () {
+            Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)', function () {
+                Win10.enableFullScreen();
+            })
+        }, 1500);
+
+        setTimeout(function () {
+            layer.open({
+                type: 2,
+                title: '最新资讯',
+                area: ['300px', '380px'],
+                shade: 0,
+                skin: 'win10-open-iframe',
+                offset: 'rb',
+                content: 'broadcast.html'
+            })
+        }, 2000);
+    });
+</script>
+
 </html>
