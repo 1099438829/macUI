@@ -28,9 +28,7 @@ window.Win10 = {
 			this.iframes.push(new this.Iframe(element, cb));
 			if (!this.interval) {
 				let _this = this;
-				this.interval = setInterval(function () {
-					_this.checkClick();
-				}, this.resolution);
+				this.interval = setInterval(function () { _this.checkClick(); }, this.resolution);
 			}
 		},
 		checkClick: function () {
@@ -57,9 +55,7 @@ window.Win10 = {
 	_iframe_click_lock_children: {},
 	_renderBar: function () {
 		//调整任务栏项目的宽度
-		if (this._countTask <= 0) {
-			return;
-		} //防止除以0
+		if (this._countTask <= 0) { return; } //防止除以0
 		let btns = $("#win10_btn_group_middle>.btn");
 		btns.css('width', ('calc(' + (1 / this._countTask * 100) + '% - 1px )'))
 	},
@@ -116,18 +112,40 @@ window.Win10 = {
 				}
 			}
 		}
+
 		//开始渲染壁纸模糊
 		if (Win10._wallpaperBlur) {
 			$('.background').addClass('blur');
 		}
 	},
+	//动态加载JS文件
+	loadScript: function (url, callback) {
+		let el = document.createElement("script");
+		el.type = "text/javascript";
+
+		if (typeof (callback) != "undefined") {
+			if (el.readyState) {
+				el.onreadystatechange = function () {
+					if (el.readyState == "loaded" || el.readyState == "complete") {
+						el.onreadystatechange = null;
+						callback();
+					}
+				};
+			} else {
+				el.onload = function () {
+					callback();
+				};
+			}
+		}
+
+		el.src = url;
+		document.head.appendChild(el);
+	},
 	_startAnimate: function () {
 		setInterval(function () {
 			let classes_lenth = Win10._animated_classes.length;
 			let animated_liveness = Win10._animated_liveness;
-			if (animated_liveness === 0 || classes_lenth === 0 || !$("#win10-menu").hasClass('opened')) {
-				return;
-			}
+			if (animated_liveness === 0 || classes_lenth === 0 || !$("#win10-menu").hasClass('opened')) { return; }
 			$('#win10-menu>.blocks>.menu_group>.block').each(function () {
 				if (!$(this).hasClass('onAnimate') && Math.random() <= animated_liveness) {
 					let that = $(this);
@@ -145,9 +163,7 @@ window.Win10 = {
 		}, 1000);
 	},
 	_onImgComplete: function (img, callback) {
-		if (!img) {
-			return;
-		}
+		if (!img) { return; }
 		let timer = setInterval(function () {
 			if (img.complete) {
 				callback(img);
@@ -167,16 +183,12 @@ window.Win10 = {
 		$(".win10-open-iframe").each(function () {
 			z = parseInt($(this).css('z-index'));
 			$(this).css('z-index', z - 1);
-			if (z > max_zindex) {
-				max_zindex = z;
-			}
+			if (z > max_zindex) { max_zindex = z; }
 		});
 		layero.css('z-index', max_zindex + 1);
 	},
 	_checkTop: function () {
-		let max_index = 0,
-			max_z = 0,
-			btn = null;
+		let max_index = 0, max_z = 0, btn = null;
 		$("#win10_btn_group_middle .btn.show").each(function () {
 			let index = $(this).attr('index');
 			let layero = Win10.getLayeroByIndex(index);
@@ -196,9 +208,7 @@ window.Win10 = {
 	//渲染右键
 	_renderContextMenu: function (x, y, menu, trigger) {
 		this._removeContextMenu();
-		if (menu === true) {
-			return;
-		}
+		if (menu === true) { return; }
 		let dom = $("<div class='win10-context-menu'><ul></ul></div>");
 		$('#win10').append(dom);
 		let ul = dom.find('ul');
@@ -220,12 +230,8 @@ window.Win10 = {
 			}
 		}
 		//修正坐标
-		if (x + 150 > document.body.clientWidth) {
-			x -= 150
-		}
-		if (y + dom.height() > document.body.clientHeight) {
-			y -= dom.height()
-		}
+		if (x + 150 > document.body.clientWidth) { x -= 150 }
+		if (y + dom.height() > document.body.clientHeight) { y -= dom.height() }
 		dom.css({
 			top: y,
 			left: x,
@@ -239,6 +245,7 @@ window.Win10 = {
 		layer.close(index);
 		Win10._checkTop();
 		Win10._countTask--; //回退countTask数
+		Win10._renderBar();
 	},
 	_fixWindowsHeightAndWidth: function () {
 		//此处代码修正全屏切换引起的子窗体尺寸超出屏幕
@@ -273,6 +280,7 @@ window.Win10 = {
 				//>> 获取弹窗标题
 				let title = $this.data('title') || '',
 					areaAndOffset, icon;
+
 				//>> 判断是否有标题图片
 				let bg = $this.data('icon-bg') ? $this.data('icon-bg') : '';
 				if ($this.data('icon-image')) {
@@ -354,9 +362,7 @@ window.Win10 = {
 			Win10.hideWins();
 		});
 		$("#win10-menu-switcher").click(function () {
-			if (Win10._switchMenuTooHurry) {
-				return;
-			}
+			if (Win10._switchMenuTooHurry) { return; }
 			Win10._switchMenuTooHurry = true;
 			let class_name = 'win10-menu-hidden';
 			let list = $("#win10-menu>.list");
@@ -440,9 +446,7 @@ window.Win10 = {
 		});
 		//打广告
 		setTimeout(function () {
-			console.log(Win10.lang('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ',
-				'The page is strongly driven by Win10-UI.\nFor more info: http://win10ui.yuri2.cn.\n Win10-UI, easy to create a unique background interface.'
-			))
+			console.log(Win10.lang('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ', 'The page is strongly driven by Win10-UI.\nFor more info: http://win10ui.yuri2.cn.\n Win10-UI, easy to create a unique background interface.'))
 		}, 2000);
 		//点击清空右键菜单
 		$(document).click(function (event) {
@@ -462,45 +466,34 @@ window.Win10 = {
 				let title = document.title;
 				let ua = navigator.userAgent.toLowerCase();
 				if (ua.indexOf("360se") > -1) {
-					layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!',
-						'Your browser does not support, please press Ctrl+D to manual collection!'));
-				} else if (ua.indexOf("msie 8") > -1) {
+					layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!', 'Your browser does not support, please press Ctrl+D to manual collection!'));
+				}
+				else if (ua.indexOf("msie 8") > -1) {
 					window.external.AddToFavoritesBar(url, title); //IE8
-				} else if (document.all) {
+				}
+				else if (document.all) {
 					try {
 						window.external.addFavorite(url, title);
 					} catch (e) {
-						layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!',
-							'Your browser does not support, please press Ctrl+D to manual collection!'));
+						layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!', 'Your browser does not support, please press Ctrl+D to manual collection!'));
 					}
-				} else if (window.sidebar) {
+				}
+				else if (window.sidebar) {
 					window.sidebar.addPanel(title, url, "");
-				} else {
-					layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!',
-						'Your browser does not support, please press Ctrl+D to manual collection!'));
+				}
+				else {
+					layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!', 'Your browser does not support, please press Ctrl+D to manual collection!'));
 				}
 			}],
-			['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('进入全屏', 'Enable Full Screen'), function () {
-				Win10.enableFullScreen()
-			}],
-			['<i class="fa fa-fw fa-window-restore"></i> ' + Win10.lang('退出全屏', 'Disable Full Screen'), function () {
-				Win10.disableFullScreen()
-			}],
+			['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('进入全屏', 'Enable Full Screen'), function () { Win10.enableFullScreen() }],
+			['<i class="fa fa-fw fa-window-restore"></i> ' + Win10.lang('退出全屏', 'Disable Full Screen'), function () { Win10.disableFullScreen() }],
 			'|',
-			['<i class="fa fa-fw fa-info-circle"></i> ' + Win10.lang('关于', 'About Us'), function () {
-				Win10.aboutUs()
-			}],
+			['<i class="fa fa-fw fa-info-circle"></i> ' + Win10.lang('关于', 'About Us'), function () { Win10.aboutUs() }],
 		]);
 		Win10.setContextMenu('#win10_btn_group_middle', [
-			['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('全部显示', 'Show All Windows'), function () {
-				Win10.showWins()
-			}],
-			['<i class="fa fa-fw fa-window-minimize"></i> ' + Win10.lang('全部隐藏', 'Hide All Windows'), function () {
-				Win10.hideWins()
-			}],
-			['<i class="fa fa-fw fa-window-close"></i> ' + Win10.lang('全部关闭', 'Close All Windows'), function () {
-				Win10.closeAll()
-			}],
+			['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('全部显示', 'Show All Windows'), function () { Win10.showWins() }],
+			['<i class="fa fa-fw fa-window-minimize"></i> ' + Win10.lang('全部隐藏', 'Hide All Windows'), function () { Win10.hideWins() }],
+			['<i class="fa fa-fw fa-window-close"></i> ' + Win10.lang('全部关闭', 'Close All Windows'), function () { Win10.closeAll() }]
 		]);
 
 		//处理消息图标闪烁
@@ -515,16 +508,16 @@ window.Win10 = {
 		$("body").keyup(function (e) {
 			if (e.ctrlKey) {
 				switch (e.keyCode) {
-					case 37: //left
+					case 37://left
 						$("#win10_btn_win").click();
 						break;
-					case 38: //up
+					case 38://up
 						Win10.showWins();
 						break;
-					case 39: //right
+					case 39://right
 						$("#win10_btn_command").click();
 						break;
-					case 40: //down
+					case 40://down
 						Win10.hideWins();
 						break;
 				}
@@ -543,10 +536,9 @@ window.Win10 = {
 				top: 30,
 				'z-index': 100,
 			});
-			$("#win10 .desktop").append(
-				"<div id='win10-desktop-scene' style='width: 100%;height: 100%;position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>"
-			)
+			$("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: 100%;position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>")
 		}
+
 		//属性绑定
 		Win10._bind_open_windows();
 	},
@@ -566,7 +558,8 @@ window.Win10 = {
 	},
 	getLunarObj: function () {
 		//农历年信息
-		let lunarInfo = [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,
+		let lunarInfo = new Array(
+			0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,
 			0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,
 			0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970,
 			0x06566, 0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950,
@@ -580,11 +573,10 @@ window.Win10 = {
 			0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930,
 			0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530,
 			0x05aa0, 0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45,
-			0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0
-		];
-		let Animals = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"];
-		let Gan = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
-		let Zhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
+			0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0);
+		let Animals = new Array("鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪");
+		let Gan = new Array("甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸");
+		let Zhi = new Array("子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥");
 
 		//==== 传回农历 y年的总天数
 		function lYearDays(y) {
@@ -592,7 +584,6 @@ window.Win10 = {
 			for (i = 0x8000; i > 0x8; i >>= 1) sum += (lunarInfo[y - 1900] & i) ? 1 : 0
 			return (sum + leapDays(y))
 		}
-
 		//==== 传回农历 y年闰月的天数
 		function leapDays(y) {
 			if (leapMonth(y))
@@ -600,22 +591,18 @@ window.Win10 = {
 			else
 				return (0)
 		}
-
 		//==== 传回农历 y年闰哪个月 1-12 , 没闰传回 0
 		function leapMonth(y) {
 			return (lunarInfo[y - 1900] & 0xf);
 		}
-
 		//==== 传回农历 y年m月的总天数
 		function monthDays(y, m) {
 			return ((lunarInfo[y - 1900] & (0x10000 >> m)) ? 30 : 29);
 		}
-
 		//==== 算出农历, 传入日期物件, 传回农历日期物件
 		//      该物件属性有 .year .month .day .isLeap .yearCyl .dayCyl .monCyl
 		function lunar(objDate) {
-			let i, leap = 0,
-				temp = 0
+			let i, leap = 0, temp = 0;
 			let baseDate = new Date(1900, 0, 31)
 			let offset = (objDate - baseDate) / 86400000
 
@@ -641,58 +628,46 @@ window.Win10 = {
 
 			for (i = 1; i < 13 && offset > 0; i++) {
 				//闰月
-				if (leap > 0 && i == (leap + 1) && false === this.isLeap) {
-					--i;
-					this.isLeap = true;
-					temp = leapDays(this.year);
-				} else {
-					temp = monthDays(this.year, i);
-				}
+				if (leap > 0 && i == (leap + 1) && this.isLeap === false) { --i; this.isLeap = true; temp = leapDays(this.year); }
+				else { temp = monthDays(this.year, i); }
 
 				//解除闰月
-				if (true === this.isLeap && i == (leap + 1)) this.isLeap = false
+				if (this.isLeap === true && i == (leap + 1)) this.isLeap = false
 
 				offset -= temp
-				if (false === this.isLeap) this.monCyl++
+				if (this.isLeap === false) this.monCyl++
 			}
 
 			if (offset == 0 && leap > 0 && i == leap + 1)
-				if (this.isLeap) {
-					this.isLeap = false;
-				} else {
-					this.isLeap = true;
-					--i;
-					--this.monCyl;
-				}
+				if (this.isLeap) { this.isLeap = false; }
+				else { this.isLeap = true; --i; --this.monCyl; }
 
-			if (offset < 0) {
-				offset += temp;
-				--i;
-				--this.monCyl;
-			}
+			if (offset < 0) { offset += temp; --i; --this.monCyl; }
 
 			this.month = i
 			this.day = offset + 1
 		}
-
 		//获取农历（月）中文格式
 		function get_lunarmonth(month) {
 			let fm = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "腊月"];
 			return fm[month - 1];
 		}
-
 		//获取农历（日）中文格式
 		function get_lunarday(day) {
 			let fd = ["十", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
 			if (day <= 10) {
 				return "初" + fd[day];
-			} else if (day < 20) {
+			}
+			else if (day < 20) {
 				return "十" + fd[day - 10];
-			} else if (day == 20) {
+			}
+			else if (day == 20) {
 				return "二十";
-			} else if (day < 30) {
+			}
+			else if (day < 30) {
 				return "廿" + fd[day - 20];
-			} else {
+			}
+			else {
 				return "三" + fd[day - 30];
 			}
 		}
@@ -732,23 +707,14 @@ window.Win10 = {
 		//获取小时
 		function get_hour(date) {
 			let hour = date.getHours();
-			if (hour < 6) {
-				hours = '凌晨' + hour;
-			} else if (hour < 9) {
-				hours = '早上' + hour;
-			} else if (hour < 12) {
-				hours = '上午' + hour;
-			} else if (hour < 14) {
-				hours = '中午' + (hour - 12);
-			} else if (hour < 17) {
-				hours = '下午' + (hour - 12);
-			} else if (hour < 19) {
-				hours = '傍晚' + (hour - 12);
-			} else if (hour < 22) {
-				hours = '晚上' + (hour - 12);
-			} else {
-				hours = '深夜' + (hour - 12)
-			}
+			if (hour < 6) { hours = '凌晨' + hour; }
+			else if (hour < 9) { hours = '早上' + hour; }
+			else if (hour < 12) { hours = '上午' + hour; }
+			else if (hour < 14) { hours = '中午' + (hour - 12); }
+			else if (hour < 17) { hours = '下午' + (hour - 12); }
+			else if (hour < 19) { hours = '傍晚' + (hour - 12); }
+			else if (hour < 22) { hours = '晚上' + (hour - 12); }
+			else { hours = '深夜' + (hour - 12) }
 			return hours;
 		}
 
@@ -805,7 +771,7 @@ window.Win10 = {
 					'		<span class="notice-header-title">天气</span>\n' +
 					'	</div>\n' +
 					'	<div class="notice-body">\n' +
-					'	<iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tw&skin=durian" frameborder="0" width="98%" style="div" height="500" allowtransparency="true"></iframe>\n' +
+					'	<iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tw&skin=durian" frameborder="0" width="100%" height="500" allowtransparency="true"></iframe>\n' +
 					'	</div>\n' +
 					'</div>\n';
 			}
@@ -910,8 +876,7 @@ window.Win10 = {
 			this.commandCenterClose();
 		}
 	},
-	newMsg: function (title, content, handle_click, app_name = '提示消息', app_icon =
-		'<img src="./img/icon/weather.png" class="notice-header-icon-img" />', is_del = true) {
+	newMsg: function (title, content, handle_click, app_name = '提示消息', app_icon = '<img src="./img/icon/weather.png" class="notice-header-icon-img" />', is_del = true) {
 		let msg = '<div class="notice">' +
 			'<div class="notice-header">' +
 			'<span class="notice-header-icon">' + app_icon + '</span>' +
@@ -972,11 +937,11 @@ window.Win10 = {
 	disableFullScreen: function () {
 		if (document.exitFullscreen) {
 			document.exitFullscreen();
-		} else if (document.mozCancelFullScreen) {
+		}else if (document.mozCancelFullScreen) {
 			document.mozCancelFullScreen();
-		} else if (document.webkitCancelFullScreen) {
+		}else if (document.webkitCancelFullScreen) {
 			document.webkitCancelFullScreen();
-		} else if (document.msExitFullscreen) {
+		}else if (document.msExitFullscreen) {
 			document.msExitFullscreen();
 		}
 	},
@@ -1007,9 +972,7 @@ window.Win10 = {
 		} else {
 			this._countTask++;
 		}
-		if (!url) {
-			url = '404'
-		}
+		if (!url) { url = '404' }
 		url = url.replace(/(^\s*)|(\s*$)/g, "");
 		let preg = /^(https?:\/\/|\.\.?\/|\/\/?)/;
 		if (!preg.test(url)) {
@@ -1035,8 +998,7 @@ window.Win10 = {
 			topset = (topset - (topset * 0.8)) / 2 - 31;
 			leftset = parseInt($(window).width());
 			leftset = (leftset - (leftset * 0.8)) / 2 - 120;
-			offset = [Math.round((this._countTask % 10 * 20) + topset) + 'px', Math.round((this._countTask % 10 * 20 + 100) +
-				leftset) + 'px'];
+			offset = [Math.round((this._countTask % 10 * 20) + topset) + 'px', Math.round((this._countTask % 10 * 20 + 100) + leftset) + 'px'];
 		}
 		let index = layer.open({
 			type: 2,
@@ -1053,6 +1015,7 @@ window.Win10 = {
 				$("#win10_" + index).remove();
 				Win10._checkTop();
 				Win10._countTask--; //回退countTask数
+				Win10._renderBar();
 			},
 			min: function (layero) {
 				layero.hide();
@@ -1066,14 +1029,12 @@ window.Win10 = {
 			},
 		});
 		$('#win10_btn_group_middle .btn.active').removeClass('active');
-		let btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">' +
-			icon + '</div></div>');
+		let btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">' + icon + '</div></div>');
 		let layero_opened = Win10.getLayeroByIndex(index);
 		layero_opened.css('z-index', Win10._countTask + 813);
 		Win10._settop(layero_opened);
 		//重新定义菜单布局
-		layero_opened.find('.layui-layer-setwin').prepend('<a class="win10-btn-refresh" index="' + index +
-			'" href="#"></a>');
+		layero_opened.find('.layui-layer-setwin').prepend('<a class="win10-btn-refresh" index="' + index + '" href="#"></a>');
 		//菜单排列倒序
 		layero_opened.find(".layui-layer-setwin>a").each(function () {
 			$(this).prependTo(layero_opened.find(".layui-layer-setwin"));
@@ -1091,6 +1052,7 @@ window.Win10 = {
 
 		});
 		$("#win10_btn_group_middle").append(btn);
+		Win10._renderBar();
 		btn.click(function () {
 			let index = $(this).attr('index');
 			let layero = Win10.getLayeroByIndex(index);
@@ -1100,9 +1062,7 @@ window.Win10 = {
 				$(".win10-open-iframe").each(function () {
 					z = parseInt($(this).css('z-index'));
 					$(this).css('z-index', z - 1);
-					if (z > max_zindex) {
-						max_zindex = z;
-					}
+					if (z > max_zindex) { max_zindex = z; }
 				});
 				layero.css('z-index', max_zindex + 1);
 			};
@@ -1144,23 +1104,21 @@ window.Win10 = {
 		$(".win10-open-iframe").remove();
 		$("#win10_btn_group_middle").html("");
 		Win10._countTask = 0;
+		Win10._renderBar();
 	},
 	setAnimated: function (animated_classes, animated_liveness) {
 		this._animated_classes = animated_classes;
 		this._animated_liveness = animated_liveness;
 	},
 	exit: function () {
-		layer.confirm(Win10.lang('确认要关闭本页吗?', 'Are you sure you want to close this page?'), {
-			icon: 3,
-			title: Win10.lang('提示', 'Prompt')
-		}, function (index) {
+		layer.confirm(Win10.lang('确认要关闭本页吗?', 'Are you sure you want to close this page?'), { icon: 3, title: Win10.lang('提示', 'Prompt') }, function (index) {
 			document.body.onbeforeunload = function () { };
 			window.location.href = "about:blank";
 			window.close();
 			layer.close(index);
 			layer.alert(Win10.lang('哎呀,好像失败了呢。', 'Ops...There seems to be a little problem.'), {
 				skin: 'layui-layer-lan',
-				closeBtn: 0
+                closeBtn: 0
 			});
 		});
 
