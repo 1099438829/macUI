@@ -152,8 +152,7 @@ body {
 #win10_btn_group_middle .btn_title{
     /* width: 100%; */
     display: inline-block;
-    padding-left: 3.5px;
-    padding-right: 3.5px; 
+    padding: 0 3.5px; 
     text-align: center;
     margin: 0 auto;
     text-overflow: clip;
@@ -162,7 +161,7 @@ body {
 }
 
 #win10_btn_group_middle::-webkit-scrollbar {
-    width: 2px;
+    width: 1px;
 }
 
 #win10_btn_group_middle::-webkit-scrollbar-track {
@@ -170,7 +169,7 @@ body {
 }
 
 #win10_btn_group_middle::-webkit-scrollbar-thumb {
-    background-color: rgba(30, 39, 34, 0.41);
+    background-color: rgba(49,156,241,0.41);
 }
 
 #win10_btn_group_right{
@@ -938,7 +937,7 @@ body {
 .win10-open-iframe .red,#win10 .red{background:#FF5722!important;}
 .win10-open-iframe .dark,#win10 .dark{background:#2F4056!important;}
 .win10-open-iframe .purple,#win10 .purple{background:#b074e6!important;}
-@media screen and (max-width:767px){
+@media screen and (max-width:768px){
     #win10-menu{
         width:100%;
         top: 24px;
@@ -983,9 +982,7 @@ body {
     #win10_btn_group_middle{
         width:calc(100% - 160px);
     }
-    #win10_btn_group_middle .btn{
-        padding: 0 3px;
-    }
+
     #win10_btn_group_right{
         max-width:150px;
     }
@@ -1009,12 +1006,6 @@ body {
     }
 
     #win10_btn_time{display: none}
-    #win10-menu-switcher{
-        display: none;
-    }
-    #win10-menu>.win10-menu-hidden{
-        display: block;
-    }
     #win10_btn_group_middle .btn_close{
         display: none;
     }

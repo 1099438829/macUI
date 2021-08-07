@@ -226,7 +226,7 @@ window.Win10 = {
 				let sub = $('<li>' + item[0] + '</li>');
 				ul.append(sub);
 				sub.click(trigger, item[1]);
-
+        continue;
 			}
 		}
 		//修正坐标
@@ -1118,7 +1118,7 @@ window.Win10 = {
 			layer.close(index);
 			layer.alert(Win10.lang('哎呀,好像失败了呢。', 'Ops...There seems to be a little problem.'), {
 				skin: 'layui-layer-lan',
-                closeBtn: 0
+          closeBtn: 0
 			});
 		});
 
