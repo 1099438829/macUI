@@ -805,7 +805,7 @@ window.Win10 = {
 					'		<span class="notice-header-title">天气</span>\n' +
 					'	</div>\n' +
 					'	<div class="notice-body">\n' +
-					'	<iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tw&skin=pitaya" frameborder="0" width="280" height="500" allowtransparency="true"></iframe>\n' +
+					'	<iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tw&skin=durian" frameborder="0" width="98%" style="div" height="500" allowtransparency="true"></iframe>\n' +
 					'	</div>\n' +
 					'</div>\n';
 			}
