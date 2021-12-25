@@ -768,7 +768,7 @@ window.Win10 = {
 					'		<span class="notice-header-title">天气</span>\n' +
 					'	</div>\n' +
 					'	<div class="notice-body">\n' +
-					'	<iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tw&skin=durian" frameborder="0" width="100%" height="500" allowtransparency="true"></iframe>\n' +
+					'	<iframe scrolling="no" src="https://widget-page.qweather.net/h5/index.html?md=012&bg=1&lc=auto&key=4008bf181b5e4f349b2e516909430bf2&v=_1640448982399" frameborder="0" width="100%" height="400px" allowtransparency="true"></iframe>\n' +
 					'	</div>\n' +
 					'</div>\n';
 			}
@@ -1124,7 +1124,7 @@ window.Win10 = {
             layer.close(index);
             layer.alert(Win10.lang('哎呀,好像失败了呢。', 'Ops...There seems to be a little problem.'), {
 				        skin: 'layui-layer-lan',
-                , closeBtn: 0
+                        closeBtn: 0
             });
         });
 
