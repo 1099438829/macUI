@@ -20,9 +20,6 @@
         <div id="win10_task_bar" class="backgroud_blur">
             <div id="win10_btn_group_left" class="btn_group">
                 <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
-                <div class="btn"
-                    onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span
-                        class="fa fa-safari"></span></div>
             </div>
             <div id="win10_btn_group_middle" class="btn_group"></div>
             <div id="win10_btn_group_right" class="btn_group">
@@ -37,6 +34,11 @@
                     onclick="Win10.openUrl('http://www.apecloud.cn','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','OS官网')">
                     <img class="icon" src="./img/icon/computer.png" />
                     <div class="title">OS官网</div>
+                </div>
+                <div class="shortcut"
+                    onclick="Win10.openUrl('./app/safari','<img class=\'icon\' src=\'./img/icon/safari.png\'/>','safari')">
+                    <img class="icon" src="./img/icon/safari.png" />
+                    <div class="title">safari</div>
                 </div>
                 <div class="shortcut"
                     onclick="Win10.openUrl('./app/todo','<img class=\'icon\' src=\'./img/icon/notes.png\'/>','note')">
@@ -139,21 +141,17 @@
         <!--bottom dock -->
         <div class="dock" id="dock">
             <div class="dock-container backgroud_blur">
-                <a class="dock-item"
-                    onclick="Win10.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>','finder')">
-                    <img src="./img/icon/finder.png"></a>
-                <a class="dock-item" href="#"><span>appstore</span><img src="./img/icon/appstore.png"
-                        alt="appstore" /></a>
-                <a class="dock-item" href="#"><span>gamecenter</span><img src="./img/icon/gamecenter.png"
-                        alt="gamecenter" /></a>
+                <a class="dock-item" onclick="Win10.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>','finder')"><span>finder</span><img src="./img/icon/finder.png" alt="finder"></a>
+                <a class="dock-item" onclick="Win10.openUrl('./app/safari','<img class=\'icon\' src=\'./img/icon/safari.png\'/>','safari')"><span>safari</span><img src="./img/icon/safari.png" alt="safari"></a>
+                <a class="dock-item" href="#"><span>appstore</span><img src="./img/icon/appstore.png" alt="appstore" /></a>
+                <a class="dock-item" href="#"><span>gamecenter</span><img src="./img/icon/gamecenter.png" alt="gamecenter" /></a>
                 <a class="dock-item" href="#"><span>imusic</span><img src="./img/icon/imusic.png" alt="imusic" /></a>
                 <a class="dock-item" href="#"><span>notes</span><img src="./img/icon/notes.png" alt="notes" /></a>
                 <a class="dock-item" href="#"><span>setting</span><img src="./img/icon/icloud.png" alt="setting" /></a>
                 <a class="dock-item" href="#"><span>iTunes</span><img src="./img/icon/iTunes.png" alt="iTunes" /></a>
                 <a class="dock-item" href="#"><span>mail</span><img src="./img/icon/mail.png" alt="mail" /></a>
                 <a class="dock-item" href="#"><span>maps</span><img src="./img/icon/maps.png" alt="maps" /></a>
-                <a class="dock-item" href="#"><span>trashicon</span><img src="./img/icon/trashicon.png"
-                        alt="trashicon" /></a>
+                <a class="dock-item" href="#"><span>trashicon</span><img src="./img/icon/trashicon.png" alt="trashicon" /></a>
             </div>
         </div>
     </div>
