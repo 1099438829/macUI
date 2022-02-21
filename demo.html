@@ -20,9 +20,6 @@
         <div id="win10_task_bar" class="backgroud_blur">
             <div id="win10_btn_group_left" class="btn_group">
                 <div id="win10_btn_win" class="btn"><span class="fa fa-apple"></span></div>
-                <div class="btn"
-                    onclick="Win10.openUrl('./app/safari','<span class=\'icon fa fa-safari\'></span>','safari')"><span
-                        class="fa fa-safari"></span></div>
             </div>
             <div id="win10_btn_group_middle" class="btn_group"></div>
             <div id="win10_btn_group_right" class="btn_group">
@@ -38,9 +35,14 @@
                     <img class="icon" src="./img/icon/computer.png" />
                     <div class="title">OS官网</div>
                 </div>
-                <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/trashicon.png\'/>','回收站')">
-                    <img class="icon" src="./img/icon/trashicon.png" />
-                    <div class="title">回收站</div>
+                <div class="shortcut"
+                    onclick="Win10.openUrl('./app/safari','<img class=\'icon\' src=\'./img/icon/safari.png\'/>','safari')">
+                    <img class="icon" src="./img/icon/safari.png" />
+                    <div class="title">safari</div>
+                </div>
+                <div class="shortcut" onclick="Win10.openUrl('./app/todo','<img class=\'icon\' src=\'./img/icon/notes.png\'/>','notes')">
+                    <img class="icon" src="./img/icon/notes.png" />
+                    <div class="title">notes</div>
                 </div>
                 <div class="shortcut" onclick="Win10.openUrl('https://developer.apple.com/game-center','<img class=\'icon\' src=\'./img/icon/gamecenter.png\'/>','GameCenter')">
                     <img class="icon" src="./img/icon/gamecenter.png" />
@@ -50,7 +52,6 @@
                     <img class="icon" src="./img/icon/calendar.png" />
                     <div class="title">Calendar</div>
                 </div>
-
                 <div class="shortcut" onclick="window.open('https://www.icloud.com/')">
                     <img class="icon" src="./img/icon/icloud.png" />
                     <div class="title">iCloud</div>
@@ -137,6 +138,9 @@
                     <li><span class="dock-tips">finder<span class="arrow"></span></span><a
                             onclick="Win10.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>','finder')">
                             <img src="./img/icon/finder.png"></a></li>
+					<li><span class="dock-tips">safari<span class="arrow"></span></span><a
+                            onclick="Win10.openUrl('./app/safari','<img class=\'icon\' src=\'./img/icon/safari.png\'/>','safari')">
+                            <img src="./img/icon/safari.png"></a></li>
                     <li><span class="dock-tips">computer<span class="arrow"></span></span><a
                             onclick="Win10.openUrl('./index.html','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','我的电脑')">
                             <img src="./img/icon/computer.png"></a></li>
