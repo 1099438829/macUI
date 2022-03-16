@@ -1,0 +1,84 @@
+@charset "utf-8";
+body,a,h1,h2,h3,h4,h5,h6,p,div,em,ul,li {
+    font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+/*去除ul中li左边的圆点*/
+ul{
+    list-style: none;
+	  padding: 0;
+    margin: 0;
+}
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: black;
+    overflow: hidden;
+}
+.container{
+  background-color: black;
+  width: 350px;
+  padding:20px;
+}
+.screen-box{
+  text-align: right;
+  color:white;
+}
+.input-box{
+  font-size:30px;
+  height:40px;
+  line-height: 40px;
+  overflow: hidden;
+}
+.output-box{
+  font-size:48px;
+  height:56px;
+  line-height: 56px;
+  overflow: hidden;
+}
+/* keyboard style */
+.line{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom:10px;
+}
+.line > div{
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  color: white;
+  border-radius: 80px;
+  font-size: 25px;
+  cursor: pointer;
+}
+[data-key="0"]{
+  width: 168px !important;
+}
+.grey-white{
+  background-color: #a5a5a5;
+  color:black;
+}
+.grey-white:hover{
+  background-color: #cccaca;
+}
+.orange{
+  background-color: #ff9f0c;
+  color:white;
+}
+.orange:hover{
+  background-color: #ffbb54;
+}
+.grey-black{
+  background-color: #333333;
+  color:white;
+}
+.grey-black:hover{
+  background-color: #747373;
+}

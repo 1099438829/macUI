@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="screen-box">
+      <div class="input-box"></div>
+      <div class="output-box">0</div>
+    </div>
+    <div class="keyboard-box">
+      <div class="line">
+        <div data-key="AC" class="line-item grey-white">AC</div>
+        <div data-key="(" class="line-item grey-white">(</div>
+        <div data-key=")" class="line-item grey-white">)</div>
+        <div data-key="/" class="line-item orange">÷</div>
+      </div>
+      <div class="line">
+        <div data-key="7" class="line-item grey-black">7</div>
+        <div data-key="8" class="line-item grey-black">8</div>
+        <div data-key="9" class="line-item grey-black">9</div>
+        <div data-key="*" class="line-item orange">×</div>
+      </div>
+      <div class="line">
+        <div data-key="4" class="line-item grey-black">4</div>
+        <div data-key="5" class="line-item grey-black">5</div>
+        <div data-key="6" class="line-item grey-black">6</div>
+        <div data-key="-" class="line-item orange">-</div>
+      </div>
+      <div class="line">
+        <div data-key="1" class="line-item grey-black">1</div>
+        <div data-key="2" class="line-item grey-black">2</div>
+        <div data-key="3" class="line-item grey-black">3</div>
+        <div data-key="+" class="line-item orange">+</div>
+      </div>
+      <div class="line">
+        <div data-key="0" class="line-item grey-black">0</div>
+        <div data-key="." class="line-item grey-black">.</div>
+        <div data-key="=" class="line-item orange">=</div>
+      </div>
+    </div>
+    <audio src="./sound.mp3"></audio>
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-3.5.0.min.js"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+  crossorigin="anonymous"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
