@@ -10,7 +10,7 @@ v1.1.2.5
 
 > 该版本为小更新，针对插件开发作了一些准备，添加了一些语法糖（具体改动请参考更新日志）。
 > 更新方式：基本无须修改html文件，覆盖css和win10.js文件。
-> 关于html文件的修改，只是添加一行代码。在#win10>.desktop div下，添加一个div `<div id="win10-desktop-scene"></div>`到末尾。
+> 关于html文件的修改，只是添加一行代码。在#mac>.desktop div下，添加一个div `<div id="mac-desktop-scene"></div>`到末尾。
 > 对于实在不想修改html的用户，我们在js中添加了自动修正的代码，所以不修改也会有正常的效果。但是这种修正代码将会在未来版本被取消，只作为临时使用。
 
 ## 预览
@@ -42,7 +42,7 @@ v1.1.2.5
 #### 如何自定义桌面图标？
 
 ```html
-<div id="win10-shortcuts">
+<div id="mac-shortcuts">
      <div class="shortcut" onclick="//do something...">
            <img src="图片地址" class="icon" />
            <div class="title">图标底部文字</div>
@@ -58,7 +58,7 @@ v1.1.2.5
 #### 如何自定义开始菜单列表?
 
 ```html
-<div class="list win10-menu-hidden animated animated-slideOutLeft">
+<div class="list mac-menu-hidden animated animated-slideOutLeft">
      <div class="item">一级菜单</div>
      <div class="item">一级菜单</div>
      <div class="sub-item">二级菜单</div>
@@ -72,19 +72,19 @@ v1.1.2.5
 
 
 ## API
-* 调用：Win10-ui的api应当在其初始化之后被调用
+* 调用：Macui-ui的api应当在其初始化之后被调用
 ```html
 <script>
-    Win10.onReady(function () {
-        //Win10-ui初始化完成后将执行此处代码
+    Macui.onReady(function () {
+        //Macui-ui初始化完成后将执行此处代码
     });
 </script>
 ```
-> 所有方法都需要加``Win10.``前缀。
+> 所有方法都需要加``Macui.``前缀。
 
-* setBgUrl(bgs) 设置背景图片 ``Win10.setBgUrl({main:'宽屏壁纸url',mobile:'竖屏壁纸url',})``
+* setBgUrl(bgs) 设置背景图片 ``Macui.setBgUrl({main:'宽屏壁纸url',mobile:'竖屏壁纸url',})``
 * openUrl(url,title,areaAndOffset) ** 打开一个子窗口,参数列表：url,标题，[尺寸，区域]\(同layer的area和offset的设置格式，也可以传入'max'强制最大化，例如``[['30%','30%'],['50px','50px']]``\)
-* onReady(handle) win10-ui初始化完毕后的回调
+* onReady(handle) mac-ui初始化完毕后的回调
 * menuOpen() 开始菜单打开
 * menuClose() 开始菜单关闭
 * menuToggle() 开始菜单打开/关闭
@@ -111,7 +111,7 @@ v1.1.2.5
 
 #### 设计思路
 
-* Win10-UI应当作为你网站模块的主入口，而具体功能页面适合用子窗口的形式打开。子窗口是以iframe实现的，减少了js、css冲突，保证了独立性。同时父子页之间也可以通过Win10_child.js的API进行沟通
+* Macui-UI应当作为你网站模块的主入口，而具体功能页面适合用子窗口的形式打开。子窗口是以iframe实现的，减少了js、css冲突，保证了独立性。同时父子页之间也可以通过Macui_child.js的API进行沟通
 * 桌面图标适用于最常用的操作，菜单适用于构建所有操作的清单（这里的操作不限于打开子窗口）
 * 小磁贴视觉冲击力强，除了可以做出醒目的按钮，也可以用作信息展板，甚至于在磁贴的方块空间内构建复杂的应用（如音乐播放器）
 
@@ -120,8 +120,8 @@ v1.1.2.5
 本着极简的设计风格，所有图标相关的辅助类都设置为'icon'
 ```html
 <div class="shortcut">
-     <img class="icon" src="./img/icon/win10.png"/>
-     <div class="title">Win10-UI官网</div>
+     <img class="icon" src="./img/icon/mac.png"/>
+     <div class="title">Macui-UI官网</div>
 </div>
 ```
 >在桌面图标中，设置img.icon声明该图片是一个图标
@@ -129,14 +129,14 @@ v1.1.2.5
 ```html
 <div class="shortcut">
      <i class="fa fa-camera-retro icon"></i>
-     <div class="title">Win10-UI官网</div>
+     <div class="title">Macui-UI官网</div>
 </div>
 ```
 >在桌面图标中，用.icon声明一个字体图标（以font awesome为例）
 
 ```html
-Win10.openUrl("http://win10ui.yuri2.cn","<img class=\"icon\" src=\"./img/icon/win10.png\"/>Win10-UI官网");
-Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></i>字体图标");
+Macui.openUrl("http://win10ui.yuri2.cn","<img class=\"icon\" src=\"./img/icon/mac.png\"/>Macui-UI官网");
+Macui.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></i>字体图标");
 ```
 >没错！你也可以在openUrl函数的title参数中插入图片图标或者字体图标！
 
@@ -171,7 +171,7 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 #### 父子页沟通
 
 * 要使用子页工具集，请先引入win10.child.js
-* 自由的使用Win10_child对象吧，目前包含close、newMsg、openUrl函数；也可以使用Win10_parent对象，将指向父页的Win10对象。
+* 自由的使用Macui_child对象吧，目前包含close、newMsg、openUrl函数；也可以使用Macui_parent对象，将指向父页的Macui对象。
 * 父页打开子窗口的函数openUrl会返回索引index，使用getLayeroByIndex(index)获得子窗口对象,然后就可以方便的控制子窗口的行为了。
 
 #### 颜色预定义
@@ -189,35 +189,35 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 
 #### 右键菜单配置
 
-Win10.setContextMenu(jq_dom, menu) 可接管系统默认的右键菜单。
+Macui.setContextMenu(jq_dom, menu) 可接管系统默认的右键菜单。
 其中jq_dom是jq对象或选择器字符串,menu是菜单配置项(true表示禁用默认菜单,null表示恢复默认菜单,[数组]表示自定义菜单)
 ~~~js
 //典型用法(桌面菜单)
-Win10.setContextMenu('#win10>.desktop',[
+Macui.setContextMenu('#mac>.desktop',[
    '菜单标题', //单字符串，不带回调
-   ['进入全屏',function () {Win10.enableFullScreen()}], //菜单项+点击回调
-   ['退出全屏',function () {Win10.disableFullScreen()}],
+   ['进入全屏',function () {Macui.enableFullScreen()}], //菜单项+点击回调
+   ['退出全屏',function () {Macui.disableFullScreen()}],
    '|', //分隔符
-   ['关于',function () {Win10.aboutUs()}],
+   ['关于',function () {Macui.aboutUs()}],
 ]);
 
 //设置menu为true会起到禁用系统默认菜单的作用
-Win10.setContextMenu('#win10',true);
+Macui.setContextMenu('#mac',true);
 ~~~
 > 点击回调函数可以声明一个参数e,将传入点击事件的对象。特别的，e.data是触发右键菜单的对象。
 
 #### 桌面舞台
 
-为了让广大开发者能更自由的定义自己的桌面，Win10-UI自v1.1.2.3版本起加入桌面舞台。
-桌面舞台是一个`id`为`win10-desktop-scene`的div，位于`#win10>.desktop`下。桌面舞台预定义了css，使其浮动于桌面图标的下方。
+为了让广大开发者能更自由的定义自己的桌面，Macui-UI自v1.1.2.3版本起加入桌面舞台。
+桌面舞台是一个`id`为`mac-desktop-scene`的div，位于`#mac>.desktop`下。桌面舞台预定义了css，使其浮动于桌面图标的下方。
 借助此特性，你甚至可以发挥想象力，制作出动态壁纸。
 > 使用`getDesktopScene`函数可以快捷获取桌面舞台的jq对象。
-> v1.1.2.3之前的版本，如果想要临时体验桌面舞台的支持特性，可以去官方群下载补丁`win10_desktop_scene_support.js`。
+> v1.1.2.3之前的版本，如果想要临时体验桌面舞台的支持特性，可以去官方群下载补丁`#mac_desktop_scene_support.js`。
 
 #### 子窗口事件自动绑定
 
 所有#win10下的元素加入类win10-open-window即可自动绑定openUrl函数，无须用onclick手动绑定
-> v1.1.2.3之前的版本，如果想要临时体验桌面子窗口事件自动绑定支持特性，可以去官方群下载插件`win10_bind_open_windows.js`。
+> v1.1.2.3之前的版本，如果想要临时体验桌面子窗口事件自动绑定支持特性，可以去官方群下载插件`#mac_bind_open_windows.js`。
 
  * 标签属性说明
  * data-title:窗口标题
@@ -230,7 +230,7 @@ Win10.setContextMenu('#win10',true);
  * 特别的，如果子节点有icon和title的css类，可以自动识别为图标和标题，无须设置data-title和data-icon-image(font)
 
 ~~~html
-<div class="shortcut win10-open-window"
+<div class="shortcut mac-open-window"
         data-url="http://www.baidu.com"
         data-title="我是百度"
         data-icon-image="https://www.baidu.com/img/bd_logo1.png"
@@ -244,7 +244,7 @@ Win10.setContextMenu('#win10',true);
 > 这是所有可选项都用上的完整写法。
 
 ~~~html
-<div class="shortcut win10-open-window" data-url="www.baidu.com" >
+<div class="shortcut mac-open-window" data-url="www.baidu.com" >
         <i class="icon fa fa-fw fa-user-circle blue" ></i>
         <div class="title">百度</div>
 </div>

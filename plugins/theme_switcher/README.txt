@@ -9,7 +9,7 @@
 
 
  桌面图标的例子：
- <div class="shortcut win10-open-window" data-url="./plugins/theme_switcher/theme_switcher.html">
+ <div class="shortcut mac-open-window" data-url="./plugins/theme_switcher/theme_switcher.html">
                  <i class="icon fa fa-fw fa-picture-o blue" ></i>
                  <div class="title">切换壁纸</div>
              </div>
@@ -17,7 +17,7 @@
 
  目录结构
 
- win10-ui
+ mac-ui
     -plugins
         -theme_switcher
             -css,js,html.....

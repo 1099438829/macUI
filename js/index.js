@@ -1,7 +1,7 @@
 /**
  * Created by Yuri2 on 2017/7/10.
  */
-window.Win10 = {
+window.Macui = {
     _version: 'v1.1.2.5',
     _debug: true,
     _bgs: {
@@ -28,7 +28,9 @@ window.Win10 = {
             this.iframes.push(new this.Iframe(element, cb));
             if (!this.interval) {
                 let _this = this;
-                this.interval = setInterval(function () { _this.checkClick(); }, this.resolution);
+                this.interval = setInterval(function () {
+                    _this.checkClick();
+                }, this.resolution);
             }
         },
         checkClick: function () {
@@ -55,66 +57,68 @@ window.Win10 = {
     _iframe_click_lock_children: {},
     _renderBar: function () {
         //调整任务栏项目的宽度
-        if (this._countTask <= 0) { return; } //防止除以0
-        let btns = $("#win10_btn_group_middle>.btn");
+        if (this._countTask <= 0) {
+            return;
+        } //防止除以0
+        let btns = $("#mac_btn_group_middle>.btn");
         btns.css('width', ('calc(' + (1 / this._countTask * 100) + '% - 1px )'))
     },
     _handleReady: [],
     _hideShortcut: function () {
-        let that = $("#win10 #win10-shortcuts .shortcut");
+        let that = $("#mac #mac-shortcuts .shortcut");
         that.removeClass('animated flipInX');
         that.addClass('animated flipOutX');
     },
     _showShortcut: function () {
-        let that = $("#win10 #win10-shortcuts .shortcut");
+        let that = $("#mac #mac-shortcuts .shortcut");
         that.removeClass('animated flipOutX');
         that.addClass('animated flipInX');
     },
     _checkBgUrls: function () {
-        let loaders = $('#win10>.img-loader');
+        let loaders = $('#mac>.img-loader');
         let flag = false;
-        if (Win10.isSmallScreen()) {
-            if (Win10._bgs.mobile) {
+        if (Macui.isSmallScreen()) {
+            if (Macui._bgs.mobile) {
                 loaders.each(function () {
                     let loader = $(this);
-                    if (loader.attr('src') === Win10._bgs.mobile && loader.hasClass('loaded')) {
-                        Win10._setBackgroundImg(Win10._bgs.mobile);
+                    if (loader.attr('src') === Macui._bgs.mobile && loader.hasClass('loaded')) {
+                        Macui._setBackgroundImg(Macui._bgs.mobile);
                         flag = true;
                     }
                 });
                 if (!flag) {
                     //没找到加载完毕的图片
-                    let img = $('<img class="img-loader" src="' + Win10._bgs.mobile + '" />');
-                    $('#win10').append(img);
-                    Win10._onImgComplete(img[0], function () {
+                    let img = $('<img class="img-loader" src="' + Macui._bgs.mobile + '" />');
+                    $('#mac').append(img);
+                    Macui._onImgComplete(img[0], function () {
                         img.addClass('loaded');
-                        Win10._setBackgroundImg(Win10._bgs.mobile);
+                        Macui._setBackgroundImg(Macui._bgs.mobile);
                     })
                 }
             }
         } else {
-            if (Win10._bgs.main) {
+            if (Macui._bgs.main) {
                 loaders.each(function () {
                     let loader = $(this);
-                    if (loader.attr('src') === Win10._bgs.main && loader.hasClass('loaded')) {
-                        Win10._setBackgroundImg(Win10._bgs.main);
+                    if (loader.attr('src') === Macui._bgs.main && loader.hasClass('loaded')) {
+                        Macui._setBackgroundImg(Macui._bgs.main);
                         flag = true;
                     }
                 });
                 if (!flag) {
                     //没找到加载完毕的图片
-                    let img = $('<img class="img-loader" src="' + Win10._bgs.main + '" />');
-                    $('#win10').append(img);
-                    Win10._onImgComplete(img[0], function () {
+                    let img = $('<img class="img-loader" src="' + Macui._bgs.main + '" />');
+                    $('#mac').append(img);
+                    Macui._onImgComplete(img[0], function () {
                         img.addClass('loaded');
-                        Win10._setBackgroundImg(Win10._bgs.main);
+                        Macui._setBackgroundImg(Macui._bgs.main);
                     })
                 }
             }
         }
 
         //开始渲染壁纸模糊
-        if (Win10._wallpaperBlur) {
+        if (Macui._wallpaperBlur) {
             $('.background').addClass('blur');
         }
     },
@@ -126,7 +130,7 @@ window.Win10 = {
         if (typeof (callback) != "undefined") {
             if (el.readyState) {
                 el.onreadystatechange = function () {
-                    if (el.readyState == "loaded" || el.readyState == "complete") {
+                    if (el.readyState === "loaded" || el.readyState === "complete") {
                         el.onreadystatechange = null;
                         callback();
                     }
@@ -143,13 +147,15 @@ window.Win10 = {
     },
     _startAnimate: function () {
         setInterval(function () {
-            let classes_lenth = Win10._animated_classes.length;
-            let animated_liveness = Win10._animated_liveness;
-            if (animated_liveness === 0 || classes_lenth === 0 || !$("#win10-menu").hasClass('opened')) { return; }
-            $('#win10-menu>.blocks>.menu_group>.block').each(function () {
-                if (!$(this).hasClass('onAnimate') && Math.random() <= animated_liveness) {
+            let classes_length = Macui._animated_classes.length;
+            let animated_live_ness = Macui._animated_liveness;
+            if (animated_live_ness === 0 || classes_length === 0 || !$("#mac-menu").hasClass('opened')) {
+                return;
+            }
+            $('#mac-menu>.blocks>.menu_group>.block').each(function () {
+                if (!$(this).hasClass('onAnimate') && Math.random() <= animated_live_ness) {
                     let that = $(this);
-                    let class_animate = Win10._animated_classes[Math.floor((Math.random() * classes_lenth))];
+                    let class_animate = Macui._animated_classes[Math.floor((Math.random() * classes_length))];
                     that.addClass('onAnimate');
                     setTimeout(function () {
                         that.addClass(class_animate);
@@ -163,7 +169,9 @@ window.Win10 = {
         }, 1000);
     },
     _onImgComplete: function (img, callback) {
-        if (!img) { return; }
+        if (!img) {
+            return;
+        }
         let timer = setInterval(function () {
             if (img.complete) {
                 callback(img);
@@ -172,7 +180,7 @@ window.Win10 = {
         }, 50)
     },
     _setBackgroundImg: function (img) {
-        $('#win10 .background').css('background-image', 'url(' + img + ')')
+        $('#mac .background').css('background-image', 'url(' + img + ')')
     },
     _settop: function (layero) {
         if (!isNaN(layero)) {
@@ -180,18 +188,20 @@ window.Win10 = {
         }
         //置顶窗口
         let max_zindex = 0;
-        $(".win10-open-iframe").each(function () {
+        $(".mac-open-iframe").each(function () {
             z = parseInt($(this).css('z-index'));
             $(this).css('z-index', z - 1);
-            if (z > max_zindex) { max_zindex = z; }
+            if (z > max_zindex) {
+                max_zindex = z;
+            }
         });
         layero.css('z-index', max_zindex + 1);
     },
     _checkTop: function () {
         let max_index = 0, max_z = 0, btn = null;
-        $("#win10_btn_group_middle .btn.show").each(function () {
+        $("#mac_btn_group_middle .btn.show").each(function () {
             let index = $(this).attr('index');
-            let layero = Win10.getLayeroByIndex(index);
+            let layero = Macui.getLayeroByIndex(index);
             let z = layero.css('z-index');
             if (z > max_z) {
                 max_index = index;
@@ -200,7 +210,7 @@ window.Win10 = {
             }
         });
         this._settop(max_index);
-        $("#win10_btn_group_middle .btn").removeClass('active');
+        $("#mac_btn_group_middle .btn").removeClass('active');
         if (btn) {
             btn.addClass('active');
         }
@@ -208,9 +218,11 @@ window.Win10 = {
     //渲染右键
     _renderContextMenu: function (x, y, menu, trigger) {
         this._removeContextMenu();
-        if (menu === true) { return; }
-        let dom = $("<div class='win10-context-menu'><ul></ul></div>");
-        $('#win10').append(dom);
+        if (menu === true) {
+            return;
+        }
+        let dom = $("<div class='mac-context-menu'><ul></ul></div>");
+        $('#mac').append(dom);
         let ul = dom.find('ul');
         for (let i = 0; i < menu.length; i++) {
             let item = menu[i];
@@ -226,30 +238,33 @@ window.Win10 = {
                 let sub = $('<li>' + item[0] + '</li>');
                 ul.append(sub);
                 sub.click(trigger, item[1]);
-                continue;
             }
         }
         //修正坐标
-        if (x + 150 > document.body.clientWidth) { x -= 150 }
-        if (y + dom.height() > document.body.clientHeight) { y -= dom.height() }
+        if (x + 150 > document.body.clientWidth) {
+            x -= 150
+        }
+        if (y + dom.height() > document.body.clientHeight) {
+            y -= dom.height()
+        }
         dom.css({
             top: y,
             left: x,
         });
     },
     _removeContextMenu: function () {
-        $('.win10-context-menu').remove();
+        $('.mac-context-menu').remove();
     },
     _closeWin: function (index) {
-        $("#win10_" + index).remove();
+        $("#mac_" + index).remove();
         layer.close(index);
-        Win10._checkTop();
-        Win10._countTask--;//回退countTask数
-        Win10._renderBar();
+        Macui._checkTop();
+        Macui._countTask--;//回退countTask数
+        Macui._renderBar();
     },
     _fixWindowsHeightAndWidth: function () {
         //此处代码修正全屏切换引起的子窗体尺寸超出屏幕
-        let opens = $('.win10-open-iframe');
+        let opens = $('.mac-open-iframe');
         let clientHeight = document.body.clientHeight;
         opens.each(function () {
             let layero_opened = $(this);
@@ -264,7 +279,7 @@ window.Win10 = {
     },
 
     /**
-     * 原 win10_bind_open_windows 子窗口事件自动绑定插件
+     * 原 #mac_bind_open_windows 子窗口事件自动绑定插件
      * @author:vG
      * @修订:Yuri2
      * @version:2.0.1
@@ -272,7 +287,7 @@ window.Win10 = {
      */
     _bind_open_windows: function () {
         // 注册事件委派 打开url窗口
-        $('#win10').on('click', '.win10-open-window', function () {
+        $('#mac').on('click', '.mac-open-window', function () {
             //>> 获取当前点击的对象
             $this = $(this);
             //>> 判断url地址是否为空 如果为空 不予处理
@@ -306,7 +321,7 @@ window.Win10 = {
                     }
                 }
                 //>> 调用win10打开url方法
-                Win10.openUrl($this.data('url'), icon, title, areaAndOffset);
+                Macui.openUrl($this.data('url'), icon, title, areaAndOffset);
             }
         })
     },
@@ -315,20 +330,20 @@ window.Win10 = {
         //获取语言
         this._lang = (navigator.language || navigator.browserLanguage).toLowerCase();
 
-        $("#win10_btn_win").click(function () {
-            Win10.commandCenterClose();
-            Win10.menuToggle();
+        $("#mac_btn_win").click(function () {
+            Macui.commandCenterClose();
+            Macui.menuToggle();
         });
-        $("#win10_btn_command").click(function () {
-            Win10.renderCommand();
-            Win10.menuClose();
-            Win10.commandCenterToggle();
+        $("#mac_btn_command").click(function () {
+            Macui.renderCommand();
+            Macui.menuClose();
+            Macui.commandCenterToggle();
         });
-        $("#win10 .desktop").click(function () {
-            Win10.menuClose();
-            Win10.commandCenterClose();
+        $("#mac .desktop").click(function () {
+            Macui.menuClose();
+            Macui.commandCenterClose();
         });
-        $('#win10').on('click', ".notice .btn_close_msg", function () {
+        $('#mac').on('click', ".notice .btn_close_msg", function () {
             let msg = $(this).parents('.notice');
             $(msg).addClass('animated slideOutRight');
             setTimeout(function () {
@@ -336,7 +351,7 @@ window.Win10 = {
             }, 500)
         });
         //消息界面切换
-        $('#win10_command_center').on('click', ".command-header div", function () {
+        $('#mac_command_center').on('click', ".command-header div", function () {
             if (!$(this).hasClass('active')) {
                 if ($(this).hasClass('tab-today')) {
                     $(this).parent().siblings('.msgs').hide().siblings('.today').show();
@@ -347,26 +362,28 @@ window.Win10 = {
                 }
             }
         });
-        $('#win10_btn_command_center_clean_all').click(function () {
-            let msgs = $('#win10_command_center .msg');
+        $('#mac_btn_command_center_clean_all').click(function () {
+            let msgs = $('#mac_command_center .msg');
             msgs.addClass('animated slideOutRight');
             setTimeout(function () {
                 msgs.remove()
             }, 1500);
             setTimeout(function () {
-                Win10.commandCenterClose();
+                Macui.commandCenterClose();
             }, 1000);
         });
-        $("#win10_btn_show_desktop").click(function () {
-            $("#win10 .desktop").click();
-            Win10.hideWins();
+        $("#mac_btn_show_desktop").click(function () {
+            $("#mac .desktop").click();
+            Macui.hideWins();
         });
-        $("#win10-menu-switcher").click(function () {
-            if (Win10._switchMenuTooHurry) { return; }
-            Win10._switchMenuTooHurry = true;
-            let class_name = 'win10-menu-hidden';
-            let list = $("#win10-menu>.list");
-            let blocks = $("#win10-menu>.blocks");
+        $("#mac-menu-switcher").click(function () {
+            if (Macui._switchMenuTooHurry) {
+                return;
+            }
+            Macui._switchMenuTooHurry = true;
+            let class_name = 'mac-menu-hidden';
+            let list = $("#mac-menu>.list");
+            let blocks = $("#mac-menu>.blocks");
             let toggleSlide = function (obj) {
                 if (obj.hasClass(class_name)) {
                     obj.addClass('animated slideInLeft');
@@ -383,31 +400,31 @@ window.Win10 = {
             toggleSlide(list);
             toggleSlide(blocks);
             setTimeout(function () {
-                Win10._switchMenuTooHurry = false;
+                Macui._switchMenuTooHurry = false;
             }, 520)
         });
-        $("#win10_btn_group_middle").click(function () {
-            $("#win10 .desktop").click();
+        $("#mac_btn_group_middle").click(function () {
+            $("#mac .desktop").click();
         });
-        $(document).on('click', '.win10-btn-refresh', function () {
+        $(document).on('click', '.mac-btn-refresh', function () {
             let index = $(this).attr('index');
-            let iframe = Win10.getLayeroByIndex(index).find('iframe');
+            let iframe = Macui.getLayeroByIndex(index).find('iframe');
             iframe.attr('src', iframe.attr('src'));
         });
-        $(document).on('mousedown', '.win10-open-iframe', function () {
+        $(document).on('mousedown', '.mac-open-iframe', function () {
             let layero = $(this);
-            Win10._settop(layero);
-            Win10._checkTop();
+            Macui._settop(layero);
+            Macui._checkTop();
         });
-        $('#win10_btn_group_middle').on('click', '.btn_close', function () {
+        $('#mac_btn_group_middle').on('click', '.btn_close', function () {
             let index = $(this).parent().attr('index');
-            Win10._closeWin(index);
+            Macui._closeWin(index);
         });
-        $('#win10-menu .list').on('click', '.item', function () {
+        $('#mac-menu .list').on('click', '.item', function () {
             let e = $(this);
             if (e.hasClass('has-sub-down')) {
-                $('#win10-menu .list .item.has-sub-up').toggleClass('has-sub-down').toggleClass('has-sub-up');
-                $("#win10-menu .list .sub-item").slideUp();
+                $('#mac-menu .list .item.has-sub-up').toggleClass('has-sub-down').toggleClass('has-sub-up');
+                $("#mac-menu .list .sub-item").slideUp();
             }
             if (e.next().hasClass('sub-item')) {
                 e.toggleClass('has-sub-down').toggleClass('has-sub-up');
@@ -419,86 +436,94 @@ window.Win10 = {
         });
         setInterval(function () {
             //重新写mac时间
-            let myDate = Win10.getLunarObj();
-            $("#win10_btn_time").html(myDate.weekDay + myDate.hour + ':' + myDate.minute);
+            let myDate = Macui.getLunarObj();
+            $("#mac_btn_time").html(myDate.weekDay + myDate.hour + ':' + myDate.minute);
         }, 1000);
         //离开前警告
         document.body.onbeforeunload = function (event) {
-            let rel = Win10.lang('系统可能不会保存您所做的更改', 'The system may not save the changes you have made.');
+            let rel = Macui.lang('系统可能不会保存您所做的更改', 'The system may not save the changes you have made.');
             if (!window.event) {
                 event.returnValue = rel;
             } else {
                 window.event.returnValue = rel;
             }
         };
-        Win10.buildList();//预处理左侧菜单
-        Win10._startAnimate();//动画处理
-        Win10.renderShortcuts();//渲染图标
-        $("#win10-shortcuts").removeClass('shortcuts-hidden');//显示图标
-        Win10._showShortcut();//显示图标
-        Win10.renderDocks();//渲染DOCK
+        Macui.buildList();//预处理左侧菜单
+        Macui._startAnimate();//动画处理
+        Macui.renderShortcuts();//渲染图标
+        $("#mac-shortcuts").removeClass('shortcuts-hidden');//显示图标
+        Macui._showShortcut();//显示图标
+        Macui.renderDocks();//渲染DOCK
         //窗口改大小，重新渲染
         $(window).resize(function () {
-            Win10.renderShortcuts();
-            Win10._checkBgUrls();
-            if (!Win10.isSmallScreen()) Win10._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
-            Win10.renderDocks();
+            Macui.renderShortcuts();
+            Macui._checkBgUrls();
+            if (!Macui.isSmallScreen()) Macui._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
+            Macui.renderDocks();
         });
         //打广告
         setTimeout(function () {
-            console.log(Win10.lang('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ', 'The page is strongly driven by Win10-UI.\nFor more info: http://win10ui.yuri2.cn.\n Win10-UI, easy to create a unique background interface.'))
+            console.log(Macui.lang('本页由Mac-UI强力驱动\n更多信息：https://mac.apecloud.cn \nMac-UI,轻松打造别具一格的后台界面 ', 'The page is strongly driven by Mac-UI.\nFor more info: https://mac.apecloud.cn.\n Mac-UI, easy to create a unique background interface.'))
         }, 2000);
         //点击清空右键菜单
         $(document).click(function (event) {
             if (!event.button)
-                Win10._removeContextMenu();
+                Macui._removeContextMenu();
         });
         //禁用右键的右键
-        $(document).on('contextmenu', '.win10-context-menu', function (e) {
+        $(document).on('contextmenu', '.mac-context-menu', function (e) {
             e.preventDefault();
             e.stopPropagation();
         });
         //设置默认右键菜单
-        Win10.setContextMenu('#win10', true);
-        Win10.setContextMenu('#win10>.desktop', [
+        Macui.setContextMenu('#mac', true);
+        Macui.setContextMenu('#mac>.desktop', [
             ['<i class="fa fa-fw fa-star"></i> 收藏本页', function () {
                 let url = window.location;
                 let title = document.title;
                 let ua = navigator.userAgent.toLowerCase();
                 if (ua.indexOf("360se") > -1) {
-                    layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!', 'Your browser does not support, please press Ctrl+D to manual collection!'));
-                }
-                else if (ua.indexOf("msie 8") > -1) {
+                    layer.alert(Macui.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!', 'Your browser does not support, please press Ctrl+D to manual collection!'));
+                } else if (ua.indexOf("msie 8") > -1) {
                     window.external.AddToFavoritesBar(url, title); //IE8
-                }
-                else if (document.all) {
+                } else if (document.all) {
                     try {
                         window.external.addFavorite(url, title);
                     } catch (e) {
-                        layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!', 'Your browser does not support, please press Ctrl+D to manual collection!'));
+                        layer.alert(Macui.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!', 'Your browser does not support, please press Ctrl+D to manual collection!'));
                     }
-                }
-                else if (window.sidebar) {
+                } else if (window.sidebar) {
                     window.sidebar.addPanel(title, url, "");
-                }
-                else {
-                    layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!', 'Your browser does not support, please press Ctrl+D to manual collection!'));
+                } else {
+                    layer.alert(Macui.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!', 'Your browser does not support, please press Ctrl+D to manual collection!'));
                 }
             }],
-            ['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('进入全屏', 'Enable Full Screen'), function () { Win10.enableFullScreen() }],
-            ['<i class="fa fa-fw fa-window-restore"></i> ' + Win10.lang('退出全屏', 'Disable Full Screen'), function () { Win10.disableFullScreen() }],
+            ['<i class="fa fa-fw fa-window-maximize"></i> ' + Macui.lang('进入全屏', 'Enable Full Screen'), function () {
+                Macui.enableFullScreen()
+            }],
+            ['<i class="fa fa-fw fa-window-restore"></i> ' + Macui.lang('退出全屏', 'Disable Full Screen'), function () {
+                Macui.disableFullScreen()
+            }],
             '|',
-            ['<i class="fa fa-fw fa-info-circle"></i> ' + Win10.lang('关于', 'About Us'), function () { Win10.aboutUs() }],
+            ['<i class="fa fa-fw fa-info-circle"></i> ' + Macui.lang('关于', 'About Us'), function () {
+                Macui.aboutUs()
+            }],
         ]);
-        Win10.setContextMenu('#win10_btn_group_middle', [
-            ['<i class="fa fa-fw fa-window-maximize"></i> ' + Win10.lang('全部显示', 'Show All Windows'), function () { Win10.showWins() }],
-            ['<i class="fa fa-fw fa-window-minimize"></i> ' + Win10.lang('全部隐藏', 'Hide All Windows'), function () { Win10.hideWins() }],
-            ['<i class="fa fa-fw fa-window-close"></i> ' + Win10.lang('全部关闭', 'Close All Windows'), function () { Win10.closeAll() }],
+        Macui.setContextMenu('#mac_btn_group_middle', [
+            ['<i class="fa fa-fw fa-window-maximize"></i> ' + Macui.lang('全部显示', 'Show All Windows'), function () {
+                Macui.showWins()
+            }],
+            ['<i class="fa fa-fw fa-window-minimize"></i> ' + Macui.lang('全部隐藏', 'Hide All Windows'), function () {
+                Macui.hideWins()
+            }],
+            ['<i class="fa fa-fw fa-window-close"></i> ' + Macui.lang('全部关闭', 'Close All Windows'), function () {
+                Macui.closeAll()
+            }],
         ]);
 
         //处理消息图标闪烁
         setInterval(function () {
-            let btn = $("#win10-msg-nof.on-new-msg");
+            let btn = $("#mac-msg-nof.on-new-msg");
             if (btn.length > 0) {
                 btn.toggleClass('fa-commenting-o');
             }
@@ -509,16 +534,16 @@ window.Win10 = {
             if (e.ctrlKey) {
                 switch (e.keyCode) {
                     case 37://left
-                        $("#win10_btn_win").click();
+                        $("#mac_btn_win").click();
                         break;
                     case 38://up
-                        Win10.showWins();
+                        Macui.showWins();
                         break;
                     case 39://right
-                        $("#win10_btn_command").click();
+                        $("#mac_btn_command").click();
                         break;
                     case 40://down
-                        Win10.hideWins();
+                        Macui.hideWins();
                         break;
                 }
             }
@@ -529,18 +554,18 @@ window.Win10 = {
          * @usage 直接引用即可（需要jquery）
          * @author Yuri2
          */
-        if ($("#win10-desktop-scene").length < 1) {
-            $("#win10-shortcuts").css({
+        if ($("#mac-desktop-scene").length < 1) {
+            $("#mac-shortcuts").css({
                 position: 'absolute',
                 left: 0,
                 top: 30,
                 'z-index': 100,
             });
-            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: 100%;position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>")
+            $("#mac .desktop").append("<div id='mac-desktop-scene' style='width: 100%;height: 100%;position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>")
         }
 
         //属性绑定
-        Win10._bind_open_windows();
+        Macui._bind_open_windows();
     },
     setBgUrl: function (bgs) {
         this._bgs = bgs;
@@ -551,15 +576,13 @@ window.Win10 = {
         this._checkBgUrls();
     },
     menuClose: function () {
-        $("#win10-menu").removeClass('opened');
-        $("#win10-menu").addClass('hidden');
+        $("#mac-menu").removeClass('opened').addClass('hidden');
         this._showShortcut();
-        $(".win10-open-iframe").removeClass('hide');
+        $(".mac-open-iframe").removeClass('hide');
     },
     getLunarObj: function () {
         //农历年信息
-        let lunarInfo = new Array(
-            0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,
+        let lunarInfo = [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,
             0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,
             0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970,
             0x06566, 0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950,
@@ -573,10 +596,10 @@ window.Win10 = {
             0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930,
             0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530,
             0x05aa0, 0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45,
-            0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0);
-        let Animals = new Array("鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪");
-        let Gan = new Array("甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸");
-        let Zhi = new Array("子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥");
+            0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0];
+        let Animals = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"];
+        let Gan = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+        let Zhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
 
         //==== 传回农历 y年的总天数
         function lYearDays(y) {
@@ -584,6 +607,7 @@ window.Win10 = {
             for (i = 0x8000; i > 0x8; i >>= 1) sum += (lunarInfo[y - 1900] & i) ? 1 : 0
             return (sum + leapDays(y))
         }
+
         //==== 传回农历 y年闰月的天数
         function leapDays(y) {
             if (leapMonth(y))
@@ -591,17 +615,20 @@ window.Win10 = {
             else
                 return (0)
         }
+
         //==== 传回农历 y年闰哪个月 1-12 , 没闰传回 0
         function leapMonth(y) {
             return (lunarInfo[y - 1900] & 0xf);
         }
+
         //==== 传回农历 y年m月的总天数
         function monthDays(y, m) {
             return ((lunarInfo[y - 1900] & (0x10000 >> m)) ? 30 : 29);
         }
+
         //==== 算出农历, 传入日期物件, 传回农历日期物件
         //      该物件属性有 .year .month .day .isLeap .yearCyl .dayCyl .monCyl
-        function lunar(objDate) {
+        function Lunar(objDate) {
             let i, leap = 0, temp = 0
             let baseDate = new Date(1900, 0, 31)
             let offset = (objDate - baseDate) / 86400000
@@ -628,46 +655,58 @@ window.Win10 = {
 
             for (i = 1; i < 13 && offset > 0; i++) {
                 //闰月
-                if (leap > 0 && i == (leap + 1) && this.isLeap === false) { --i; this.isLeap = true; temp = leapDays(this.year); }
-                else { temp = monthDays(this.year, i); }
+                if (leap > 0 && i === (leap + 1) && this.isLeap === false) {
+                    --i;
+                    this.isLeap = true;
+                    temp = leapDays(this.year);
+                } else {
+                    temp = monthDays(this.year, i);
+                }
 
                 //解除闰月
-                if (this.isLeap === true && i == (leap + 1)) this.isLeap = false
+                if (this.isLeap === true && i === (leap + 1)) this.isLeap = false
 
                 offset -= temp
                 if (this.isLeap === false) this.monCyl++
             }
 
-            if (offset == 0 && leap > 0 && i == leap + 1)
-                if (this.isLeap) { this.isLeap = false; }
-                else { this.isLeap = true; --i; --this.monCyl; }
+            if (offset === 0 && leap > 0 && i === leap + 1)
+                if (this.isLeap) {
+                    this.isLeap = false;
+                } else {
+                    this.isLeap = true;
+                    --i;
+                    --this.monCyl;
+                }
 
-            if (offset < 0) { offset += temp; --i; --this.monCyl; }
+            if (offset < 0) {
+                offset += temp;
+                --i;
+                --this.monCyl;
+            }
 
             this.month = i
             this.day = offset + 1
         }
+
         //获取农历（月）中文格式
-        function get_lunarmonth(month) {
+        function get_lunar_month(month) {
             let fm = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "腊月"];
             return fm[month - 1];
         }
+
         //获取农历（日）中文格式
-        function get_lunarday(day) {
+        function get_lunar_day(day) {
             let fd = ["十", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
             if (day <= 10) {
                 return "初" + fd[day];
-            }
-            else if (day < 20) {
+            } else if (day < 20) {
                 return "十" + fd[day - 10];
-            }
-            else if (day == 20) {
+            } else if (day === 20) {
                 return "二十";
-            }
-            else if (day < 30) {
+            } else if (day < 30) {
                 return "廿" + fd[day - 20];
-            }
-            else {
+            } else {
                 return "三" + fd[day - 30];
             }
         }
@@ -677,10 +716,12 @@ window.Win10 = {
             let num = year - 1900 + 36;
             return (Gan[num % 10] + Zhi[num % 12]);
         }
+
         //获取生肖
         function get_animal(year) {
             return Animals[(year - 4) % 12];
         }
+
         //获取周
         function get_weekday(date) {
             let values = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
@@ -705,14 +746,24 @@ window.Win10 = {
         //获取小时
         function get_hour(date) {
             let hour = date.getHours();
-            if (hour < 6) { hours = '凌晨' + hour; }
-            else if (hour < 9) { hours = '早上' + hour; }
-            else if (hour < 12) { hours = '上午' + hour; }
-            else if (hour < 14) { hours = '中午' + (hour - 12); }
-            else if (hour < 17) { hours = '下午' + (hour - 12); }
-            else if (hour < 19) { hours = '傍晚' + (hour - 12); }
-            else if (hour < 22) { hours = '晚上' + (hour - 12); }
-            else { hours = '深夜' + (hour - 12) }
+            let hours;
+            if (hour < 6) {
+                hours = '凌晨' + hour;
+            } else if (hour < 9) {
+                hours = '早上' + hour;
+            } else if (hour < 12) {
+                hours = '上午' + hour;
+            } else if (hour < 14) {
+                hours = '中午' + (hour - 12);
+            } else if (hour < 17) {
+                hours = '下午' + (hour - 12);
+            } else if (hour < 19) {
+                hours = '傍晚' + (hour - 12);
+            } else if (hour < 22) {
+                hours = '晚上' + (hour - 12);
+            } else {
+                hours = '深夜' + (hour - 12)
+            }
             return hours;
         }
 
@@ -737,12 +788,12 @@ window.Win10 = {
         //年份(2位)
         viewdate.year = date.getYear();
         //农历信息
-        let lunar_obj = new lunar(date);
+        let lunar_obj = new Lunar(date);
         //农历中文月
-        viewdate.lunarmonth = get_lunarmonth(lunar_obj.month);
+        viewdate.lunarmonth = get_lunar_month(lunar_obj.month);
         //农历中文日
         let lunar_day = Math.floor(lunar_obj.day);
-        viewdate.lunarday = get_lunarday(lunar_day);
+        viewdate.lunarday = get_lunar_day(lunar_day);
         //农历年月日
         viewdate.lunar = lunar_obj.year + "-" + lunar_obj.month + "-" + lunar_day;
         //干支
@@ -753,61 +804,60 @@ window.Win10 = {
         return viewdate;
     },
     //消息中心渲染
-	renderCommand: function (todayHtml = null) {
-		let active = $("#win10_command_center .command-body.today").hasClass('active');
-		if (!active) {
-			if (!todayHtml) {
-				let lunarDate = Win10.getLunarObj();
-				todayHtml = '<div class="command-body-calendar">\n' +
-					'	<div class="command-body-calendar-date normal-date">' + lunarDate.month + '月' + lunarDate.day + '日 \n' + lunarDate.week + '</div>\n' +
-					'	<div class="command-body-calendar-date lunar-date">' + lunarDate.ganzhi + '年' + lunarDate.lunarmonth + lunarDate.lunarday + '</div>\n' +
-					'</div>\n' +
-					'<div class="notice">' +
-					'	<div class="notice-header">' +
-					'		<span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>\n' +
-					'		<span class="notice-header-title">天气</span>\n' +
-					'	</div>\n' +
-					'	<div class="notice-body">\n' +
-					'	<iframe scrolling="no" src="https://widget-page.qweather.net/h5/index.html?md=012&bg=1&lc=auto&key=4008bf181b5e4f349b2e516909430bf2&v=_1640448982399" frameborder="0" width="100%" height="400px" allowtransparency="true"></iframe>\n' +
-					'	</div>\n' +
-					'</div>\n';
-			}
-			$("#win10_command_center .command-body.today").html(todayHtml).addClass('active');
+    renderCommand: function (todayHtml = null) {
+        let active = $("#mac_command_center .command-body.today").hasClass('active');
+        if (!active) {
+            if (!todayHtml) {
+                let lunarDate = Macui.getLunarObj();
+                todayHtml = '<div class="command-body-calendar">\n' +
+                    '	<div class="command-body-calendar-date normal-date">' + lunarDate.month + '月' + lunarDate.day + '日 \n' + lunarDate.week + '</div>\n' +
+                    '	<div class="command-body-calendar-date lunar-date">' + lunarDate.ganzhi + '年' + lunarDate.lunarmonth + lunarDate.lunarday + '</div>\n' +
+                    '</div>\n' +
+                    '<div class="notice">' +
+                    '	<div class="notice-header">' +
+                    '		<span class="notice-header-icon"><img src="./img/icon/weather.png" class="notice-header-icon-img" /></span>\n' +
+                    '		<span class="notice-header-title">天气</span>\n' +
+                    '	</div>\n' +
+                    '	<div class="notice-body">\n' +
+                    '	<iframe scrolling="no" src="https://widget-page.qweather.net/h5/index.html?md=012&bg=1&lc=auto&key=4008bf181b5e4f349b2e516909430bf2&v=_1640448982399" frameborder="0" width="100%" height="400px" allowtransparency="true"></iframe>\n' +
+                    '	</div>\n' +
+                    '</div>\n';
+            }
+            $("#mac_command_center .command-body.today").html(todayHtml).addClass('active');
         }
     },
     menuOpen: function () {
-        $("#win10-menu").addClass('opened');
-        $("#win10-menu").removeClass('hidden');
+        $("#mac-menu").addClass('opened').removeClass('hidden');
         //this._hideShortcut(); //不关闭
-        $(".win10-open-iframe").addClass('hide');
+        $(".mac-open-iframe").addClass('hide');
     },
     menuToggle: function () {
-        if (!$("#win10-menu").hasClass('opened')) {
+        if (!$("#mac-menu").hasClass('opened')) {
             this.menuOpen();
         } else {
             this.menuClose();
         }
     },
     commandCenterClose: function () {
-        $("#win10_command_center").addClass('hidden_right');
+        $("#mac_command_center").addClass('hidden_right');
         this._showShortcut();
-        $(".win10-open-iframe").removeClass('hide');
+        $(".mac-open-iframe").removeClass('hide');
     },
     commandCenterOpen: function () {
-        $("#win10_command_center").removeClass('hidden_right');
+        $("#mac_command_center").removeClass('hidden_right');
         //this._hideShortcut();
-        $(".win10-open-iframe").addClass('hide');
-        $("#win10-msg-nof").removeClass('on-new-msg fa-commenting-o');
+        $(".mac-open-iframe").addClass('hide');
+        $("#mac-msg-nof").removeClass('on-new-msg fa-commenting-o');
     },
     renderShortcuts: function () {
         if (!this.isSmallScreen()) {
             //大屏执行pc的布局也就是竖排靠右对齐，小屏幕执行移动端也就是横向排列
-            let h = parseInt(($("#win10 #win10-shortcuts")[0].offsetHeight - 90) / 100);
+            let h = parseInt(($("#mac #mac-shortcuts")[0].offsetHeight - 90) / 100);
             let w = 0;
             //计算一列最大几个图标，公式是（桌面图标界面的大小 - 顶部状态栏和底部dock栏的尺寸）/单个图标高度所占的尺寸
             let x = 0,
                 y = 0;
-            $("#win10 #win10-shortcuts .shortcut").each(function () {
+            $("#mac #mac-shortcuts .shortcut").each(function () {
                 $(this).css({
                     right: x * 82 + 10,
                     left: 'auto',
@@ -821,10 +871,10 @@ window.Win10 = {
             });
         } else {
             //小屏幕执行横屏
-            let w = parseInt(($("#win10 #win10-shortcuts")[0].offsetWidth - 10) / 82);
+            let w = parseInt(($("#mac #mac-shortcuts")[0].offsetWidth - 10) / 82);
             let x = 0,
                 y = 0;
-            $("#win10 #win10-shortcuts .shortcut").each(function () {
+            $("#mac #mac-shortcuts .shortcut").each(function () {
                 $(this).css({
                     left: x * 82 + 10,
                     right: 0,
@@ -864,7 +914,7 @@ window.Win10 = {
                 halign: 'center'
             })
         } else {
-            $('.dock-container').css({ 'width': width });
+            $('.dock-container').css({'width': width});
             for (let i = 0; i < max_num; i++) {
 
                 docks.on('mouseover', function (e) {
@@ -876,15 +926,15 @@ window.Win10 = {
                 docks.on('click', function (e) {
                     e.preventDefault();
                 });
-                docks.unbind("mouseover").unbind('mouseout').unbind('click').css({ "width": cell_width });
-                if (i == 0) {
+                docks.unbind("mouseover").unbind('mouseout').unbind('click').css({"width": cell_width});
+                if (i === 0) {
                     docks.eq(i).css("margin-left", 0);
                 }
             }
         }
     },
     commandCenterToggle: function () {
-        if ($("#win10_command_center").hasClass('hidden_right')) {
+        if ($("#mac_command_center").hasClass('hidden_right')) {
             this.commandCenterOpen();
         } else {
             this.commandCenterClose();
@@ -905,18 +955,18 @@ window.Win10 = {
             '<div class="content">' + content + '</div>' +
             '</div></div></div>';
         let e = $(msg);
-        $("#win10_command_center .msgs").prepend(e);
+        $("#mac_command_center .msgs").prepend(e);
         e.find('.content:first,.title:first').click(function () {
             if (handle_click) {
                 handle_click(e);
             }
         });
-        layer.tips(Win10.lang('新消息:', 'New message:') + title, '#win10_btn_command', {
+        layer.tips(Macui.lang('新消息:', 'New message:') + title, '#mac_btn_command', {
             tips: [1, 'rgba(0, 0, 0, 0.7)'],
             time: 3000
         });
-        if ($("#win10_command_center").hasClass('hidden_right')) {
-            $("#win10-msg-nof").addClass('on-new-msg');
+        if ($("#mac_command_center").hasClass('hidden_right')) {
+            $("#mac-msg-nof").addClass('on-new-msg');
         }
     },
     getLayeroByIndex: function (index) {
@@ -951,20 +1001,17 @@ window.Win10 = {
     disableFullScreen: function () {
         if (document.exitFullscreen) {
             document.exitFullscreen();
-        }
-        else if (document.mozCancelFullScreen) {
+        } else if (document.mozCancelFullScreen) {
             document.mozCancelFullScreen();
-        }
-        else if (document.webkitCancelFullScreen) {
+        } else if (document.webkitCancelFullScreen) {
             document.webkitCancelFullScreen();
-        }
-        else if (document.msExitFullscreen) {
+        } else if (document.msExitFullscreen) {
             document.msExitFullscreen();
         }
     },
     buildList: function () {
-        $("#win10-menu .list .sub-item").slideUp();
-        $("#win10-menu .list .item").each(function () {
+        $("#mac-menu .list .sub-item").slideUp();
+        $("#mac-menu .list .item").each(function () {
             if ($(this).next().hasClass('sub-item')) {
                 $(this).addClass('has-sub-down');
                 $(this).removeClass('has-sub-up');
@@ -978,7 +1025,9 @@ window.Win10 = {
         } else {
             this._countTask++;
         }
-        if (!url) { url = '404' }
+        if (!url) {
+            url = '404'
+        }
         url = url.replace(/(^\s*)|(\s*$)/g, "");
         let preg = /^(https?:\/\/|\.\.?\/|\/\/?)/;
         if (!preg.test(url)) {
@@ -1016,17 +1065,17 @@ window.Win10 = {
             area: area,
             offset: offset,
             isOutAnim: false,
-            skin: 'win10-open-iframe',
+            skin: 'mac-open-iframe',
             cancel: function (index, layero) {
-                $("#win10_" + index).remove();
-                Win10._checkTop();
-                Win10._countTask--;//回退countTask数
-                Win10._renderBar();
+                $("#mac_" + index).remove();
+                Macui._checkTop();
+                Macui._countTask--;//回退countTask数
+                Macui._renderBar();
             },
             min: function (layero) {
                 layero.hide();
-                $("#win10_" + index).removeClass('show');
-                Win10._checkTop();
+                $("#mac_" + index).removeClass('show');
+                Macui._checkTop();
                 return false;
             },
             full: function (layero) {
@@ -1034,13 +1083,13 @@ window.Win10 = {
                 layero_opened.css('top', 24);
             },
         });
-        $('#win10_btn_group_middle .btn.active').removeClass('active');
-        let btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">' + icon + '</div></div>');
-        let layero_opened = Win10.getLayeroByIndex(index);
-        layero_opened.css('z-index', Win10._countTask + 813);
-        Win10._settop(layero_opened);
+        $('#mac_btn_group_middle .btn.active').removeClass('active');
+        let btn = $('<div id="mac_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">' + icon + '</div></div>');
+        let layero_opened = Macui.getLayeroByIndex(index);
+        layero_opened.css('z-index', Macui._countTask + 813);
+        Macui._settop(layero_opened);
         //重新定义菜单布局
-        layero_opened.find('.layui-layer-setwin').prepend('<a class="win10-btn-refresh" index="' + index + '" href="#"></a>');
+        layero_opened.find('.layui-layer-setwin').prepend('<a class="mac-btn-refresh" index="' + index + '" href="#"></a>');
         //菜单排列倒序
         layero_opened.find(".layui-layer-setwin>a").each(function () {
             $(this).prependTo(layero_opened.find(".layui-layer-setwin"));
@@ -1057,18 +1106,20 @@ window.Win10 = {
             }, 300);
 
         });
-        $("#win10_btn_group_middle").append(btn);
-        Win10._renderBar();
+        $("#mac_btn_group_middle").append(btn);
+        Macui._renderBar();
         btn.click(function () {
             let index = $(this).attr('index');
-            let layero = Win10.getLayeroByIndex(index);
+            let layero = Macui.getLayeroByIndex(index);
             let settop = function () {
                 //置顶窗口
                 let max_zindex = 0;
-                $(".win10-open-iframe").each(function () {
+                $(".mac-open-iframe").each(function () {
                     z = parseInt($(this).css('z-index'));
                     $(this).css('z-index', z - 1);
-                    if (z > max_zindex) { max_zindex = z; }
+                    if (z > max_zindex) {
+                        max_zindex = z;
+                    }
                 });
                 layero.css('z-index', max_zindex + 1);
             };
@@ -1076,27 +1127,27 @@ window.Win10 = {
                 if ($(this).hasClass('active')) {
                     $(this).removeClass('active');
                     $(this).removeClass('show');
-                    Win10._checkTop();
+                    Macui._checkTop();
                     layero.hide();
                 } else {
-                    $('#win10_btn_group_middle .btn.active').removeClass('active');
+                    $('#mac_btn_group_middle .btn.active').removeClass('active');
                     $(this).addClass('active');
-                    Win10._settop(layero);
+                    Macui._settop(layero);
                 }
             } else {
                 $(this).addClass('show');
-                $('#win10_btn_group_middle .btn.active').removeClass('active');
+                $('#mac_btn_group_middle .btn.active').removeClass('active');
                 $(this).addClass('active');
-                Win10._settop(layero);
+                Macui._settop(layero);
                 layero.show();
             }
         });
 
 
-        Win10._iframeOnClick.track(layero_opened.find('iframe:first')[0], function () {
-            if (Object.getOwnPropertyNames(Win10._iframe_click_lock_children).length === 0) {
-                Win10._settop(layero_opened);
-                Win10._checkTop();
+        Macui._iframeOnClick.track(layero_opened.find('iframe:first')[0], function () {
+            if (Object.getOwnPropertyNames(Macui._iframe_click_lock_children).length === 0) {
+                Macui._settop(layero_opened);
+                Macui._checkTop();
             } else {
                 console.log('click locked');
             }
@@ -1107,24 +1158,28 @@ window.Win10 = {
         return index;
     },
     closeAll: function () {
-        $(".win10-open-iframe").remove();
-        $("#win10_btn_group_middle").html("");
-        Win10._countTask = 0;
-        Win10._renderBar();
+        $(".mac-open-iframe").remove();
+        $("#mac_btn_group_middle").html("");
+        Macui._countTask = 0;
+        Macui._renderBar();
     },
     setAnimated: function (animated_classes, animated_liveness) {
         this._animated_classes = animated_classes;
         this._animated_liveness = animated_liveness;
     },
     exit: function () {
-        layer.confirm(Win10.lang('确认要关闭本页吗?', 'Are you sure you want to close this page?'), { icon: 3, title: Win10.lang('提示', 'Prompt') }, function (index) {
-            document.body.onbeforeunload = function () { };
+        layer.confirm(Macui.lang('确认要关闭本页吗?', 'Are you sure you want to close this page?'), {
+            icon: 3,
+            title: Macui.lang('提示', 'Prompt')
+        }, function (index) {
+            document.body.onbeforeunload = function () {
+            };
             window.location.href = "about:blank";
             window.close();
             layer.close(index);
-            layer.alert(Win10.lang('哎呀,好像失败了呢。', 'Ops...There seems to be a little problem.'), {
-				        skin: 'layui-layer-lan',
-                        closeBtn: 0
+            layer.alert(Macui.lang('哎呀,好像失败了呢。', 'Ops...There seems to be a little problem.'), {
+                skin: 'layui-layer-lan',
+                closeBtn: 0
             });
         });
 
@@ -1138,7 +1193,7 @@ window.Win10 = {
             type: 1,
             closeBtn: 1, //不显示关闭按钮
             anim: 2,
-            skin: 'win10-open-iframe',
+            skin: 'mac-open-iframe',
             title: 'MAC-UI ' + this._version,
             shadeClose: true, //开启遮罩关闭
             area: ['320px', '200px'], //宽高
@@ -1156,7 +1211,7 @@ window.Win10 = {
         jq_dom.unbind('contextmenu');
         jq_dom.on('contextmenu', function (e) {
             if (menu) {
-                Win10._renderContextMenu(e.clientX, e.clientY, menu, this);
+                Macui._renderContextMenu(e.clientX, e.clientY, menu, this);
                 if (e.cancelable) {
                     // 判断默认行为是否已经被禁用
                     if (!e.defaultPrevented) {
@@ -1168,36 +1223,36 @@ window.Win10 = {
         });
     },
     hideWins: function () {
-        $('#win10_btn_group_middle>.btn.show').each(function () {
+        $('#mac_btn_group_middle>.btn.show').each(function () {
             let index = $(this).attr('index');
-            let layero = Win10.getLayeroByIndex(index);
+            let layero = Macui.getLayeroByIndex(index);
             $(this).removeClass('show');
             $(this).removeClass('active');
             layero.hide();
         })
     },
     showWins: function () {
-        $('#win10_btn_group_middle>.btn').each(function () {
+        $('#mac_btn_group_middle>.btn').each(function () {
             let index = $(this).attr('index');
-            let layero = Win10.getLayeroByIndex(index);
+            let layero = Macui.getLayeroByIndex(index);
             $(this).addClass('show');
             layero.show();
         });
-        Win10._checkTop();
+        Macui._checkTop();
     },
     getDesktopScene: function () {
-        return $("#win10-desktop-scene");
+        return $("#mac-desktop-scene");
     },
     onReady: function (handle) {
-        Win10._handleReady.push(handle);
+        Macui._handleReady.push(handle);
     }
 };
 
 
 $(function () {
-    Win10._init();
-    for (let i in Win10._handleReady) {
-        let handle = Win10._handleReady[i];
+    Macui._init();
+    for (let i in Macui._handleReady) {
+        let handle = Macui._handleReady[i];
         handle();
     }
 });

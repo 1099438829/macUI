@@ -31,16 +31,16 @@
     <div class="btn" onclick="f3()">关闭子页</div>
 </body>
 	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="./js/win10.child.min.js"></script>
+    <script src="./js/mac.child.min.js"></script>
     <script>
         function f1() {
-            Win10_child.newMsg('子页的问候', '这是从iframe页调用APi发送的消息哦');
+            Macui_child.newMsg('子页的问候', '这是从iframe页调用APi发送的消息哦');
         }
         function f2() {
-            Win10_child.openUrl('http://win10ui.yuri2.cn', '<img class=\'icon\' src=\'./img/icon/win10.png\'/>', 'Win10-UI官网')
+            Macui_child.openUrl('http://win10ui.yuri2.cn', '<img class=\'icon\' src=\'./img/icon/mac.png\'/>', 'Macui-UI官网')
         }
         function f3() {
-            Win10_child.close();
+            Macui_child.close();
         }
     </script>
 </html>
