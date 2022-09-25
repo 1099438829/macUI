@@ -139,7 +139,8 @@
         <div class="dock" id="dock">
             <div class="dock-container backgroud_blur">
                 <a class="dock-item" onclick="Macui.openUrl('./app/finder','<img class=\'icon\' src=\'./img/icon/finder.png\'/>','finder')"><span>finder</span><img src="./img/icon/finder.png" alt="finder"></a>
-                <a class="dock-item" onclick="Macui.openUrl('./app/safari','<img class=\'icon\' src=\'./img/icon/safari.png\'/>','safari')"><span>safari</span><img src="./img/icon/safari.png" alt="safari"></a>
+                <a class="dock-item launchpad" href="#"><span>launchpad</span><img src="./img/icon/launchpad.png" alt="launchpad" /></a>
+				<a class="dock-item" onclick="Macui.openUrl('./app/safari','<img class=\'icon\' src=\'./img/icon/safari.png\'/>','safari')"><span>safari</span><img src="./img/icon/safari.png" alt="safari"></a>
                 <a class="dock-item" href="#"><span>appstore</span><img src="./img/icon/appstore.png" alt="appstore" /></a>
                 <a class="dock-item" href="#"><span>gamecenter</span><img src="./img/icon/gamecenter.png" alt="gamecenter" /></a>
                 <a class="dock-item" href="#"><span>imusic</span><img src="./img/icon/imusic.png" alt="imusic" /></a>
@@ -151,6 +152,32 @@
                 <a class="dock-item" href="#"><span>trashicon</span><img src="./img/icon/trashicon.png" alt="trashicon" /></a>
             </div>
         </div>
+		<div id="launchpad" class="backgroud_blur hidden">
+			<div id="app-serach-box" class="app-serach-box">
+				<form action="" class="search">
+				    <div class="serach-box">	
+				        <input type="text" class="input-search" name="input-search" pattern=".{1,}" required>
+				        <label>Search</label>	
+				    </div>	
+				</form>
+			</div>
+			<div id="app-shortcuts" class="app-shortcuts">
+				<div class="shortcut"
+				    onclick="Macui.openUrl('./index.html','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','UI官网')">
+				    <img class="icon" src="./img/icon/computer.png" />
+				    <div class="title">UI官网</div>
+				</div>
+				<div class="shortcut" onclick="window.open('./demo.html')">
+				    <img class="icon" src="./img/icon/demo.png" />
+				    <div class="title">查看DEMO</div>
+				</div>
+				<div class="shortcut"
+				    onclick="Macui.openUrl('./index.html','<img class=\'icon\' src=\'./img/icon/computer.png\'/>','UI官网')">
+				    <img class="icon" src="./img/icon/computer.png" />
+				    <div class="title">UI官网</div>
+				</div>
+			</div>  
+		</div>
     </div>
 </body>
 <script type="text/javascript" src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/2.2.4/jquery.min.js"></script>

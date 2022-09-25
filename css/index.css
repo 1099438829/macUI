@@ -359,7 +359,7 @@ body {
     color: grey;
 }
 
-#mac #mac-shortcuts {
+#mac-shortcuts  {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -368,9 +368,9 @@ body {
     z-index: 100;
 }
 
-#mac #mac-shortcuts.shortcuts-hidden .shortcut{display: none}
+#mac-shortcuts .shortcuts-hidden .shortcut{display: none}
 
-#mac #mac-shortcuts .shortcut {
+#mac-shortcuts  .shortcut {
     width: 80px;
     overflow: hidden;
     cursor: pointer;
@@ -379,11 +379,11 @@ body {
     transition: all 0.5s;
 }
 
-#mac #mac-shortcuts .shortcut:hover {
+#mac-shortcuts  .shortcut:hover {
     background-color: rgba(255, 255, 255, 0.11);
 }
 
-#mac #mac-shortcuts .shortcut>.icon {
+#mac-shortcuts  .shortcut>.icon {
     width: 50px;
     height: 50px;
     overflow: hidden;
@@ -892,7 +892,7 @@ body {
 	left: 0;
 	height: 60px;
 	text-align: center;
-	z-index:1000;
+	z-index:1003;
 }
 .dock-container {
 	position: absolute;
@@ -923,6 +923,128 @@ body {
 	margin: 5px; 
 	width: 100%; 
 }
+
+#launchpad {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	overflow-y:auto;
+	display: block;
+	top: 0;
+	z-index: 1001;
+}
+
+#launchpad.hidden {
+	display: none;
+}
+
+#launchpad .app-serach-box{
+	position: relative;
+	margin: 3vh auto 20px;
+	height: 1.75rem;
+	width: 16rem;
+	color: var(--d-main);
+	background-color: transparent;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.search .serach-box {
+    position: relative;
+	background-color: rgba(229,231,235,0.1);
+}
+.search label {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAALFQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////t5hynAAAADt0Uk5TABqT4f/1u0487ui5zf6bARv6agInexLmEOPqeVS+THTz02JntjPAKkLZHoS18pFzyhXnq9wEW1Ecxze6XPngAAAAhUlEQVR4nE2MWRKCUAwEAw4C+hAEcVcEdxH3/f4HMxCknI+e6lQSItL0Goy6SRLLRqOpHLTc3Dy77QdEHYUwVx1+sdTtGX2uwTCQoxHGTEzKH1NEzFlcaoI5c4Gl6Apr5gbbHZebYl9MU2SH5HgC4rMcXQA419vP79bjqdGrcgn7m/5dfb4TpgmCJFVbRAAAAABJRU5ErkJggg==) no-repeat 0 50%;
+    color: #fff;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    transition: left .4s, transform .4s;
+    padding-left: 1.25em;
+}
+.search .input-search {
+    -webkit-appearance: textfield;
+	background-color: rgba(229,231,235,0.1);
+    border-radius: .25em;
+	border-color: rgba(229,231,235,0.3);
+	border-width: 1px;
+	border-style: solid;
+    display: block;
+    padding: .5em 1.75em;
+    width: 100%;
+	outline: none;/*点击之后。不出现边框*/
+}
+.search .input-search:focus + label,
+.search .input-search:valid + label {
+    left: .5em;
+    transform: translate(0, -50%);
+}
+.search .input-search:valid + label {
+    text-indent: -9999px;
+}
+
+.search .input-search :before, :after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #ebe6e5;
+}
+
+.search .input-search,.search .input-search:hover {
+    --un-text-opacity: 1;
+    color: rgba(255,255,255,var(--un-text-opacity));
+}
+
+#launchpad .app-shortcuts{
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: stretch;
+	align-items: flex-start;
+	position: fixed;
+	width:  calc(100% - 90px);
+	height: 100%;
+	margin: 0 auto;
+	padding: 0 45px;
+}
+
+#launchpad .shortcut{
+    width: 75px;
+    height: 75px;
+    order: 1;
+    align-self: auto;
+    flex-basis: auto;
+    flex-grow: 0;
+	padding: 0.625rem;
+    flex-shrink: 1;
+}
+
+#launchpad  .shortcut>.icon {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    color: white;
+    box-sizing: border-box;
+    margin: 5px auto;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: block;
+    font-size: 37px;
+    line-height: 50px;
+}
+
+#launchpad .shortcut .title {
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    line-height: 18px;
+    margin-bottom: 5px;
+}
+
 
 /*各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010*/
 .mac-open-iframe .black-green, #mac .black-green{background:#009688!important;}
