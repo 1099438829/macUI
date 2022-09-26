@@ -1,5 +1,5 @@
 @charset "utf-8";
-body,a,h1,h2,h3,h4,h5,h6,p,div,em,ul,li {
+body, a, h1, h2, h3, h4, h5, h6, p, div, em, ul, li {
     font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
 
@@ -8,11 +8,12 @@ html {
 }
 
 /*去除ul中li左边的圆点*/
-ul{
+ul {
     list-style: none;
-	padding: 0;
+    padding: 0;
     margin: 0;
 }
+
 body {
     padding: 0;
     margin: 0;
@@ -40,22 +41,22 @@ body {
     background-color: rgba(50, 50, 50, .3);
 }
 
-#mac *{
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
+#mac * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-#mac-login{
+#mac-login {
     background: black no-repeat fixed;
     width: 100%;
     height: 100%;
     background-size: 100% 100%;
     position: fixed;
     z-index: -1;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
 }
 
 #mac {
@@ -100,18 +101,24 @@ body {
     background-position: center center;
 }
 
-#mac *{
-    scrollbar-arrow-color: #5e6a5c;  /*图6,三角箭头的颜色*/
-    scrollbar-face-color: #5e6a5c;  /*图5,立体滚动条的颜色*/
-    scrollbar-3dlight-color: #5e6a5c;  /*图1,立体滚动条亮边的颜色*/
-    scrollbar-highlight-color: #5e6a5c;  /*图2,滚动条空白部分的颜色*/
-    scrollbar-shadow-color: #5e6a5c;  /*图3,立体滚动条阴影的颜色*/
+#mac * {
+    scrollbar-arrow-color: #5e6a5c; /*图6,三角箭头的颜色*/
+    scrollbar-face-color: #5e6a5c; /*图5,立体滚动条的颜色*/
+    scrollbar-3dlight-color: #5e6a5c; /*图1,立体滚动条亮边的颜色*/
+    scrollbar-highlight-color: #5e6a5c; /*图2,滚动条空白部分的颜色*/
+    scrollbar-shadow-color: #5e6a5c; /*图3,立体滚动条阴影的颜色*/
     scrollbar-darkshadow-color: #5e6a5c; /*图4,立体滚动条强阴影的颜色*/
-    scrollbar-track-color: rgba(74, 84, 78, 0.41);  /*图7,立体滚动条背景颜色*/
-    scrollbar-base-color:#5e6a5c;  /*滚动条的基本颜色*/
+    scrollbar-track-color: rgba(74, 84, 78, 0.41); /*图7,立体滚动条背景颜色*/
+    scrollbar-base-color: #5e6a5c; /*滚动条的基本颜色*/
 }
 
-#mac hr { height:0; border-top:1px solid #999; border-right:0; border-bottom:0; border-left:0; }
+#mac hr {
+    height: 0;
+    border-top: 1px solid #999;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+}
 
 #mac .desktop {
     width: 100%;
@@ -125,8 +132,8 @@ body {
     position: fixed;
     top: 0;
     height: 24px;
-    line-height:24px;
-    background-color: rgba(255,255,255,0.5);
+    line-height: 24px;
+    background-color: rgba(255, 255, 255, 0.5);
     -webkit-box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
     -moz-box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
     box-shadow: 0 0.3125rem 0.07rem -0.3125rem rgba(0, 0, 0, 0.42);
@@ -139,36 +146,36 @@ body {
 
 #mac .btn_group .btn {
     float: left;
-    color:#333;
-    font-weight:bold;
+    color: #333;
+    font-weight: bold;
     text-align: center;
     height: 100%;
     line-height: 24px;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     overflow: hidden;
     transition: background-color 0.3s;
 }
 
 #mac .btn_group .btn:hover {
     color: white;
-    background-color: rgba(49,156,241,0.71);
+    background-color: rgba(49, 156, 241, 0.71);
     cursor: pointer;
 }
 
-#mac_btn_group_left{
+#mac_btn_group_left {
     float: left;
     overflow: auto;
-    max-width:200px;
-    padding-left:0.5%;
+    max-width: 200px;
+    padding-left: 0.5%;
 }
 
-#mac_btn_group_middle{
+#mac_btn_group_middle {
     overflow: auto;
     display: inline-block;
 }
 
 
-#mac_btn_group_middle .btn_title{
+#mac_btn_group_middle .btn_title {
     /* width: 100%; */
     display: inline-block;
     padding: 0 4px;
@@ -191,13 +198,13 @@ body {
     background-color: rgba(30, 39, 34, 0.41);
 }
 
-#mac_btn_group_right{
+#mac_btn_group_right {
     float: right;
-    max-width:200px;
+    max-width: 200px;
     overflow: auto;
 }
 
-#mac_btn_group_left .btn,#mac_btn_group_middle .btn{
+#mac_btn_group_left .btn, #mac_btn_group_middle .btn {
     height: 100%;
     width: 35px;
     overflow: hidden;
@@ -208,7 +215,7 @@ body {
     height: 100%;
     min-width: 4px;
     padding: 0 10px;
-    font-size: 12px ;
+    font-size: 12px;
 }
 
 #mac_btn_show_desktop {
@@ -222,14 +229,15 @@ body {
     font-size: 14px;
     /*line-height: 30px !important  */
 }
+
 #mac-menu {
     position: fixed;
     top: 24px;
     left: 0.5rem;
-    background-color: rgba(255,255,255,0.55);
+    background-color: rgba(255, 255, 255, 0.55);
     box-shadow: 1px 1px 5px #909090;
-    -moz-box-shadow: 1px 1px 5px #909090;/*firefox*/
-    -webkit-box-shadow: 1px 1px 5px #909090;/*safari或chrome*/
+    -moz-box-shadow: 1px 1px 5px #909090; /*firefox*/
+    -webkit-box-shadow: 1px 1px 5px #909090; /*safari或chrome*/
     height: auto;
     width: 12rem;
     max-width: 880px;
@@ -237,58 +245,58 @@ body {
     z-index: 1000;
     overflow-y: hidden;
     transition: bottom 0.5s;
-    border-radius:0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
 }
 
 #mac-menu.hidden {
-    top:-70%;
+    top: -70%;
 }
 
-#mac-menu .list::-webkit-scrollbar,#mac_command_center::-webkit-scrollbar {
+#mac-menu .list::-webkit-scrollbar, #mac_command_center::-webkit-scrollbar {
     width: 0;
     height: 0;
 }
 
-#mac-menu .list::-webkit-scrollbar-track,#mac_command_center::-webkit-scrollbar-track {
+#mac-menu .list::-webkit-scrollbar-track, #mac_command_center::-webkit-scrollbar-track {
     background-color: rgba(74, 84, 78, 0.41);
 }
 
-#mac-menu .list::-webkit-scrollbar-thumb,#mac_command_center::-webkit-scrollbar-thumb {
+#mac-menu .list::-webkit-scrollbar-thumb, #mac_command_center::-webkit-scrollbar-thumb {
     background-color: #6a6a6a;
 }
 
-#mac-menu .list{
+#mac-menu .list {
     float: left;
     width: 180px;
-    height:100%;
+    height: 100%;
     overflow: auto;
     -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
 }
 
-#mac-menu .list{
-    width:100%;
+#mac-menu .list {
+    width: 100%;
     padding: 5px 0 0;
     font-size: 12px;
     height: 100%;
 }
 
-#mac-menu .list .item.has-sub-down::after{
+#mac-menu .list .item.has-sub-down::after {
     font: normal normal normal 14px/1 FontAwesome;
-    content:"\f107";
+    content: "\f107";
     line-height: inherit;
     float: right;
 }
 
-#mac-menu .list .item.has-sub-up::after{
+#mac-menu .list .item.has-sub-up::after {
     font: normal normal normal 14px/1 FontAwesome;
-    content:"\f106";
+    content: "\f106";
     line-height: inherit;
     float: right;
 }
 
-#mac-menu .list .item,.sub-item{
-    color:#333;
+#mac-menu .list .item, .sub-item {
+    color: #333;
     margin: 1px 0;
     line-height: 2em;
     padding: 0 10px;
@@ -299,8 +307,8 @@ body {
     width: calc(100% - 20px);
 }
 
-#mac-menu .list .item>.icon,#mac-menu .list .sub-item>.icon,.sub-item>.icon{
-    line-height:2em;
+#mac-menu .list .item > .icon, #mac-menu .list .sub-item > .icon, .sub-item > .icon {
+    line-height: 2em;
     font-size: 1.2em;
     float: left;
     margin-right: 0.5em;
@@ -310,18 +318,18 @@ body {
 
 }
 
-#mac-menu .list .sub-item{
-    padding-left:30px;
+#mac-menu .list .sub-item {
+    padding-left: 30px;
     width: calc(100% - 40px);
 }
 
-#mac-menu .list .item:hover,.sub-item:hover{
-    background-color:  rgba(49,156,241,0.71);
+#mac-menu .list .item:hover, .sub-item:hover {
+    background-color: rgba(49, 156, 241, 0.71);
     cursor: pointer;
 }
 
 
-#mac-menu-switcher{
+#mac-menu-switcher {
     position: absolute;
     height: 100%;
     border-left: 1px solid grey;
@@ -332,7 +340,7 @@ body {
     cursor: pointer;
 }
 
-#mac-menu-switcher:active{
+#mac-menu-switcher:active {
     background-color: rgba(92, 109, 92, 0.81);
 }
 
@@ -350,16 +358,16 @@ body {
     font-size: 13px;
 }
 
-#mac-menu .menu_group:hover .title::after{
+#mac-menu .menu_group:hover .title::after {
     font: normal normal normal 14px/1 FontAwesome;
-    content:"\f0c9";
+    content: "\f0c9";
     line-height: inherit;
     float: right;
     margin-right: 17px;
     color: grey;
 }
 
-#mac-shortcuts  {
+#mac-shortcuts {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -368,9 +376,11 @@ body {
     z-index: 100;
 }
 
-#mac-shortcuts .shortcuts-hidden .shortcut{display: none}
+#mac-shortcuts .shortcuts-hidden .shortcut {
+    display: none
+}
 
-#mac-shortcuts  .shortcut {
+#mac-shortcuts .shortcut {
     width: 80px;
     overflow: hidden;
     cursor: pointer;
@@ -379,11 +389,11 @@ body {
     transition: all 0.5s;
 }
 
-#mac-shortcuts  .shortcut:hover {
+#mac-shortcuts .shortcut:hover {
     background-color: rgba(255, 255, 255, 0.11);
 }
 
-#mac-shortcuts  .shortcut>.icon {
+#mac .shortcut > .icon {
     width: 50px;
     height: 50px;
     overflow: hidden;
@@ -399,7 +409,7 @@ body {
     line-height: 50px;
 }
 
-#mac-shortcuts .shortcut .title {
+#mac .shortcut .title {
     color: white;
     font-size: 12px;
     text-align: center;
@@ -414,8 +424,8 @@ body {
     width: 300px;
     background-color: rgba(255, 255, 255, 0.6);
     /* -webkit-box-shadow: 0 0.3125rem 0.3125rem -0.3125rem rgba(0,0,0,0.117); */
-    -moz-box-shadow: 0 0.3125rem 0.3125rem -0.3125rem rgba(0,0,0,0.117);
-    box-shadow: 0 0.3125rem 0.3125rem -0.3125rem rgba(0,0,0,0.117);
+    -moz-box-shadow: 0 0.3125rem 0.3125rem -0.3125rem rgba(0, 0, 0, 0.117);
+    box-shadow: 0 0.3125rem 0.3125rem -0.3125rem rgba(0, 0, 0, 0.117);
     height: calc(100% - 25px);
     overflow-x: hidden;
     overflow-y: auto;
@@ -428,7 +438,7 @@ body {
     right: -300px;
 }
 
-#mac_command_center > .title{
+#mac_command_center > .title {
     position: absolute;
     top: 0;
     left: 0;
@@ -437,18 +447,18 @@ body {
     transition: background-color 0.5s;
 }
 
-#mac_command_center > .title:hover{
+#mac_command_center > .title:hover {
     background-color: rgba(255, 255, 255, 0.19);
 }
 
 
-#mac_command_center .command-header{
+#mac_command_center .command-header {
     height: 50px;
     text-align: center;
     border-bottom: 1px outset;
 }
 
-#mac_command_center .command-header .item{
+#mac_command_center .command-header .item {
     width: 45%;
     height: 20px;
     margin: 15px 0;
@@ -458,7 +468,7 @@ body {
     background-color: rgba(121, 121, 121, 0.5);
 }
 
-#mac_command_center .command-header div{
+#mac_command_center .command-header div {
     width: 45%;
     height: 20px;
     margin: 15px 0;
@@ -466,7 +476,7 @@ body {
     font-size: 14px;
     color: #eaeaea;
     background-color: rgba(121, 121, 121, 0.5);
-	border-radius:2px;
+    border-radius: 2px;
 }
 
 #mac_command_center .command-header div:hover {
@@ -502,49 +512,49 @@ body {
     margin: 5px 0;
 }
 
-#mac_command_center .command-body  .notice .notice-header {
-    background-color:rgba(255,255,255,0.8);
+#mac_command_center .command-body .notice .notice-header {
+    background-color: rgba(255, 255, 255, 0.8);
     height: 25px;
     border-radius: 5px 5px 0 0;
     line-height: 25px;
 }
 
-#mac_command_center .command-body  .notice-header-icon {
+#mac_command_center .command-body .notice-header-icon {
     margin: 2px 5px;
     vertical-align: middle;
 }
 
-#mac_command_center .command-body  .notice-header-icon> img {
+#mac_command_center .command-body .notice-header-icon > img {
     width: 15px;
     height: 15px;
 }
 
-#mac_command_center .command-body  .notice-header-title {
+#mac_command_center .command-body .notice-header-title {
     font-size: 10px;
     margin: 0 5px;
     vertical-align: middle;
 }
 
-#mac_command_center .command-body  .notice .notice-body {
-    background-color: rgba(255,255,255,0.6);
+#mac_command_center .command-body .notice .notice-body {
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 0 0 5px 5px;
 }
 
 
-#mac_command_center .command-body  .notice .weather-item {
+#mac_command_center .command-body .notice .weather-item {
     height: 50px;
 }
 
-#mac_command_center .command-body  .notice .weather-item div {
+#mac_command_center .command-body .notice .weather-item div {
     display: inline-block;
     text-align: center;
 }
 
-#mac_command_center .command-body  .notice .weather-city {
+#mac_command_center .command-body .notice .weather-city {
     float: left;
 }
 
-#mac_command_center .command-body  .notice .weather-city .weather-city-time {
+#mac_command_center .command-body .notice .weather-city .weather-city-time {
     display: block;
     font-size: 10px;
     font-weight: 400;
@@ -553,7 +563,7 @@ body {
     color: #868585;
 }
 
-#mac_command_center .command-body  .notice .weather-city .weather-city-text {
+#mac_command_center .command-body .notice .weather-city .weather-city-text {
     font-size: 15px;
     font-weight: 400;
     display: block;
@@ -561,37 +571,38 @@ body {
     margin: 0 0 5px 10px;
 }
 
-#mac_command_center .command-body  .notice .weather-type {
+#mac_command_center .command-body .notice .weather-type {
     position: absolute;
     right: 70px;
 }
 
-#mac_command_center .command-body  .notice .weather-type img {
+#mac_command_center .command-body .notice .weather-type img {
     width: 30px;
     margin: 5px;
 }
 
-#mac_command_center .command-body  .notice .weather-temperature {
+#mac_command_center .command-body .notice .weather-temperature {
     float: right;
     font-size: 35px;
     font-weight: 200;
     margin-right: 10px;
 }
 
-#mac_command_center .command-body  .notice .notice-header, .notice .notice-body {
+#mac_command_center .command-body .notice .notice-header, .notice .notice-body {
     width: 95%;
     margin: 0 auto;
 }
 
-#mac_command_center .command-body  .notice .notice-header .notice-header-icon img{
+#mac_command_center .command-body .notice .notice-header .notice-header-icon img {
     width: 15px;
     height: 15px;
 }
 
-#mac_btn_group_right #mac_btn_command{
+#mac_btn_group_right #mac_btn_command {
     font-size: 14px;
 }
-#mac_btn_command .msgNof{
+
+#mac_btn_command .msgNof {
     position: fixed;
     right: 0;
     bottom: 20px;
@@ -600,24 +611,25 @@ body {
     color: white;
     border-radius: 3px;
 }
-#mac_btn_command_center_clean_all{
-    color:#777;
+
+#mac_btn_command_center_clean_all {
+    color: #777;
     text-align: right;
-    font-size:12px;
+    font-size: 12px;
     float: right;
-    margin-top:40px;
-    margin-right:24px;
+    margin-top: 40px;
+    margin-right: 24px;
     transition: color 0.5s;
 }
 
-#mac_btn_command_center_clean_all:hover{
+#mac_btn_command_center_clean_all:hover {
     cursor: pointer;
-    color:#333;
+    color: #333;
 }
 
-#mac_command_center .msgs{
+#mac_command_center .msgs {
     position: absolute;
-    top:60px;
+    top: 60px;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -625,38 +637,38 @@ body {
     /*padding: 10px;*/
 }
 
-#mac_command_center .btn_close_msg{
+#mac_command_center .btn_close_msg {
     line-height: inherit;
-    transition: color 0.5s ;
+    transition: color 0.5s;
 }
 
-#mac_command_center .msgs .msg{
+#mac_command_center .msgs .msg {
     width: calc(100% - 20px);
     min-height: 40px;
-    padding:10px;
+    padding: 10px;
     transition: background-color 0.5s;
     position: relative;
 }
 
-#mac_command_center .msgs .msg.animated{
+#mac_command_center .msgs .msg.animated {
     -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
 }
 
-#mac_command_center .command-body .notice:hover .notice-body{
+#mac_command_center .command-body .notice:hover .notice-body {
     color: #333;
 }
 
-#mac_command_center .command-body .notice:hover>.notice-header .btn_close_msg{
+#mac_command_center .command-body .notice:hover > .notice-header .btn_close_msg {
     color: grey;
 }
 
-#mac_command_center .msgs .msg>.title{
+#mac_command_center .msgs .msg > .title {
     font-size: 14px;
     line-height: 28px;
 }
 
-#mac_command_center .command-body  .notice .notice-header>.btn_close_msg{
+#mac_command_center .command-body .notice .notice-header > .btn_close_msg {
     cursor: pointer;
     color: transparent;
     margin-right: 8px;
@@ -665,25 +677,25 @@ body {
     float: right;
 }
 
-#mac_command_center .msgs .msg>.btn_close_msg:hover{
+#mac_command_center .msgs .msg > .btn_close_msg:hover {
     color: white;
 }
 
-#mac_command_center .msgs .msg>.content{
+#mac_command_center .msgs .msg > .content {
     font-size: 12px;
     padding-bottom: 5px;
 }
 
-#mac_btn_group_middle .btn.active{
-    background: rgba(255,255,255,0.6); 
+#mac_btn_group_middle .btn.active {
+    background: rgba(255, 255, 255, 0.6);
 }
 
-#mac_btn_group_middle .btn:hover{
+#mac_btn_group_middle .btn:hover {
     cursor: pointer;
 }
 
-.mac-open-iframe{
-	/*繁华年间许你一世安宁提供*/
+.mac-open-iframe {
+    /*繁华年间许你一世安宁提供*/
     background-color: transparent;
     border: #f0f6f6 solid 1px;
     -webkit-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
@@ -694,84 +706,95 @@ body {
     -moz-border-radius: 6px !important;
 }
 
-.mac-open-iframe .layui-layer-content{
+.mac-open-iframe .layui-layer-content {
     background-color: white;
     max-height: calc(100% - 24px);
 }
 
-.mac-open-iframe .layui-layer-title{
+.mac-open-iframe .layui-layer-title {
     box-sizing: border-box;
     background: rgba(250, 250, 250, 0.9);
     padding-left: 120px;
-	border-radius:4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
     color: #333;
-	text-align:center;
+    text-align: center;
 }
-.mac-open-iframe.hide{
+
+.mac-open-iframe.hide {
     display: none;
 }
-.mac-btn_refresh{
+
+.mac-btn_refresh {
     float: right;
 }
-#mac .img-loader{
+
+#mac .img-loader {
     display: none;
 }
 
-.mac-open-iframe  .layui-layer-min cite{display: none;}
-.mac-open-iframe .layui-layer-max:hover{background-image:none}
-.mac-open-iframe .layui-layer-max,.layui-layer-maxmin{background:none}
+.mac-open-iframe .layui-layer-min cite {
+    display: none;
+}
 
-.mac-open-iframe .layui-layer-setwin a::before{
+.mac-open-iframe .layui-layer-max:hover {
+    background-image: none
+}
+
+.mac-open-iframe .layui-layer-max, .layui-layer-maxmin {
+    background: none
+}
+
+.mac-open-iframe .layui-layer-setwin a::before {
     display: inline-block;
     width: 0.9rem;
     height: 0.9rem;
     border-radius: 50%;
 }
 
-.mac-open-iframe .layui-layer-setwin a.layui-layer-close1:hover::before{
-    content:"\f057";
+.mac-open-iframe .layui-layer-setwin a.layui-layer-close1:hover::before {
+    content: "\f057";
     color: #FF6057;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
 
-.mac-open-iframe .layui-layer-min::before{
-    content:"\f111";
+.mac-open-iframe .layui-layer-min::before {
+    content: "\f111";
     color: #28CA40;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
 
-.mac-open-iframe .layui-layer-min:hover::before{
-    content:"\f056";
+.mac-open-iframe .layui-layer-min:hover::before {
+    content: "\f056";
     color: #28CA40;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
 
-.mac-open-iframe .layui-layer-max::before{
-    content:"\f111";
+.mac-open-iframe .layui-layer-max::before {
+    content: "\f111";
     color: #FFBD2E;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
 
-.mac-open-iframe .layui-layer-max:hover::before{
-    content:"\f055";
+.mac-open-iframe .layui-layer-max:hover::before {
+    content: "\f055";
     color: #FFBD2E;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
 
-.mac-open-iframe .layui-layer-maxmin.layui-layer-max::before{
-    content:"\f111";
+.mac-open-iframe .layui-layer-maxmin.layui-layer-max::before {
+    content: "\f111";
     color: #FFBD2E;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
 
-.mac-open-iframe .layui-layer-maxmin.layui-layer-max:hover::before{
-    content:"\f055";
+.mac-open-iframe .layui-layer-maxmin.layui-layer-max:hover::before {
+    content: "\f055";
     color: #FFBD2E;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
 
-.mac-open-iframe .layui-layer-close::before{
-    content:"\f111";
+.mac-open-iframe .layui-layer-close::before {
+    content: "\f111";
     color: #FF6057;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
@@ -796,35 +819,81 @@ body {
 
 */
 
-.mac-open-iframe .layui-layer-min,.layui-layer-close,.layui-layer-max{
+.mac-open-iframe .layui-layer-min, .layui-layer-close, .layui-layer-max {
     text-decoration: none;
 }
-.mac-btn-refresh,.mac-btn-change-url,.mac-btn-refresh:hover,.mac-btn-change-url:hover{
-		text-decoration:none;
+
+.mac-btn-refresh, .mac-btn-change-url, .mac-btn-refresh:hover, .mac-btn-change-url:hover {
+    text-decoration: none;
 }
 
-.mac-open-iframe .mac-btn-refresh::before,.mac-btn-change-url::before{
-    content:"\f111";
+.mac-open-iframe .mac-btn-refresh::before, .mac-btn-change-url::before {
+    content: "\f111";
     color: #029FFF;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
 
-.mac-open-iframe .mac-btn-refresh:hover::before,.mac-btn-change-url:hover::before{
-    content:"\f192";
+.mac-open-iframe .mac-btn-refresh:hover::before, .mac-btn-change-url:hover::before {
+    content: "\f192";
     color: #029FFF;
     font: normal normal normal 0.9rem/1 FontAwesome;
 }
 
 /*右键菜单*/
-#mac .mac-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgba(255, 255, 255,0.45); display: block; border-radius: 5px; z-index: 99999999; }
-#mac .mac-context-menu ul { margin: 0; padding: 0; }
-#mac .mac-context-menu ul li {transition: background-color 0.5s;cursor: default;padding: 0 1em; list-style: none; line-height: 25px; height: 25px; margin: 3px 0;  font-size: 13px; }
-#mac .mac-context-menu ul li:hover {  background-color:  rgba(49,156,241,0.71);cursor: pointer; }
-#mac .mac-context-menu ul li a {text-decoration: none; display: block; height: 100%; color: #333; outline: none; }
-#mac .mac-context-menu ul hr { margin: 0; height: 0; border: 0; border-bottom: rgba(121, 121, 121, 0.24) 1px solid;border-top: none }
+#mac .mac-context-menu {
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 150px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.45);
+    display: block;
+    border-radius: 5px;
+    z-index: 99999999;
+}
+
+#mac .mac-context-menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+#mac .mac-context-menu ul li {
+    transition: background-color 0.5s;
+    cursor: default;
+    padding: 0 1em;
+    list-style: none;
+    line-height: 25px;
+    height: 25px;
+    margin: 3px 0;
+    font-size: 13px;
+}
+
+#mac .mac-context-menu ul li:hover {
+    background-color: rgba(49, 156, 241, 0.71);
+    cursor: pointer;
+}
+
+#mac .mac-context-menu ul li a {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    color: #333;
+    outline: none;
+}
+
+#mac .mac-context-menu ul hr {
+    margin: 0;
+    height: 0;
+    border: 0;
+    border-bottom: rgba(121, 121, 121, 0.24) 1px solid;
+    border-top: none
+}
 
 /*块级按钮*/
-.mac-open-iframe .layui-layer-ico{background-image:none;}
+.mac-open-iframe .layui-layer-ico {
+    background-image: none;
+}
+
 .mac-open-iframe .layui-layer-setwin {
     position: absolute;
     left: 0;
@@ -833,6 +902,7 @@ body {
     height: 30px;
     line-height: 30px;
 }
+
 .mac-open-iframe .layui-layer-setwin a {
     position: relative;
     width: 30px;
@@ -840,14 +910,15 @@ body {
     font-size: 13px;
     text-align: center;
     overflow: hidden;
-	margin:0;
+    margin: 0;
 }
-.mac-open-iframe .layui-layer-title{
-    line-height:30px;
+
+.mac-open-iframe .layui-layer-title {
+    line-height: 30px;
     height: 30px;
 }
 
-.mac-open-iframe .layui-layer-title .icon ,#mac_btn_group_middle .btn_title .icon{
+.mac-open-iframe .layui-layer-title .icon, #mac_btn_group_middle .btn_title .icon {
     font-size: 15px;
     padding: 1px;
     width: 20px;
@@ -857,24 +928,25 @@ body {
     border-radius: 3px;
     text-align: center;
 }
-.mac-open-iframe .layui-layer-title img.icon,#mac_btn_group_middle .btn_title img.icon{
+
+.mac-open-iframe .layui-layer-title img.icon, #mac_btn_group_middle .btn_title img.icon {
     width: 20px;
     position: relative;
 }
 
-.mac-open-iframe .layui-layer-title img.icon{
-    top:5px ;
+.mac-open-iframe .layui-layer-title img.icon {
+    top: 5px;
 }
 
-#mac-menu>.list>.sub-item img.icon,#mac-menu>.list>.item img.icon{
+#mac-menu > .list > .sub-item img.icon, #mac-menu > .list > .item img.icon {
     width: 36px;
-    height:36px;
+    height: 36px;
     position: relative;
-    top:2px ;
+    top: 2px;
 }
 
 /*桌面舞台样式*/
-#mac-desktop-scene{
+#mac-desktop-scene {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -883,76 +955,92 @@ body {
     z-index: 0;
     background-color: transparent;
 }
+
 /*--------------尾部--------------------*/
 
 .dock {
-	width: 100%;
-	bottom: 0;
-	position: absolute;
-	left: 0;
-	height: 60px;
-	text-align: center;
-	z-index:1003;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    height: 60px;
+    text-align: center;
+    z-index: 1003;
 }
+
 .dock-container {
-	position: absolute;
-	height: 60px;
-	border-radius: 5px 5px 0 0 ;
-    background-color: rgba(255,255,255,0.45) ;/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
-	padding:0 5px;
+    width: 100%;
+    height: 60px;
+    flex-flow: row nowrap;
+    place-content: stretch center;
+    align-items: center;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    border-radius: 5px 5px 0 0;
+    background-color: rgba(255, 255, 255, 0.45); /* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+    padding: 0 5px;
+    margin: 0 auto;
 }
 
 .dock a.dock-item {
-	display: block; 
-	font: bold 12px Arial, Helvetica, sans-serif;
-	width: 60px; 
-	color: #fff; 
-	bottom: 0;
-	position: absolute;
-	text-align: center;
-	text-decoration: none;
+    display: block;
+    font: bold 12px Arial, Helvetica, sans-serif;
+    width: 60px;
+    color: #fff;
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    align-self: auto;
+    flex-basis: auto;
+    flex-grow: 0;
 }
+
 .dock-item span {
-	display: none;
-	padding:3px 0;
-	border-radius: 5px;
-	background-color: rgba(0,0,0,0.45);
+    display: none;
+    padding: 3px 0;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.45);
 }
+
 .dock-item img {
-	border: none; 
-	margin: 5px; 
-	width: 100%; 
+    border: none;
+    margin: 5px;
+    width: 100%;
 }
 
 #launchpad {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	overflow-y:auto;
-	display: block;
-	top: 0;
-	z-index: 1001;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    display: block;
+    top: 0;
+    z-index: 1001;
 }
 
 #launchpad.hidden {
-	display: none;
+    display: none;
 }
 
-#launchpad .app-serach-box{
-	position: relative;
-	margin: 3vh auto 20px;
-	height: 1.75rem;
-	width: 16rem;
-	color: var(--d-main);
-	background-color: transparent;
-	font-size: 14px;
-	line-height: 20px;
+#launchpad .app-serach-box {
+    position: relative;
+    margin: 3vh auto 20px;
+    height: 1.75rem;
+    width: 16rem;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .search .serach-box {
     position: relative;
-	background-color: rgba(229,231,235,0.1);
+    background-color: rgba(229, 231, 235, 0.1);
 }
+
 .search label {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAALFQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////t5hynAAAADt0Uk5TABqT4f/1u0487ui5zf6bARv6agInexLmEOPqeVS+THTz02JntjPAKkLZHoS18pFzyhXnq9wEW1Ecxze6XPngAAAAhUlEQVR4nE2MWRKCUAwEAw4C+hAEcVcEdxH3/f4HMxCknI+e6lQSItL0Goy6SRLLRqOpHLTc3Dy77QdEHYUwVx1+sdTtGX2uwTCQoxHGTEzKH1NEzFlcaoI5c4Gl6Apr5gbbHZebYl9MU2SH5HgC4rMcXQA419vP79bjqdGrcgn7m/5dfb4TpgmCJFVbRAAAAABJRU5ErkJggg==) no-repeat 0 50%;
     color: #fff;
@@ -963,23 +1051,26 @@ body {
     transition: left .4s, transform .4s;
     padding-left: 1.25em;
 }
+
 .search .input-search {
     -webkit-appearance: textfield;
-	background-color: rgba(229,231,235,0.1);
+    background-color: rgba(229, 231, 235, 0.1);
     border-radius: .25em;
-	border-color: rgba(229,231,235,0.3);
-	border-width: 1px;
-	border-style: solid;
+    border-color: rgba(229, 231, 235, 0.3);
+    border-width: 1px;
+    border-style: solid;
     display: block;
     padding: .5em 1.75em;
     width: 100%;
-	outline: none;/*点击之后。不出现边框*/
+    outline: none; /*点击之后。不出现边框*/
 }
+
 .search .input-search:focus + label,
 .search .input-search:valid + label {
     left: .5em;
     transform: translate(0, -50%);
 }
+
 .search .input-search:valid + label {
     text-indent: -9999px;
 }
@@ -991,122 +1082,131 @@ body {
     border-color: #ebe6e5;
 }
 
-.search .input-search,.search .input-search:hover {
+.search .input-search, .search .input-search:hover {
     --un-text-opacity: 1;
-    color: rgba(255,255,255,var(--un-text-opacity));
+    color: rgba(255, 255, 255, var(--un-text-opacity));
 }
 
-#launchpad .app-shortcuts{
-	display:flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-content: stretch;
-	align-items: flex-start;
-	position: fixed;
-	width:  calc(100% - 90px);
-	height: 100%;
-	margin: 0 auto;
-	padding: 0 45px;
+#launchpad .app-shortcuts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+    position: fixed;
+    width: calc(100% - 90px);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 45px;
 }
 
-#launchpad .shortcut{
+#launchpad .shortcut {
     width: 75px;
     height: 75px;
     order: 1;
     align-self: auto;
     flex-basis: auto;
     flex-grow: 0;
-	padding: 0.625rem;
+    padding: 0.625rem;
     flex-shrink: 1;
 }
 
-#launchpad  .shortcut>.icon {
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    color: white;
-    box-sizing: border-box;
-    margin: 5px auto;
-    text-align: center;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    display: block;
-    font-size: 37px;
-    line-height: 50px;
-}
-
-#launchpad .shortcut .title {
-    color: white;
-    font-size: 12px;
-    text-align: center;
-    line-height: 18px;
-    margin-bottom: 5px;
-}
-
-
 /*各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010*/
-.mac-open-iframe .black-green, #mac .black-green{background:#009688!important;}
-.mac-open-iframe .green,#mac .green{background:#5FB878!important;}
-.mac-open-iframe .black,#mac .black{background:#393D49!important;}
-.mac-open-iframe .blue,#mac .blue{background:#1E9FFF!important;}
-.mac-open-iframe .orange,#mac .orange{background:#F7B824!important;}
-.mac-open-iframe .red,#mac .red{background:#FF5722!important;}
-.mac-open-iframe .dark,#mac .dark{background:#2F4056!important;}
-.mac-open-iframe .purple,#mac .purple{background:#b074e6!important;}
-@media screen and (max-width:768px){
-    #mac-menu{
-        width:100%;
+.mac-open-iframe .black-green, #mac .black-green {
+    background: #009688 !important;
+}
+
+.mac-open-iframe .green, #mac .green {
+    background: #5FB878 !important;
+}
+
+.mac-open-iframe .black, #mac .black {
+    background: #393D49 !important;
+}
+
+.mac-open-iframe .blue, #mac .blue {
+    background: #1E9FFF !important;
+}
+
+.mac-open-iframe .orange, #mac .orange {
+    background: #F7B824 !important;
+}
+
+.mac-open-iframe .red, #mac .red {
+    background: #FF5722 !important;
+}
+
+.mac-open-iframe .dark, #mac .dark {
+    background: #2F4056 !important;
+}
+
+.mac-open-iframe .purple, #mac .purple {
+    background: #b074e6 !important;
+}
+
+@media screen and (max-width: 768px) {
+    #mac-menu {
+        width: 100%;
         top: 24px;
-        left:0;
+        left: 0;
         height: calc(100% - 25px);
-        border-radius:0 0 2px 2px;
+        border-radius: 0 0 2px 2px;
     }
-    #mac-menu.hidden{
+
+    #mac-menu.hidden {
         top: calc(-100% + 25px);
     }
-    #mac_command_center{
+
+    #mac_command_center {
         top: 24px;
         width: 100%;
     }
+
     #mac_command_center.hidden_right {
         right: -100%;
     }
-    .layui-layer-setwin .layui-layer-max{
+
+    .layui-layer-setwin .layui-layer-max {
         display: none;
     }
+
     #mac_btn_group_left .btn {
         height: 100%;
         width: 40px;
         overflow: hidden;
         font-size: 16px;
     }
+
     #mac_btn_group_right .btn {
         height: 100%;
         min-width: 4px;
         padding: 0 10px;
-        font-size: 16px!important;
+        font-size: 16px !important;
     }
+
     #mac_btn_show_desktop {
         border-left: grey 1px solid;
         width: 15px;
         margin-left: 3px;
         padding: 0 !important
     }
-    #mac_btn_group_left{
-        max-width:100px;
-    }
-    #mac_btn_group_middle{
-        width:calc(100% - 160px);
+
+    #mac_btn_group_left {
+        max-width: 100px;
     }
 
-    #mac_btn_group_right{
-        max-width:150px;
+    #mac_btn_group_middle {
+        width: calc(100% - 160px);
     }
-    #mac-menu .list{
+
+    #mac_btn_group_right {
+        max-width: 150px;
+    }
+
+    #mac-menu .list {
         position: absolute;
-        width:100%;
+        width: 100%;
         left: 0;
         top: 0;
 
@@ -1119,39 +1219,49 @@ body {
         clear: both;
     }
 
-    #mac-menu .list .item, .sub-item{
+    #mac-menu .list .item, .sub-item {
         width: calc(100% - 20px);
     }
 
-    #mac_btn_time{display: none}
-    #mac-menu-switcher{
+    #mac_btn_time {
+        display: none
+    }
+
+    #mac-menu-switcher {
         display: none;
     }
-    #mac-menu>.mac-menu-hidden{
+
+    #mac-menu > .mac-menu-hidden {
         display: block;
     }
-    #mac_btn_group_middle .btn_close{
+
+    #mac_btn_group_middle .btn_close {
         display: none;
     }
+
     .mac-open-iframe .layui-layer-setwin a {
         width: 32px;
     }
-	
-	.dock{
-		width: 100%;
-		height:60px;
-		border-radius: 0;
-	}
-	.dock .dock-container{
-		width: 100%;
-		border-radius: 0;
-	}
-	
-	.dock a.dock-item{
-		width: 100%;
-		margin-left: 25px;
-		float:left;
-		position: static;
-	}
-	
+
+    #dock {
+        width: 100%;
+        height: 60px;
+        border-radius: 0;
+    }
+
+    #dock .dock-container {
+        width: 100%;
+        border-radius: 0;
+        flex-flow: row nowrap;
+        place-content: stretch center;
+        align-items: center;
+        left: 0;
+    }
+
+    #dock a.dock-item {
+        width: 100%;
+        float: left;
+        position: static;
+    }
+
 }
