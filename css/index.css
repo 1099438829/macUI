@@ -974,7 +974,7 @@ body {
     flex-flow: row nowrap;
     place-content: stretch center;
     align-items: center;
-    display:flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
@@ -1008,7 +1008,7 @@ body {
 
 .dock-item img {
     border: none;
-    margin: 5px;
+    margin: 0 5px;
     width: 100%;
 }
 
@@ -1038,7 +1038,6 @@ body {
 
 .search .serach-box {
     position: relative;
-    background-color: rgba(229, 231, 235, 0.1);
 }
 
 .search label {
@@ -1054,7 +1053,7 @@ body {
 
 .search .input-search {
     -webkit-appearance: textfield;
-    background-color: rgba(229, 231, 235, 0.1);
+    background-color: rgba(229, 231, 235, 0.2);
     border-radius: .25em;
     border-color: rgba(229, 231, 235, 0.3);
     border-width: 1px;
@@ -1252,16 +1251,18 @@ body {
     #dock .dock-container {
         width: 100%;
         border-radius: 0;
-        flex-flow: row nowrap;
-        place-content: stretch center;
-        align-items: center;
-        left: 0;
+        padding: 0;
     }
 
     #dock a.dock-item {
         width: 100%;
         float: left;
         position: static;
+    }
+
+    #dock .dock-item img {
+        margin: 0;
+        width: 90%;
     }
 
 }

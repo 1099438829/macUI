@@ -357,6 +357,7 @@ window.Macui = {
             }, 500)
         });
         $("#mac .launchpad").click(function () {
+            console.log($(this))
             if ($("#launchpad").hasClass("hidden")) {
                 Macui.renderLaunchpad();
                 Macui.menuClose();
@@ -584,22 +585,26 @@ window.Macui = {
             }
         });
         //launchpad 搜索功能
-        $("#launchpad .input-search").on("input propertychange", function () {
-            //在输入框中打印输入的值
-            var searchName = $(this).val();
-            if (searchName == "") {
-                $("#app-shortcuts .shortcut").show();
-            } else {
-                $("#app-shortcuts .shortcut").each(function () {
-                    var appName = $(this).children(".title").text().toLowerCase();
-                    if (appName.indexOf(searchName.toLowerCase()) != -1) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            }
-        });
+        $("#launchpad .app-serach-box").on("click",function (e){
+            //避免点击事件影响
+            e.stopPropagation();
+            $(this).find(".input-search").on("input propertychange", function (e) {
+                //在输入框中打印输入的值
+                var searchName = $(this).val();
+                if (searchName === "") {
+                    $("#app-shortcuts .shortcut").show();
+                } else {
+                    $("#app-shortcuts .shortcut").each(function () {
+                        var appName = $(this).children(".title").text().toLowerCase();
+                        if (appName.indexOf(searchName.toLowerCase()) !== -1) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    });
+                }
+            });
+        })
 
         /**
          * WIN10-UI v1.1.2.2 桌面舞台支持补丁
@@ -975,8 +980,8 @@ window.Macui = {
     renderDocks: function () {
         let cell_width = 50;
         let width = document.body.clientWidth;
-        let docks = $(".dock .dock-container a");
-        let max_num = width / cell_width - 1;
+        let docks = $("#dock .dock-container a");
+        let max_num = parseInt((width - 10) / cell_width);
         for (let i = 0; i <= docks.length; i++) {
             if (i >= max_num) {
                 docks.eq(i).hide();
@@ -997,23 +1002,8 @@ window.Macui = {
                 halign: 'center'
             })
         } else {
-            for (let i = 0; i <= max_num; i++) {
-                docks.on('mouseover', function (e) {
-                    e.preventDefault();
-                });
-                docks.on('mouseout', function (e) {
-                    e.preventDefault();
-                });
-                docks.on('click', function (e) {
-                    e.preventDefault();
-                });
-                docks.unbind("mouseover").unbind('mouseout').unbind('click').css({
-                    "width": cell_width
-                });
-                if (i === 0) {
-                    docks.eq(i).css("margin-left", 0);
-                }
-            }
+            $("#dock .dock-container").off('mousemove').off('mouseover').off('mouseout')
+            docks.off('mousemove').off('mouseover').off('mouseout')
         }
     },
     commandCenterToggle: function () {
