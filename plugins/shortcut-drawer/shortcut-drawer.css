@@ -1,4 +1,4 @@
-.win10-drawer-box{
+.mac-drawer-box{
     height:0;
     overflow: hidden;
 }
@@ -20,11 +20,9 @@
     width: 50px;
     height: 50px;
     overflow: hidden;
-    margin: 0 auto;
     color: white;
     box-sizing: border-box;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin: 5px auto;
     text-align: center;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -40,7 +38,7 @@
     text-align: center;
     line-height: 18px;
     margin-bottom: 5px;
-    height: 36px;
+    /*height: 36px;*/
     overflow:hidden;
     text-overflow:ellipsis;
     display:-webkit-box;
@@ -60,7 +58,7 @@
 	font-size: 20px;
     height: 30px;
     line-height: 30px;
-    border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0 0;
     border: 0;
 }
 .drawer.layui-layer{

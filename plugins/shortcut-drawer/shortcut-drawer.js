@@ -1,9 +1,9 @@
 //该插件提供桌面图标二级分类的支持
-Win10.onReady(function () {
+Macui.onReady(function () {
     //注册打开事件
     (function () {
         // 注册事件委派 打开url窗口
-        $('body').on('click', '.shortcut-drawer.win10-open-window', function () {
+        $('body').on('click', '.shortcut-drawer.mac-open-window', function () {
             //>> 获取当前点击的对象
             $this = $(this);
             //>> 判断url地址是否为空 如果为空 不予处理
@@ -36,27 +36,26 @@ Win10.onReady(function () {
                     }
                 }
                 //>> 调用win10打开url方法
-                Win10.openUrl($this.data('url'), icon, title, areaAndOffset);
+                Macui.openUrl($this.data('url'), icon, title, areaAndOffset);
             }
         })
-    })(),
+    })();
 
-
-        $('body').on('click', '.win10-drawer', function () {
-            var content = $(this).find('.win10-drawer-box').html();
-            var title = $(this).children('.title').html();
-            var index = layer.open({
-                type: 1,
-                shadeClose: true,
-                skin: 'drawer',
-                area: [Win10.isSmallScreen() ? "80%" : "60%", "50%"],
-                closeBtn: 0,
-                title: title,
-                content: content,
-            });
-            var layero = Win10.getLayeroByIndex(index);
-            layero.find('.shortcut-drawer').click(function () {
-                layer.close(index);
-            })
+    $('body').on('click', '.mac-drawer', function () {
+        var content = $(this).find('.mac-drawer-box').html();
+        var title = $(this).children('.title').html();
+        var index = layer.open({
+            type: 1,
+            shadeClose: true,
+            skin: 'drawer',
+            area: Macui.isSmallScreen() ? "80%" : "60%",
+            closeBtn: 0,
+            title: title,
+            content: content,
+        });
+        var layero = Macui.getLayeroByIndex(index);
+        layero.find('.shortcut-drawer').click(function () {
+            layer.close(index);
         })
+    })
 });
