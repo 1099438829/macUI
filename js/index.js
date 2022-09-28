@@ -2,7 +2,7 @@
  * Created by Yuri2 on 2017/7/10.
  */
 window.Macui = {
-    _version: 'v1.1.2.5',
+    _version: 'v1.1.2.6',
     _debug: true,
     _bgs: {
         main: '',
@@ -989,7 +989,7 @@ window.Macui = {
                 docks.eq(i).show();
             }
         }
-        if (width > 768) {
+        if (!this.isSmallScreen()){
             $('#dock').Fisheye({
                 maxWidth: 70,
                 items: 'a',
@@ -1001,9 +1001,11 @@ window.Macui = {
                 valign: 'bottom',
                 halign: 'center'
             })
-        } else {
-            $("#dock .dock-container").off('mousemove').off('mouseover').off('mouseout')
-            docks.off('mousemove').off('mouseover').off('mouseout')
+        }else {
+            $("#dock .dock-container").css("width",width)
+            docks.on('mouseover mousemove mouseout', function (e) {
+                e.stopPropagation()
+            }).css("width",cell_width).off('mouseover mousemove mouseout')
         }
     },
     commandCenterToggle: function () {
