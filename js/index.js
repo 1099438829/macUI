@@ -418,7 +418,7 @@ window.Macui = {
         $("#mac_btn_group_middle").click(function () {
             $("#mac .desktop").click();
         });
-        $(document).on('click', '.mac-btn-refresh', function () {
+        $(document).on('click', '.layui-layer-refresh', function () {
             let index = $(this).attr('index');
             let iframe = Macui.getLayeroByIndex(index).find('iframe');
             iframe.attr('src', iframe.attr('src'));
@@ -1170,7 +1170,7 @@ window.Macui = {
         layero_opened.css('z-index', Macui._countTask + 813);
         Macui._settop(layero_opened);
         //重新定义菜单布局
-        layero_opened.find('.layui-layer-setwin').prepend('<a class="mac-btn-refresh" index="' + index +
+        layero_opened.find('.layui-layer-setwin').prepend('<a class="layui-layer-ico layui-layer-refresh" index="' + index +
             '" href="#"></a>');
         //菜单排列倒序
         layero_opened.find(".layui-layer-setwin>a").each(function () {

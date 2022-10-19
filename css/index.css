@@ -732,111 +732,141 @@ body {
     display: none;
 }
 
-.mac-open-iframe .layui-layer-min cite {
-    display: none;
+.mac-open-iframe .layui-layer-ico {
+    background: url(../img/frame/assets.png) no-repeat
 }
 
-.mac-open-iframe .layui-layer-max:hover {
-    background-image: none
+.mac-open-iframe .layui-layer-setwin {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 0;
+    height: 30px;
+    line-height: 30px;
 }
 
-.mac-open-iframe .layui-layer-max, .layui-layer-maxmin {
+.mac-open-iframe .layui-layer-setwin a {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+.mac-open-iframe .layui-layer-title {
+    line-height: 30px;
+    height: 30px;
+}
+
+.mac-open-iframe .layui-layer-title .icon, #mac_btn_group_middle .btn_title .icon {
+    font-size: 15px;
+    padding: 1px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.mac-open-iframe .layui-layer-title img.icon, #mac_btn_group_middle .btn_title img.icon {
+    width: 20px;
+    position: relative;
+}
+
+.mac-open-iframe .layui-layer-title img.icon {
+    top: 5px;
+}
+
+.mac-open-iframe .layui-layer-min cite{display:none}
+
+.mac-open-iframe .layui-layer-max, .layui-layer-maxmin, .layui-layer-min cite {
     background: none
+}
+
+body .mac-open-iframe .layui-layer-setwin .layui-layer-min {
+    background-color: #FFBD2E;
+    border-radius:50%;
+    width: 0.9rem;
+    height:0.9rem;
+}
+
+body .mac-open-iframe .layui-layer-setwin .layui-layer-min:hover {
+    background:url("../img/frame/unmaximize.png") no-repeat center;
+    background-size: 1rem 1rem;
 }
 
 .mac-open-iframe .layui-layer-setwin a::before {
     display: inline-block;
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
 }
 
 .mac-open-iframe .layui-layer-setwin a.layui-layer-close1:hover::before {
     content: "\f057";
     color: #FF6057;
-    font: normal normal normal 0.9rem/1 FontAwesome;
+    font: normal normal normal 1rem/1 FontAwesome;
 }
 
-.mac-open-iframe .layui-layer-min::before {
-    content: "\f111";
-    color: #28CA40;
-    font: normal normal normal 0.9rem/1 FontAwesome;
+
+body .mac-open-iframe .layui-layer-setwin .layui-layer-max {
+    background-color:#28CA42;
+    border-radius:50%;
+    width: 0.9rem;
+    height:0.9rem;
 }
 
-.mac-open-iframe .layui-layer-min:hover::before {
-    content: "\f056";
-    color: #28CA40;
-    font: normal normal normal 0.9rem/1 FontAwesome;
+body .mac-open-iframe .layui-layer-setwin .layui-layer-max:hover {
+    background:url("../img/frame/unmaximize.png") no-repeat center;
+    background-size: 1rem 1rem;
 }
 
-.mac-open-iframe .layui-layer-max::before {
-    content: "\f111";
-    color: #FFBD2E;
-    font: normal normal normal 0.9rem/1 FontAwesome;
+body .mac-open-iframe .layui-layer-setwin .layui-layer-maxmin {
+    background-color:#28CA42;
+    border-radius:50%;
+    width: 0.9rem;
+    height:0.9rem;
 }
 
-.mac-open-iframe .layui-layer-max:hover::before {
-    content: "\f055";
-    color: #FFBD2E;
-    font: normal normal normal 0.9rem/1 FontAwesome;
-}
-
-.mac-open-iframe .layui-layer-maxmin.layui-layer-max::before {
-    content: "\f111";
-    color: #FFBD2E;
-    font: normal normal normal 0.9rem/1 FontAwesome;
-}
-
-.mac-open-iframe .layui-layer-maxmin.layui-layer-max:hover::before {
-    content: "\f055";
-    color: #FFBD2E;
-    font: normal normal normal 0.9rem/1 FontAwesome;
+body .mac-open-iframe.layui-layer-setwin .layui-layer-maxmin:hover {
+    background:url("../img/frame/maximize.png") no-repeat center;
+    background-size: 1rem 1rem;
 }
 
 .mac-open-iframe .layui-layer-close::before {
     content: "\f111";
     color: #FF6057;
-    font: normal normal normal 0.9rem/1 FontAwesome;
+    font: normal normal normal 1rem/1 FontAwesome;
 }
-
-/*
-.mac-open-iframe .layui-layer-setwin .layui-layer-max::before{
-    background-color: #FFBD2E;
-}
-
-.mac-open-iframe .layui-layer-min::before{
-    background-color: #28CA40;
-}
-
-.mac-open-iframe .mac-btn-refresh::before{
-    background-color: #029FFF;
-}
-
-.layui-layer-setwin .layui-layer-close1::hover{
-    content: "xxx";
-    background-color: #fd6458;
-}
-
-*/
 
 .mac-open-iframe .layui-layer-min, .layui-layer-close, .layui-layer-max {
     text-decoration: none;
 }
 
-.mac-btn-refresh, .mac-btn-change-url, .mac-btn-refresh:hover, .mac-btn-change-url:hover {
+.layui-layer-refresh, .layui-layer-change-url, .layui-layer-refresh:hover, .layui-layer-change-url:hover {
     text-decoration: none;
 }
 
-.mac-open-iframe .mac-btn-refresh::before, .mac-btn-change-url::before {
+.mac-open-iframe .layui-layer-refresh::before, .layui-layer-change-url::before {
     content: "\f111";
     color: #029FFF;
-    font: normal normal normal 0.9rem/1 FontAwesome;
+    font: normal normal normal 1rem/1 FontAwesome;
 }
 
-.mac-open-iframe .mac-btn-refresh:hover::before, .mac-btn-change-url:hover::before {
+.mac-open-iframe .layui-layer-refresh:hover::before, .layui-layer-change-url:hover::before {
     content: "\f192";
     color: #029FFF;
-    font: normal normal normal 0.9rem/1 FontAwesome;
+    font: normal normal normal 1rem/1 FontAwesome;
 }
 
 /*右键菜单*/
@@ -887,55 +917,6 @@ body {
     border: 0px;
     border-bottom: rgba(121, 121, 121, 0.24) 1px solid;
     border-top: none
-}
-
-/*块级按钮*/
-.mac-open-iframe .layui-layer-ico {
-    background-image: none;
-}
-
-.mac-open-iframe .layui-layer-setwin {
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-size: 0;
-    height: 30px;
-    line-height: 30px;
-}
-
-.mac-open-iframe .layui-layer-setwin a {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    font-size: 13px;
-    text-align: center;
-    overflow: hidden;
-    margin: 0;
-}
-
-.mac-open-iframe .layui-layer-title {
-    line-height: 30px;
-    height: 30px;
-}
-
-.mac-open-iframe .layui-layer-title .icon, #mac_btn_group_middle .btn_title .icon {
-    font-size: 15px;
-    padding: 1px;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    display: inline-block;
-    border-radius: 3px;
-    text-align: center;
-}
-
-.mac-open-iframe .layui-layer-title img.icon, #mac_btn_group_middle .btn_title img.icon {
-    width: 20px;
-    position: relative;
-}
-
-.mac-open-iframe .layui-layer-title img.icon {
-    top: 5px;
 }
 
 #mac-menu > .list > .sub-item img.icon, #mac-menu > .list > .item img.icon {
