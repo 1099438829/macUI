@@ -694,7 +694,8 @@ body {
     cursor: pointer;
 }
 
-.mac-open-iframe {
+/* 窗口打开主题 */
+body .mac-open-iframe {
     /*繁华年间许你一世安宁提供*/
     background-color: transparent;
     border: #f0f6f6 solid 1px;
@@ -706,12 +707,12 @@ body {
     -moz-border-radius: 6px !important;
 }
 
-.mac-open-iframe .layui-layer-content {
+body .mac-open-iframe .layui-layer-content {
     background-color: white;
     max-height: calc(100% - 24px);
 }
 
-.mac-open-iframe .layui-layer-title {
+body .mac-open-iframe .layui-layer-title {
     box-sizing: border-box;
     background: rgba(250, 250, 250, 0.9);
     padding-left: 120px;
@@ -720,20 +721,16 @@ body {
     text-align: center;
 }
 
-.mac-open-iframe.hide {
+body .mac-open-iframe.hide {
     display: none;
 }
 
-.mac-btn_refresh {
+body .mac-btn_refresh {
     float: right;
 }
 
-#mac .img-loader {
-    display: none;
-}
-
 .mac-open-iframe .layui-layer-ico {
-    background: url(../img/frame/assets.png) no-repeat
+    background: url(../img/frame/assets.png) no-repeat;
 }
 
 .mac-open-iframe .layui-layer-setwin {
@@ -755,8 +752,8 @@ body {
 }
 
 .mac-open-iframe .layui-layer-setwin a {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     font-size: 13px;
     overflow: hidden;
     margin-left: 10px;
@@ -789,84 +786,75 @@ body {
 
 .mac-open-iframe .layui-layer-min cite{display:none}
 
-.mac-open-iframe .layui-layer-max, .layui-layer-maxmin, .layui-layer-min cite {
-    background: none
-}
-
 body .mac-open-iframe .layui-layer-setwin .layui-layer-min {
-    background-color: #FFBD2E;
-    border-radius:50%;
-    width: 0.9rem;
-    height:0.9rem;
+    background: url(../img/frame/assets.png) no-repeat;
+    background-position: -3px -33px;
+    cursor: pointer;
 }
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-min:hover {
-    background:url("../img/frame/unmaximize.png") no-repeat center;
-    background-size: 1rem 1rem;
+    background: url(../img/frame/assets.png) no-repeat;
+    background-position: -3px -62px;
+    cursor: pointer;
 }
 
-.mac-open-iframe .layui-layer-setwin a::before {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
+body .mac-open-iframe .layui-layer-setwin a.layui-layer-close {
+    background-position: -46px -33px;
+    cursor: pointer;
 }
 
-.mac-open-iframe .layui-layer-setwin a.layui-layer-close1:hover::before {
-    content: "\f057";
-    color: #FF6057;
-    font: normal normal normal 1rem/1 FontAwesome;
+body .mac-open-iframe .layui-layer-setwin a.layui-layer-close:hover {
+    background-position: -46px -62px;
+    cursor: pointer;
 }
 
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-max {
-    background-color:#28CA42;
-    border-radius:50%;
-    width: 0.9rem;
-    height:0.9rem;
+    background-position: -24px -33px;
+    cursor: pointer;
 }
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-max:hover {
-    background:url("../img/frame/unmaximize.png") no-repeat center;
-    background-size: 1rem 1rem;
+    background-position: -24px -62px;
+    cursor: pointer;
 }
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-maxmin {
-    background-color:#28CA42;
-    border-radius:50%;
-    width: 0.9rem;
-    height:0.9rem;
+    background-position: -69px -33px;
+    cursor: pointer;
 }
 
 body .mac-open-iframe.layui-layer-setwin .layui-layer-maxmin:hover {
-    background:url("../img/frame/maximize.png") no-repeat center;
-    background-size: 1rem 1rem;
+    background-position: -69px -62px;
+    cursor: pointer;
 }
 
-.mac-open-iframe .layui-layer-close::before {
-    content: "\f111";
-    color: #FF6057;
-    font: normal normal normal 1rem/1 FontAwesome;
+body .mac-open-iframe .layui-layer-setwin .layui-layer-refresh {
+    background-position: -104px -32px;
+    cursor: pointer;
 }
 
-.mac-open-iframe .layui-layer-min, .layui-layer-close, .layui-layer-max {
+body .mac-open-iframe .layui-layer-setwin .layui-layer-refresh:hover {
+    background-position: -104px -61px;
+    cursor: pointer;
+}
+
+body .mac-open-iframe .layui-layer-setwin .layui-layer-change-url {
+    background-position: -69px -32px;
+    cursor: pointer;
+}
+
+body .mac-open-iframe.layui-layer-setwin .layui-layer-change-url:hover {
+    background-position: -104px -61px;
+    cursor: pointer;
+}
+
+.mac-open-iframe .layui-layer-min, .layui-layer-close, .layui-layer-max,.layui-layer-refresh, .layui-layer-change-url {
     text-decoration: none;
 }
 
-.layui-layer-refresh, .layui-layer-change-url, .layui-layer-refresh:hover, .layui-layer-change-url:hover {
-    text-decoration: none;
-}
-
-.mac-open-iframe .layui-layer-refresh::before, .layui-layer-change-url::before {
-    content: "\f111";
-    color: #029FFF;
-    font: normal normal normal 1rem/1 FontAwesome;
-}
-
-.mac-open-iframe .layui-layer-refresh:hover::before, .layui-layer-change-url:hover::before {
-    content: "\f192";
-    color: #029FFF;
-    font: normal normal normal 1rem/1 FontAwesome;
+#mac .img-loader {
+    display: none;
 }
 
 /*右键菜单*/
