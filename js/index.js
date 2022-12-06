@@ -353,7 +353,6 @@ window.Macui = {
             }, 500)
         });
         $("#mac .launchpad").click(function () {
-            console.log(2222)
             if ($("#launchpad").hasClass("hidden")) {
                 Macui.renderLaunchpad();
                 Macui.menuClose();
@@ -883,7 +882,9 @@ window.Macui = {
     },
     //close Launchpad
     closeLaunchpad: function () {
-        $("#launchpad").removeClass("show").addClass("hidden").hide();
+        if ($("#launchpad").hasClass("show")){
+            $("#launchpad").removeClass("show").addClass("hidden").hide();
+        }
     },
     //消息中心渲染
     renderCommand: function (todayHtml = null) {
@@ -1241,7 +1242,6 @@ window.Macui = {
 
         this.menuClose();
         this.commandCenterClose();
-        this.closeLaunchpad();
         return index;
     },
     closeAll: function () {
