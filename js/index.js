@@ -1236,7 +1236,6 @@ window.Macui = {
 
         this.menuClose();
         this.commandCenterClose();
-        this.closeLaunchpad();
         return index;
     },
     closeAll: function () {
