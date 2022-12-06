@@ -820,7 +820,7 @@ body .mac-open-iframe .layui-layer-setwin .layui-layer-max:hover {
 }
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-maxmin {
-    background-position: -55px -15px;
+    background-position: -55px -25px;
     cursor: pointer;
 }
 
@@ -835,7 +835,7 @@ body .mac-open-iframe .layui-layer-setwin .layui-layer-refresh {
 }
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-refresh:hover {
-    background-position: -83px -49px;
+    background-position: -83px -48px;
     cursor: pointer;
 }
 
