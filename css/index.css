@@ -698,10 +698,9 @@ body {
 body .mac-open-iframe {
     /*繁华年间许你一世安宁提供*/
     background-color: transparent;
-    border: #f0f6f6 solid 1px;
-    -webkit-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
-    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
     border-radius: 6px !important;
     -webkit-border-radius: 6px !important;
     -moz-border-radius: 6px !important;
@@ -1236,12 +1235,14 @@ body .mac-open-iframe.layui-layer-setwin .layui-layer-change-url:hover {
         display: none;
     }
 
-    .mac-open-iframe .layui-layer-setwin a {
-        width: 32px;
-    }
-
     #dock {
         bottom: 10px;
+    }
+    /* 窗口打开主题 */
+    body .mac-open-iframe {
+        background-color: transparent;
+        border: none;
+        box-shadow: none; 
     }
 
     /*#dock .dock-container{
