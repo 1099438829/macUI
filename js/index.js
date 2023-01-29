@@ -2,7 +2,7 @@
  * Created by Yuri2 on 2017/7/10.
  */
 window.Macui = {
-    _version: 'v1.1.2.6',
+    _version: 'v1.1.2.7',
     _debug: true,
     _bgs: {
         main: '',
