@@ -10,6 +10,7 @@ window.Macui = {
     },
     _wallpaperBlur: true, //壁纸模糊（影响性能）
     _countTask: 0,
+    _maxTask:12,
     _newMsgCount: 0,
     _animated_classes: [],
     _animated_liveness: 0,
@@ -203,7 +204,7 @@ window.Macui = {
         let max_index = 0,
             max_z = 0,
             btn = null;
-        $("#mac_btn_group_middle .btn.show").each(function () {
+        $(".dock-container .dock-item.show").each(function () {
             let index = $(this).attr('index');
             let layero = Macui.getLayeroByIndex(index);
             let z = layero.css('z-index');
@@ -214,7 +215,7 @@ window.Macui = {
             }
         });
         this._settop(max_index);
-        $("#mac_btn_group_middle .btn").removeClass('active');
+        $(".dock-container .dock-item").removeClass('active');
         if (btn) {
             btn.addClass('active');
         }
@@ -264,7 +265,7 @@ window.Macui = {
         layer.close(index);
         Macui._checkTop();
         Macui._countTask--; //回退countTask数
-        Macui._renderBar();
+        Macui.renderDocks();
     },
     _fixWindowsHeightAndWidth: function () {
         //此处代码修正全屏切换引起的子窗体尺寸超出屏幕
@@ -357,7 +358,6 @@ window.Macui = {
             }, 500)
         });
         $("#mac .launchpad").click(function () {
-            console.log($(this))
             if ($("#launchpad").hasClass("hidden")) {
                 Macui.renderLaunchpad();
                 Macui.menuClose();
@@ -471,12 +471,15 @@ window.Macui = {
         $("#mac-shortcuts").removeClass('shortcuts-hidden'); //显示图标
         Macui._showShortcut(); //显示图标
         Macui.renderDocks(); //渲染DOCK
+        //初始化任务数量
+        this._maxTask = parseInt((document.body.clientWidth - 10) / 60)
         //窗口改大小，重新渲染
         $(window).resize(function () {
             Macui.renderShortcuts();
             Macui._checkBgUrls();
             if (!Macui.isSmallScreen()) Macui._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
             Macui.renderDocks();
+            this._maxTask = parseInt((parseInt(document.body.clientWidth) - 10) / 60)
         });
         //打广告
         setTimeout(function () {
@@ -585,7 +588,7 @@ window.Macui = {
             }
         });
         //launchpad 搜索功能
-        $("#launchpad .app-serach-box").on("click",function (e){
+        $("#launchpad .app-serach-box").on("click", function (e) {
             //避免点击事件影响
             e.stopPropagation();
             $(this).find(".input-search").on("input propertychange", function (e) {
@@ -989,7 +992,7 @@ window.Macui = {
                 docks.eq(i).show();
             }
         }
-        if (!this.isSmallScreen()){
+        if (!this.isSmallScreen()) {
             $('#dock').Fisheye({
                 maxWidth: 70,
                 items: 'a',
@@ -1001,11 +1004,11 @@ window.Macui = {
                 valign: 'bottom',
                 halign: 'center'
             })
-        }else {
+        } else {
             $("#dock .dock-container").css("width",width)
             docks.on('mouseover mousemove mouseout', function (e) {
                 e.stopPropagation()
-            }).css("width",cell_width).off('mouseover mousemove mouseout')
+            }).css("width", cell_width).off('mouseover mousemove mouseout')
         }
     },
     commandCenterToggle: function () {
@@ -1095,7 +1098,7 @@ window.Macui = {
         })
     },
     openUrl: function (url, icon, title, areaAndOffset) {
-        if (this._countTask > 12) {
+        if ($(".dock-container").children('.dock-item').length > this._maxTask) {
             layer.msg("您打开的太多了，歇会儿吧~");
             return false;
         } else {
@@ -1136,6 +1139,7 @@ window.Macui = {
             type: 2,
             shadeClose: true,
             shade: false,
+            move:'.mac-open-iframe',
             maxmin: true, //开启最大化最小化按钮
             title: icon + title,
             content: url,
@@ -1147,7 +1151,7 @@ window.Macui = {
                 $("#mac_" + index).remove();
                 Macui._checkTop();
                 Macui._countTask--; //回退countTask数
-                Macui._renderBar();
+                Macui.renderDocks();
             },
             min: function (layero) {
                 layero.hide();
@@ -1160,15 +1164,15 @@ window.Macui = {
                 layero_opened.css('top', 24);
             },
         });
-        $('#mac_btn_group_middle .btn.active').removeClass('active');
-        let btn = $('<div id="mac_' + index + '" index="' + index +
-            '" class="btn show active"><div class="btn_title">' + icon + '</div></div>');
+        $('.dock-container .btn.active').removeClass('active');
+        let btn = $(
+            '<a class="dock-item" id="mac_' + index + '" onClick="Macui.openUrl(\'' + url + '\',\'' + icon.replace(/'/g, "\\'") + '\',\'' + title + '\')"><span>' + title + '</span>' + icon + '</a>'
+        )
         let layero_opened = Macui.getLayeroByIndex(index);
         layero_opened.css('z-index', Macui._countTask + 813);
         Macui._settop(layero_opened);
         //重新定义菜单布局
-        layero_opened.find('.layui-layer-setwin').prepend('<a class="mac-btn-refresh" index="' + index +
-            '" href="#"></a>');
+        layero_opened.find('.layui-layer-setwin').prepend('<a class="mac-btn-refresh" index="' + index + '" href="#"></a>');
         //菜单排列倒序
         layero_opened.find(".layui-layer-setwin>a").each(function () {
             $(this).prependTo(layero_opened.find(".layui-layer-setwin"));
@@ -1185,10 +1189,14 @@ window.Macui = {
                         height - 55);
                 }
             }, 300);
-
         });
-        $("#mac_btn_group_middle").append(btn);
-        Macui._renderBar();
+        //回收站存在则插入回收站之前不存在则直接追加
+        if ($("#trashicon")){
+            btn.insertBefore($("#trashicon"))
+        }else{
+            $("#dock .dock-container").append(btn);
+        }
+        Macui.renderDocks();
         btn.click(function () {
             let index = $(this).attr('index');
             let layero = Macui.getLayeroByIndex(index);
@@ -1211,19 +1219,18 @@ window.Macui = {
                     Macui._checkTop();
                     layero.hide();
                 } else {
-                    $('#mac_btn_group_middle .btn.active').removeClass('active');
+                    $('.dock-container .dock-item.active').removeClass('active');
                     $(this).addClass('active');
                     Macui._settop(layero);
                 }
             } else {
                 $(this).addClass('show');
-                $('#mac_btn_group_middle .btn.active').removeClass('active');
+                $('.dock-container .dock-item.active').removeClass('active');
                 $(this).addClass('active');
                 Macui._settop(layero);
                 layero.show();
             }
         });
-
 
         Macui._iframeOnClick.track(layero_opened.find('iframe:first')[0], function () {
             if (Object.getOwnPropertyNames(Macui._iframe_click_lock_children).length === 0) {
@@ -1242,7 +1249,7 @@ window.Macui = {
         $(".mac-open-iframe").remove();
         $("#mac_btn_group_middle").html("");
         Macui._countTask = 0;
-        Macui._renderBar();
+        Macui.renderDocks();
     },
     setAnimated: function (animated_classes, animated_liveness) {
         this._animated_classes = animated_classes;

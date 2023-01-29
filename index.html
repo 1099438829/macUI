@@ -11,7 +11,7 @@
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/favicon.ico'>
     <link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/index.min.css">
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
 </head>
 
@@ -107,17 +107,8 @@
                 <a class="dock-item"
                     onclick="Macui.openUrl('./app/safari','<img class=\'icon\' src=\'./img/icon/safari.png\'/>','safari')">
                     <span>safari</span><img src="./img/icon/safari.png"></a>
-                <a class="dock-item" href="#"><span>appstore</span><img src="./img/icon/appstore.png"
-                        alt="appstore" /></a>
-                <a class="dock-item" href="#"><span>gamecenter</span><img src="./img/icon/gamecenter.png"
-                        alt="gamecenter" /></a>
-                <a class="dock-item" href="#"><span>imusic</span><img src="./img/icon/imusic.png" alt="imusic" /></a>
-                <a class="dock-item" href="#"><span>notes</span><img src="./img/icon/notes.png" alt="notes" /></a>
-                <a class="dock-item" href="#"><span>setting</span><img src="./img/icon/icloud.png" alt="setting" /></a>
-                <a class="dock-item" href="#"><span>iTunes</span><img src="./img/icon/iTunes.png" alt="iTunes" /></a>
-                <a class="dock-item" href="#"><span>mail</span><img src="./img/icon/mail.png" alt="mail" /></a>
-                <a class="dock-item" href="#"><span>maps</span><img src="./img/icon/maps.png" alt="maps" /></a>
-                <a class="dock-item" href="#"><span>trashicon</span><img src="./img/icon/trashicon.png"
+
+                <a class="dock-item" id="trashicon" href="#"><span>trashicon</span><img src="./img/icon/trashicon.png"
                         alt="trashicon" /></a>
             </div>
         </div>
@@ -154,7 +145,7 @@
     src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/layer/3.5.1/layer.min.js"></script>
 <script type="text/javascript" src="./js/interface.min.js"></script>
-<script type="text/javascript" src="./js/index.min.js"></script>
+<script type="text/javascript" src="./js/index.js"></script>
 <script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
 <script>
     Macui.onReady(function () {
