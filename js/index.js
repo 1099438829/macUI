@@ -1139,7 +1139,6 @@ window.Macui = {
             type: 2,
             shadeClose: true,
             shade: false,
-            move:'.mac-open-iframe',
             maxmin: true, //开启最大化最小化按钮
             title: icon + title,
             content: url,
