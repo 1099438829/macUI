@@ -10,6 +10,7 @@ window.Macui = {
 	},
 	_wallpaperBlur: true, //壁纸模糊（影响性能）
 	_countTask: 0,
+    _maxTask:12,
 	_newMsgCount: 0,
 	_animated_classes: [],
 	_animated_liveness: 0,
@@ -199,7 +200,7 @@ window.Macui = {
         let max_index = 0,
             max_z = 0,
             btn = null;
-        $("#mac_btn_group_middle .btn.show").each(function () {
+        $("#dock .dock-container li.show").each(function () {
             let index = $(this).attr('index');
             let layero = Macui.getLayeroByIndex(index);
             let z = layero.css('z-index');
@@ -210,7 +211,7 @@ window.Macui = {
             }
         });
         this._settop(max_index);
-        $("#mac_btn_group_middle .btn").removeClass('active');
+        $("#dock .dock-container li").removeClass('active');
         if (btn) {
             btn.addClass('active');
         }
@@ -260,7 +261,7 @@ window.Macui = {
         layer.close(index);
         Macui._checkTop();
         Macui._countTask--; //回退countTask数
-        Macui._renderBar();
+        Macui.renderDocks();
     },
     _fixWindowsHeightAndWidth: function () {
         //此处代码修正全屏切换引起的子窗体尺寸超出屏幕
@@ -466,12 +467,15 @@ window.Macui = {
         $("#mac-shortcuts").removeClass('shortcuts-hidden'); //显示图标
         Macui._showShortcut(); //显示图标
         Macui.renderDocks(); //渲染DOCK
+        //初始化任务数量
+        this._maxTask = parseInt((document.body.clientWidth - 10) / 60)
         //窗口改大小，重新渲染
         $(window).resize(function () {
             Macui.renderShortcuts();
             Macui._checkBgUrls();
             if (!Macui.isSmallScreen()) Macui._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
             Macui.renderDocks();
+            this._maxTask = parseInt((parseInt(document.body.clientWidth) - 10) / 60)
         });
         //打广告
         setTimeout(function () {
@@ -1099,7 +1103,7 @@ window.Macui = {
 		}
 		*/
 		//只打开一个应用代码结束，备注，本地方法有点问题，需要全部使用 url才能生效
-        if (this._countTask > 12) {
+        if ($("#dock .dock-container").children('li').length > this._maxTask) {
             layer.msg("您打开的太多了，歇会儿吧~");
             return false;
         } else {
@@ -1164,9 +1168,9 @@ window.Macui = {
                 layero_opened.css('top', 24);
             },
         });
-        $('#mac_btn_group_middle .btn.active').removeClass('active');
-        let btn = $('<div id="mac_' + index + '" index="' + index +
-            '" class="btn show active"><div class="btn_title">' + icon + '</div></div>');
+        $('#dock .dock-container li.active').removeClass('active');
+        let btn = $('<li  id="mac_' + index + '" index="' + index +
+            '"> <span class="dock-tips" style="display: none;">'+title+'<span class="arrow"></span></span><a>' + icon + '</a> </li>');
         let layero_opened = Macui.getLayeroByIndex(index);
         layero_opened.css('z-index', Macui._countTask + 813);
         Macui._settop(layero_opened);
@@ -1191,10 +1195,14 @@ window.Macui = {
                         height - 55);
                 }
             }, 300);
-
         });
-        $("#mac_btn_group_middle").append(btn);
-        Macui._renderBar();
+        //回收站存在则插入回收站之前不存在则直接追加
+        if ($("#trashicon")){
+            btn.insertBefore($("#trashicon"))
+        }else{
+            $("#dock .dock-container>li").append(btn);
+        }
+        Macui.renderDocks();
         btn.click(function () {
             let index = $(this).attr('index');
             let layero = Macui.getLayeroByIndex(index);
@@ -1217,19 +1225,18 @@ window.Macui = {
                     Macui._checkTop();
                     layero.hide();
                 } else {
-                    $('#mac_btn_group_middle .btn.active').removeClass('active');
+                    $('#dock .dock-container li.active').removeClass('active');
                     $(this).addClass('active');
                     Macui._settop(layero);
                 }
             } else {
                 $(this).addClass('show');
-                $('#mac_btn_group_middle .btn.active').removeClass('active');
+                $('#dock .dock-container li.active').removeClass('active');
                 $(this).addClass('active');
                 Macui._settop(layero);
                 layero.show();
             }
         });
-
 
         Macui._iframeOnClick.track(layero_opened.find('iframe:first')[0], function () {
             if (Object.getOwnPropertyNames(Macui._iframe_click_lock_children).length === 0) {
@@ -1248,7 +1255,7 @@ window.Macui = {
         $(".mac-open-iframe").remove();
         $("#mac_btn_group_middle").html("");
         Macui._countTask = 0;
-        Macui._renderBar();
+        Macui.renderDocks();
     },
     setAnimated: function (animated_classes, animated_liveness) {
         this._animated_classes = animated_classes;

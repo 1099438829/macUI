@@ -734,6 +734,7 @@ body .mac-btn_refresh {
 }
 
 .mac-open-iframe .layui-layer-setwin {
+    width: 10rem; /*需要定义长度避免影响拖动 多预留一个button位置*/
     position: absolute;
     left: 0;
     top: 0;
