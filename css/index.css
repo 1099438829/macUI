@@ -986,6 +986,19 @@ body .mac-open-iframe.layui-layer-setwin .layui-layer-change-url:hover {
     cursor: pointer;
 }
 
+#dock .dock-container ul li.active > a:after {
+    content: "";
+    font-size: 12px;
+    position: fixed;
+    margin: 49px -27px;
+    /* margin: calc(50- 4/2)px calc(-50/2 - 4/2)px; */
+    font-weight: 200;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #000
+}
+
 #dock .dock-container ul li:focus {
     -webkit-animation: bounce 1s;
     animation: bounce 1s;

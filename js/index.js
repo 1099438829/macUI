@@ -1169,7 +1169,7 @@ window.Macui = {
             },
         });
         $('#dock .dock-container li.active').removeClass('active');
-        let btn = $('<li  id="mac_' + index + '" index="' + index +
+        let btn = $('<li  class="active show" id="mac_' + index + '" index="' + index +
             '"> <span class="dock-tips" style="display: none;">'+title+'<span class="arrow"></span></span><a>' + icon + '</a> </li>');
         let layero_opened = Macui.getLayeroByIndex(index);
         layero_opened.css('z-index', Macui._countTask + 813);
@@ -1204,6 +1204,7 @@ window.Macui = {
         }
         Macui.renderDocks();
         btn.click(function () {
+            console.log(444444)
             let index = $(this).attr('index');
             let layero = Macui.getLayeroByIndex(index);
             let settop = function () {
@@ -1219,6 +1220,7 @@ window.Macui = {
                 layero.css('z-index', max_zindex + 1);
             };
             if ($(this).hasClass('show')) {
+                console.log(444222)
                 if ($(this).hasClass('active')) {
                     $(this).removeClass('active');
                     $(this).removeClass('show');
@@ -1230,6 +1232,7 @@ window.Macui = {
                     Macui._settop(layero);
                 }
             } else {
+                console.log(3333)
                 $(this).addClass('show');
                 $('#dock .dock-container li.active').removeClass('active');
                 $(this).addClass('active');
