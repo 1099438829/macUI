@@ -10,7 +10,7 @@ window.Macui = {
     },
     _wallpaperBlur: true, //壁纸模糊（影响性能）
     _countTask: 0,
-    _maxTask:12,
+    _maxTask: 12,
     _newMsgCount: 0,
     _animated_classes: [],
     _animated_liveness: 0,
@@ -422,7 +422,7 @@ window.Macui = {
         $("#mac_btn_group_middle").click(function () {
             $("#mac .desktop").click();
         });
-        $(document).on('click', '.mac-btn-refresh', function () {
+        $(document).on('click', '.layui-layer-refresh', function () {
             let index = $(this).attr('index');
             let iframe = Macui.getLayeroByIndex(index).find('iframe');
             iframe.attr('src', iframe.attr('src'));
@@ -890,7 +890,9 @@ window.Macui = {
     },
     //close Launchpad
     closeLaunchpad: function () {
-        $("#launchpad").removeClass("show").addClass("hidden").hide();
+        if ($("#launchpad").hasClass("show")){
+            $("#launchpad").removeClass("show").addClass("hidden").hide();
+        }
     },
     //消息中心渲染
     renderCommand: function (todayHtml = null) {
@@ -1005,7 +1007,7 @@ window.Macui = {
                 halign: 'center'
             })
         } else {
-            $("#dock .dock-container").css("width",width)
+            $("#dock .dock-container").css("width", width)
             docks.on('mouseover mousemove mouseout', function (e) {
                 e.stopPropagation()
             }).css("width", cell_width).off('mouseover mousemove mouseout')
@@ -1098,7 +1100,18 @@ window.Macui = {
         })
     },
     openUrl: function (url, icon, title, areaAndOffset) {
-        if ($(".dock-container").children('.dock-item').length > this._maxTask) {
+        //只打开一个应用
+        /*
+        let ifr=document.getElementsByTagName("iframe");
+        for(i=0;i<ifr.length;i++){
+            if(url==ifr[i].src){
+                Win10.show_win(url);
+                return false;
+            }
+        }
+        */
+        //只打开一个应用代码结束，备注，本地方法有点问题，需要全部使用 url才能生效
+        if ($("#dock .dock-container").children('.dock-item').length > this._maxTask) {
             layer.msg("您打开的太多了，歇会儿吧~");
             return false;
         } else {
@@ -1170,12 +1183,15 @@ window.Macui = {
         let layero_opened = Macui.getLayeroByIndex(index);
         layero_opened.css('z-index', Macui._countTask + 813);
         Macui._settop(layero_opened);
-        //重新定义菜单布局
-        layero_opened.find('.layui-layer-setwin').prepend('<a class="mac-btn-refresh" index="' + index + '" href="#"></a>');
         //菜单排列倒序
         layero_opened.find(".layui-layer-setwin>a").each(function () {
-            $(this).prependTo(layero_opened.find(".layui-layer-setwin"));
+            if ($(this).hasClass('layui-layer-close')) {
+                $(this).prependTo(layero_opened.find(".layui-layer-setwin"));
+            }
         })
+        //重新定义菜单布局
+        layero_opened.find('.layui-layer-setwin').append('<a class="layui-layer-ico layui-layer-refresh" index="' + index +
+            '" href="#"></a>');
         layero_opened.find('.layui-layer-setwin .layui-layer-max').click(function () {
             setTimeout(function () {
                 let height = layero_opened.css('height');
@@ -1190,10 +1206,10 @@ window.Macui = {
             }, 300);
         });
         //回收站存在则插入回收站之前不存在则直接追加
-        if ($("#trashicon")){
+        if ($("#trashicon")) {
             btn.insertBefore($("#trashicon"))
-        }else{
-            $("#dock .dock-container").append(btn);
+        } else {
+            $("#dock .dock-container .dock-item").append(btn);
         }
         Macui.renderDocks();
         btn.click(function () {
@@ -1218,13 +1234,13 @@ window.Macui = {
                     Macui._checkTop();
                     layero.hide();
                 } else {
-                    $('.dock-container .dock-item.active').removeClass('active');
+                    $('#dock .dock-container .dock-item.active').removeClass('active');
                     $(this).addClass('active');
                     Macui._settop(layero);
                 }
             } else {
                 $(this).addClass('show');
-                $('.dock-container .dock-item.active').removeClass('active');
+                $('#dock .dock-container .dock-item.active').removeClass('active');
                 $(this).addClass('active');
                 Macui._settop(layero);
                 layero.show();
