@@ -788,35 +788,35 @@ body .mac-btn_refresh {
 .mac-open-iframe .layui-layer-min cite{display:none}
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-min {
-    background: url(../img/frame/assets.png) no-repeat -3px -26px;
+    background: url(../img/frame/assets.png) no-repeat -1px -26px;
     background-size: 144px;
     cursor: pointer;
 }
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-min:hover {
-    background: url(../img/frame/assets.png) no-repeat -3px -49px;
+    background: url(../img/frame/assets.png) no-repeat -1px -49px;
     background-size: 144px;
     cursor: pointer;
 }
 
 body .mac-open-iframe .layui-layer-setwin a.layui-layer-close {
-    background-position: -37px -26px;
+    background-position: -36px -26px;
     cursor: pointer;
 }
 
 body .mac-open-iframe .layui-layer-setwin a.layui-layer-close:hover {
-    background-position: -37px -49px;
+    background-position: -36px -50px;
     cursor: pointer;
 }
 
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-max {
-    background-position: -20px -25.5px;
+    background-position: -19px -25.5px;
     cursor: pointer;
 }
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-max:hover {
-    background-position: -20px -48.5px;
+    background-position: -19px -49px;
     cursor: pointer;
 }
 
@@ -836,7 +836,7 @@ body .mac-open-iframe .layui-layer-setwin .layui-layer-refresh {
 }
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-refresh:hover {
-    background-position: -83px -48px;
+    background-position: -83px -48.5px;
     cursor: pointer;
 }
 
