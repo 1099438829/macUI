@@ -811,12 +811,12 @@ body .mac-open-iframe .layui-layer-setwin a.layui-layer-close:hover {
 
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-max {
-    background-position: -20px -26px;
+    background-position: -20px -25.5px;
     cursor: pointer;
 }
 
 body .mac-open-iframe .layui-layer-setwin .layui-layer-max:hover {
-    background-position: -20px -49px;
+    background-position: -20px -48.5px;
     cursor: pointer;
 }
 

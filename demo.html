@@ -9,8 +9,8 @@
     <meta name="description" content="mac桌面">
     <meta name="keywords" content="mac桌面">
     <link rel='Shortcut Icon' type='image/x-icon' href='./favicon.ico'>
-    <link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="./component/fontawesome-6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/index.min.css">
     <link rel="stylesheet" href="./plugins/shortcut-drawer/shortcut-drawer.min.css">
 </head>
@@ -19,12 +19,12 @@
     <div id="mac">
         <div id="mac_task_bar" class="backgroud_blur">
             <div id="mac_btn_group_left" class="btn_group">
-                <div id="mac_btn_win" class="btn"><span class="fa fa-apple"></span></div>
+                <div id="mac_btn_win" class="btn"><i class="fa-brands fa-apple"></i></div>
             </div>
             <div id="mac_btn_group_middle" class="btn_group"></div>
             <div id="mac_btn_group_right" class="btn_group">
                 <div class="btn" id="mac_btn_time"></div>
-                <div class="btn" id="mac_btn_command"><span id="mac-msg-nof" class="fa fa-list-ul"></span></div>
+                <div class="btn" id="mac_btn_command"><i id="mac-msg-nof" class="fa-solid fa-list-ul"></i></div>
                 <div class="btn" id="mac_btn_show_desktop"></div>
             </div>
         </div>
@@ -210,8 +210,8 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/2.2.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/layer/3.5.1/layer.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/layer/3.5.1/layer.min.js"></script>
 <script type="text/javascript" src="./js/index.min.js"></script>
 <script type="text/javascript" src="./plugins/shortcut-drawer/shortcut-drawer.min.js"></script>
 <script>
@@ -230,18 +230,7 @@
         setTimeout(function () {
             Macui.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)', function () {
                 Macui.enableFullScreen();
-            });
-            Macui.newMsg('最新资讯', '最新资讯信息', function () {
-                layer.open({
-                    type: 2,
-                    title: '最新资讯',
-                    area: ['300px', '380px'],
-                    shade: 0,
-                    skin: 'mac-open-iframe',
-                    offset: 'rb',
-                    content: './broadcast.html'
-                });
-            });
+            })
         }, 1500);
 
         setTimeout(function () {
